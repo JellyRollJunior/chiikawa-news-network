@@ -121,3 +121,19 @@ VITE_SERVER_URL
 | Images | Chiikawa                                                                        |
 | Icons  | Google material icons                                                           |
 | Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
+
+## TODO
+- client
+
+- server
+
+- order
+    - github login
+    - chii styling chat app
+    - nav rework
+        - rewire routes and nav to fit new layout
+        - CNN logo
+        - Move logout to profile
+    - Profile route
+        - remove view profile modal
+    - 

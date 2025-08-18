@@ -11,7 +11,6 @@ const handleVerifyToken = (socket, next) => {
         socket.data.user = data; // attach user info to socket
         next();
     } catch (error) {
-        console.log('JWT Error: ', error);
         return next(new AuthenticationError());
     }
 };
