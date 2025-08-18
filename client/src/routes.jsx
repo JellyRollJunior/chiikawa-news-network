@@ -11,7 +11,8 @@ const routes = [
     path: '/',
     element: <App />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: '/', element: <HomePage /> },
+      { path: '/chats', element: <HomePage /> },
       { path: '/chats/:chatId', element: <ChatPage /> },
       { path: '/profile', element: <ProfilePage /> }
     ],
