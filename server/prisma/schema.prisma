@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CHAT_TYPE {
+  PRIVATE
+  GROUP
+  PUBLIC
+}
+
+model User {
+  id       String @id @default(uuid())
+  username String @unique
+  password String
+  bio      String @default("Thank you for visiting my profile")
+  avatar   String @default("https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/default/avatar.png")
+
+  chats    Chat[]
+  messages Message[]
+}
+
+model Message {
+  id       String   @id @default(uuid())
+  content  String
+  sendTime DateTime @default(now())
+
+  sender        User   @relation(fields: [senderId], references: [id])
+  senderId      String
+  chat          Chat   @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  chatId        String
+  latestMessage Chat?  @relation(name: "latestMessage")
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  signature String?   @unique
+  type      CHAT_TYPE
+  name      String?
+  avatar    String?
+
+  latestMessage   Message? @relation(name: "latestMessage", fields: [latestMessageId], references: [id])
+  latestMessageId String?  @unique
+
+  users    User[]
+  messages Message[]
+}
