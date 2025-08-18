@@ -136,4 +136,7 @@ VITE_SERVER_URL
         - Move logout to profile
     - Profile route
         - remove view profile modal
-    - 
+    - Settings page
+        - edit avatar
+        - edit bio
+        - logout
