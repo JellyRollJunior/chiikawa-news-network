@@ -1,14 +1,10 @@
 import { Link, useLocation } from 'react-router';
-import logoutIcon from '../assets/images/chiikawa-laying.png';
-import homeIcon from '../assets/svgs/home.svg';
-import homeFilledIcon from '../assets/svgs/home-filled.svg';
-import accountIcon from '../assets/svgs/account.svg';
-import accountFilledIcon from '../assets/svgs/account-filled.svg';
-import messagesIcon from '../assets/svgs/messages.svg';
-import messagesFilledIcon from '../assets/svgs/messages-filled.svg';
-
-// import logo from '../assets/nav/chiikawa-glasses.png'
-// import homeIcon from '../assets/nav/chiikawa-book.png'
+import logo from '../assets/nav/chiikawa-glasses.png';
+import home from '../assets/nav/chiikawa-book.png';
+import messages from '../assets/nav/chii-hachi-hearts.png';
+import profile from '../assets/nav/chii-usagi-silly.png';
+import users from '../assets/nav/chii-kuri-drinks.png';
+import settings from '../assets/nav/usagi-business.png';
 
 const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
@@ -16,39 +12,37 @@ const NavigationPageWrapper = ({ children }) => {
   const path = location.pathname;
   return (
     <>
-      <nav className="fixed bottom-0 grid h-12 w-full grid-cols-4 items-center justify-center bg-gray-300 md:top-0 md:flex md:h-full md:w-14 md:flex-col md:justify-start md:gap-11 md:pt-8">
+      <nav className="md:w-18 fixed bottom-0 grid h-18 w-full grid-cols-6 items-center justify-center bg-gray-300 md:top-0 md:flex md:h-full md:flex-col md:justify-start md:gap-7 md:pt-8">
         <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400">
-          <img className="w-9" src={logoutIcon} alt="Logout icon" />
+          <img className="w-11" src={logo} />
         </button>
-        <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400 md:mt-5">
+        <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400 md:mt-9">
           <Link to="/">
-            <img
-              className="w-9"
-              src={path == '/' ? homeFilledIcon : homeIcon}
-              alt="Home icon"
-            />
+            <img className="w-11" src={home} alt="Home icon" />
           </Link>
         </button>
         <div className="mx-auto flex w-fit justify-center">
           <Link to="/chats">
-            <img
-              className="w-9"
-              src={path.includes('chats') ? messagesFilledIcon : messagesIcon}
-              alt="Home icon"
-            />
+            <img className="w-15" src={messages} alt="Home icon" />
           </Link>
         </div>
         <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400">
           <Link to="/profile">
-            <img
-              className="w-9"
-              src={path == '/profile' ? accountFilledIcon : accountIcon}
-              alt="Profile icon"
-            />
+            <img className="w-14" src={profile} alt="Profile icon" />
+          </Link>
+        </button>
+        <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400">
+          <Link to="/">
+            <img className="w-14" src={users} />
+          </Link>
+        </button>
+        <button className="mx-auto flex w-fit justify-center rounded-2xl px-1 py-1 hover:bg-gray-400">
+          <Link to="/">
+            <img className="w-11" src={settings} />
           </Link>
         </button>
       </nav>
-      <div className="h-screen pb-12 md:pb-0 md:pl-14">{children}</div>
+      <div className="md:pl-18 h-screen pb-12 md:pb-0">{children}</div>
     </>
   );
 };

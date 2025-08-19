@@ -127,12 +127,9 @@ VITE_SERVER_URL
     - chii styling
         - pngs pink outline
         - nav icon rework
-            - CNN logo icon - chiikawa-glasses - DONE
-            - INDEX / HOME icon - chiikawa-book - DONE
-            - MESSAGES icon - chii-hachi-heart - DONE
-            - Profile icon - chii-usagi-silly - DONE
-            - users icon - chii-kuri-drinks - DONE
-            - settings icon - usagi-business - DONE
+            - icon labels
+            - desktop view
+            - mobile view
         - color scheme rework
         - font
         - login / signup reword
