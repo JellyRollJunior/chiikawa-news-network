@@ -124,12 +124,23 @@ VITE_SERVER_URL
 
 ## TODO
 - client
+    - chii styling
+        - pngs pink outline
+        - nav icon rework
+            - CNN logo icon - chiikawa-glasses - DONE
+            - INDEX / HOME icon - chiikawa-book - DONE
+            - MESSAGES icon - chii-hachi-heart - DONE
+            - Profile icon - chii-usagi-silly - DONE
+            - users icon - chii-kuri-drinks - DONE
+            - settings icon - usagi-business - DONE
+        - color scheme rework
+        - font
+        - login / signup reword
 
 - server
 
 - order
     - github login
-    - chii styling chat app
     - nav rework
         - rewire routes and nav to fit new layout
         - CNN logo
@@ -140,3 +151,4 @@ VITE_SERVER_URL
         - edit avatar
         - edit bio
         - logout
+    - users page

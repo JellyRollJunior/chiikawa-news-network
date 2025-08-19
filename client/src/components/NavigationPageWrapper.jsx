@@ -7,6 +7,9 @@ import accountFilledIcon from '../assets/svgs/account-filled.svg';
 import messagesIcon from '../assets/svgs/messages.svg';
 import messagesFilledIcon from '../assets/svgs/messages-filled.svg';
 
+// import logo from '../assets/nav/chiikawa-glasses.png'
+// import homeIcon from '../assets/nav/chiikawa-book.png'
+
 const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
 
