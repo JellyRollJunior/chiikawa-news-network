@@ -128,6 +128,8 @@ VITE_SERVER_URL
         - pngs pink outline
         - nav icon rework
             - icon labels
+            - page selected indicator (outlines on PNG)
+            - extract link button
             - desktop view
             - mobile view
         - color scheme rework
