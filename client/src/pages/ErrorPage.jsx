@@ -25,7 +25,7 @@ const ErrorPage = () => {
           <main>
             <div className='inset-shadow-[2px_2px_3px] inset-shadow-white bg-linear-to-b mt-4 rounded-lg border-2 border-yellow-100 from-red-50 to-rose-50 py-2 text-center text-3xl font-bold shadow-[3px_3px_1px] shadow-pink-200'>
               <img
-                className="drop-shadow-pink-custom m-auto"
+                className="drop-shadow-pink-outline m-auto"
                 src={scared}
                 alt="Chiikawa and Hachiware startled"
               />

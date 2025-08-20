@@ -38,7 +38,7 @@
     0 0 6px white, 0 0 6px white;
 }
 
-@utility drop-shadow-pink-custom {
+@utility drop-shadow-pink-outline {
   filter: drop-shadow(2px 2px 0px #ef638766);
 }
 
