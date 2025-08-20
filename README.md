@@ -125,13 +125,16 @@ VITE_SERVER_URL
 ## TODO
 - client
     - chii styling
-        - pngs pink outline
         - nav icon rework
             - icon labels
                 - nav bar expand on label appear
             - page selected indicator (outlines on PNG)
+                - desktop
             - desktop view
-            - mobile view
+                - button layout top and last one spaced apart
+                - buttons in center
+            - make whole area the button
+                - replace button with link tbh
         - color scheme rework
         - font
         - login / signup reword
