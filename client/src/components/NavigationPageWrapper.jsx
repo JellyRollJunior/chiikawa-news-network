@@ -9,13 +9,16 @@ import settings from '../assets/nav/usagi-business.png';
 const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
-      className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:items-center"
+      className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 
+      md:items-center md:h-fit md:pt-3
+      lg:justify-start lg:pl-4"
       to={link}
     >
       <div
-        className={`flex flex-col items-center justify-center lg:flex-row ${
+        className={`flex flex-col items-center justify-center 
+          lg:flex-row lg:gap-3 ${
           selected &&
-          'sm:animate-nav-selected-mobile md:animate-nav-selected-desktop'
+          'animate-nav-selected-mobile md:animate-nav-selected-desktop'
         }`}
       >
         <img
@@ -32,12 +35,14 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
 const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
   const path = location.pathname;
-  
+
   return (
     <>
-      <nav className="border-y-3 bg-dotted-sm fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:top-0 md:grid md:h-full md:w-20 md:grid-cols-1 md:grid-rows-[2fr_1fr_1fr_1fr_1fr_2fr]">
-        <div className="hidden h-full w-full md:block">
-          <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
+      <nav className="border-y-3 bg-dotted-sm fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 
+      md:top-0 md:flex md:h-full md:w-20 md:flex-col md:border-x-4 md:border-y-3
+      lg:w-48">
+        <div className="hidden w-full mt-5 mb-10 md:block">
+          <NavButton link="/" label="C.N.N" src={logo} srcWidth="43px" />
         </div>
         <NavButton
           link="/"
@@ -67,15 +72,20 @@ const NavigationPageWrapper = ({ children }) => {
           srcWidth="60px"
           selected={path.includes('users')}
         />
-        <NavButton
-          link="/profile"
-          label="Settings"
-          src={settings}
-          srcWidth="35px"
-          selected={path == '/settings'}
-        />
+        <div className=" md:w-full md:mt-10 ">
+          <NavButton
+            link="/profile"
+            label="Settings"
+            src={settings}
+            srcWidth="35px"
+            selected={path == '/settings'}
+          />
+        </div>
       </nav>
-      <div className="h-screen pb-20 md:pb-0 md:pl-20">{children}</div>
+      <div className="h-screen pb-20 
+      md:pb-0 md:pl-20 
+      lg:pl-36">
+        {children}</div>
     </>
   );
 };
