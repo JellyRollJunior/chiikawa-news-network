@@ -17,7 +17,7 @@ const NavButton = ({ link, label, src, srcWidth = '2.75rem', style }) => {
         to={link}
       >
         <img style={{ width: srcWidth }} src={src} />
-        <h3 className='hidden font-bold md:block'>{label}</h3>
+        <h3 className="text-shadow-wrap hidden font-bold md:block">{label}</h3>
       </Link>
     </button>
   );

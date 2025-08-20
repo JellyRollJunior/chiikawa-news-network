@@ -1,10 +1,43 @@
 @import 'tailwindcss';
 @plugin 'tailwind-scrollbar';
 
-@utility drop-shadow-pink-custom {
-  filter: drop-shadow(2px 2px 0px #ef638766);
+@font-face {
+  font-family: 'sen';
+  src: url('../assets/fonts/Sen-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'sen';
+  font-weight: 500;
+  src: url('../assets/fonts/Sen-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'sen';
+  font-weight: 600;
+  src: url('../assets/fonts/Sen-SemiBold.woff2');
+}
+@font-face {
+  font-family: 'sen';
+  font-weight: bold;
+  src: url('../assets/fonts/Sen-Bold.woff2');
+}
+
+@font-face {
+  font-family: 'sen';
+  font-weight: 800;
+  src: url('../assets/fonts/Sen-ExtraBold.woff2');
 }
 
 @theme {
   --breakpoint-xs: 30rem;
+  --font-default: 'sen', arial, sans-serif;
+  --text-shadow-wrap:
+    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
+    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
+    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white;
+}
+
+@utility drop-shadow-pink-custom {
+  filter: drop-shadow(2px 2px 0px #ef638766);
 }
