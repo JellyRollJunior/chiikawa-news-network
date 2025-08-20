@@ -33,11 +33,23 @@
   --breakpoint-xs: 30rem;
   --font-default: 'sen', arial, sans-serif;
   --text-shadow-wrap:
-    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
-    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
-    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white;
+    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
+    0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
+    0 0 6px white, 0 0 6px white;
 }
 
 @utility drop-shadow-pink-custom {
   filter: drop-shadow(2px 2px 0px #ef638766);
+}
+
+@utility bg-dotted-sm {
+  background-image: url('../assets/backgrounds/bg-dotted-sm.png');
+}
+
+@utility bg-dotted {
+  background-image: url('../assets/backgrounds/bg-dotted.png');
+}
+
+@utility bg-dotted-lg {
+  background-image: url('../assets/backgrounds/bg-dotted-lg.png');
 }

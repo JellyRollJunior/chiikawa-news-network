@@ -10,7 +10,7 @@ const NavButton = ({ link, label, src, srcWidth = '2.75rem', style }) => {
   return (
     <button
       style={style}
-      className="flex h-full w-full items-end justify-center pb-1 hover:bg-gray-400"
+      className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200"
     >
       <Link
         className="flex flex-col items-center justify-center lg:flex-row"
@@ -26,7 +26,7 @@ const NavButton = ({ link, label, src, srcWidth = '2.75rem', style }) => {
 const NavigationPageWrapper = ({ children }) => {
   return (
     <>
-      <nav className="md:w-18 fixed bottom-0 grid h-20 w-full grid-cols-5 bg-gray-300 md:top-0 md:flex md:h-full md:flex-col md:justify-start md:gap-3">
+      <nav className="md:w-18 border-t-3 bg-dotted-sm fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:top-0 md:flex md:h-full md:flex-col md:justify-start md:gap-3">
         <div className="hidden h-full w-full md:block">
           <NavButton link="/" label="CNN" src={logo} />
         </div>
