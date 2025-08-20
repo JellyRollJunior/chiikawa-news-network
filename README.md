@@ -128,8 +128,6 @@ VITE_SERVER_URL
         - nav icon rework
             - icon labels
                 - nav bar expand on label appear
-            - page selected indicator (outlines on PNG)
-                - desktop
         - color scheme rework
         - font
         - login / signup reword

@@ -5,25 +5,18 @@ import messages from '../assets/nav/chii-hachi-hearts.png';
 import profile from '../assets/nav/chii-usagi-silly.png';
 import users from '../assets/nav/chii-kuri-drinks.png';
 import settings from '../assets/nav/usagi-business.png';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
 
 const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
-  const selectedAnimation = selected
-    ? {
-        translateY: '-10px',
-        scale: 1.1,
-      }
-    : null;
-
   return (
     <Link
       className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:items-center"
       to={link}
     >
-      <motion.div
-        animate={selectedAnimation}
-        className="flex flex-col items-center justify-center lg:flex-row"
+      <div
+        className={`flex flex-col items-center justify-center lg:flex-row ${
+          selected &&
+          'sm:animate-nav-selected-mobile md:animate-nav-selected-desktop'
+        }`}
       >
         <img
           style={{ width: srcWidth }}
@@ -31,7 +24,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
           src={src}
         />
         <h3 className="text-shadow-wrap font-bold">{label}</h3>
-      </motion.div>
+      </div>
     </Link>
   );
 };
@@ -39,7 +32,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
 const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
   const path = location.pathname;
-
+  
   return (
     <>
       <nav className="border-y-3 bg-dotted-sm fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:top-0 md:grid md:h-full md:w-20 md:grid-cols-1 md:grid-rows-[2fr_1fr_1fr_1fr_1fr_2fr]">
