@@ -45,14 +45,14 @@ const ChatsListItem = ({
     : '';
   return (
     <li
-      className={`rounded-md mx-3 md:mx-1 px-2 py-2 hover:bg-blue-100 ${chatId == browserChatId ? 'bg-blue-100' : 'inherit'}`}
+      className={`mx-3 rounded-md px-2 py-2 hover:bg-blue-100 md:mx-1 ${chatId == browserChatId ? 'bg-blue-100' : 'inherit'}`}
     >
       <Link className="flex gap-2" to={`/chats/${chatId}`}>
         <Avatar avatar={avatar} />
         <div className="-mt-0.5 flex min-w-0 flex-col self-center leading-[1.2]">
           <h4 className="truncate text-lg font-medium">{chatName}</h4>
           <p className="-mt-1 truncate">{latestMessageContent}</p>
-          <p className="text-sm text-gray-700">{formattedDate}</p>
+          <p className="text-sm">{formattedDate}</p>
         </div>
       </Link>
     </li>

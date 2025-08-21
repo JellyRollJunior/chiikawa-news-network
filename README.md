@@ -124,15 +124,23 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - chii styling
+    - chii styling 
+        - new chat / refresh icons
+            - colors ?
+            - switch to chii ?
         - sprinkle chii stickers around UI
         - color scheme rework
         - login / signup reword
         - chats
             - loading animation
+        - profile
+            - remove chats from /profile
+            - un-extract homeAsideLayout 
         - modals
         - messages
     - HOME to REAL HOME, CHATS TO INDEX
+        - rename home message prompt
+    
 
 - server
 
