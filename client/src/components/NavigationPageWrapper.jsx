@@ -11,9 +11,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
       className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
-        selected
-          ? 'bg-dotted hover:bg-pink-300 rounded-md bg-pink-300'
-          : ''
+        selected ? 'bg-dotted rounded-md bg-pink-300 hover:bg-pink-300' : ''
       }`}
       to={link}
     >
@@ -66,7 +64,7 @@ const NavigationPageWrapper = ({ children }) => {
   return (
     <>
       {/* mobile nav */}
-      <nav className="border-y-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:hidden">
+      <nav className="border-y-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 rounded-t-md border-pink-200 bg-pink-100 md:hidden">
         {navButtonsMobile.map((button) => (
           <Fragment key={button.label}>
             <NavButton
@@ -80,7 +78,7 @@ const NavigationPageWrapper = ({ children }) => {
         ))}
       </nav>
       {/* desktop nav */}
-      <nav className="border-y-3 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col border-x-4 border-pink-200 bg-pink-100 md:flex">
+      <nav className="border-y-3 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col rounded-r-sm border-x-4 border-pink-200 bg-pink-100 md:flex">
         <div className="mb-10 mt-5 w-full">
           <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
         </div>
