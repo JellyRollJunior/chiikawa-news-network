@@ -73,9 +73,13 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
             key={message.id}
             className={`max-w-4/5 flex items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
           >
-            <Avatar avatar={message.sender.avatar} size={2.5} chatStyling={true} />
+            <Avatar
+              avatar={message.sender.avatar}
+              size={2.5}
+              chatStyling={true}
+            />
             <div
-              className={`min-w-26 w-fit rounded-3xl border-2 border-gray-200 px-5 py-2 ${message.sender.id == id ? 'rounded-tr-sm bg-gray-200' : 'rounded-tl-sm'}`}
+              className={`min-w-26 w-fit rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
             >
               <h3>{message.content}</h3>
               <p

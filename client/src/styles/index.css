@@ -63,13 +63,13 @@
 }
 
 @utility yellow-block {
-  @apply bg-linear-to-b rounded-lg border-2 border-yellow-100 from-orange-50 to-yellow-50 block-shadow;
+  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-yellow-100 from-orange-50 to-yellow-50;
 }
 
 @utility blue-block {
-  @apply rounded-lg border-2 border-blue-100 bg-blue-200 block-shadow;
+  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-emerald-200 from-emerald-50 to-teal-100;
 }
 
 @utility pink-block {
-  @apply bg-linear-to-b rounded-lg border-2 border-pink-200 from-red-50 to-pink-100 block-shadow;
+  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-pink-200 from-red-50 to-pink-100;
 }

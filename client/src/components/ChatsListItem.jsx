@@ -45,7 +45,7 @@ const ChatsListItem = ({
     : '';
   return (
     <li
-      className={`mx-3 rounded-md px-2 py-2 hover:bg-blue-100 md:mx-1 ${chatId == browserChatId ? 'bg-blue-100' : 'inherit'}`}
+      className={`mx-3 rounded-xl px-2 py-2 hover:bg-emerald-100 md:mx-1 ${chatId == browserChatId ? 'bg-emerald-100' : 'inherit'}`}
     >
       <Link className="flex gap-2" to={`/chats/${chatId}`}>
         <Avatar avatar={avatar} />
