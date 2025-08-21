@@ -128,11 +128,13 @@ VITE_SERVER_URL
         - color scheme rework
         - login / signup reword
         - chats
+            - chats section
+            - chat list item
+                - hover?
+                - box styling? 
             - desktop
             - mobile
-            - container
-            - titles
-            - lists
+            - loading animation
         - modals
         - messages
 

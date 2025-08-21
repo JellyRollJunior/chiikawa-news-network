@@ -55,14 +55,17 @@
 }
 
 @utility block-shadow {
-  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[3px_3px_1px] shadow-pink-200;
+  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[2px_2px_1px] shadow-pink-200;
 }
 
-@utility yellow-gradient {
-  @apply bg-linear-to-b from-orange-50 to-yellow-50;
+@utility yellow-block {
+  @apply bg-linear-to-b border-2 border-yellow-100 from-orange-50 to-yellow-50;
 }
 
+@utility blue-block {
+  @apply border-2 border-blue-100 bg-blue-200;
+}
 
-@utility pink-gradient {
-  @apply bg-linear-to-b from-red-50 to-rose-50;
+@utility pink-block {
+  @apply bg-linear-to-b border-2 border-pink-200 from-red-50 to-pink-100;
 }
