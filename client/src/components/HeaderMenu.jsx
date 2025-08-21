@@ -28,13 +28,13 @@ const HeaderMenu = ({ children }) => {
   return (
     <div className="relative ml-auto mt-1 self-center" ref={menuRef}>
       <button
-        className="rounded-lg py-1 hover:bg-gray-200"
+        className="rounded-lg py-1 hover:bg-emerald-100"
         onClick={toggleMenu}
       >
         <img src={dotMenu} />
       </button>
       {isOpen && (
-        <ul className="top-1/1 border-1 absolute right-0 overflow-clip rounded-md border-gray-400">
+        <ul className="top-1/1 blue-block absolute right-0 overflow-clip">
           {/* Pass close menu prop to children */}
           {Children.map(children, (child) =>
             isValidElement(child) ? cloneElement(child, { closeMenu }) : child

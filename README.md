@@ -135,7 +135,6 @@ VITE_SERVER_URL
             - un-extract homeAsideLayout 
         - modals
         - messages
-            - input
             - delete modal
             - rename modal
         - restyle chat selected. idk its not doin it for me!!!
