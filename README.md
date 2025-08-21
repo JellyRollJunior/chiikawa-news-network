@@ -129,9 +129,6 @@ VITE_SERVER_URL
         - color scheme rework
         - login / signup reword
         - chats
-            - chat list item
-                - hover?
-            - desktop
             - loading animation
         - modals
         - messages

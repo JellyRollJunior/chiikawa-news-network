@@ -36,7 +36,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
       <section className="block-shadow yellow-block mx-2 mt-3 rounded-lg pb-1 pt-2 sm:pb-2 md:pb-1">
         <ChatsPublic />
       </section>
-      <section className="yellow-block block-shadow mx-2 mb-2 mt-3 flex flex-1 flex-col overflow-y-hidden rounded-lg pb-1 pt-2 md:pb-2">
+      <section className="yellow-block block-shadow mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden rounded-lg pb-1 pt-2 md:pb-2">
         <ChatsSectionTitle
           title="Conversations"
           refreshOnClick={refetchChats}
