@@ -125,6 +125,7 @@ VITE_SERVER_URL
 ## TODO
 - client
     - chii styling
+        - sprinkle chii stickers around UI
         - color scheme rework
         - login / signup reword
         - chats

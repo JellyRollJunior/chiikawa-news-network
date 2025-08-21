@@ -7,7 +7,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <div className="flex h-screen w-screen items-center justify-center ">
+      <div className="flex h-screen w-screen items-center justify-center">
         <div className="bg-dotted-sm h-fit flex-col items-center rounded-xl border-8 border-pink-200 bg-pink-100 px-4 py-3 text-xl font-medium">
           <header className="block-shadow yellow-block rounded-lg py-2 text-center text-3xl font-bold">
             Ya... Ya.... YAAAA!

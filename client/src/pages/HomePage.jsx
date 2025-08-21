@@ -7,7 +7,7 @@ const HomePage = () => {
       <aside className="flex-3 flex md:max-w-md">
         <Home />
       </aside>
-      <div className="flex-4 hidden md:block">
+      <div className="flex-4 mr-2 items-center justify-center hidden md:flex">
         <HomeMessagePrompt />
       </div>
     </div>
