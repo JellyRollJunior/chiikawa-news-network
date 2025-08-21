@@ -125,12 +125,6 @@ VITE_SERVER_URL
 ## TODO
 - client
     - chii styling
-        - nav icon rework
-            - icon labels
-                - nav bar expand on label appear
-            - nav button placements
-                - desktop
-                - mobile
         - color scheme rework
         - font
         - login / signup reword

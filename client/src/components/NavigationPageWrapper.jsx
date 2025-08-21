@@ -10,13 +10,15 @@ import settings from '../assets/nav/usagi-business.png';
 const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
-      className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 lg:justify-start lg:pl-4 ${
-        selected ? 'md:bg-dotted md:bg-pink-300 md:rounded-md hover:bg-pink-300' : ''
+      className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
+        selected
+          ? 'md:bg-dotted hover:bg-pink-300 md:rounded-md md:bg-pink-300'
+          : ''
       }`}
       to={link}
     >
       <div
-        className={`flex flex-col items-center justify-center lg:flex-row lg:gap-3 ${
+        className={`flex flex-col items-center justify-center ${
           selected
             ? 'scale-115 -translate-y-3 duration-300 ease-in-out md:translate-y-0 md:scale-100'
             : ''
@@ -47,30 +49,25 @@ const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
   const path = location.pathname;
 
-  const navButtons = [
+  const navButtonsMobile = [
+    createNavButton('/users', 'Users', users, '60px', path.includes('users')),
+    createNavButton('/chats', 'Chats', messages, '69px', path.includes('chats')),
     createNavButton('/', 'Home', home, '43px', path == '/'),
-    createNavButton(
-      '/chats',
-      'Chats',
-      messages,
-      '69px',
-      path.includes('chats')
-    ),
+    createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
+    createNavButton('/settings', 'Settings', settings, '35px', path == '/settings'),
+  ];
+
+  const navButtonsDesktop = [
+    createNavButton('/', 'Home', home, '43px', path == '/'),
+    createNavButton('/chats', 'Chats', messages, '69px', path.includes('chats')),
     createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
     createNavButton('/users', 'Users', users, '60px', path.includes('users')),
-    createNavButton(
-      '/settings',
-      'Settings',
-      settings,
-      '35px',
-      path == '/settings'
-    ),
   ];
   return (
     <>
       {/* mobile nav */}
       <nav className="border-y-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:hidden">
-        {navButtons.map((button) => (
+        {navButtonsMobile.map((button) => (
           <Fragment key={button.label}>
             <NavButton
               link={button.link}
@@ -83,19 +80,11 @@ const NavigationPageWrapper = ({ children }) => {
         ))}
       </nav>
       {/* desktop nav */}
-      <nav className="border-y-3 bg-dotted-sm lg:w-47 fixed bottom-0 top-0 gap-2 hidden h-full w-20 flex-col border-x-4 border-pink-200 bg-pink-100 md:flex">
-        <div className="mb-10 mt-5 w-full lg:hidden">
-          <NavButton link="/" label="C.N.N" src={logo} srcWidth="43px" />
+      <nav className="border-y-3 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col border-x-4 border-pink-200 bg-pink-100 md:flex">
+        <div className="mb-10 mt-5 w-full">
+          <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
         </div>
-        <div className="mb-10 mt-5 hidden w-full lg:block">
-          <NavButton
-            link="/"
-            label="Chiikawa News Network"
-            src={logo}
-            srcWidth="43px"
-          />
-        </div>
-        {navButtons.slice(0, navButtons.length - 1).map((button) => (
+        {navButtonsDesktop.map((button) => (
           <Fragment key={button.label}>
             <NavButton
               link={button.link}
@@ -116,7 +105,7 @@ const NavigationPageWrapper = ({ children }) => {
           />
         </div>
       </nav>
-      <div className="lg:pl-47 h-screen pb-20 md:pb-0 md:pl-20">{children}</div>
+      <div className="pb-21 h-screen md:pb-0 md:pl-20">{children}</div>
     </>
   );
 };
