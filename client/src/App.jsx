@@ -8,20 +8,18 @@ import { NavigationPageWrapper } from './components/NavigationPageWrapper.jsx';
 
 function App() {
   return (
-    <div className="font-default bg-dotted-lg bg-blue-100">
-      <SocketProvider>
-        <CurrentProvider>
-          <ChatsProvider>
-            <ToastProvider>
-              <Toaster />
-              <NavigationPageWrapper>
-                <Outlet />
-              </NavigationPageWrapper>
-            </ToastProvider>
-          </ChatsProvider>
-        </CurrentProvider>
-      </SocketProvider>
-    </div>
+    <SocketProvider>
+      <CurrentProvider>
+        <ChatsProvider>
+          <ToastProvider>
+            <Toaster />
+            <NavigationPageWrapper>
+              <Outlet />
+            </NavigationPageWrapper>
+          </ToastProvider>
+        </ChatsProvider>
+      </CurrentProvider>
+    </SocketProvider>
   );
 }
 

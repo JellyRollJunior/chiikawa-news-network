@@ -134,6 +134,7 @@ VITE_SERVER_URL
             - loading animation
         - modals
         - messages
+    - HOME to REAL HOME, CHATS TO INDEX
 
 - server
 
