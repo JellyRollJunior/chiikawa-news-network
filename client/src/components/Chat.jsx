@@ -66,7 +66,7 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container mb-2 mr-4 mt-3 flex w-full flex-1 flex-col">
+    <div className="main-container mb-2 mx-4 mt-3 flex w-full flex-1 flex-col md:ml-0">
       <header className="yellow-block block-shadow mx-2 mt-3 rounded-lg flex gap-2 px-4 py-4">
         <Avatar avatar={chat && chat.avatar} size={3} />
         <div className="flex flex-col justify-center">
