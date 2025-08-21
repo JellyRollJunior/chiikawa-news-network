@@ -53,3 +53,11 @@
 @utility bg-dotted-lg {
   background-image: url('../assets/backgrounds/bg-dotted-lg.png');
 }
+
+@utility block-shadow {
+  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[3px_3px_1px] shadow-pink-200;
+}
+
+@utility yellow-gradient {
+  @apply bg-linear-to-b from-orange-50 to-yellow-50
+}

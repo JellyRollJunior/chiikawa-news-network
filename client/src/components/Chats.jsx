@@ -20,15 +20,15 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
 
   return (
     <div className="bg-dotted-sm border-5 mx-4 mb-2 mt-4 flex flex-1 flex-col rounded-xl border-pink-200 bg-pink-100">
-      <header className="flex justify-between pl-5 pr-7">
-        <h2 className="text-3xl font-bold">{username}</h2>
-        <button className="mt-auto" onClick={openNewChatModal}>
+      <header className="block-shadow yellow-gradient mx-2 mt-3 flex justify-between rounded-lg border-2 border-yellow-100 pb-1 pl-5 pr-7 pt-2">
+        <h2 className="text-shadow-wrap text-3xl font-bold">{username}</h2>
+        <button className="self-end pb-0.5" onClick={openNewChatModal}>
           <img className="w-7" src={newChatIcon} alt="Create new chat button" />
         </button>
       </header>
-      <div className="px-3">
+      <div className="mx-2">
         <input
-          className="mt-3 h-11 w-full rounded-lg bg-gray-200 pl-3"
+          className="block-shadow mt-3 h-9 w-full rounded-lg bg-white pl-3"
           type="text"
           value={filter}
           onChange={(event) => setFilter(event.target.value)}

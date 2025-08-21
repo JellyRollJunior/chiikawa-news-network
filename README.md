@@ -130,7 +130,6 @@ VITE_SERVER_URL
         - chats
             - desktop
             - mobile
-            - bg
             - container
             - titles
             - lists
