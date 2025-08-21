@@ -55,7 +55,7 @@
 }
 
 @utility main-container {
-  @apply bg-dotted-sm border-5 rounded-xl border-pink-200 bg-pink-100
+  @apply bg-dotted-sm border-5 rounded-xl border-pink-200 bg-pink-100;
 }
 
 @utility block-shadow {
@@ -63,13 +63,13 @@
 }
 
 @utility yellow-block {
-  @apply bg-linear-to-b border-2 border-yellow-100 from-orange-50 to-yellow-50;
+  @apply bg-linear-to-b rounded-lg border-2 border-yellow-100 from-orange-50 to-yellow-50 block-shadow;
 }
 
 @utility blue-block {
-  @apply border-2 border-blue-100 bg-blue-200;
+  @apply rounded-lg border-2 border-blue-100 bg-blue-200 block-shadow;
 }
 
 @utility pink-block {
-  @apply bg-linear-to-b border-2 border-pink-200 from-red-50 to-pink-100;
+  @apply bg-linear-to-b rounded-lg border-2 border-pink-200 from-red-50 to-pink-100 block-shadow;
 }

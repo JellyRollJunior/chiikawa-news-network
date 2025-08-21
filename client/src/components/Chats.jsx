@@ -20,7 +20,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
 
   return (
     <div className="main-container mx-4 mb-2 mt-3 flex flex-1 flex-col">
-      <header className="block-shadow yellow-block mx-2 mt-3 flex justify-between rounded-lg pb-1 pl-5 pr-7 pt-2">
+      <header className="yellow-block mx-2 mt-3 flex justify-between pb-1 pl-5 pr-7 pt-2">
         <h2 className="text-shadow-wrap text-3xl font-bold">{username}</h2>
         <button className="self-end pb-1" onClick={openNewChatModal}>
           <img className="w-7" src={newChatIcon} alt="Create new chat button" />
@@ -33,10 +33,10 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
         onChange={(event) => setFilter(event.target.value)}
         placeholder="Search"
       />
-      <section className="block-shadow yellow-block mx-2 mt-3 rounded-lg pb-1 pt-2 sm:pb-2 md:pb-1">
+      <section className="yellow-block mx-2 mt-3 pb-1 pt-2 sm:pb-2 md:pb-1">
         <ChatsPublic />
       </section>
-      <section className="yellow-block block-shadow mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden rounded-lg pb-1 pt-2 md:pb-2">
+      <section className="yellow-block mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden pb-1 pt-2 md:pb-2">
         <ChatsSectionTitle
           title="Conversations"
           refreshOnClick={refetchChats}
