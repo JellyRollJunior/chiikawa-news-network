@@ -135,6 +135,10 @@ VITE_SERVER_URL
             - un-extract homeAsideLayout 
         - modals
         - messages
+            - input
+            - delete modal
+            - rename modal
+        - restyle chat selected. idk its not doin it for me!!!
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader

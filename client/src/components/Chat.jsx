@@ -66,8 +66,8 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container mb-2 mx-4 mt-3 flex w-full flex-1 flex-col md:ml-0">
-      <header className="yellow-block block-shadow mx-2 mt-3 rounded-lg flex gap-2 px-4 py-4">
+    <div className="main-container mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
+      <header className="yellow-block block-shadow mx-2 mt-3 flex gap-2 rounded-lg px-4 py-4">
         <Avatar avatar={chat && chat.avatar} size={3} />
         <div className="flex flex-col justify-center">
           <h2 className="text-lg font-medium">
@@ -103,7 +103,9 @@ const Chat = () => {
           isLoading={isLoading}
         />
       </main>
+      <div className="yellow-block mx-2 mt-2 h-7"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
+
       {isProfileModalOpen && (
         <ChatProfileModal
           closeFunction={closeProfileModal}

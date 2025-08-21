@@ -63,7 +63,7 @@
 }
 
 @utility yellow-block {
-  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-yellow-100 from-orange-50 to-yellow-50;
+  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-yellow-200 from-orange-50 to-yellow-50;
 }
 
 @utility blue-block {

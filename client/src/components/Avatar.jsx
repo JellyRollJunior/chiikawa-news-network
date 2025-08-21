@@ -6,7 +6,7 @@ const Avatar = ({ avatar, size = 4, chatStyling = false }) => {
   return (
     <div
       style={{ height: `${size}rem`, width: `${size}rem` }}
-      className={`border-1 shrink-0 overflow-clip rounded-full border-pink-300 bg-pink-50 ${chatStyling ? 'block-shadow border-yellow-300 bg-yellow-50' : ''}`}
+      className={`border-1 shrink-0 overflow-clip rounded-full border-pink-300 bg-pink-50 ${chatStyling ? 'block-shadow border-yellow-500 bg-yellow-50' : ''}`}
     >
       {!error && avatar && (
         <img
