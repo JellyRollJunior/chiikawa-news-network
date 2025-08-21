@@ -131,8 +131,6 @@ VITE_SERVER_URL
         - sprinkle chii stickers around UI
         - color scheme rework
         - login / signup reword
-        - chats
-            - loading animation
         - profile
             - remove chats from /profile
             - un-extract homeAsideLayout 
@@ -140,6 +138,7 @@ VITE_SERVER_URL
         - messages
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
+    - extract chat list item loader
     
 
 - server

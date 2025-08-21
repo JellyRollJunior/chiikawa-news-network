@@ -17,9 +17,9 @@ const ChatsListItem = ({
   if (isLoading) {
     return (
       <motion.li
-        style={{ backgroundColor: '#FFFFFF' }}
-        className="flex gap-2 px-4 py-2"
-        animate={{ backgroundColor: '#E5E7EB' }}
+        style={{ backgroundColor: '#fff7ed' }}
+        className="mx-1 flex gap-2 rounded-md px-2 py-2"
+        animate={{ backgroundColor: '#dbeafe' }}
         transition={{
           repeat: Infinity,
           repeatType: 'reverse',
@@ -28,10 +28,10 @@ const ChatsListItem = ({
           ease: 'easeInOut',
         }}
       >
-        <div className="size-14 shrink-0 rounded-full bg-gray-200"></div>
+        <div className="size-14 shrink-0 rounded-full bg-stone-300"></div>
         <div className="flex flex-col justify-center">
-          <h4 className="w-18 h-4 rounded-sm bg-gray-200"></h4>
-          <p className="w-30 mt-1 h-4 items-start justify-self-start rounded-sm bg-gray-200"></p>
+          <h4 className="w-18 h-4 rounded-sm bg-stone-300"></h4>
+          <p className="w-30 mt-1 h-4 items-start justify-self-start rounded-sm bg-stone-300"></p>
         </div>
       </motion.li>
     );
