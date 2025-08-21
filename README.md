@@ -129,7 +129,6 @@ VITE_SERVER_URL
             - colors ?
             - switch to chii ?
         - sprinkle chii stickers around UI
-        - color scheme rework
         - login / signup reword
         - profile
             - remove chats from /profile

@@ -54,6 +54,10 @@
   background-image: url('../assets/backgrounds/bg-dotted-lg.png');
 }
 
+@utility main-container {
+  @apply bg-dotted-sm border-5 rounded-xl border-pink-200 bg-pink-100
+}
+
 @utility block-shadow {
   @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[2px_2px_1px] shadow-pink-200;
 }

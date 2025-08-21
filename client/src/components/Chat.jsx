@@ -31,7 +31,8 @@ const Chat = () => {
     sendMessage,
     updateChatName,
   } = useChat(chatId);
-  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) navigate('/');
+  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403)
+    navigate('/');
   const isPublicChat = chat && chat.type == 'PUBLIC';
   const chatterNames = chat && getUsersString(id, chat.users);
   const isTwoPersonChat = chat && chat.users.length == 2;
@@ -65,7 +66,7 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="main-container mb-2 mr-4 mt-3 flex w-full flex-1 flex-col">
       <header className="border-b-1 flex gap-2 border-gray-500 px-4 py-4">
         <Avatar avatar={chat && chat.avatar} size={3} />
         <div className="flex flex-col justify-center">

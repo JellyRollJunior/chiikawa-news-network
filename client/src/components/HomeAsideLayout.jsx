@@ -6,7 +6,7 @@ const HomeAsideLayout = ({ children }) => {
       <aside className="flex-3 hidden max-w-md md:flex">
         <Home />
       </aside>
-      <div className="flex-4">{children}</div>
+      <div className="flex-4 flex">{children}</div>
     </div>
   );
 };
