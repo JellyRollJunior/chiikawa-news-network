@@ -19,7 +19,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
     : [];
 
   return (
-    <div className="bg-dotted-sm border-5 mx-4 mb-2 mt-4 flex flex-1 flex-col rounded-xl border-pink-200 bg-pink-100">
+    <div className="bg-dotted-sm border-5 mx-4 mb-2 mt-3 flex flex-1 flex-col rounded-xl border-pink-200 bg-pink-100">
       <header className="block-shadow yellow-block mx-2 mt-3 flex justify-between rounded-lg pb-1 pl-5 pr-7 pt-2">
         <h2 className="text-shadow-wrap text-3xl font-bold">{username}</h2>
         <button className="self-end pb-1" onClick={openNewChatModal}>
@@ -41,7 +41,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
           title="Conversations"
           refreshOnClick={refetchChats}
         />
-        <main className="scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full mt-2 flex-1 overflow-y-scroll">
+        <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll">
           <ul>
             {isLoading ? (
               <ChatsLoading />
