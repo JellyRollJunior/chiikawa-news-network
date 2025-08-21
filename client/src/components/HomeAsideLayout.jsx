@@ -3,10 +3,10 @@ import { Home } from '../components/Home.jsx';
 const HomeAsideLayout = ({ children }) => {
   return (
     <div className="flex h-full">
-      <aside className="border-r-1 min-w-xs flex-3 hidden max-w-sm border-gray-500 md:block">
+      <aside className="flex-3 hidden max-w-md md:flex">
         <Home />
       </aside>
-      <div className="flex-8">{children}</div>
+      <div className="flex-4">{children}</div>
     </div>
   );
 };
