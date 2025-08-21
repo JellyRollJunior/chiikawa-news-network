@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router';
 import logo from '../assets/nav/chiikawa-glasses.png';
 import home from '../assets/nav/chiikawa-book.png';
@@ -9,16 +10,14 @@ import settings from '../assets/nav/usagi-business.png';
 const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
-      className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 
-      md:items-center md:h-fit md:pt-3
-      lg:justify-start lg:pl-4"
+      className="hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 lg:justify-start lg:pl-4"
       to={link}
     >
       <div
-        className={`flex flex-col items-center justify-center 
-          lg:flex-row lg:gap-3 ${
-          selected &&
-          'animate-nav-selected-mobile md:animate-nav-selected-desktop'
+        className={`flex flex-col items-center justify-center lg:flex-row lg:gap-3 ${
+          selected
+            ? 'animate-nav-selected-mobile md:animate-nav-selected-desktop'
+            : ''
         }`}
       >
         <img
@@ -32,47 +31,72 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   );
 };
 
+const createNavButton = (link, label, src, srcWidth, selected) => {
+  return {
+    link,
+    label,
+    src,
+    srcWidth,
+    selected,
+  };
+};
+
 const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
   const path = location.pathname;
 
+  const navButtons = [
+    createNavButton('/', 'Home', home, '43px', path == '/'),
+    createNavButton(
+      '/chats',
+      'Chats',
+      messages,
+      '69px',
+      path.includes('chats')
+    ),
+    createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
+    createNavButton('/users', 'Users', users, '60px', path.includes('users')),
+  ];
   return (
     <>
-      <nav className="border-y-3 bg-dotted-sm fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 
-      md:top-0 md:flex md:h-full md:w-20 md:flex-col md:border-x-4 md:border-y-3
-      lg:w-48">
-        <div className="hidden w-full mt-5 mb-10 md:block">
+      {/* mobile nav */}
+      <nav className="border-y-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 border-pink-200 bg-pink-100 md:hidden">
+        {navButtons.map((button) => (
+          <Fragment key={button.label}>
+            <NavButton
+              link={button.link}
+              label={button.label}
+              src={button.src}
+              srcWidth={button.srcWidth}
+              selected={button.selected}
+            />
+          </Fragment>
+        ))}
+        <NavButton
+          link="/profile"
+          label="Settings"
+          src={settings}
+          srcWidth="35px"
+          selected={path == '/settings'}
+        />
+      </nav>
+      {/* desktop nav */}
+      <nav className="border-y-3 bg-dotted-sm fixed bottom-0 top-0 hidden h-full w-20 flex-col border-x-4 border-pink-200 bg-pink-100 md:flex lg:w-48">
+        <div className="mb-10 mt-5 w-full">
           <NavButton link="/" label="C.N.N" src={logo} srcWidth="43px" />
         </div>
-        <NavButton
-          link="/"
-          label="Home"
-          src={home}
-          srcWidth="43px"
-          selected={path == '/'}
-        />
-        <NavButton
-          link="/chats"
-          label="Chats"
-          src={messages}
-          srcWidth="69px"
-          selected={path.includes('chats')}
-        />
-        <NavButton
-          link="/profile"
-          label="Profile"
-          src={profile}
-          srcWidth="56px"
-          selected={path == '/profile'}
-        />
-        <NavButton
-          link="/profile"
-          label="Users"
-          src={users}
-          srcWidth="60px"
-          selected={path.includes('users')}
-        />
-        <div className=" md:w-full md:mt-10 ">
+        {navButtons.map((button) => (
+          <Fragment key={button.label}>
+            <NavButton
+              link={button.link}
+              label={button.label}
+              src={button.src}
+              srcWidth={button.srcWidth}
+              selected={button.selected}
+            />
+          </Fragment>
+        ))}
+        <div className="md:mt-10 md:w-full">
           <NavButton
             link="/profile"
             label="Settings"
@@ -82,10 +106,7 @@ const NavigationPageWrapper = ({ children }) => {
           />
         </div>
       </nav>
-      <div className="h-screen pb-20 
-      md:pb-0 md:pl-20 
-      lg:pl-36">
-        {children}</div>
+      <div className="h-screen pb-20 md:pb-0 md:pl-20 lg:pl-36">{children}</div>
     </>
   );
 };
