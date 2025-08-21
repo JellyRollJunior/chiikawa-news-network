@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 
 const SystemMessage = ({ children }) => {
   return (
-    <li className="max-w-4/5 w-fit self-center rounded-3xl border-2 border-gray-100 bg-gray-50 px-5 py-2">
+    <li className="max-w-4/5 block-shadow w-fit self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2">
       {children}
     </li>
   );
