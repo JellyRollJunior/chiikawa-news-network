@@ -16,7 +16,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
       <div
         className={`flex flex-col items-center justify-center lg:flex-row lg:gap-3 ${
           selected
-            ? 'animate-nav-selected-mobile md:animate-nav-selected-desktop'
+            ? 'scale-115 -translate-y-3 duration-300 ease-in-out md:translate-x-5 md:translate-y-0'
             : ''
         }`}
       >
@@ -47,13 +47,7 @@ const NavigationPageWrapper = ({ children }) => {
 
   const navButtons = [
     createNavButton('/', 'Home', home, '43px', path == '/'),
-    createNavButton(
-      '/chats',
-      'Chats',
-      messages,
-      '69px',
-      path.includes('chats')
-    ),
+    createNavButton('/chats', 'Chats', messages, '69px', path.includes('chats')),
     createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
     createNavButton('/users', 'Users', users, '60px', path.includes('users')),
   ];
