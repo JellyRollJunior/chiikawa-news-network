@@ -19,7 +19,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
     : [];
 
   return (
-    <div className="flex h-full flex-col pt-9">
+    <div className="bg-dotted-sm border-5 mx-4 mb-2 mt-4 flex flex-1 flex-col rounded-xl border-pink-200 bg-pink-100">
       <header className="flex justify-between pl-5 pr-7">
         <h2 className="text-3xl font-bold">{username}</h2>
         <button className="mt-auto" onClick={openNewChatModal}>
@@ -35,11 +35,14 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
           placeholder="Search"
         />
       </div>
-      <section className='mt-5'>
+      <section className="mt-5">
         <ChatsPublic />
       </section>
-      <section className='mt-2'>
-        <ChatsSectionTitle title="Conversations" refreshOnClick={refetchChats} />
+      <section className="mt-2">
+        <ChatsSectionTitle
+          title="Conversations"
+          refreshOnClick={refetchChats}
+        />
       </section>
       <main className="scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full mt-1 flex-1 overflow-y-scroll">
         <ul>

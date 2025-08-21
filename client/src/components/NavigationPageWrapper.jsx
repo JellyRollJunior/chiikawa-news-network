@@ -64,7 +64,7 @@ const NavigationPageWrapper = ({ children }) => {
   return (
     <>
       {/* mobile nav */}
-      <nav className="border-y-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 rounded-t-md border-pink-200 bg-pink-100 md:hidden">
+      <nav className="border-t-5 border-b-2 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 rounded-t-md border-pink-200 bg-pink-100 md:hidden">
         {navButtonsMobile.map((button) => (
           <Fragment key={button.label}>
             <NavButton
@@ -78,7 +78,7 @@ const NavigationPageWrapper = ({ children }) => {
         ))}
       </nav>
       {/* desktop nav */}
-      <nav className="border-y-3 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col rounded-r-sm border-x-4 border-pink-200 bg-pink-100 md:flex">
+      <nav className="border-r-5 border-l-2 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col rounded-r-sm border-x-4 border-pink-200 bg-pink-100 md:flex">
         <div className="mb-10 mt-5 w-full">
           <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
         </div>
@@ -103,7 +103,7 @@ const NavigationPageWrapper = ({ children }) => {
           />
         </div>
       </nav>
-      <div className="pb-21 h-screen md:pb-0 md:pl-20">{children}</div>
+      <div className="pb-20 h-screen md:pb-0 md:pl-21">{children}</div>
     </>
   );
 };

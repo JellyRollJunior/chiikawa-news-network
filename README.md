@@ -126,8 +126,16 @@ VITE_SERVER_URL
 - client
     - chii styling
         - color scheme rework
-        - font
         - login / signup reword
+        - chats
+            - desktop
+            - mobile
+            - bg
+            - container
+            - titles
+            - lists
+        - modals
+        - messages
 
 - server
 
