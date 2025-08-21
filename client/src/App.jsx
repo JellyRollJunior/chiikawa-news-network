@@ -8,7 +8,7 @@ import { NavigationPageWrapper } from './components/NavigationPageWrapper.jsx';
 
 function App() {
   return (
-    <div className='font-default bg-dotted-lg bg-blue-100'>
+    <div className="font-default bg-dotted-lg bg-blue-100">
       <SocketProvider>
         <CurrentProvider>
           <ChatsProvider>
