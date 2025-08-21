@@ -33,16 +33,16 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
         onChange={(event) => setFilter(event.target.value)}
         placeholder="Search"
       />
-      <section className="block-shadow mx-2 mt-3 rounded-lg blue-block pb-1 pt-2">
+      <section className="block-shadow yellow-block mx-2 mt-3 rounded-lg pb-1 pt-2">
         <ChatsPublic />
       </section>
-      <section className="mt-3 flex flex-col flex-1 mx-2 blue-block block-shadow rounded-lg mb-3">
+      <section className="yellow-block block-shadow mx-2 mb-2 mt-3 flex flex-1 flex-col overflow-y-hidden rounded-lg">
         <ChatsSectionTitle
           title="Conversations"
           refreshOnClick={refetchChats}
         />
         <main className="scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full mt-2 flex-1 overflow-y-scroll">
-          {/* <ul>
+          <ul>
             {isLoading ? (
               <ChatsLoading />
             ) : (
@@ -57,7 +57,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
                 </Fragment>
               ))
             )}
-          </ul> */}
+          </ul>
         </main>
       </section>
     </div>

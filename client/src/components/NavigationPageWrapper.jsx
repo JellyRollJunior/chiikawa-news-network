@@ -11,7 +11,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
       className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
-        selected ? 'bg-dotted rounded-md bg-pink-300 hover:bg-pink-300' : ''
+        selected ? 'md:bg-dotted md:rounded-md md:bg-pink-300 hover:bg-pink-300' : ''
       }`}
       to={link}
     >
