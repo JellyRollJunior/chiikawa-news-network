@@ -35,7 +35,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
           placeholder="Search"
         />
       </div>
-      <section className="mt-5">
+      <section className="block-shadow mx-2 mt-5 rounded-lg bg-blue-100 border-2 border-blue-100">
         <ChatsPublic />
       </section>
       <section className="mt-2">
@@ -44,7 +44,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
           refreshOnClick={refetchChats}
         />
       </section>
-      <main className="scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full mt-1 flex-1 overflow-y-scroll">
+      <main className="scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full mt-2 flex-1 overflow-y-scroll">
         <ul>
           {isLoading ? (
             <ChatsLoading />

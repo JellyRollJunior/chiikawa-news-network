@@ -59,5 +59,10 @@
 }
 
 @utility yellow-gradient {
-  @apply bg-linear-to-b from-orange-50 to-yellow-50
+  @apply bg-linear-to-b from-orange-50 to-yellow-50;
+}
+
+
+@utility pink-gradient {
+  @apply bg-linear-to-b from-red-50 to-rose-50;
 }
