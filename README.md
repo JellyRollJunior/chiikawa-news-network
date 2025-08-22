@@ -135,7 +135,9 @@ VITE_SERVER_URL
             - un-extract homeAsideLayout 
         - notifications
         - create chat modal
+            - selected icon
         - restyle chat selected. idk its not doin it for me!!!
+            - user selected as well
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader
@@ -143,6 +145,8 @@ VITE_SERVER_URL
         - replace with link to /profiles/userId
     - un-extract labelled input tbh. its doing nothing
     - createChatForm -> ChatsCreateModal
+    - refactor loading to single element shown
+        - unextract loading?
     
 
 - server

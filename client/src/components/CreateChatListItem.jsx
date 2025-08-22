@@ -14,9 +14,9 @@ const CreateChatListItem = ({
   if (isLoading) {
     return (
       <motion.li
-        style={{ backgroundColor: '#FFFFFF' }}
+        style={{ backgroundColor: '#fef9c3' }}
         className="flex gap-2 rounded-sm px-4 py-2"
-        animate={{ backgroundColor: '#E5E7EB' }}
+        animate={{ backgroundColor: '#fce7f3' }}
         transition={{
           repeat: Infinity,
           repeatType: 'reverse',
@@ -26,12 +26,12 @@ const CreateChatListItem = ({
         }}
       >
         <button
-          className="flex h-full w-full gap-2 rounded-sm px-2 py-1"
+          className="flex h-full w-full gap-2 rounded-xl px-2 py-1"
           type="button"
         >
-          <div className="size-10 shrink-0 rounded-full bg-gray-200"></div>
+          <div className="size-10 shrink-0 rounded-full bg-stone-300"></div>
           <div className="flex items-center">
-            <h4 className="h-4 w-32 rounded-sm bg-gray-200 text-lg"></h4>
+            <h4 className="h-4 w-32 rounded-sm bg-stone-300 text-lg"></h4>
           </div>
         </button>
       </motion.li>
@@ -41,11 +41,11 @@ const CreateChatListItem = ({
   return (
     <li key={userId}>
       <button
-        className={`flex h-full w-full gap-2 rounded-sm px-2 py-1 hover:bg-gray-200`}
+        className="flex h-full w-full gap-2 rounded-xl px-2 py-1 hover:bg-emerald-100"
         onClick={onClick}
         type="button"
       >
-        <Avatar avatar={avatar} size={2.5} />
+        <Avatar avatar={avatar} size={2.5} chatStyling={true} />
         <div className="flex items-center">
           <h4 className="text-lg font-medium">{username}</h4>
         </div>
