@@ -134,12 +134,15 @@ VITE_SERVER_URL
             - remove chats from /profile
             - un-extract homeAsideLayout 
         - notifications
+        - create chat modal
         - restyle chat selected. idk its not doin it for me!!!
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader
     - delete profile modal
         - replace with link to /profiles/userId
+    - un-extract labelled input tbh. its doing nothing
+    - createChatForm -> ChatsCreateModal
     
 
 - server

@@ -50,44 +50,51 @@ const CreateChatForm = ({ closeForm }) => {
 
   return (
     <form className="flex flex-col" onSubmit={handleCreateChat}>
-      <h2 className="mb-1 self-center text-lg font-bold">New Conversation</h2>
-      <hr className="mb-4" />
-      <label className="font-medium text-gray-500">
-        Users
-        <span className="text-red-400">{userError}</span>
-      </label>
-      <ul className="scrollbar-thin h-40 overflow-y-scroll">
-        {isLoading && <CreateChatLoading />}
-        {!isLoading &&
-          filteredUsers.map((user) => (
-            <Fragment key={user.id}>
-              <CreateChatListItem
-                userId={user.id}
-                avatar={user.avatar}
-                username={user.username}
-                onClick={() => handleChatListItemClick(user.id)}
-                selected={selectedUsers.includes(user.id)}
-              />
-            </Fragment>
-          ))}
-      </ul>
-      <input
-        className="mt-3 h-11 w-full rounded-lg bg-gray-200 pl-3"
-        type="text"
-        value={filter}
-        onChange={(event) => setFilter(event.target.value)}
-        placeholder="Search"
-      />
-      <LabelledInput
-        id="Conversation name (optional)"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        maxLength={32}
-        isRequired={false}
-      />
-      <footer className="mt-3">
+      <main className="flex flex-col px-2">
+        <label className="text-shadow-wrap ml-1 mt-4 font-medium text-amber-800">
+          Users
+          <span className="text-red-400">{userError}</span>
+        </label>
+        <ul className="scrollbar-thin h-40 overflow-y-scroll">
+          {isLoading && <CreateChatLoading />}
+          {!isLoading &&
+            filteredUsers.map((user) => (
+              <Fragment key={user.id}>
+                <CreateChatListItem
+                  userId={user.id}
+                  avatar={user.avatar}
+                  username={user.username}
+                  onClick={() => handleChatListItemClick(user.id)}
+                  selected={selectedUsers.includes(user.id)}
+                />
+              </Fragment>
+            ))}
+        </ul>
+        <input
+          className="block-shadow mb-2 mt-2 h-9 rounded-lg bg-white pl-3"
+          type="text"
+          value={filter}
+          onChange={(event) => setFilter(event.target.value)}
+          placeholder="Search"
+        />
+        <LabelledInput
+          id="Conversation name (optional)"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={32}
+          isRequired={false}
+        />
+      </main>
+      <footer className="mt-3 flex gap-3">
         <button
-          className="w-full rounded-md bg-blue-400 px-5 py-1.5 text-white hover:bg-blue-500 disabled:bg-gray-500 disabled:text-gray-100"
+          type="button"
+          className="pink-button flex-1 px-6 py-1 text-lg font-bold"
+          onClick={closeForm}
+        >
+          Cancel
+        </button>
+        <button
+          className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold"
           disabled={isCreatingChat}
         >
           Chat

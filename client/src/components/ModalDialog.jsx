@@ -15,7 +15,7 @@ const ModalDialog = ({ closeFunction, children, title }) => {
       <div className="flex flex-col">
         <header className="pink-dotted-block relative flex flex-col">
           <button
-            className="text-shadow-wrap absolute right-2 top-0 h-fit text-2xl"
+            className="text-shadow-wrap absolute right-1.5 -top-1 h-fit text-2xl"
             onClick={closeFunction}
           >
             ×
