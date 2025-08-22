@@ -54,6 +54,10 @@
   background-image: url('../assets/backgrounds/bg-dotted-lg.png');
 }
 
+@utility block-shadow {
+  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[2px_2px_1px] shadow-pink-200;
+}
+
 @utility main-container {
   @apply bg-dotted-sm border-5 rounded-xl border-pink-200 bg-pink-100;
 }
@@ -62,26 +66,31 @@
   @apply bg-dotted-lg border-5 rounded-xl border-blue-200 bg-blue-100;
 }
 
-@utility block-shadow {
-  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[2px_2px_1px] shadow-pink-200;
+@utility pink-dotted-block {
+  @apply bg-dotted-sm block-shadow rounded-lg border-2 border-pink-200 bg-pink-100;
 }
 
 @utility yellow-block {
   @apply bg-linear-to-b block-shadow rounded-lg border-2 border-yellow-200 from-orange-50 to-yellow-50;
 }
 
-@utility yellow-block-hover {
-  @apply bg-linear-to-b from-orange-100 to-yellow-100;
-}
-
 @utility blue-block {
   @apply bg-linear-to-b block-shadow rounded-lg border-2 border-emerald-200 from-emerald-50 to-teal-100;
 }
 
-@utility blue-block-hover {
-  @apply bg-linear-to-b from-emerald-100 to-teal-200;
-}
-
 @utility pink-block {
   @apply bg-linear-to-b block-shadow rounded-lg border-2 border-pink-200 from-red-50 to-pink-100;
+}
+
+@utility button {
+  @apply text-shadow-wrap block-shadow rounded-2xl border-2 disabled:text-gray-50 disabled:text-shadow-none disabled:border-gray-400 disabled:shadow-none;
+}
+ 
+
+@utility pink-button {
+  @apply button border-pink-200 bg-pink-50 hover:bg-pink-100 disabled:bg-gray-400
+}
+
+@utility yellow-button {
+  @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100 disabled:bg-gray-400
 }

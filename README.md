@@ -136,6 +136,9 @@ VITE_SERVER_URL
         - messages
             - delete modal
             - rename modal
+                - BUTTON STYLING -> DON't USE BLOCKS FOR BUTTONS STYLING. THATS A BLOCK NOT A BUTTON THATS WHY IT FEELS WEIRD
+
+
         - refactor blue block tbh. color is too bright hurts my eye slol
         - restyle chat selected. idk its not doin it for me!!!
     - HOME to REAL HOME, CHATS TO INDEX
