@@ -19,12 +19,8 @@ const ChatDeleteModal = ({ closeFunction, chatId }) => {
   };
 
   return (
-    <ModalDialog closeFunction={closeFunction}>
+    <ModalDialog closeFunction={closeFunction} title="Delete Conversation">
       <form className="flex flex-col" onSubmit={handleDeleteChat}>
-        <h2 className="mb-1 self-center text-lg font-bold">
-          Delete Conversation
-        </h2>
-        <hr />
         <img className="mt-6 w-12 self-center" src={warning} />
         <h2 className="text-center">
           All messages will be deleted <strong>forever</strong>.
@@ -33,19 +29,16 @@ const ChatDeleteModal = ({ closeFunction, chatId }) => {
           <br />
           Are you sure?
         </h2>
-        <footer className="mt-6 flex gap-5">
+        <footer className="mt-6 flex gap-3">
+          <button className="yellow-button px-5 py-1.5" disabled={isLoading}>
+            Delete
+          </button>
           <button
-            className="flex-1 rounded-md bg-blue-400 px-5 py-1.5 text-white hover:bg-blue-500 disabled:bg-gray-500 disabled:text-gray-100"
+            className="pink-button flex-1 px-5 py-1.5"
             type="button"
             onClick={closeFunction}
           >
             Cancel
-          </button>
-          <button
-            className="rounded-md bg-red-400 px-5 py-1.5 text-white hover:bg-blue-500 disabled:bg-gray-500 disabled:text-gray-100"
-            disabled={isLoading}
-          >
-            Delete
           </button>
         </footer>
       </form>
