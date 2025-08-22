@@ -10,11 +10,11 @@ const LabelledInput = ({
 }) => {
   return (
     <>
-      <label className="mt-2 font-medium text-gray-500" htmlFor={id}>
+      <label className="text-shadow-wrap font-medium ml-1 text-amber-800" htmlFor={id}>
         {id}
       </label>
       <input
-        className="border-1 h-10 w-full rounded-md border-gray-400 bg-gray-200 pl-1.5"
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
         type={type}
         name={id}
         id={id}

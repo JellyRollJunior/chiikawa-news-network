@@ -133,14 +133,16 @@ VITE_SERVER_URL
         - profile
             - remove chats from /profile
             - un-extract homeAsideLayout 
-        - modals
         - messages
             - delete modal
             - rename modal
+        - refactor blue block tbh. color is too bright hurts my eye slol
         - restyle chat selected. idk its not doin it for me!!!
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader
+    - delete profile modal
+        - replace with link to /profiles/userId
     
 
 - server

@@ -24,22 +24,21 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
   };
 
   return (
-    <ModalDialog closeFunction={closeFunction}>
+    <ModalDialog closeFunction={closeFunction} title="Rename Conversation">
       <form className="flex flex-col" onSubmit={handleRenameChat}>
-        <h2 className="mb-1 self-center text-lg font-bold">
-          Rename Conversation
-        </h2>
-        <hr className="mb-4" />
-        <LabelledInput
-          id="New conversation name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          maxLength={32}
-          isRequired={false}
-        />
-        <footer className="mt-6">
+        <main className="mt-4 mb-2 px-2 ">
+          <LabelledInput
+            id="New conversation name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            maxLength={32}
+            isRequired={false}
+          />
+        </main>
+        <footer className="mt-2">
+          {/* hover and disabled styling */}
           <button
-            className="w-full rounded-md bg-blue-400 px-5 py-1.5 text-white hover:bg-blue-500 disabled:bg-gray-500 disabled:text-gray-100"
+            className="blue-block text-shadow-wrap w-full rounded-md px-5 py-1.5 text-lg font-bold hover:blue-block-hover disabled:bg-gray-500 disabled:text-gray-100"
             disabled={isLoading}
           >
             Rename
