@@ -130,8 +130,6 @@ VITE_SERVER_URL
             - switch to chii ?
         - sprinkle chii stickers around UI
         - login / signup reword
-        - profile
-            - un-extract homeAsideLayout 
         - notifications
         - create chat modal
             - selected icon
@@ -158,6 +156,7 @@ VITE_SERVER_URL
         - Move logout to profile
     - Profile route
         - remove view profile modal
+        - implement profile -> bio user info -> posts
     - Settings page
         - edit avatar
         - edit bio
