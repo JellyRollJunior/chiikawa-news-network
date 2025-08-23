@@ -137,7 +137,6 @@ VITE_SERVER_URL
     - createChatForm -> ChatsCreateModal
     - refactor loading to single element shown
         - unextract loading?
-    - sprinkle chii stickers around UI
     
 
 - server
