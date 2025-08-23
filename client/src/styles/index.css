@@ -93,3 +93,7 @@
 @utility yellow-button {
   @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100 disabled:bg-gray-400;
 }
+
+@utility blue-button {
+  @apply button border-emerald-200 bg-emerald-50 hover:bg-emerald-100 disabled:bg-gray-400;
+}

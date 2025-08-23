@@ -125,8 +125,6 @@ VITE_SERVER_URL
 ## TODO
 - client
     - chii styling 
-        - refresh icons
-            - colors ?
         - login / signup rework
         - notifications
         - restyle chat selected. idk its not doin it for me!!!
