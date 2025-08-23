@@ -11,6 +11,7 @@ import { ChatMessageInput } from './ChatMessageInput.jsx';
 import { ChatProfileModal } from './ChatProfileModal.jsx';
 import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
+import shisaBento from '../assets/images/shisa-bento.png';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -66,7 +67,8 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
+    <div className="main-container relative mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
+      <img className="-right-6 absolute -top-5 w-21" src={shisaBento} />
       <header className="yellow-block block-shadow mx-2 mt-3 flex gap-2 rounded-lg px-4 py-4">
         <Avatar avatar={chat && chat.avatar} size={3} />
         <div className="flex flex-col justify-center">

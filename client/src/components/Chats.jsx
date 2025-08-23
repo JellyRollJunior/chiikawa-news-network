@@ -7,6 +7,7 @@ import { ChatsPublic } from './ChatsPublic.jsx';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
 import chiiPeace from '../assets/images/chii-peace.png';
 import hachiCamera from '../assets/images/hachi-camera-back.png';
+import kaniReading from '../assets/images/kani-reading.png';
 
 const Chats = ({ chats, isLoading, openNewChatModal }) => {
   const { username } = useContext(CurrentContext);
@@ -21,6 +22,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
 
   return (
     <div className="main-container relative mx-4 mb-2 mt-3 flex flex-1 flex-col">
+      <img className="absolute -bottom-2 -right-4 w-24" src={kaniReading} />
       <header className="yellow-block mx-2 mt-3 flex items-end justify-between pl-5 pr-2">
         <h2 className="text-shadow-wrap mb-1 mt-2 text-3xl font-bold">
           {username}
