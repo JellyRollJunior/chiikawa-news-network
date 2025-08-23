@@ -83,14 +83,13 @@
 }
 
 @utility button {
-  @apply text-shadow-wrap block-shadow rounded-2xl border-2 disabled:text-gray-50 disabled:text-shadow-none disabled:border-gray-400 disabled:shadow-none;
+  @apply text-shadow-wrap block-shadow disabled:text-shadow-none rounded-2xl border-2 disabled:border-gray-400 disabled:text-gray-50 disabled:shadow-none;
 }
- 
 
 @utility pink-button {
-  @apply button border-pink-200 bg-pink-50 hover:bg-pink-100 disabled:bg-gray-400
+  @apply button border-pink-200 bg-pink-50 hover:bg-pink-100 disabled:bg-gray-400;
 }
 
 @utility yellow-button {
-  @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100 disabled:bg-gray-400
+  @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100 disabled:bg-gray-400;
 }

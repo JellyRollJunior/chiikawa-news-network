@@ -131,8 +131,6 @@ VITE_SERVER_URL
         - sprinkle chii stickers around UI
         - login / signup reword
         - notifications
-        - create chat modal
-            - selected icon
         - restyle chat selected. idk its not doin it for me!!!
             - user selected as well
     - HOME to REAL HOME, CHATS TO INDEX
@@ -156,6 +154,8 @@ VITE_SERVER_URL
         - Move logout to profile
     - Profile route
         - remove view profile modal
+        - /users/userId
+            - refactor profile route into /users/userId
         - implement profile -> bio user info -> posts
     - Settings page
         - edit avatar
