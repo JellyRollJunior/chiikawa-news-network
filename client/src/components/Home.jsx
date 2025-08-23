@@ -19,7 +19,7 @@ const Home = () => {
         openNewChatModal={openNewChatModal}
       />
       {isModalOpen && (
-        <ModalDialog closeFunction={closeNewChatModal} title='New Conversation'>
+        <ModalDialog closeFunction={closeNewChatModal} title='New Chat Room'>
           <CreateChatForm closeForm={closeNewChatModal} />
         </ModalDialog>
       )}

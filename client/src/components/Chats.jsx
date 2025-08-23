@@ -5,7 +5,7 @@ import { ChatsListItem } from './ChatsListItem.jsx';
 import { ChatsLoading } from './ChatsLoading.jsx';
 import { ChatsPublic } from './ChatsPublic.jsx';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
-import newChatIcon from '../assets/svgs/edit-square.svg';
+import kurimanju from '../assets/icons/kurimanju-icon.png';
 
 const Chats = ({ chats, isLoading, openNewChatModal }) => {
   const { username } = useContext(CurrentContext);
@@ -19,11 +19,17 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
     : [];
 
   return (
-    <div className="main-container mx-4 mb-2 mt-3 flex flex-1 flex-col">
-      <header className="yellow-block mx-2 mt-3 flex justify-between pb-1 pl-5 pr-7 pt-2">
-        <h2 className="text-shadow-wrap text-3xl font-bold">{username}</h2>
-        <button className="self-end pb-1" onClick={openNewChatModal}>
-          <img className="w-7" src={newChatIcon} alt="Create new chat button" />
+    <div className="main-container relative mx-4 mb-2 mt-3 flex flex-1 flex-col">
+      <img className="w-13 absolute -right-6 -top-5" src={kurimanju} />
+      <header className="yellow-block mx-2 mt-3 flex items-end justify-between pl-5 pr-2">
+        <h2 className="text-shadow-wrap mb-1 mt-2 text-3xl font-bold">
+          {username}
+        </h2>
+        <button
+          className="pink-button self-center px-6 py-1"
+          onClick={openNewChatModal}
+        >
+          Create Chat
         </button>
       </header>
       <input
@@ -37,10 +43,7 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
         <ChatsPublic />
       </section>
       <section className="yellow-block mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden pb-1 pt-2 md:pb-2">
-        <ChatsSectionTitle
-          title="Conversations"
-          refreshOnClick={refetchChats}
-        />
+        <ChatsSectionTitle title="Chat rooms" refreshOnClick={refetchChats} />
         <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll">
           <ul>
             {isLoading ? (

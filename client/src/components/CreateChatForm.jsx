@@ -78,7 +78,7 @@ const CreateChatForm = ({ closeForm }) => {
           placeholder="Search"
         />
         <LabelledInput
-          id="Conversation name (optional)"
+          id="Chat name (optional)"
           value={name}
           onChange={(event) => setName(event.target.value)}
           maxLength={32}

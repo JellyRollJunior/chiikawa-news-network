@@ -1,6 +1,6 @@
 const Notice = ({ title, src, alt, footer }) => {
   return (
-    <div className="main-container h-fit flex-col items-center px-2 py-3 text-xl font-medium">
+    <div className="main-container max-w-md h-fit flex-col items-center px-2 py-3 text-xl font-medium">
       <header className="text-shadow-wrap yellow-block py-2 text-center text-3xl font-bold">
         {title}
       </header>

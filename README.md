@@ -128,11 +128,9 @@ VITE_SERVER_URL
         - new chat / refresh icons
             - colors ?
             - switch to chii ?
-        - sprinkle chii stickers around UI
-        - login / signup reword
+        - login / signup rework
         - notifications
         - restyle chat selected. idk its not doin it for me!!!
-            - user selected as well
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader
@@ -142,6 +140,7 @@ VITE_SERVER_URL
     - createChatForm -> ChatsCreateModal
     - refactor loading to single element shown
         - unextract loading?
+    - sprinkle chii stickers around UI
     
 
 - server
