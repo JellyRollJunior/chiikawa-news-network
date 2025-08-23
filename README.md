@@ -131,7 +131,6 @@ VITE_SERVER_URL
         - sprinkle chii stickers around UI
         - login / signup reword
         - profile
-            - remove chats from /profile
             - un-extract homeAsideLayout 
         - notifications
         - create chat modal
