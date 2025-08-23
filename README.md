@@ -126,7 +126,6 @@ VITE_SERVER_URL
 - client
     - chii styling 
         - login / signup rework
-        - notifications
         - restyle chat selected. idk its not doin it for me!!!
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
