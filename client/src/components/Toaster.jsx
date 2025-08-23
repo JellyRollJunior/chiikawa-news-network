@@ -7,7 +7,7 @@ const Toaster = () => {
   const { toasts, deleteToast } = useContext(ToastContext);
 
   return (
-    <ul className="absolute z-1 right-7 top-5 flex flex-col items-end gap-2">
+    <ul className="absolute z-1 w-full top-5 flex flex-col items-center gap-2">
       <AnimatePresence>
         {toasts &&
           toasts.map((toast) => (
