@@ -10,8 +10,10 @@ import settings from '../assets/nav/usagi-business.png';
 const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   return (
     <Link
-      className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-0.5 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
-        selected ? 'md:bg-dotted md:rounded-md md:bg-pink-300 hover:bg-pink-300' : ''
+      className={`hover:bg-dotted font-chiikawa flex h-full w-full items-end justify-center pb-1 text-xs hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
+        selected
+          ? 'md:bg-dotted hover:bg-pink-300 md:rounded-md md:bg-pink-300'
+          : ''
       }`}
       to={link}
     >
@@ -27,7 +29,7 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
           className="drop-shadow-pink-outline"
           src={src}
         />
-        <h3 className="text-shadow-wrap text-center font-bold">{label}</h3>
+        <h3 className="text-shadow-wrap mt-1 text-center font-bold">{label}</h3>
       </div>
     </Link>
   );
@@ -49,22 +51,40 @@ const NavigationPageWrapper = ({ children }) => {
 
   const navButtonsMobile = [
     createNavButton('/users', 'Users', users, '60px', path.includes('users')),
-    createNavButton('/chats', 'Chats', messages, '69px', path.includes('chats')),
+    createNavButton(
+      '/chats',
+      'Chats',
+      messages,
+      '69px',
+      path.includes('chats')
+    ),
     createNavButton('/', 'Home', home, '43px', path == '/'),
     createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
-    createNavButton('/settings', 'Settings', settings, '35px', path == '/settings'),
+    createNavButton(
+      '/settings',
+      'Settings',
+      settings,
+      '35px',
+      path == '/settings'
+    ),
   ];
 
   const navButtonsDesktop = [
     createNavButton('/', 'Home', home, '43px', path == '/'),
-    createNavButton('/chats', 'Chats', messages, '69px', path.includes('chats')),
+    createNavButton(
+      '/chats',
+      'Chats',
+      messages,
+      '69px',
+      path.includes('chats')
+    ),
     createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
     createNavButton('/users', 'Users', users, '60px', path.includes('users')),
   ];
   return (
     <>
       {/* mobile nav */}
-      <nav className="border-t-3 border-b-2 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 rounded-t-md border-pink-200 bg-pink-100 md:hidden">
+      <nav className="border-t-3 bg-dotted-sm md:border-y-3 fixed bottom-0 grid h-20 w-full grid-cols-5 rounded-t-md border-b-2 border-pink-200 bg-pink-100 md:hidden">
         {navButtonsMobile.map((button) => (
           <Fragment key={button.label}>
             <NavButton
@@ -78,7 +98,7 @@ const NavigationPageWrapper = ({ children }) => {
         ))}
       </nav>
       {/* desktop nav */}
-      <nav className="border-r-3 border-l-2 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col rounded-r-sm border-x-4 border-pink-200 bg-pink-100 md:flex">
+      <nav className="border-r-3 bg-dotted-sm w-21 fixed bottom-0 top-0 hidden h-full flex-col rounded-r-sm border-x-4 border-l-2 border-pink-200 bg-pink-100 md:flex">
         <div className="mb-10 mt-5 w-full">
           <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
         </div>
@@ -103,7 +123,7 @@ const NavigationPageWrapper = ({ children }) => {
           />
         </div>
       </nav>
-      <div className="pb-20 h-screen md:pb-0 md:pl-21">{children}</div>
+      <div className="md:pl-21 h-screen pb-20 md:pb-0">{children}</div>
     </>
   );
 };
