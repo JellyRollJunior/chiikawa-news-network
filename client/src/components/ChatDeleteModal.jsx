@@ -15,7 +15,7 @@ const ChatDeleteModal = ({ closeFunction, chatId }) => {
     await deleteChat(chatId);
     closeFunction();
     refetchChats();
-    navigate('/');
+    navigate('/chats');
   };
 
   return (

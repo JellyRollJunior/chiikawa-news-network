@@ -1,6 +1,5 @@
-import { useContext, useState, Fragment } from 'react';
+import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
 import { ChatsList } from './ChatsList.jsx';
 import chiiPeace from '../assets/images/chii-peace.png';
@@ -10,13 +9,13 @@ import kaniReading from '../assets/images/kani-reading.png';
 const Chats = ({
   chats,
   isLoading,
+  refetchChats,
   publicChats,
   isPublicLoading,
   refetchPublic,
   openNewChatModal,
 }) => {
   const { username } = useContext(CurrentContext);
-  const { refetchChats } = useContext(ChatsContext);
   const [filter, setFilter] = useState('');
 
   // search filter
