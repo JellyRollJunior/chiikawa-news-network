@@ -133,8 +133,6 @@ VITE_SERVER_URL
     - createChatForm -> ChatsCreateModal
     - refactor loading to single element shown
         - unextract loading?
-    - bug
-        - toast UL will block UI
 
 - server
 

@@ -7,12 +7,12 @@ const Toaster = () => {
   const { toasts, deleteToast } = useContext(ToastContext);
 
   return (
-    <ul className="z-1 absolute top-5 flex w-full flex-col items-center gap-2">
+    <ul className="z-1 absolute right-1/2 top-5 flex translate-x-1/2 flex-col items-center gap-2">
       <AnimatePresence>
         {toasts &&
           toasts.map((toast) => (
             <motion.li
-              className={`flex items-center justify-center ${toast.isError ? `blue-button` : `pink-button`}`}
+              className={`flex items-center text-nowrap justify-center ${toast.isError ? `blue-button` : `pink-button`}`}
               key={toast.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
