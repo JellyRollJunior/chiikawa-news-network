@@ -124,8 +124,6 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - chii styling
-        - mobile error page glitch
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader

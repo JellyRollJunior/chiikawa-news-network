@@ -7,7 +7,7 @@ const ErrorPage = () => {
   if (!localStorage.getItem('token')) navigate('/login');
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center px-2">
       <Notice
         title={
           <>
