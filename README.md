@@ -129,7 +129,6 @@ VITE_SERVER_URL
     - delete profile modal
         - replace with link to /profiles/userId
     - un-extract labelled input tbh. its doing nothing
-    - refactor loading to single element shown
 
 - server
 
