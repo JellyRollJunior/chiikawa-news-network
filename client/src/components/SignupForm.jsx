@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { signup } from '../services/authApi.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { LabelledInput } from './LabelledInput.jsx';
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -24,38 +23,66 @@ const SignupForm = () => {
   };
 
   return (
-    <form
-      className="max-w-2xs mt-5 flex w-full flex-col"
-      onSubmit={handleSignup}
-    >
-      <h2 className="text-center font-bold text-gray-500">
+    <form className="mt-6 flex w-full flex-col px-2" onSubmit={handleSignup}>
+      <h2 className="text-shadow-wrap text-center font-bold">
         Sign up to chat with all your fellow chiikawa lovers
       </h2>
-      <LabelledInput
-        id="Username"
+      <label
+        className="text-shadow-wrap ml-1 font-medium text-amber-800"
+        htmlFor={username}
+      >
+        Username
+      </label>
+      <input
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+        type="text"
+        id="username"
+        name="username"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
         minlength={6}
         maxLength={24}
+        placeholder="Enter username"
+        required={true}
       />
-      <LabelledInput
-        id="Password"
+      <label
+        className="text-shadow-wrap ml-1 mt-2 font-medium text-amber-800"
+        htmlFor={password}
+      >
+        Password
+      </label>
+      <input
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+        type="password"
+        id="password"
+        name="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         minlength={6}
         maxLength={24}
-        type="password"
+        placeholder="Enter password"
+        required={true}
       />
-      <LabelledInput
-        id="Confirm password"
+      <label
+        className="text-shadow-wrap ml-1 mt-2 font-medium text-amber-800"
+        htmlFor={confirmPassword}
+      >
+        Confirm Password
+      </label>
+      <input
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
         value={confirmPassword}
         onChange={(event) => setConfirmPassword(event.target.value)}
         minlength={6}
         maxLength={24}
-        type="password"
+        placeholder="Confirm password"
+        required={true}
       />
       <div className="mt-4">
-        <button className="w-full rounded-xl bg-blue-400 px-5 py-2 text-white hover:bg-blue-500">
+        <button className="blue-button w-full rounded-xl px-5 py-2">
           Sign Up
         </button>
       </div>

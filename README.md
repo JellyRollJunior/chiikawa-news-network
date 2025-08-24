@@ -125,8 +125,7 @@ VITE_SERVER_URL
 ## TODO
 - client
     - chii styling 
-        - login / signup rework
-            - logo
+        - logo
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader

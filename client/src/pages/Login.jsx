@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <FullPageFormWrapper>
       <LoginForm />
-      <footer className="mt-2">
+      <footer className="mt-2 text-shadow-wrap">
         Dont have an account?{' '}
         <Link to="/signup" className="text-blue-400 hover:underline">
           Sign up.

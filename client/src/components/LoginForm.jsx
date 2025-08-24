@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { login } from '../services/authApi.js';
-import { LabelledInput } from './LabelledInput.jsx';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -23,28 +22,47 @@ const LoginForm = () => {
 
   return (
     <form
-      className="max-w-2xs mt-9 flex w-full flex-col"
+      className="px-2 mt-6 flex w-full flex-col"
       onSubmit={handleLogin}
     >
-      <LabelledInput
-        id="Username"
+      <label
+        className="text-shadow-wrap ml-1 font-medium text-amber-800"
+        htmlFor={username}
+      >
+        Username
+      </label>
+      <input
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+        type="text"
+        id="username"
+        name="username"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
         minlength={1}
         maxLength={36}
         placeholder="Enter username"
+        required={true}
       />
-      <LabelledInput
-        id="Password"
+      <label
+        className="text-shadow-wrap ml-1 mt-2 font-medium text-amber-800"
+        htmlFor={password}
+      >
+        Password
+      </label>
+      <input
+        className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+        type="password"
+        id="password"
+        name="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         minlength={1}
         maxLength={36}
-        type="password"
         placeholder="Enter password"
+        required={true}
       />
       <div className="mt-4">
-        <button className="w-full rounded-xl bg-blue-400 px-5 py-2 text-white hover:bg-blue-500">
+        <button className="blue-button w-full  px-5 py-2 ">
           Log In
         </button>
       </div>
