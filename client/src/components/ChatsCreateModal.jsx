@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router';
 import { useUsers } from '../hooks/useUsers.js';
 import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
-import { CreateChatListItem } from './CreateChatListItem.jsx';
-import { CreateChatLoading } from './CreateChatLoading.jsx';
+import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
+import { ChatsCreateLoading } from './ChatsCreateLoading.jsx';
 import { LabelledInput } from './LabelledInput.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 
@@ -58,11 +58,11 @@ const ChatsCreateModal = ({ closeFunction }) => {
             <span className="text-red-400">{userError}</span>
           </label>
           <ul className="scrollbar-thin h-40 overflow-y-scroll">
-            {isLoading && <CreateChatLoading />}
+            {isLoading && <ChatsCreateLoading />}
             {!isLoading &&
               filteredUsers.map((user) => (
                 <Fragment key={user.id}>
-                  <CreateChatListItem
+                  <ChatsCreateListItem
                     userId={user.id}
                     avatar={user.avatar}
                     username={user.username}

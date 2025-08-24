@@ -1,9 +1,9 @@
 import { Avatar } from './Avatar.jsx';
+import usagiIcon from '../assets/icons/usagi-icon.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import usagiIcon from '../assets/icons/usagi-icon.png';
 
-const CreateChatListItem = ({
+const ChatsCreateListItem = ({
   userId,
   avatar,
   username,
@@ -52,7 +52,7 @@ const CreateChatListItem = ({
         </div>
         {selected && (
           <div className="ml-auto mr-2 flex items-center text-2xl">
-            <img className='w-8' src={usagiIcon} alt="Selected" />
+            <img className="w-8" src={usagiIcon} alt="Selected" />
           </div>
         )}
       </button>
@@ -60,4 +60,4 @@ const CreateChatListItem = ({
   );
 };
 
-export { CreateChatListItem };
+export { ChatsCreateListItem };
