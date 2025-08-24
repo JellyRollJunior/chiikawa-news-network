@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { Avatar } from './Avatar.jsx';
 import { ProfileEditBio } from './ProfileEditBio.jsx';
+import { ProfileEditAvatar } from './ProfileEditAvatar.jsx';
 import editIcon from '../assets/svgs/edit.svg';
 import editOffIcon from '../assets/svgs/edit-off.svg';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { ProfileEditAvatar } from './ProfileEditAvatar.jsx';
 
 const Profile = ({
   userId,
@@ -68,7 +68,7 @@ const Profile = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="main-container mx-4 max-w-md mb-2 mt-3 flex w-full flex-col items-center">
       <div
         className="relative"
         onMouseEnter={() => setIsEditingAvatar(true)}

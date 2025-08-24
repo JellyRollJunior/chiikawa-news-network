@@ -128,13 +128,13 @@ VITE_SERVER_URL
 - server
 
 - order
-    - github login
     - Profile route
         - implement profile -> bio user info -> posts
     - Settings page
         - edit avatar
         - edit bio
         - logout
+    - github login
     - users page
     - update login/signup 
         - add images and stuff idk just a form is kinda boring

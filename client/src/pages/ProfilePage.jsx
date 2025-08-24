@@ -6,7 +6,7 @@ const ProfilePage = () => {
   const { id, username, bio, avatar, isLoading } = useContext(CurrentContext);
 
   return (
-    <div className="mt-12 px-4">
+    <div className="flex min-h-full justify-center">
       <Profile
         userId={id}
         username={username}
