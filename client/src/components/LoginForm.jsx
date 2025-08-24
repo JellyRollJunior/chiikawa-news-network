@@ -38,7 +38,7 @@ const LoginForm = () => {
         name="username"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
-        minlength={1}
+        minLength={1}
         maxLength={36}
         placeholder="Enter username"
         required={true}
@@ -56,7 +56,7 @@ const LoginForm = () => {
         name="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
-        minlength={1}
+        minLength={1}
         maxLength={36}
         placeholder="Enter password"
         required={true}

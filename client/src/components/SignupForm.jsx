@@ -40,7 +40,7 @@ const SignupForm = () => {
         name="username"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
-        minlength={6}
+        minLength={6}
         maxLength={24}
         placeholder="Enter username"
         required={true}
@@ -58,7 +58,7 @@ const SignupForm = () => {
         name="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
-        minlength={6}
+        minLength={6}
         maxLength={24}
         placeholder="Enter password"
         required={true}
@@ -76,7 +76,7 @@ const SignupForm = () => {
         name="confirmPassword"
         value={confirmPassword}
         onChange={(event) => setConfirmPassword(event.target.value)}
-        minlength={6}
+        minLength={6}
         maxLength={24}
         placeholder="Confirm password"
         required={true}

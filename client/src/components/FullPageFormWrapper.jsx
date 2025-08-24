@@ -8,13 +8,13 @@ const FullPageFormWrapper = ({ children }) => {
     <ToastProvider>
       <Toaster />
       <div className="flex h-screen w-screen items-center justify-center">
-        <div className="main-container relatie relative mx-2 flex h-fit max-w-md flex-1 flex-col items-center px-2 py-3">
+        <div className="main-container relatie relative mx-4 flex h-fit max-w-md flex-1 flex-col items-center px-2 py-3">
           <img
             className="absolute -top-[48px] right-1/2 w-[240px] translate-x-1/2"
             src={trioDrawing}
           />
           <img
-            className="absolute -bottom-[24px] -right-[12px] w-[100px]"
+            className="absolute -bottom-[24px] -right-[16px] w-[100px]"
             src={kaniReading}
           />
           <header className="yellow-block font-chiikawa w-full pb-3 pt-4">

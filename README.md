@@ -124,6 +124,11 @@ VITE_SERVER_URL
 
 ## TODO
 - client
+    - profile page rework
+        - style profile page
+        - profile nav links to /users/:currentUserId
+        - disable editing on profile page
+        - editing is done on settings page
 
 - server
 
