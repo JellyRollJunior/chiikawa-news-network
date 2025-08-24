@@ -23,12 +23,12 @@ const SignupForm = () => {
   };
 
   return (
-    <form className="mt-6 flex w-full flex-col px-2" onSubmit={handleSignup}>
+    <form className="mt-5 flex w-full flex-col px-2" onSubmit={handleSignup}>
       <h2 className="text-shadow-wrap text-center font-bold">
-        Sign up to chat with all your fellow chiikawa lovers
+        Sign up to connect with fellow chiikawa enjoyers
       </h2>
       <label
-        className="text-shadow-wrap ml-1 font-medium text-amber-800"
+        className="text-shadow-wrap ml-1 mt-2 font-medium text-amber-800"
         htmlFor={username}
       >
         Username

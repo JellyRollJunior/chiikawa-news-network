@@ -2,6 +2,11 @@
 @plugin 'tailwind-scrollbar';
 
 @font-face {
+  font-family: 'chiikawa';
+  src: url('../assets/fonts/chiikawa-english.woff2');
+}
+
+@font-face {
   font-family: 'sen';
   src: url('../assets/fonts/Sen-Regular.woff2');
 }
@@ -32,6 +37,7 @@
 @theme {
   --breakpoint-xs: 30rem;
   --font-default: 'sen', arial, sans-serif;
+  --font-chiikawa: 'chiikawa', 'sen', arial, sans-serif;
   --text-shadow-wrap:
     0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
     0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
