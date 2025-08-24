@@ -1,15 +1,20 @@
 import { useContext, useState, Fragment } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
-import { ChatsListItem } from './ChatsListItem.jsx';
-import { ChatsLoading } from './ChatsLoading.jsx';
-import { ChatsPublic } from './ChatsPublic.jsx';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
+import { ChatsList } from './ChatsList.jsx';
 import chiiPeace from '../assets/images/chii-peace.png';
 import hachiCamera from '../assets/images/hachi-camera-back.png';
 import kaniReading from '../assets/images/kani-reading.png';
 
-const Chats = ({ chats, isLoading, openNewChatModal }) => {
+const Chats = ({
+  chats,
+  isLoading,
+  publicChats,
+  isPublicLoading,
+  refetchPublic,
+  openNewChatModal,
+}) => {
   const { username } = useContext(CurrentContext);
   const { refetchChats } = useContext(ChatsContext);
   const [filter, setFilter] = useState('');
@@ -52,30 +57,17 @@ const Chats = ({ chats, isLoading, openNewChatModal }) => {
         </button>
       </div>
       <section className="yellow-block mx-2 mt-3 pb-1 pt-2 sm:pb-2 md:pb-1">
-        <ChatsPublic />
+        <ChatsSectionTitle title="Public rooms" refreshBtn={refetchPublic} />
+        <ChatsList
+          chats={publicChats}
+          isLoading={isPublicLoading}
+          loadingElements={1}
+        />
       </section>
       <section className="yellow-block mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden pb-1 pt-2 md:pb-2">
-        <ChatsSectionTitle
-          title="Conversations"
-          refreshOnClick={refetchChats}
-        />
+        <ChatsSectionTitle title="Conversations" refreshBtn={refetchChats} />
         <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll">
-          <ul>
-            {isLoading ? (
-              <ChatsLoading />
-            ) : (
-              filteredChats.map((chat) => (
-                <Fragment key={chat.id}>
-                  <ChatsListItem
-                    chatId={chat.id}
-                    chatName={chat.name}
-                    avatar={chat.avatar}
-                    latestMessage={chat.latestMessage}
-                  />
-                </Fragment>
-              ))
-            )}
-          </ul>
+          <ChatsList chats={filteredChats} isLoading={isLoading} />
         </main>
       </section>
     </div>
