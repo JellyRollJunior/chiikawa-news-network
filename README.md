@@ -124,15 +124,12 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - HOME to REAL HOME, CHATS TO INDEX
-        - extract chatsDisplay to reuse for public and private chats
     - extract chat list item loader
     - headermenu -> chats header menu
     - delete profile modal
         - replace with link to /profiles/userId
     - un-extract labelled input tbh. its doing nothing
     - refactor loading to single element shown
-        - unextract loading?
 
 - server
 
