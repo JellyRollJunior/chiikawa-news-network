@@ -124,28 +124,18 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - extract chat list item loader
-    - headermenu -> chats header menu
-    - delete profile modal
-        - replace with link to /profiles/userId
     - un-extract labelled input tbh. its doing nothing
 
 - server
 
 - order
     - github login
-    - nav rework
-        - rewire routes and nav to fit new layout
-        - CNN logo
-        - Move logout to profile
     - Profile route
-        - remove view profile modal
-        - /users/userId
-            - refactor profile route into /users/userId
         - implement profile -> bio user info -> posts
     - Settings page
         - edit avatar
         - edit bio
         - logout
     - users page
-    - update login/signup page with images and stuff idk just a form is kinda boring
+    - update login/signup 
+        - add images and stuff idk just a form is kinda boring

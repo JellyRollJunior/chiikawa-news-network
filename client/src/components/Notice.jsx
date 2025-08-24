@@ -7,8 +7,10 @@ const Notice = ({ title, src, alt, footer }) => {
         className="absolute -bottom-[32px] -right-[12px] w-[100px]"
         src={chiiLaying}
       />
-      <header className="text-shadow-wrap yellow-block py-2 text-center text-3xl font-bold">
-        {title}
+      <header className="yellow-block">
+        <h2 className="text-shadow-wrap py-2 text-center text-3xl font-bold">
+          {title}
+        </h2>
       </header>
       <main>
         <div className="pink-block mt-3 py-2 text-center text-3xl font-bold">
