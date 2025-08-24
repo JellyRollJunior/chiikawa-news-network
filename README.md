@@ -125,7 +125,7 @@ VITE_SERVER_URL
 ## TODO
 - client
     - HOME to REAL HOME, CHATS TO INDEX
-        - rename home message prompt
+        - extract chatsDisplay to reuse for public and private chats
     - extract chat list item loader
     - delete profile modal
         - replace with link to /profiles/userId

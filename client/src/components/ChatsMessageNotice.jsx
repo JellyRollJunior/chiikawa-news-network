@@ -1,7 +1,7 @@
 import { Notice } from './Notice.jsx';
 import masks from '../assets/images/trio-masks.png';
 
-const HomeMessagePrompt = () => {
+const ChatsMessageNotice = () => {
   return (
     <Notice
       title="Your Messages"
@@ -17,4 +17,4 @@ const HomeMessagePrompt = () => {
   );
 };
 
-export { HomeMessagePrompt };
+export { ChatsMessageNotice };

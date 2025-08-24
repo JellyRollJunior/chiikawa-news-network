@@ -1,5 +1,5 @@
 import { Chats } from '../components/Chats.jsx';
-import { HomeMessagePrompt } from '../components/HomeMessagePrompt.jsx';
+import { ChatsMessageNotice } from '../components/ChatsMessageNotice.jsx';
 
 const ChatsPage = () => {
   return (
@@ -7,8 +7,8 @@ const ChatsPage = () => {
       <aside className="flex-3 flex md:max-w-md">
         <Chats />
       </aside>
-      <div className="flex-4 mr-2 items-center justify-center hidden md:flex">
-        <HomeMessagePrompt />
+      <div className="flex-4 mr-2 hidden items-center justify-center md:flex">
+        <ChatsMessageNotice />
       </div>
     </div>
   );
