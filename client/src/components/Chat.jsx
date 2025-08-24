@@ -8,7 +8,6 @@ import { DotsMenu } from './DotsMenu.jsx';
 import { DotsMenuItem } from './DotsMenuItem.jsx';
 import { ChatMessages } from './ChatMessages.jsx';
 import { ChatMessageInput } from './ChatMessageInput.jsx';
-import { ChatProfileModal } from './ChatProfileModal.jsx';
 import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
 import shisaBento from '../assets/images/shisa-bento.png';
@@ -50,11 +49,6 @@ const Chat = () => {
     }
   }, [messages]);
 
-  // profile modal
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const openProfileModal = () => setIsProfileModalOpen(true);
-  const closeProfileModal = () => setIsProfileModalOpen(false);
-
   // rename chat modal
   const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
   const openRenameModal = () => setIsRenameModalOpen(true);
@@ -85,7 +79,7 @@ const Chat = () => {
         {!isPublicChat && (
           <DotsMenu>
             {isTwoPersonChat && (
-              <DotsMenuItem label="View profile" onClick={openProfileModal} />
+              <DotsMenuItem label="View profile" onClick={() => navigate(`/users/${chat.users.find((user) => user.id != id).id}`)} />
             )}
             <DotsMenuItem
               label="Rename conversation"
@@ -110,14 +104,6 @@ const Chat = () => {
       </main>
       <div className="yellow-block mx-2 mt-2 h-7"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
-      {isProfileModalOpen && (
-        <ChatProfileModal
-          closeFunction={closeProfileModal}
-          userId={
-            isTwoPersonChat && chat.users.find((user) => user.id != id).id
-          }
-        />
-      )}
       {isRenameModalOpen && (
         <ChatRenameModal
           closeFunction={closeRenameModal}
