@@ -126,6 +126,7 @@ VITE_SERVER_URL
 - client
     - chii styling 
         - login / signup rework
+            - logo
     - HOME to REAL HOME, CHATS TO INDEX
         - rename home message prompt
     - extract chat list item loader
@@ -135,7 +136,6 @@ VITE_SERVER_URL
     - createChatForm -> ChatsCreateModal
     - refactor loading to single element shown
         - unextract loading?
-    
 
 - server
 
@@ -155,3 +155,4 @@ VITE_SERVER_URL
         - edit bio
         - logout
     - users page
+    - update login/signup page with images and stuff idk just a form is kinda boring
