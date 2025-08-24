@@ -107,7 +107,6 @@ const Chat = () => {
       </main>
       <div className="yellow-block mx-2 mt-2 h-7"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
-
       {isProfileModalOpen && (
         <ChatProfileModal
           closeFunction={closeProfileModal}
