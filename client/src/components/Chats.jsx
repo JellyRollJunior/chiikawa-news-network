@@ -1,8 +1,7 @@
 import { useContext, useState } from 'react';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { ChatsSection } from './ChatsSection.jsx';
-import { ModalDialog } from './ModalDialog.jsx';
-import { CreateChatForm } from './CreateChatForm.jsx';
+import { ChatsCreateModal } from './ChatsCreateModal.jsx';
 
 const Chats = () => {
   const { chats, isLoading } = useContext(ChatsContext);
@@ -18,11 +17,7 @@ const Chats = () => {
         isLoading={isLoading}
         openNewChatModal={openNewChatModal}
       />
-      {isModalOpen && (
-        <ModalDialog closeFunction={closeNewChatModal} title="New Conversation">
-          <CreateChatForm closeForm={closeNewChatModal} />
-        </ModalDialog>
-      )}
+      {isModalOpen && <ChatsCreateModal closeFunction={closeNewChatModal} />}
     </>
   );
 };
