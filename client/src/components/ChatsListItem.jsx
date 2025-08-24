@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { Link, useParams } from 'react-router';
 import { Avatar } from './Avatar.jsx';
+import selected from '../assets/svgs/arrow-forward.svg';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
@@ -44,12 +45,11 @@ const ChatsListItem = ({
     ? format(new Date(latestMessage.sendTime), 'MMM do • h:mmaaa')
     : '';
   return (
-    <li
-      className={`mx-3 rounded-xl px-2 py-2 hover:bg-emerald-100 md:mx-1 ${chatId == browserChatId ? 'bg-emerald-100' : 'inherit'}`}
-    >
-      <Link className="flex gap-2" to={`/chats/${chatId}`}>
+    <li className="mx-3 rounded-xl px-2 py-2 hover:bg-emerald-100 md:mx-1">
+      <Link className="flex" to={`/chats/${chatId}`}>
+        {chatId == browserChatId && <img src={selected} />}
         <Avatar avatar={avatar} />
-        <div className="-mt-0.5 flex min-w-0 flex-col self-center leading-[1.2]">
+        <div className="-mt-0.5 ml-2 flex min-w-0 flex-col self-center leading-[1.2]">
           <h4 className="truncate text-lg font-medium">{chatName}</h4>
           <p className="-mt-1 truncate">{latestMessageContent}</p>
           <p className="text-sm">{formattedDate}</p>
