@@ -5,7 +5,6 @@ import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
 import { ChatsCreateLoading } from './ChatsCreateLoading.jsx';
-import { LabelledInput } from './LabelledInput.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 
 const ChatsCreateModal = ({ closeFunction }) => {
@@ -73,13 +72,22 @@ const ChatsCreateModal = ({ closeFunction }) => {
               ))}
           </ul>
           <input
-            className="block-shadow mb-2 mt-2 h-9 rounded-lg bg-white pl-3"
+            className="block-shadow mb-2 mt-2 h-10 rounded-lg bg-white pl-3"
             type="text"
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
             placeholder="Search"
           />
-          <LabelledInput
+          <label
+            className="text-shadow-wrap ml-1 font-medium text-amber-800"
+            htmlFor="chatName"
+          >
+            Chat name (optional)
+          </label>
+          <input
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            type="text"
+            name="chatName"
             id="Chat name (optional)"
             value={name}
             onChange={(event) => setName(event.target.value)}

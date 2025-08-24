@@ -124,7 +124,6 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - un-extract labelled input tbh. its doing nothing
 
 - server
 

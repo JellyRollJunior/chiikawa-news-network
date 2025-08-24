@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
-import { LabelledInput } from './LabelledInput.jsx';
 import { useRenameChat } from '../hooks/useRenameChat.js';
 import { useParams } from 'react-router';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
@@ -27,12 +26,21 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
     <ModalDialog closeFunction={closeFunction} title="Rename Conversation">
       <form className="flex flex-col" onSubmit={handleRenameChat}>
         <main className="mb-2 mt-4 px-2">
-          <LabelledInput
-            id="New conversation name"
+          <label
+            className="text-shadow-wrap ml-1 font-medium text-amber-800"
+            htmlFor="chatName"
+          >
+            New conversation name
+          </label>
+          <input
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            type="text"
+            name="chatName"
+            id="chatName"
             value={name}
             onChange={(event) => setName(event.target.value)}
             maxLength={32}
-            isRequired={false}
+            required={true}
           />
         </main>
         <footer className="mt-2 flex gap-3">
