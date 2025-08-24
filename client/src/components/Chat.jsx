@@ -4,8 +4,8 @@ import { useChat } from '../hooks/useChat.js';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useJoinRoom } from '../hooks/useJoinRoom.js';
 import { Avatar } from './Avatar.jsx';
-import { HeaderMenu } from './HeaderMenu.jsx';
-import { HeaderMenuItem } from './HeaderMenuItem.jsx';
+import { DotsMenu } from './DotsMenu.jsx';
+import { DotsMenuItem } from './DotsMenuItem.jsx';
 import { ChatMessages } from './ChatMessages.jsx';
 import { ChatMessageInput } from './ChatMessageInput.jsx';
 import { ChatProfileModal } from './ChatProfileModal.jsx';
@@ -83,19 +83,19 @@ const Chat = () => {
           </p>
         </div>
         {!isPublicChat && (
-          <HeaderMenu>
+          <DotsMenu>
             {isTwoPersonChat && (
-              <HeaderMenuItem label="View profile" onClick={openProfileModal} />
+              <DotsMenuItem label="View profile" onClick={openProfileModal} />
             )}
-            <HeaderMenuItem
+            <DotsMenuItem
               label="Rename conversation"
               onClick={openRenameModal}
             />
-            <HeaderMenuItem
+            <DotsMenuItem
               label="Delete converstation"
               onClick={openDeleteModal}
             />
-          </HeaderMenu>
+          </DotsMenu>
         )}
       </header>
       <main

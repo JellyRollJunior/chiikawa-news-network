@@ -1,8 +1,8 @@
-const HeaderMenuItem = ({ onClick, label, closeMenu }) => {
+const DotsMenuItem = ({ onClick, label, closeMenu }) => {
   return (
     <li>
       <button
-        className="w-full text-nowrap text-start px-3 py-1 hover:bg-emerald-200"
+        className="w-full text-nowrap px-3 py-1 text-start hover:bg-emerald-200"
         onClick={() => {
           onClick();
           closeMenu();
@@ -13,4 +13,4 @@ const HeaderMenuItem = ({ onClick, label, closeMenu }) => {
     </li>
   );
 };
-export { HeaderMenuItem };
+export { DotsMenuItem };

@@ -6,9 +6,9 @@ import {
   cloneElement,
   useRef,
 } from 'react';
-import dotMenu from '../assets/svgs/three-dots.svg';
+import threeDots from '../assets/svgs/three-dots.svg';
 
-const HeaderMenu = ({ children }) => {
+const DotsMenu = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -31,7 +31,7 @@ const HeaderMenu = ({ children }) => {
         className="rounded-lg py-1 hover:bg-emerald-100"
         onClick={toggleMenu}
       >
-        <img src={dotMenu} />
+        <img src={threeDots} />
       </button>
       {isOpen && (
         <ul className="top-1/1 blue-block absolute right-0 overflow-clip">
@@ -45,4 +45,4 @@ const HeaderMenu = ({ children }) => {
   );
 };
 
-export { HeaderMenu };
+export { DotsMenu };
