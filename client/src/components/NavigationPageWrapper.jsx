@@ -56,7 +56,7 @@ const NavigationPageWrapper = ({ children }) => {
     'Users',
     users,
     '60px',
-    path.includes('users') && (path != path) == `/users/${id}`
+    path.includes('users') && path != `/users/${id}`
   );
   const chatsButton = createNavButton(
     '/chats',

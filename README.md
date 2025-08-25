@@ -125,7 +125,6 @@ VITE_SERVER_URL
 ## TODO
 - client
     - profile page rework
-        - Profile -> User
         - loading animation
     - Settings page: convert profile to settings
         - editing is done on settings page
