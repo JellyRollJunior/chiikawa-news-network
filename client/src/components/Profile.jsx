@@ -5,52 +5,47 @@ import { ProfileEditAvatar } from './ProfileEditAvatar.jsx';
 import editIcon from '../assets/svgs/edit.svg';
 import editOffIcon from '../assets/svgs/edit-off.svg';
 
-const SettingsUserInfo = ({
-  username,
-  bio,
-  avatar,
-  avatarSize = 8,
-}) => {
+const SettingsUserInfo = ({ username, bio, avatar }) => {
   const [isEditingBio, setIsEditingBio] = useState(false);
-  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
 
   const closeEditMode = () => {
     setIsEditingBio(false);
   };
 
   return (
-    <div className="main-container mx-4 mb-2 mt-3 flex w-full max-w-md flex-col items-center">
-      <div
-        className="relative"
-        onMouseEnter={() => setIsEditingAvatar(true)}
-        onMouseLeave={() => setIsEditingAvatar(false)}
-      >
-        <Avatar avatar={avatar ? avatar : null} size={avatarSize} />
-        {<ProfileEditAvatar isOpen={isEditingAvatar} />}
+    <>
+      <div className="yellow-block">
+        <h2 className="font-chiikawa py-2 text-center text-lg">Edit Profile</h2>
       </div>
-      <h2 className="mt-1 self-center text-xl font-bold">{username}</h2>
-      <div className="mt-2 flex w-full items-center self-start font-medium">
-        <h3>Bio</h3>
-
-        <button
-          className="ml-auto"
-          onClick={() => setIsEditingBio(!isEditingBio)}
-        >
-          <img
-            className="w-7 rounded-xl px-1 py-1 hover:bg-gray-300"
-            src={!isEditingBio ? editIcon : editOffIcon}
-            alt="edit"
-          />
-        </button>
+      <div className="yellow-block mt-2 flex items-center px-3 py-2">
+        {/* tbh just do it like instagram does it. simple with a button to choose photo */}
+        <Avatar avatar={avatar ? avatar : null} size={3} />
+        <h3 className="ml-3">{username}</h3>
+        <button className="blue-button ml-auto px-3 py-1">Change Photo</button>
       </div>
-      <section className="w-full px-7">
-        {isEditingBio ? (
-          <ProfileEditBio onSubmit={closeEditMode} />
-        ) : (
-          <p className="px-1.5 py-0.5">{bio}</p>
-        )}
-      </section>
-    </div>
+      <div className="yellow-block mt-2">
+        <div className="mt-2 flex w-full items-center self-start font-medium">
+          <h3>Bio</h3>
+          <button
+            className="ml-auto"
+            onClick={() => setIsEditingBio(!isEditingBio)}
+          >
+            <img
+              className="w-7 rounded-xl px-1 py-1 hover:bg-gray-300"
+              src={!isEditingBio ? editIcon : editOffIcon}
+              alt="edit"
+            />
+          </button>
+        </div>
+        <section className="w-full px-7">
+          {isEditingBio ? (
+            <ProfileEditBio onSubmit={closeEditMode} />
+          ) : (
+            <p className="px-1.5 py-0.5">{bio}</p>
+          )}
+        </section>
+      </div>
+    </>
   );
 };
 
