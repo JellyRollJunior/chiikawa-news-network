@@ -48,18 +48,18 @@ const User = ({ userId }) => {
   }
 
   return (
-    <div className="main-container mx-4 mb-2 mt-3 w-full px-2 pb-3 pt-3">
+    <div className="main-container mx-4 mb-2 mt-3 w-full max-w-md px-2 pb-3 pt-3">
       <section className="yellow-block px-2 pb-2 pt-3">
-        <header className="flex ml-4">
+        <header className="ml-2 flex">
           <Avatar avatar={user && user.avatar} size={5} />
-          <div className="ml-2 mt-2 flex-1 items-center justify-center flex flex-col">
-            <h2 className="font-chiikawa -mt-2 self-center text-lg font-bold border-pink-300 border-5 border-dashed px-6 py-2">
+          <div className="mt-2 flex w-full flex-col items-center justify-center">
+            <h2 className="font-chiikawa border-5 max-w-45 xxs:max-w-55 xs:max-w-64 -mt-2 shrink self-center break-words border-dashed border-pink-300 px-2 py-2 text-sm font-bold">
               {user && user.username}
             </h2>
           </div>
         </header>
-          <button className="blue-button w-full mt-3 px-7 py-0.5">follow</button>
-        <div className="mt-3 flex gap-3 text-sm w-full justify-around">
+        <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
+        <div className="mt-3 flex w-full justify-around gap-3 text-sm">
           <div>100 Posts</div>
           <div>100 Followers</div>
           <div>100 Following</div>

@@ -126,19 +126,14 @@ VITE_SERVER_URL
 - client
     - profile page rework
         - Profile -> User
-            -> User element gets userId from params then serves user info
-            - if userId == current userId -> use current context
-                - else query user profile
-        - style profile page
-        - disable editing on profile page
-        - editing is done on settings page
         - loading animation
+    - Settings page: convert profile to settings
+        - editing is done on settings page
         - bug: cannot edit profile pic on mobile
+
 - server
 
 - order
-    - Profile route
-        - implement profile -> bio user info -> posts
     - Settings page
         - edit avatar
         - edit bio
@@ -147,3 +142,4 @@ VITE_SERVER_URL
     - users page
     - update login/signup 
         - add images and stuff idk just a form is kinda boring
+    - test UI with long usernames

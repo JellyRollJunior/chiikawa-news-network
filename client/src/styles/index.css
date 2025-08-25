@@ -36,6 +36,7 @@
 
 @theme {
   --breakpoint-xs: 30rem;
+  --breakpoint-xxs: 26rem;
   --font-default: 'sen', arial, sans-serif;
   --font-chiikawa: 'chiikawa', 'sen', arial, sans-serif;
   --text-shadow-wrap:
