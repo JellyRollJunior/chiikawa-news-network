@@ -5,8 +5,8 @@ import { motion } from 'motion/react';
 const ChatsLoadingItem = ({ delay }) => {
   return (
     <motion.li
-      style={{ backgroundColor: '#fff7ed' }}
       className="mx-1 flex gap-2 rounded-md px-2 py-2"
+      style={{ backgroundColor: '#fff7ed' }}
       animate={{ backgroundColor: '#ccfbf1' }}
       transition={{
         repeat: Infinity,

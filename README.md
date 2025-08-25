@@ -124,8 +124,6 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - profile page rework
-        - loading animation
     - Settings page: convert profile to settings
         - editing is done on settings page
         - bug: cannot edit profile pic on mobile
