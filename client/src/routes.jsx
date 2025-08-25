@@ -5,6 +5,7 @@ import { ProfilePage } from './pages/ProfilePage.jsx';
 import { ErrorPage } from './pages/ErrorPage.jsx';
 import { Login } from './pages/Login.jsx';
 import { Signup } from './pages/Signup.jsx';
+import { UserPage } from './pages/UserPage.jsx';
 
 const routes = [
   {
@@ -15,7 +16,7 @@ const routes = [
       { path: '/chats', element: <ChatsPage /> },
       { path: '/chats/:chatId', element: <ChatPage /> },
       { path: '/profile', element: <ProfilePage /> },
-      { path: '/users/:userId', element: <ProfilePage /> }
+      { path: '/users/:userId', element: <UserPage /> }
     ],
     errorElement: <ErrorPage />,
   },
