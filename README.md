@@ -125,11 +125,16 @@ VITE_SERVER_URL
 ## TODO
 - client
     - profile page rework
+        - Profile -> User
+            -> User element gets userId from params then serves user info
+            - if userId == current userId -> use current context
+                - else query user profile
         - style profile page
         - profile nav links to /users/:currentUserId
         - disable editing on profile page
         - editing is done on settings page
-
+        - loading animation
+        - bug: cannot edit profile pic on mobile
 - server
 
 - order
