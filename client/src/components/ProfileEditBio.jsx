@@ -19,7 +19,7 @@ const ProfileEditBio = ({ onSubmit }) => {
   return (
     <form onSubmit={handleEditBio}>
       <textarea
-        className="border-3 mt-3 min-h-36 w-full rounded-lg border-gray-500 px-1"
+        className="border-3 mt-3 min-h-36 w-full rounded-lg border-gray-500"
         autoFocus
         name="bio"
         id="bio"
