@@ -6,6 +6,7 @@ import { ErrorPage } from './pages/ErrorPage.jsx';
 import { Login } from './pages/Login.jsx';
 import { Signup } from './pages/Signup.jsx';
 import { UserPage } from './pages/UserPage.jsx';
+import { SettingsPage } from './pages/SettingsPage.jsx';
 
 const routes = [
   {
@@ -16,7 +17,8 @@ const routes = [
       { path: '/chats', element: <ChatsPage /> },
       { path: '/chats/:chatId', element: <ChatPage /> },
       { path: '/profile', element: <ProfilePage /> },
-      { path: '/users/:userId', element: <UserPage /> }
+      { path: '/users/:userId', element: <UserPage /> },
+      { path: '/settings', element: <SettingsPage />}
     ],
     errorElement: <ErrorPage />,
   },

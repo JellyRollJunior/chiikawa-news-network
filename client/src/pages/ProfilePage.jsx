@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Profile } from '../components/Profile.jsx';
+// import { Profile } from '../components/Profile.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 
 const ProfilePage = () => {
@@ -7,13 +7,13 @@ const ProfilePage = () => {
 
   return (
     <div className="flex min-h-full justify-center">
-      <Profile
+      {/* <Profile
         userId={id}
         username={username}
         bio={bio}
         avatar={avatar}
         isLoading={isLoading}
-      />
+      /> */}
     </div>
   );
 };
