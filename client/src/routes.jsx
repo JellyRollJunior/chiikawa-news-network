@@ -14,7 +14,8 @@ const routes = [
       { index: '/', },
       { path: '/chats', element: <ChatsPage /> },
       { path: '/chats/:chatId', element: <ChatPage /> },
-      { path: '/profile', element: <ProfilePage /> }
+      { path: '/profile', element: <ProfilePage /> },
+      { path: '/users/:userId', element: <ProfilePage /> }
     ],
     errorElement: <ErrorPage />,
   },

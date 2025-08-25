@@ -125,12 +125,13 @@ VITE_SERVER_URL
 ## TODO
 - client
     - profile page rework
+        - create /users/:userId route
+        - profile nav links to /users/:currentUserId
         - Profile -> User
             -> User element gets userId from params then serves user info
             - if userId == current userId -> use current context
                 - else query user profile
         - style profile page
-        - profile nav links to /users/:currentUserId
         - disable editing on profile page
         - editing is done on settings page
         - loading animation

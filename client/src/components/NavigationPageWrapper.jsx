@@ -1,5 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Link, useLocation } from 'react-router';
+import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import logo from '../assets/nav/chiikawa-glasses.png';
 import home from '../assets/nav/chiikawa-book.png';
 import messages from '../assets/nav/chii-hachi-hearts.png';
@@ -46,40 +47,51 @@ const createNavButton = (link, label, src, srcWidth, selected) => {
 };
 
 const NavigationPageWrapper = ({ children }) => {
+  const { id } = useContext(CurrentContext);
   const location = useLocation();
   const path = location.pathname;
 
+  const usersButton = createNavButton(
+    '/users',
+    'Users',
+    users,
+    '60px',
+    path.includes('users') && (path != path) == `/users/${id}`
+  );
+  const chatsButton = createNavButton(
+    '/chats',
+    'Chats',
+    messages,
+    '69px',
+    path.includes('chats')
+  );
+  const homeButton = createNavButton('/', 'Home', home, '43px', path == '/');
+  const profileButton = createNavButton(
+    `/users/${id}`,
+    'Profile',
+    profile,
+    '56px',
+    path == `/users/${id}`
+  );
+  const settingsButton = createNavButton(
+    '/settings',
+    'Settings',
+    settings,
+    '35px',
+    path == '/settings'
+  );
   const navButtonsMobile = [
-    createNavButton('/users', 'Users', users, '60px', path.includes('users')),
-    createNavButton(
-      '/chats',
-      'Chats',
-      messages,
-      '69px',
-      path.includes('chats')
-    ),
-    createNavButton('/', 'Home', home, '43px', path == '/'),
-    createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
-    createNavButton(
-      '/settings',
-      'Settings',
-      settings,
-      '35px',
-      path == '/settings'
-    ),
+    usersButton,
+    chatsButton,
+    homeButton,
+    profileButton,
+    settingsButton,
   ];
-
   const navButtonsDesktop = [
-    createNavButton('/', 'Home', home, '43px', path == '/'),
-    createNavButton(
-      '/chats',
-      'Chats',
-      messages,
-      '69px',
-      path.includes('chats')
-    ),
-    createNavButton('/profile', 'Profile', profile, '56px', path == '/profile'),
-    createNavButton('/users', 'Users', users, '60px', path.includes('users')),
+    homeButton,
+    chatsButton,
+    profileButton,
+    usersButton,
   ];
   return (
     <>
