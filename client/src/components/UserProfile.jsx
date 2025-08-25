@@ -37,7 +37,6 @@ const UserProfile = ({ userId }) => {
             </h2>
           </div>
         </header>
-        <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
         <div className="mt-3 flex w-full justify-around gap-3 text-sm">
           <div className="flex items-center gap-2">
             <motion.div
@@ -82,8 +81,11 @@ const UserProfile = ({ userId }) => {
             Following
           </div>
         </div>
+        <button className="blue-button mt-3 w-full px-7 py-0.5" disabled={true}>
+          Follow
+        </button>
         <motion.p
-          className="mt-2 h-12 w-full rounded-sm text-xl font-bold"
+          className="mt-3 h-12 w-full rounded-sm text-xl font-bold"
           style={{ backgroundColor: '#fff7ed' }}
           animate={{ backgroundColor: '#ccfbf1' }}
           transition={{
@@ -107,13 +109,13 @@ const UserProfile = ({ userId }) => {
           </h2>
         </div>
       </header>
-      <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
       <div className="mt-3 flex w-full justify-around gap-3 text-sm">
         <div>100 Posts</div>
         <div>100 Followers</div>
         <div>100 Following</div>
       </div>
-      <p className="mt-3 px-2">{user && user.bio}</p>
+      <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
+      <p className="mt-3 text-center">{user && user.bio}</p>
     </section>
   );
 };
