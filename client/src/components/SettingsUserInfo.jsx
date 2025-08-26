@@ -81,9 +81,6 @@ const SettingsUserInfo = () => {
 
   return (
     <>
-      <header className="yellow-block">
-        <h2 className="font-chiikawa py-2 text-center text-lg">Edit Profile</h2>
-      </header>
       {isLoading ? (
         <LoadingElement />
       ) : (

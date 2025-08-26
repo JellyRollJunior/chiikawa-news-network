@@ -127,8 +127,9 @@ VITE_SERVER_URL
     - Settings page: convert profile to settings
         - edit profile pic
         - large name UI
+        - logout
     - extract loading circle, loading bar, etc
-    - settings nav overflow on selected
+    - move all stickers to bottom of html
 
 - server
 

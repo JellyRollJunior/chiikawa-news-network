@@ -75,7 +75,7 @@ const NavigationPageWrapper = ({ children }) => {
   );
   const settingsButton = createNavButton(
     '/settings',
-    'Settings',
+    'Edit',
     settings,
     '35px',
     path == '/settings'
