@@ -4,13 +4,14 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useEditBio } from '../hooks/useEditBio.js';
 
 const SettingsUserInfo = () => {
-  const { editBio, isLoading: isEditingBio  } = useEditBio();
-  const { id, bio, setBio, username, avatar, isLoading } = useContext(CurrentContext);
+  const { editBio, isLoading: isEditingBio } = useEditBio();
+  const { id, bio, setBio, username, avatar, isLoading } =
+    useContext(CurrentContext);
   const [bioTextarea, setBioTextarea] = useState(bio);
 
   useEffect(() => {
     setBioTextarea(bio);
-  }, [bio])
+  }, [bio]);
 
   const handleEditBio = async (event) => {
     event.preventDefault();
@@ -34,7 +35,7 @@ const SettingsUserInfo = () => {
         <form className="flex flex-col" onSubmit={handleEditBio}>
           <h3 className="mt-2 font-medium">Bio</h3>
           <textarea
-            className="mt-2 w-full rounded-md min-h-24 border-pink-200 border-3 px-1"
+            className="border-3 mt-2 min-h-32 w-full rounded-md border-pink-200 px-1 focus:outline-2 focus:outline-green-300"
             autoFocus
             name="bio"
             id="bio"
@@ -44,7 +45,10 @@ const SettingsUserInfo = () => {
             maxLength={350}
             required
           />
-          <button className="blue-button ml-auto mt-2 px-3 py-1">
+          <button
+            className="blue-button ml-auto mt-2 px-3 py-1"
+            disabled={isEditingBio}
+          >
             Confirm Edit
           </button>
         </form>
