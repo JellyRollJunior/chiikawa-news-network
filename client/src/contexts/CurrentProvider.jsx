@@ -6,6 +6,9 @@ const CurrentContext = createContext({
   username: null,
   bio: null,
   avatar: null,
+  isLoading: null,
+  setBio: () => {},
+  setAvatar: () => {},
 });
 
 const CurrentProvider = ({ children }) => {
