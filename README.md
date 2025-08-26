@@ -127,10 +127,10 @@ VITE_SERVER_URL
     - Settings page: convert profile to settings
         - editing is done on settings page
         - bug: cannot edit profile pic on mobile
-        - edit bio
         - edit profile pic
         - stickers
-        - loading animation
+        - large name UI
+    - extract loading circle, loading bar, etc
 
 - server
 

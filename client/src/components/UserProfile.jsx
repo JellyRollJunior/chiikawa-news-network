@@ -94,7 +94,7 @@ const UserProfile = ({ userId }) => {
             duration: 0.8,
             ease: 'easeInOut',
           }}
-        ></motion.p>
+        />
       </section>
     );
   }
