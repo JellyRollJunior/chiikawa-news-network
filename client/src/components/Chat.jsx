@@ -62,10 +62,7 @@ const Chat = () => {
 
   return (
     <div className="main-container relative mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
-      <img
-        className="absolute -right-[22px] -top-[18px] w-[84px]"
-        src={shisaBento}
-      />
+      <img className="drop-shadow-pink-outline absolute -right-[22px] -top-[18px] w-[84px]" src={shisaBento} />
       <header className="yellow-block block-shadow mx-2 mt-3 flex gap-2 rounded-lg px-4 py-4">
         <Avatar avatar={chat && chat.avatar} size={3} />
         <div className="flex flex-col justify-center">
@@ -79,7 +76,14 @@ const Chat = () => {
         {!isPublicChat && (
           <DotsMenu>
             {isTwoPersonChat && (
-              <DotsMenuItem label="View profile" onClick={() => navigate(`/users/${chat.users.find((user) => user.id != id).id}`)} />
+              <DotsMenuItem
+                label="View profile"
+                onClick={() =>
+                  navigate(
+                    `/users/${chat.users.find((user) => user.id != id).id}`
+                  )
+                }
+              />
             )}
             <DotsMenuItem
               label="Rename conversation"

@@ -129,7 +129,6 @@ VITE_SERVER_URL
         - large name UI
     - extract loading circle, loading bar, etc
     - settings nav overflow on selected
-    - pink shadows on all images
 
 - server
 

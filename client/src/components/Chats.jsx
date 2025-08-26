@@ -26,10 +26,7 @@ const Chats = ({
 
   return (
     <div className="main-container relative mx-4 mb-2 mt-3 flex flex-1 flex-col">
-      <img
-        className="absolute -bottom-[8px] -right-[16px] w-[96px]"
-        src={kaniReading}
-      />
+      <img className="drop-shadow-pink-outline absolute -bottom-[8px] -right-[16px] w-[96px]" src={kaniReading} />
       <header className="yellow-block mx-2 mt-3 flex items-end justify-between pl-5 pr-2">
         <h2 className="text-shadow-wrap mb-1 mt-2 text-3xl font-bold">
           {username}
@@ -48,11 +45,8 @@ const Chats = ({
           onClick={openNewChatModal}
         >
           New Conversation
-          <img className="w-13 absolute -left-[48px] top-0" src={hachiCamera} />
-          <img
-            className="w-13 absolute -right-[48px] bottom-[4px]"
-            src={chiiPeace}
-          />
+          <img className="w-13 drop-shadow-pink-outline absolute -left-[48px] top-0" src={hachiCamera} />
+          <img className="w-13 drop-shadow-pink-outline absolute -right-[48px] bottom-[4px]" src={chiiPeace} />
         </button>
       </div>
       <section className="yellow-block mx-2 mt-3 pb-1 pt-2 sm:pb-2 md:pb-1">
