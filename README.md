@@ -129,7 +129,6 @@ VITE_SERVER_URL
         - large name UI
         - logout
     - extract loading circle, loading bar, etc
-    - move all stickers to bottom of html
 
 - server
 
