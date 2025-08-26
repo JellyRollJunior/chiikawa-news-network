@@ -125,12 +125,11 @@ VITE_SERVER_URL
 ## TODO
 - client
     - Settings page: convert profile to settings
-        - editing is done on settings page
-        - bug: cannot edit profile pic on mobile
         - edit profile pic
-        - stickers
         - large name UI
     - extract loading circle, loading bar, etc
+    - settings nav overflow on selected
+    - pink shadows on all images
 
 - server
 
