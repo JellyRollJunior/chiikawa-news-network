@@ -1,11 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Avatar } from './Avatar.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { useUploadAvatar } from '../hooks/useUploadAvatar.js';
 import { useEditBio } from '../hooks/useEditBio.js';
+import { Avatar } from './Avatar.jsx';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { useUploadAvatar } from '../hooks/useUploadAvatar.js';
-import { useLogout } from '../hooks/useLogout.js';
 
 const LoadingElement = () => {
   return (
@@ -64,11 +63,9 @@ const LoadingElement = () => {
 };
 
 const SettingsUserInfo = () => {
-  const { id, bio, setBio, username, avatar, isLoading } =
-    useContext(CurrentContext);
-  const { editBio, isLoading: isEditingBio } = useEditBio();
+  const { id, bio, setBio, avatar, isLoading } = useContext(CurrentContext);
   const { uploadAvatar, isLoading: isUploadingAvatar } = useUploadAvatar();
-  const { logout } = useLogout();
+  const { editBio, isLoading: isEditingBio } = useEditBio();
   const [bioTextarea, setBioTextarea] = useState('');
   const fileInputRef = useRef(null);
 
@@ -105,38 +102,28 @@ const SettingsUserInfo = () => {
         <LoadingElement />
       ) : (
         <>
-          <section>
-            {username}
-          </section>
-          <section className="mt-2 flex gap-2">
+          <section className="mt-3 flex gap-3">
             <div className="yellow-block row-span-2 flex items-center px-3 py-2">
               <Avatar avatar={avatar ? avatar : null} size={6} />
             </div>
-            <div className="w-full">
-              <div className="yellow-block flex justify-center px-3 py-2">
-                <button
-                  className="blue-button px-3 py-1"
-                  onClick={handleClickChangePhoto}
-                  disabled={isUploadingAvatar}
-                >
-                  Change Picture
-                </button>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  className="hidden"
-                  onChange={handleUploadAvatar}
-                  accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
-                />
-              </div>
-              <div className="yellow-block flex mt-2 justify-center px-3 py-2">
-                <button className="pink-button px-7 py-1" onClick={logout}>
-                  Logout
-                </button>
-              </div>
+            <div className="yellow-block flex w-full items-center justify-center px-3 py-2">
+              <button
+                className="blue-button px-3 py-1"
+                onClick={handleClickChangePhoto}
+                disabled={isUploadingAvatar}
+              >
+                Change Picture
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                className="hidden"
+                onChange={handleUploadAvatar}
+                accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+              />
             </div>
           </section>
-          <section className="yellow-block mt-2 px-3 py-2">
+          <section className="yellow-block mt-3 px-3 py-2">
             <form className="flex flex-col" onSubmit={handleEditBio}>
               <h3 className="mt-2 font-medium">Bio</h3>
               <textarea

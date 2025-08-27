@@ -104,7 +104,7 @@ const UserProfile = ({ userId }) => {
       <header className="ml-2 flex">
         <Avatar avatar={user && user.avatar} size={5} />
         <div className="mt-2 flex w-full flex-col items-center justify-center">
-          <h2 className="font-chiikawa border-5 max-w-45 xxs:max-w-55 xs:max-w-64 -mt-2 shrink self-center break-words border-dashed border-pink-300 px-2 py-2 text-sm font-bold">
+          <h2 className="font-chiikawa border-5 max-w-45 xxs:max-w-55 xs:max-w-64 -mt-2 break-words border-dashed border-pink-300 px-2 py-2 text-sm font-bold">
             {user && user.username}
           </h2>
         </div>

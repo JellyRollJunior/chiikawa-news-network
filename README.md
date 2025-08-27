@@ -125,9 +125,10 @@ VITE_SERVER_URL
 ## TODO
 - client
     - Settings page: convert profile to settings
-        - edit profile pic
-        - large name UI
+        - stickers
+        - button /settings
     - extract loading circle, loading bar, etc
+    - chat: mt-3
 
 - server
 
