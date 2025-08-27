@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Avatar } from './Avatar.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useEditBio } from '../hooks/useEditBio.js';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
+import { useUploadAvatar } from '../hooks/useUploadAvatar.js';
 
 const LoadingElement = () => {
   return (
@@ -62,10 +63,12 @@ const LoadingElement = () => {
 };
 
 const SettingsUserInfo = () => {
-  const { editBio, isLoading: isEditingBio } = useEditBio();
   const { id, bio, setBio, username, avatar, isLoading } =
     useContext(CurrentContext);
+  const { editBio, isLoading: isEditingBio } = useEditBio();
+  const { uploadAvatar, isLoading: isUploadingAvatar } = useUploadAvatar();
   const [bioTextarea, setBioTextarea] = useState('');
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     setBioTextarea(bio ? bio : '');
@@ -79,6 +82,21 @@ const SettingsUserInfo = () => {
     }
   };
 
+  const handleClickChangePhoto = () => {
+    if (fileInputRef) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleUploadAvatar = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('avatar', file);
+      uploadAvatar(formData);
+    }
+  };
+
   return (
     <>
       {isLoading ? (
@@ -88,9 +106,20 @@ const SettingsUserInfo = () => {
           <section className="yellow-block mt-2 flex items-center px-3 py-2">
             <Avatar avatar={avatar ? avatar : null} size={3} />
             <h3 className="ml-3">{username}</h3>
-            <button className="blue-button ml-auto px-3 py-1">
+            <button
+              className="blue-button ml-auto px-3 py-1"
+              onClick={handleClickChangePhoto}
+              disabled={isUploadingAvatar}
+            >
               Change Photo
             </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
+              onChange={handleUploadAvatar}
+              accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+            />
           </section>
           <section className="yellow-block mt-2 px-3 py-2">
             <form className="flex flex-col" onSubmit={handleEditBio}>
