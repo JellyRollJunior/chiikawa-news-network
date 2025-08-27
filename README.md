@@ -127,7 +127,6 @@ VITE_SERVER_URL
     - Settings page: convert profile to settings
         - edit profile pic
         - large name UI
-        - logout
     - extract loading circle, loading bar, etc
 
 - server
