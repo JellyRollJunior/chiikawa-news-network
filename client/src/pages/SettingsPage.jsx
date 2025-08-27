@@ -1,6 +1,5 @@
 import { SettingsUserInfo } from '../components/SettingsUserInfo.jsx';
 import trioScouting from '../assets/images/trio-scouting.png';
-import momonga from '../assets/icons/momonga-icon.png';
 import { useLogout } from '../hooks/useLogout.js';
 
 const SettingsPage = () => {
@@ -19,7 +18,6 @@ const SettingsPage = () => {
           </button>
         </div>
         <img className="drop-shadow-pink-outline absolute bottom-[6px] left-0 w-[100px]" src={trioScouting} />
-        <img className="drop-shadow-pink-outline absolute bottom-[8px] right-[8px] w-[50px]" src={momonga} />
       </div>
     </div>
   );

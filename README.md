@@ -125,10 +125,11 @@ VITE_SERVER_URL
 ## TODO
 - client
     - Settings page: convert profile to settings
-        - stickers
-        - button /settings
+        - nav button /settings
+        - settings overflow scroll
     - extract loading circle, loading bar, etc
     - chat: mt-3
+    - nav isolate stacking ocntext (usagi ears appear behind the main-containers)
 
 - server
 

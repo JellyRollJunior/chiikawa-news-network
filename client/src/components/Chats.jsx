@@ -2,8 +2,6 @@ import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
 import { ChatsList } from './ChatsList.jsx';
-import chiiPeace from '../assets/images/chii-peace.png';
-import hachiCamera from '../assets/images/hachi-camera-back.png';
 import kaniReading from '../assets/images/kani-reading.png';
 
 const Chats = ({
@@ -44,8 +42,7 @@ const Chats = ({
           onClick={openNewChatModal}
         >
           New Conversation
-          <img className="w-13 drop-shadow-pink-outline absolute -left-[48px] top-0" src={hachiCamera} />
-          <img className="w-13 drop-shadow-pink-outline absolute -right-[48px] bottom-[4px]" src={chiiPeace} />
+          
         </button>
       </div>
       <section className="yellow-block mx-2 mt-3 pb-1 pt-2 sm:pb-2 md:pb-1">
