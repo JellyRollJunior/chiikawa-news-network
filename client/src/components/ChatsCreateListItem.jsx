@@ -18,7 +18,7 @@ const ChatsCreateListItem = ({
         onClick={onClick}
         type="button"
       >
-        <Avatar avatar={avatar} size={2.5} chatStyling={true} />
+        <Avatar avatar={avatar} size={2.5} secondaryStyling={true} />
         <div className="flex items-center">
           <h4 className="text-lg font-medium">{username}</h4>
         </div>

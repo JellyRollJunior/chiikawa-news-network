@@ -48,7 +48,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
                 <Avatar
                   avatar={message.sender.avatar}
                   size={2.5}
-                  chatStyling={true}
+                  secondaryStyling={true}
                 />
                 <div
                   className={`min-w-26 w-fit rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
