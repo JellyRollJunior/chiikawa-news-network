@@ -20,7 +20,7 @@ const useUsers = () => {
                 handleTokenErrors(error);
                 toast('Unable to fetch users');
             } finally {
-                setIsLoading(false);
+                setIsLoading(true);
             }
         };
 
