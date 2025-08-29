@@ -1,27 +1,18 @@
 import { Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
+import { LoadingElement } from './LoadingElement.jsx';
 
 const ChatsLoadingItem = ({ delay }) => {
   return (
-    <motion.li
+    <LoadingElement
       className="mx-1 flex gap-2 rounded-md px-2 py-2"
-      style={{ backgroundColor: '#fff7ed' }}
-      animate={{ backgroundColor: '#ccfbf1' }}
-      transition={{
-        repeat: Infinity,
-        repeatType: 'reverse',
-        duration: 0.8,
-        delay: delay,
-        ease: 'easeInOut',
-      }}
+      delay={delay}
     >
       <div className="size-14 shrink-0 rounded-full bg-stone-300"></div>
       <div className="flex flex-col justify-center">
         <h4 className="w-18 h-4 rounded-sm bg-stone-300"></h4>
         <p className="w-30 mt-1 h-4 items-start justify-self-start rounded-sm bg-stone-300"></p>
       </div>
-    </motion.li>
+    </LoadingElement>
   );
 };
 
