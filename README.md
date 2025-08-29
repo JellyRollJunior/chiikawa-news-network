@@ -68,6 +68,7 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 - Backend
 
 - Frontend
+    - revisiting how stacking contexts work
 
 ### Retrospective aka yapping
 
@@ -124,8 +125,6 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - bug: nav isolate stacking ocntext (usagi ears appear behind the main-containers)
-    - bug: shisa bento goes over screen
     - bug: profile, settings, chat overflow scroll
 
 - server
@@ -142,3 +141,5 @@ VITE_SERVER_URL
     - update login/signup 
         - add images and stuff idk just a form is kinda boring
     - test UI with long usernames
+    - landscape orientation mobile (message please use portrait / block use in landscape)
+        - when keyboard pops up, does everything go to shit? (probably...)
