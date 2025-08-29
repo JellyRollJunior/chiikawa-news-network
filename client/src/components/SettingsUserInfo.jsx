@@ -5,35 +5,14 @@ import { useEditBio } from '../hooks/useEditBio.js';
 import { Avatar } from './Avatar.jsx';
 import chiiPeace from '../assets/images/chii-peace.png';
 import hachiCamera from '../assets/images/hachi-camera-back.png';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
+import { LoadingElement } from './LoadingElement.jsx';
 
-const LoadingElement = () => {
+const LoadingElements = () => {
   return (
     <>
       <section className="yellow-block mt-2 flex items-center px-3 py-2">
-        <motion.div
-          className="size-12 rounded-full"
-          style={{ backgroundColor: '#fff7ed' }}
-          animate={{ backgroundColor: '#ccfbf1' }}
-          transition={{
-            repeat: Infinity,
-            repeatType: 'reverse',
-            duration: 0.8,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="ml-3 h-5 w-16 rounded-full"
-          style={{ backgroundColor: '#fff7ed' }}
-          animate={{ backgroundColor: '#ccfbf1' }}
-          transition={{
-            repeat: Infinity,
-            repeatType: 'reverse',
-            duration: 0.8,
-            ease: 'easeInOut',
-          }}
-        />
+        <LoadingElement className='size-12 rounded-full' />
+        <LoadingElement className='ml-3 h-5 w-16 rounded-full' />
         <button className="blue-button ml-auto px-3 py-1" disabled={true}>
           Change Photo
         </button>
@@ -41,17 +20,7 @@ const LoadingElement = () => {
       <section className="yellow-block mt-2 px-3 py-2">
         <form className="flex flex-col">
           <h3 className="mt-2 font-medium">Bio</h3>
-          <motion.p
-            className="mt-2 h-32 w-full rounded-sm"
-            style={{ backgroundColor: '#fff7ed' }}
-            animate={{ backgroundColor: '#ccfbf1' }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'reverse',
-              duration: 0.8,
-              ease: 'easeInOut',
-            }}
-          />
+          <LoadingElement className='mt-2 h-32 w-full rounded-sm' />
           <button
             className="blue-button ml-auto mt-2 px-3 py-1"
             disabled={true}
@@ -101,7 +70,7 @@ const SettingsUserInfo = () => {
   return (
     <>
       {isLoading ? (
-        <LoadingElement />
+        <LoadingElements />
       ) : (
         <>
           <section className="mt-3 yellow-block flex flex-col items-center py-2">

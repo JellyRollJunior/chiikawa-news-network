@@ -26,7 +26,7 @@ const useCurrent = () => {
                 handleTokenErrors(error);
                 toast('unable to fetch user data');
             } finally {
-                setIsLoading(false);
+                setIsLoading(true);
             }
         };
 

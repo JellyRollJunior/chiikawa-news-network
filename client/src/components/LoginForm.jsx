@@ -21,10 +21,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form
-      className="px-2 mt-6 flex w-full flex-col"
-      onSubmit={handleLogin}
-    >
+    <form className="mt-6 flex w-full flex-col px-2" onSubmit={handleLogin}>
       <label
         className="text-shadow-wrap ml-1 font-medium text-amber-800"
         htmlFor={username}
@@ -62,9 +59,7 @@ const LoginForm = () => {
         required={true}
       />
       <div className="mt-4">
-        <button className="blue-button w-full  px-5 py-2 ">
-          Log In
-        </button>
+        <button className="blue-button w-full px-5 py-2">Log In</button>
       </div>
     </form>
   );
