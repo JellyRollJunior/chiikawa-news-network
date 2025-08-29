@@ -126,7 +126,6 @@ VITE_SERVER_URL
 - client
     - extract loading circle, loading bar, etc
         - inspect loading animations
-            - messages
             - create chat list item
             - chat list item    
     - bug: nav isolate stacking ocntext (usagi ears appear behind the main-containers)

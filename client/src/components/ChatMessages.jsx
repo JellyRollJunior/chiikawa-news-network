@@ -13,30 +13,6 @@ const SystemMessage = ({ children }) => {
   );
 };
 
-const MessagesLoadingAnimation = () => {
-  return (
-    <SystemMessage>
-      {[...Array(3)].map((item, index) => (
-        <Fragment key={index}>
-          <motion.span
-            className="inline-block"
-            animate={{ translateY: -12 }}
-            transition={{
-              repeat: Infinity,
-              repeatType: 'reverse',
-              duration: 0.8,
-              delay: 0.2 * index,
-              ease: 'easeInOut',
-            }}
-          >
-            <div className="size-1 rounded-full bg-black"></div>
-          </motion.span>{' '}
-        </Fragment>
-      ))}
-    </SystemMessage>
-  );
-};
-
 const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
   const { id } = useContext(CurrentContext);
   if (!messages) messages = [];
@@ -49,49 +25,68 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
     );
   };
 
-  if (isLoading) {
-    return (
-      <ul className="flex flex-col gap-3">
-        <MessagesLoadingAnimation />
-      </ul>
-    );
-  }
-
   return (
     <ul className="flex flex-col gap-3">
-      {messages.length == 0 && (
-        <SystemMessage>Start the conversation with a message!</SystemMessage>
-      )}
-      {messages.map((message, index) => (
-        <Fragment key={`${message.id}-wrapper`}>
-          {shouldDisplayTimeMessage(message.sendTime, index) && (
+      {!isLoading ? (
+        <>
+          {messages.length == 0 && (
             <SystemMessage>
-              {format(new Date(message.sendTime), 'EEEE LLLL do')}
+              Start the conversation with a message!
             </SystemMessage>
           )}
-          <li
-            key={message.id}
-            className={`max-w-4/5 flex items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
-          >
-            <Avatar
-              avatar={message.sender.avatar}
-              size={2.5}
-              chatStyling={true}
-            />
-            <div
-              className={`min-w-26 w-fit rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
-            >
-              <h3>{message.content}</h3>
-              <p
-                className={`text-sm text-gray-500 ${message.sender.id == id && 'justify-self-end'}`}
+          {messages.map((message, index) => (
+            <Fragment key={`${message.id}-wrapper`}>
+              {shouldDisplayTimeMessage(message.sendTime, index) && (
+                <SystemMessage>
+                  {format(new Date(message.sendTime), 'EEEE LLLL do')}
+                </SystemMessage>
+              )}
+              <li
+                key={message.id}
+                className={`max-w-4/5 flex items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
               >
-                {!isPrivateChat && `${message.sender.username} — `}
-                {format(new Date(message.sendTime), 'h:mmaaa')}
-              </p>
-            </div>
-          </li>
-        </Fragment>
-      ))}
+                <Avatar
+                  avatar={message.sender.avatar}
+                  size={2.5}
+                  chatStyling={true}
+                />
+                <div
+                  className={`min-w-26 w-fit rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
+                >
+                  <h3>{message.content}</h3>
+                  <p
+                    className={`text-sm text-gray-500 ${message.sender.id == id && 'justify-self-end'}`}
+                  >
+                    {!isPrivateChat && `${message.sender.username} — `}
+                    {format(new Date(message.sendTime), 'h:mmaaa')}
+                  </p>
+                </div>
+              </li>
+            </Fragment>
+          ))}
+        </>
+      ) : (
+        /* Loading Display */
+        <SystemMessage>
+          {[...Array(3)].map((item, index) => (
+            <Fragment key={index}>
+              <motion.span
+                className="inline-block"
+                animate={{ translateY: -12 }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  duration: 0.8,
+                  delay: 0.2 * index,
+                  ease: 'easeInOut',
+                }}
+              >
+                <div className="size-1 rounded-full bg-amber-900"></div>
+              </motion.span>{' '}
+            </Fragment>
+          ))}
+        </SystemMessage>
+      )}
     </ul>
   );
 };
