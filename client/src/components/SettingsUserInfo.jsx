@@ -42,7 +42,7 @@ const LoadingElement = () => {
         <form className="flex flex-col">
           <h3 className="mt-2 font-medium">Bio</h3>
           <motion.p
-            className="mt-2 h-32 w-full rounded-sm text-xl font-bold"
+            className="mt-2 h-32 w-full rounded-sm"
             style={{ backgroundColor: '#fff7ed' }}
             animate={{ backgroundColor: '#ccfbf1' }}
             transition={{

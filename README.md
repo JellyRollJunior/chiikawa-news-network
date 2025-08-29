@@ -125,7 +125,6 @@ VITE_SERVER_URL
 ## TODO
 - client
     - extract loading circle, loading bar, etc
-    - chat: mt-3
     
     - bug: nav isolate stacking ocntext (usagi ears appear behind the main-containers)
     - bug: profile, settings, chat overflow scroll

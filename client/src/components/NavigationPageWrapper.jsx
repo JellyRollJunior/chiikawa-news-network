@@ -127,8 +127,8 @@ const NavigationPageWrapper = ({ children }) => {
         ))}
         <div className="md:mt-10 md:w-full">
           <NavButton
-            link="/profile"
-            label="Settings"
+            link="/settings"
+            label="edit"
             src={settings}
             srcWidth="35px"
             selected={path == '/settings'}
