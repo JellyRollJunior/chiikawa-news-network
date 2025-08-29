@@ -4,7 +4,6 @@ import { useUsers } from '../hooks/useUsers.js';
 import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
-import { ChatsCreateLoading } from './ChatsCreateLoading.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 
 const ChatsCreateModal = ({ closeFunction }) => {
@@ -57,19 +56,25 @@ const ChatsCreateModal = ({ closeFunction }) => {
             <span className="text-red-400">{userError}</span>
           </label>
           <ul className="scrollbar-thin h-40 overflow-y-scroll">
-            {isLoading && <ChatsCreateLoading />}
-            {!isLoading &&
-              filteredUsers.map((user) => (
-                <Fragment key={user.id}>
-                  <ChatsCreateListItem
-                    userId={user.id}
-                    avatar={user.avatar}
-                    username={user.username}
-                    onClick={() => handleChatListItemClick(user.id)}
-                    selected={selectedUsers.includes(user.id)}
-                  />
-                </Fragment>
-              ))}
+            {!isLoading
+              ? filteredUsers.map((user) => (
+                  <Fragment key={user.id}>
+                    <ChatsCreateListItem
+                      userId={user.id}
+                      avatar={user.avatar}
+                      username={user.username}
+                      onClick={() => handleChatListItemClick(user.id)}
+                      selected={selectedUsers.includes(user.id)}
+                    />
+                  </Fragment>
+                ))
+              : /* Loading Display */
+                [...Array(4)].map((item, index) => (
+                  <Fragment key={index}>
+                    <ChatsCreateListItem isLoading={true} />
+                    <ChatsCreateListItem isLoading={true} loadingDelay={0.8} />
+                  </Fragment>
+                ))}
           </ul>
           <input
             className="block-shadow mb-2 mt-2 h-10 rounded-lg bg-white pl-3"
