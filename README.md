@@ -124,22 +124,23 @@ VITE_SERVER_URL
 
 ## TODO
 - client
-    - Settings page: convert profile to settings
-        - nav button /settings
-        - settings overflow scroll
     - extract loading circle, loading bar, etc
     - chat: mt-3
-    - nav isolate stacking ocntext (usagi ears appear behind the main-containers)
+    
+    - bug: nav isolate stacking ocntext (usagi ears appear behind the main-containers)
+    - bug: profile, settings, chat overflow scroll
 
 - server
 
 - order
-    - Settings page
-        - edit avatar
-        - edit bio
-        - logout
     - github login
     - users page
+    - posts
+        - likes
+    - post comments
+    - follows
+
+- low prio
     - update login/signup 
         - add images and stuff idk just a form is kinda boring
     - test UI with long usernames
