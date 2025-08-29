@@ -125,6 +125,7 @@ VITE_SERVER_URL
 ## TODO
 - client
     - bug: nav isolate stacking ocntext (usagi ears appear behind the main-containers)
+    - bug: shisa bento goes over screen
     - bug: profile, settings, chat overflow scroll
 
 - server

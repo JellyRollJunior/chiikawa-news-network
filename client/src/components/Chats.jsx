@@ -55,7 +55,7 @@ const Chats = ({
       </section>
       <section className="yellow-block mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden pb-1 pt-2 md:pb-2">
         <ChatsSectionTitle title="Conversations" refreshBtn={refetchChats} />
-        <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll">
+        <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll scrollbar-track-yellow-50">
           <ChatsList chats={filteredChats} isLoading={isLoading} />
         </main>
       </section>

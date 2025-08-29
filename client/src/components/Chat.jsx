@@ -117,7 +117,7 @@ const Chat = () => {
       {isDeleteModalOpen && (
         <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
       )}
-      <img className="drop-shadow-pink-outline absolute -right-[22px] -top-[18px] w-[84px]" src={shisaBento} />
+      <img className="drop-shadow-pink-outline absolute -right-[20px] -top-[20px] w-[84px]" src={shisaBento} />
     </div>
   );
 };
