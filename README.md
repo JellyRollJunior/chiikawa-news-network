@@ -42,36 +42,35 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 
 ### Frontend
 
-- React (with Vite)
-- React Router
-- Tailwind CSS
-- Socket.io for real-time communication
-- Motion for smooth animations
-- Date-fns for date formatting
+-   React (with Vite)
+-   React Router
+-   Tailwind CSS
+-   Socket.io for real-time communication
+-   Motion for smooth animations
+-   Date-fns for date formatting
 
 ### Backend
 
-- Node.js with Express for REST API
-- Prisma ORM w/ PostgreSQL database
-- Socket.io
-- Supabase Storage for saving user uploaded profile pictures
-- Multer and Sharp for file upload and image processing
-- Express validator for endpoint input validation
-- Jsonwebtoken & bcryptjs from authentication / authorization
+-   Node.js with Express for REST API
+-   Prisma ORM w/ PostgreSQL database
+-   Socket.io
+-   Supabase Storage for saving user uploaded profile pictures
+-   Multer and Sharp for file upload and image processing
+-   Express validator for endpoint input validation
+-   Jsonwebtoken & bcryptjs from authentication / authorization
 
 ## App Showcase
 
 ## Learning Outcomes
 
-- Interaction
+-   Interaction
 
-- Backend
+-   Backend
 
-- Frontend
-    - revisiting how stacking contexts work
+-   Frontend
+    -   revisiting how stacking contexts work
 
 ### Retrospective aka yapping
-
 
 ## Start commands
 
@@ -124,32 +123,45 @@ VITE_SERVER_URL
 | Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
 
 ## TODO
-- client
-    - bug: profile, settings, chat overflow scroll
 
-- server
-    - Posts
-        - prisma schema
-        - POST /posts
-        - GET /posts (get all posts)
-            - when implementing followers -> only serve posts created by followed users
-        - serving posts on /users route
-            - /users/:userId/posts
-        - liking posts
-            - PATCH /posts/:postId/likes
+-   client
+    -   bug: profile, settings, chat overflow scroll
 
+-   server
+    -   Posts
+        -   db queries
+            -   get
+            -   getbyID
+            -   create
+            -   like
+        -   POST /posts
+        -   GET /posts (get all posts)
+        -   serving posts on /users route
+            -   /users/:userId/posts
+        -   liking posts
+            -   PATCH /posts/:postId/likes
 
-- order
-    - github login
-    - users page
-    - post comments
-    - follows
+-   order
+    -   github login
+    -   users page
+    -   post comments
+    -   follows
+        -   when implementing followers -> only serve posts created by followed users
 
-- low prio
-    - update login/signup 
-        - add images and stuff idk just a form is kinda boring
-    - test UI with long usernames
-    - landscape orientation mobile (message please use portrait / block use in landscape)
-        - when keyboard pops up, does everything go to shit? (probably...)
-    - PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
-    
+-   low prio
+    -   update login/signup
+        -   add images and stuff idk just a form is kinda boring
+    -   test UI with long usernames
+    -   landscape orientation mobile (message please use portrait / block use in landscape)
+        -   when keyboard pops up, does everything go to shit? (probably...)
+    -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
+    -   refactor returnDataPresets. It's ugly and not extendable tbh
+
+## DATA
+
+-   ad5d9cc2-bf80-4ab2-90c0-e60619883660 | kurimanju
+-   21cb2aab-61ee-498a-b438-f0524f342441 | momonga
+-   9c49b34e-3ce1-46ab-b80d-73ac3e6654f5 | hachiware
+-   b5f53d61-373e-4777-804a-5d6cd4330d02 | chiikawa
+-   55e1d476-6430-4b52-936c-a84d2fed8d82 | shisaa
+-   1736b7af-8c60-4c2b-9254-6c08662fb2e4 | usagii
