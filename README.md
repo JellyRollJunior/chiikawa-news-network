@@ -66,6 +66,7 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 -   Interaction
 
 -   Backend
+    -   Post: implmenting user hasLiked field - Prisma doesn't support CASE statement so we jerry rigged one
 
 -   Frontend
     -   revisiting how stacking contexts work
@@ -134,8 +135,9 @@ VITE_SERVER_URL
 
         -   db queries
             -   like
-                -   get posts return likes
+                -   rename likes to likers
                 -   get posts returns if current user likes post
+                -   unlike
         -   POST /posts
         -   GET /posts (get all posts)
         -   serving posts on /users route

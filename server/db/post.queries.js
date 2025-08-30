@@ -3,7 +3,7 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
-const getPosts = async () => {
+const getPosts = async (userId) => {
     try {
         const data = await prisma.post.findMany({
             include: {
@@ -12,6 +12,14 @@ const getPosts = async () => {
                         id: true,
                         username: true,
                         avatar: true,
+                    },
+                },
+                likes: {
+                    select: {
+                        id: true,
+                    },
+                    where: {
+                        id: userId,
                     },
                 },
                 _count: {
@@ -25,7 +33,7 @@ const getPosts = async () => {
     }
 };
 
-const getPostsByAuthor = async (authorId) => {
+const getPostsByAuthor = async (userId, authorId) => {
     try {
         const data = await prisma.post.findMany({
             where: {
@@ -37,6 +45,14 @@ const getPostsByAuthor = async (authorId) => {
                         id: true,
                         username: true,
                         avatar: true,
+                    },
+                },
+                likes: {
+                    select: {
+                        id: true,
+                    },
+                    where: {
+                        id: userId,
                     },
                 },
                 _count: {
