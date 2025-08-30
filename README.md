@@ -130,9 +130,6 @@ VITE_SERVER_URL
 -   server
     -   Posts
         -   db queries
-            -   get
-            -   getbyID
-            -   create
             -   like
         -   POST /posts
         -   GET /posts (get all posts)

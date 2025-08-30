@@ -1,12 +1,33 @@
 import { PrismaClient } from '@prisma/client';
 import { DatabaseError } from '../errors/DatabaseError.js';
-import { USERS_INCLUDE } from './returnDataPresets.js';
 
 const prisma = new PrismaClient();
 
 const getPosts = async () => {
     try {
         const data = await prisma.post.findMany();
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve posts');
+    }
+};
+
+const getPostsByAuthor = async (authorId) => {
+    try {
+        const data = await prisma.post.findMany({
+            where: {
+                authorId,
+            },
+            include: {
+                author: {
+                    select: {
+                        id: true,
+                        username: true,
+                        avatar: true,
+                    },
+                },
+            },
+        });
         return data;
     } catch (error) {
         throw new DatabaseError('Unable to retrieve posts');
@@ -22,9 +43,9 @@ const createPost = async (authorId, title, content, media = null) => {
                 media,
                 author: {
                     connect: {
-                        id: authorId
-                    }
-                }
+                        id: authorId,
+                    },
+                },
             },
             include: {
                 author: {
@@ -32,9 +53,9 @@ const createPost = async (authorId, title, content, media = null) => {
                         id: true,
                         username: true,
                         avatar: true,
-                    }
-                }
-            }
+                    },
+                },
+            },
         });
         return data;
     } catch (error) {
@@ -42,4 +63,4 @@ const createPost = async (authorId, title, content, media = null) => {
     }
 };
 
-export { getPosts, createPost };
+export { getPosts, getPostsByAuthor, createPost };
