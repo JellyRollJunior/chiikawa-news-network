@@ -125,12 +125,17 @@ VITE_SERVER_URL
 ## TODO
 
 -   client
+
     -   bug: profile, settings, chat overflow scroll
 
 -   server
+
     -   Posts
+
         -   db queries
             -   like
+                -   get posts return likes
+                -   get posts returns if current user likes post
         -   POST /posts
         -   GET /posts (get all posts)
         -   serving posts on /users route
@@ -139,6 +144,7 @@ VITE_SERVER_URL
             -   PATCH /posts/:postId/likes
 
 -   order
+
     -   github login
     -   users page
     -   post comments
@@ -151,8 +157,12 @@ VITE_SERVER_URL
     -   test UI with long usernames
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
-    -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
     -   refactor returnDataPresets. It's ugly and not extendable tbh
+    -   POSTS
+        -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
+        -   DELETE /posts/:postId
+    -   schema 
+        -   remove authorId from all schema? not needed tbh
 
 ## DATA
 
@@ -162,3 +172,6 @@ VITE_SERVER_URL
 -   b5f53d61-373e-4777-804a-5d6cd4330d02 | chiikawa
 -   55e1d476-6430-4b52-936c-a84d2fed8d82 | shisaa
 -   1736b7af-8c60-4c2b-9254-6c08662fb2e4 | usagii
+
+-   POST
+    -   95de95c3-d28a-4040-8060-9f6d096a0b4a | kurimanju
