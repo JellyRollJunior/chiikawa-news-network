@@ -128,12 +128,20 @@ VITE_SERVER_URL
     - bug: profile, settings, chat overflow scroll
 
 - server
+    - Posts
+        - prisma schema
+        - POST /posts
+        - GET /posts (get all posts)
+            - when implementing followers -> only serve posts created by followed users
+        - serving posts on /users route
+            - /users/:userId/posts
+        - liking posts
+            - PATCH /posts/:postId/likes
+
 
 - order
     - github login
     - users page
-    - posts
-        - likes
     - post comments
     - follows
 
@@ -143,3 +151,5 @@ VITE_SERVER_URL
     - test UI with long usernames
     - landscape orientation mobile (message please use portrait / block use in landscape)
         - when keyboard pops up, does everything go to shit? (probably...)
+    - PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
+    

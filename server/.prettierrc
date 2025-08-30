@@ -1,0 +1,13 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": ["*.css", "*.ejs", "*.html", "*.json", "*.jsx"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}
