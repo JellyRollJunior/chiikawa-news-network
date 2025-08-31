@@ -5,7 +5,14 @@ import { authenticateToken } from '../middleware/handleVerifyToken.js';
 const postRouter = Router();
 
 postRouter.get('/', authenticateToken, postController.getPosts);
+postRouter.post('/', authenticateToken, postController.createPost);
+
+// likes
 postRouter.post('/:postId/likes', authenticateToken, postController.likePost);
-postRouter.delete('/:postId/likes', authenticateToken, postController.unlikePost);
+postRouter.delete(
+    '/:postId/likes',
+    authenticateToken,
+    postController.unlikePost
+);
 
 export { postRouter };

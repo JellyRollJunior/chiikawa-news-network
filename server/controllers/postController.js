@@ -12,6 +12,20 @@ const getPosts = async (req, res, next) => {
     }
 };
 
+const createPost = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const title = req.body.title;
+        const content = req.body.content;
+        // support media later (upload file to supabase & save link in db)
+        const post = await postQueries.createPost(userId, title, content);
+        const formattedPost = setLikes(post);
+        res.json(formattedPost);
+    } catch (error) {
+        next(error);
+    }
+};
+
 const likePost = async (req, res, next) => {
     try {
         const userId = req.user.id;
@@ -36,4 +50,4 @@ const unlikePost = async (req, res, next) => {
     }
 };
 
-export { getPosts, likePost, unlikePost };
+export { createPost, getPosts, likePost, unlikePost };
