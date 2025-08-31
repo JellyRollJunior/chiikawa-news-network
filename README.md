@@ -133,10 +133,6 @@ VITE_SERVER_URL
 -   server
 
     -   Posts
-        -   POST /posts
-        -   serving posts on /users route
-            -   /users/:userId/posts
-        -   unliking posts
         -   validations
         -   extract DB query like presets
 
@@ -158,6 +154,11 @@ VITE_SERVER_URL
     -   POSTS
         -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
         -   DELETE /posts/:postId
+    -   Return data in this style
+        {
+            "data": [ ... ],
+            "meta": { "count": 20, "next": "/posts?page=2" }
+        }
 
 ## DATA
 

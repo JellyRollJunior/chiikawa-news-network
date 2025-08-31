@@ -4,6 +4,7 @@ import { retrieveAvatar } from '../middleware/multer.js';
 import { resizeAvatar } from '../errors/Sharp.js';
 import { bioValidations } from '../middleware/validations.js';
 import * as userController from '../controllers/userController.js';
+import * as postController from '../controllers/postController.js';
 
 const userRouter = Router();
 
@@ -17,5 +18,6 @@ userRouter.patch(
     resizeAvatar,
     userController.patchAvatar
 );
+userRouter.get('/:userId/posts', authenticateToken, postController.getPosts);
 
 export { userRouter };

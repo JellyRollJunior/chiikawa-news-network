@@ -1,8 +1,8 @@
-import * as userQueries from '../db/user.queries.js';
 import { validateInput } from '../middleware/validations.js';
 import { AuthenticationError } from '../errors/AuthenticationError.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { uploadAvatar } from '../services/supabase.js';
+import * as userQueries from '../db/user.queries.js';
 
 const getCurrentUser = async (req, res, next) => {
     try {
