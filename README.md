@@ -66,6 +66,7 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 -   Interaction
 
 -   Backend
+
     -   Post: implmenting user hasLiked field - Prisma doesn't support CASE statement so we jerry rigged one
 
 -   Frontend
@@ -132,12 +133,6 @@ VITE_SERVER_URL
 -   server
 
     -   Posts
-
-        -   db queries
-            -   like
-                -   rename likes to likers
-                -   get posts returns if current user likes post
-                -   unlike
         -   POST /posts
         -   GET /posts (get all posts)
         -   serving posts on /users route
@@ -163,8 +158,6 @@ VITE_SERVER_URL
     -   POSTS
         -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
         -   DELETE /posts/:postId
-    -   schema 
-        -   remove authorId from all schema? not needed tbh
 
 ## DATA
 

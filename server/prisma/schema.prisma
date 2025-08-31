@@ -23,8 +23,8 @@ model User {
 
   chats    Chat[]
   messages Message[]
-  Posts    Post[]    @relation(name: "author")
-  Likes    Post[]
+  Posts    Post[]    @relation(name: "authorToPost")
+  Likes    Post[]    @relation(name: "likersToLikes")
 }
 
 model Message {
@@ -59,7 +59,7 @@ model Post {
   content String
   media   String?
 
-  author   User   @relation(name: "author", fields: [authorId], references: [id])
+  author   User   @relation(name: "authorToPost", fields: [authorId], references: [id])
   authorId String
-  likes    User[]
+  likers   User[] @relation(name: "likersToLikes")
 }

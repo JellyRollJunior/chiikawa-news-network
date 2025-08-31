@@ -14,7 +14,7 @@ const getPosts = async (userId) => {
                         avatar: true,
                     },
                 },
-                likes: {
+                likers: {
                     select: {
                         id: true,
                     },
@@ -23,7 +23,7 @@ const getPosts = async (userId) => {
                     },
                 },
                 _count: {
-                    select: { likes: true },
+                    select: { likers: true },
                 },
             },
         });
@@ -47,7 +47,7 @@ const getPostsByAuthor = async (userId, authorId) => {
                         avatar: true,
                     },
                 },
-                likes: {
+                likers: {
                     select: {
                         id: true,
                     },
@@ -56,7 +56,7 @@ const getPostsByAuthor = async (userId, authorId) => {
                     },
                 },
                 _count: {
-                    select: { likes: true },
+                    select: { likers: true },
                 },
             },
         });
@@ -102,7 +102,7 @@ const likePost = async (postId, likerId) => {
                 id: postId,
             },
             data: {
-                likes: {
+                likers: {
                     connect: {
                         id: likerId,
                     },
@@ -124,4 +124,33 @@ const likePost = async (postId, likerId) => {
     }
 };
 
-export { getPosts, getPostsByAuthor, createPost, likePost };
+const unlikePost = async (postId, likerId) => {
+    try {
+        const data = await prisma.post.update({
+            where: {
+                id: postId,
+            },
+            data: {
+                likers: {
+                    disconnect: {
+                        id: likerId,
+                    },
+                },
+            },
+            include: {
+                author: {
+                    select: {
+                        id: true,
+                        username: true,
+                        avatar: true,
+                    },
+                },
+            },
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to un-like post');
+    }
+};
+
+export { getPosts, getPostsByAuthor, createPost, likePost, unlikePost };
