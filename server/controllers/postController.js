@@ -24,4 +24,16 @@ const likePost = async (req, res, next) => {
     }
 };
 
-export { getPosts, likePost };
+const unlikePost = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const { postId } = req.params;
+        const post = await postQueries.unlikePost(postId, userId);
+        const formattedPost = setLikes(post);
+        res.json(formattedPost);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { getPosts, likePost, unlikePost };
