@@ -134,12 +134,11 @@ VITE_SERVER_URL
 
     -   Posts
         -   POST /posts
-        -   GET /posts (get all posts)
         -   serving posts on /users route
             -   /users/:userId/posts
-        -   liking posts
-            -   PATCH /posts/:postId/likes
-        - validations
+        -   unliking posts
+        -   validations
+        -   extract DB query like presets
 
 -   order
 

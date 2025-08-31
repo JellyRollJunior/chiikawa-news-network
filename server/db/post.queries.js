@@ -116,6 +116,17 @@ const likePost = async (postId, likerId) => {
                         avatar: true,
                     },
                 },
+                likers: {
+                    select: {
+                        id: true,
+                    },
+                    where: {
+                        id: likerId,
+                    },
+                },
+                _count: {
+                    select: { likers: true },
+                },
             },
         });
         return data;
@@ -144,6 +155,17 @@ const unlikePost = async (postId, likerId) => {
                         username: true,
                         avatar: true,
                     },
+                },
+                likers: {
+                    select: {
+                        id: true,
+                    },
+                    where: {
+                        id: likerId,
+                    },
+                },
+                _count: {
+                    select: { likers: true },
                 },
             },
         });
