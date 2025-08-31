@@ -139,6 +139,7 @@ VITE_SERVER_URL
             -   /users/:userId/posts
         -   liking posts
             -   PATCH /posts/:postId/likes
+        - validations
 
 -   order
 
