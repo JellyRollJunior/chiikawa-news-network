@@ -138,7 +138,6 @@ VITE_SERVER_URL
 -   server
 
     -   Posts
-        -   validations
         -   extract DB query like presets
 
 -   order

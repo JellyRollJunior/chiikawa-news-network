@@ -1,8 +1,10 @@
 import { setLikes } from '../services/post.services.js';
+import { validateInput } from '../middleware/validations.js';
 import * as postQueries from '../db/post.queries.js';
 
 const getPosts = async (req, res, next) => {
     try {
+        validateInput(req);
         const requesterId = req.user.id;
         const authorId = req.query.userId || req.params.userId;
         const posts = authorId
@@ -17,6 +19,7 @@ const getPosts = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const title = req.body.title;
         const content = req.body.content;
@@ -31,6 +34,7 @@ const createPost = async (req, res, next) => {
 
 const likePost = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.likePost(postId, userId);
@@ -43,6 +47,7 @@ const likePost = async (req, res, next) => {
 
 const unlikePost = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.unlikePost(postId, userId);

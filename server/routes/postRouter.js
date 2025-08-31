@@ -1,17 +1,38 @@
 import { Router } from 'express';
-import * as postController from '../controllers/postController.js';
 import { authenticateToken } from '../middleware/handleVerifyToken.js';
+import {
+    postIdValidations,
+    postValidations,
+    userIdValidations,
+} from '../middleware/validations.js';
+import * as postController from '../controllers/postController.js';
 
 const postRouter = Router();
 
-postRouter.get('/', authenticateToken, postController.getPosts);
-postRouter.post('/', authenticateToken, postController.createPost);
+postRouter.get(
+    '/',
+    authenticateToken,
+    userIdValidations,
+    postController.getPosts
+);
+postRouter.post(
+    '/',
+    authenticateToken,
+    postValidations,
+    postController.createPost
+);
 
 // likes
-postRouter.post('/:postId/likes', authenticateToken, postController.likePost);
+postRouter.post(
+    '/:postId/likes',
+    authenticateToken,
+    postIdValidations,
+    postController.likePost
+);
 postRouter.delete(
     '/:postId/likes',
     authenticateToken,
+    postIdValidations,
     postController.unlikePost
 );
 
