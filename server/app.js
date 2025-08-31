@@ -5,6 +5,7 @@ import { currentRouter } from './routes/currentRouter.js';
 import { userRouter } from './routes/userRouter.js';
 import { chatRouter } from './routes/chatRouter.js';
 import { publicChatRouter } from './routes/publicChatRouter.js';
+import { postRouter } from './routes/postRouter.js';
 import { error404Handler, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use('/current', currentRouter);
 app.use('/users', userRouter);
 app.use('/chats', chatRouter);
 app.use('/chats-public', publicChatRouter);
+app.use('/posts', postRouter);
 
 // errors
 app.use(/(.*)/, error404Handler);
