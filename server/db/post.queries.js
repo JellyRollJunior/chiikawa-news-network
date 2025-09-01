@@ -92,4 +92,25 @@ const unlikePost = async (postId, likerId) => {
     }
 };
 
-export { getPosts, getPostsByAuthor, createPost, likePost, unlikePost };
+const deletePost = async (requesterId, postId) => {
+    try {
+        const data = await prisma.post.delete({
+            where: {
+                id: postId,
+            },
+            select: postSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to delete post');
+    }
+};
+
+export {
+    getPosts,
+    getPostsByAuthor,
+    createPost,
+    likePost,
+    unlikePost,
+    deletePost,
+};
