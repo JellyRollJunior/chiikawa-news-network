@@ -1,6 +1,8 @@
 import { setLikes } from '../services/post.services.js';
 import { validateInput } from '../middleware/validations.js';
 import * as postQueries from '../db/post.queries.js';
+import { AuthorizationError } from '../errors/AuthorizationError.js';
+import { DatabaseError } from '../errors/DatabaseError.js';
 
 const getPosts = async (req, res, next) => {
     try {
@@ -58,4 +60,24 @@ const unlikePost = async (req, res, next) => {
     }
 };
 
-export { createPost, getPosts, likePost, unlikePost };
+const deletePost = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const userId = req.user.id;
+        const { postId } = req.params;
+        // verify user is authorized to delete post
+        const post = await postQueries.getPostById(userId, postId);
+        if (!post) throw new DatabaseError('Unable to delete post', 404);
+        if (post.author.id != userId) {
+            throw new AuthorizationError('Unable to delete post');
+        }
+        // verified. Delete post
+        const deletedPost = await postQueries.deletePost(userId, postId);
+        const formattedPost = setLikes(deletedPost);
+        res.json(formattedPost);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { createPost, getPosts, likePost, unlikePost, deletePost };

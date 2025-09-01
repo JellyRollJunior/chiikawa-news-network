@@ -21,6 +21,12 @@ postRouter.post(
     postValidations,
     postController.createPost
 );
+postRouter.delete(
+    '/:postId',
+    authenticateToken,
+    postIdValidations,
+    postController.deletePost
+)
 
 // likes
 postRouter.post(

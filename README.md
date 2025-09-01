@@ -26,6 +26,7 @@
 | DELETE | /chats/:chatId        | Delete chat            | Y     |                                     |               |
 | GET    | /posts                | Retrieve all posts     | Y     |                                     | query: userId |
 | POST   | /posts                | Create post            | Y     | { title, content, media }           |               |
+| DELETE | /posts/:postId        | Delete post            | Y     |                                     |               |
 | POST   | /posts/:postId/likes  | Like post              | Y     |                                     |               |
 | DELETE | /posts/:postId/likes  | Unlike post            | Y     |                                     |               |
 
@@ -137,7 +138,6 @@ VITE_SERVER_URL
 
 -   server
 
-    -   delete posts
     -   post comments
 
 -   order

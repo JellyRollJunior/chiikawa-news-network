@@ -29,6 +29,20 @@ const getPostsByAuthor = async (requesterId, authorId) => {
     }
 };
 
+const getPostById = async (requesterId, postId) => {
+    try {
+        const data = await prisma.post.findFirst({
+            where: {
+                id: postId,
+            },
+            select: postSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve post');
+    }
+};
+
 const createPost = async (requesterId, title, content, media = null) => {
     try {
         const data = await prisma.post.create({
@@ -109,6 +123,7 @@ const deletePost = async (requesterId, postId) => {
 export {
     getPosts,
     getPostsByAuthor,
+    getPostById,
     createPost,
     likePost,
     unlikePost,
