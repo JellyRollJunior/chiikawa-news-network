@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { PrismaClient, CHAT_TYPE } from '@prisma/client';
-import { CHATS_INCLUDE, USERS_INCLUDE } from './returnDataPresets.js';
+import { CHATS_SELECT } from './selects/chatsSelect.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 dotenv.config();
 
@@ -16,12 +16,12 @@ const getChats = async (userId) => {
                     },
                 },
             },
-            include: CHATS_INCLUDE,
             orderBy: {
                 latestMessage: {
                     sendTime: 'desc',
                 },
             },
+            select: CHATS_SELECT,
         });
         return data;
     } catch (error) {
@@ -66,11 +66,7 @@ const createChat = async (name, userIdArray) => {
                     connect: userIdObjectArray,
                 },
             },
-            include: {
-                users: {
-                    include: USERS_INCLUDE,
-                },
-            },
+            select: CHATS_SELECT,
         });
         return chat;
     } catch (error) {
@@ -105,11 +101,7 @@ const deleteChat = async (chatId) => {
             where: {
                 id: chatId,
             },
-            include: {
-                users: {
-                    include: USERS_INCLUDE,
-                },
-            },
+            select: CHATS_SELECT,
         });
         return data;
     } catch (error) {

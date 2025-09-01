@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { PrismaClient, CHAT_TYPE } from '@prisma/client';
 import { DatabaseError } from '../errors/DatabaseError.js';
-import { CHATS_INCLUDE, USERS_INCLUDE } from './returnDataPresets.js';
+import { CHATS_SELECT } from './selects/chatsSelect.js';
 dotenv.config();
 
 const prisma = new PrismaClient();
@@ -12,12 +12,12 @@ const getPublicChats = async () => {
             where: {
                 type: CHAT_TYPE.PUBLIC,
             },
-            include: CHATS_INCLUDE,
             orderBy: {
                 latestMessage: {
                     sendTime: 'desc',
                 },
             },
+            select: CHATS_SELECT,
         });
         return data;
     } catch (error) {
@@ -33,11 +33,7 @@ const createPublicChat = async (name) => {
                 type: CHAT_TYPE.PUBLIC,
                 avatar: process.env.SUPABASE_DEFAULT_GROUP_CHAT_AVATAR,
             },
-            include: {
-                users: {
-                    include: USERS_INCLUDE,
-                },
-            },
+            select: CHATS_SELECT,
         });
         return chat;
     } catch (error) {
