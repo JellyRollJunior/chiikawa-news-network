@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { DatabaseError } from '../errors/DatabaseError.js';
+import { USER_SELECT } from './selects/user.select.js';
 
 const prisma = new PrismaClient();
 
@@ -19,15 +20,10 @@ const getUserByUsername = async (username) => {
 const getUserById = async (id) => {
     try {
         const user = await prisma.user.findFirst({
-            select: {
-                id: true,
-                username: true,
-                avatar: true,
-                bio: true,
-            },
             where: {
                 id,
             },
+            select: USER_SELECT,
         });
         if (!user) throw new Error('404');
         return user;
@@ -45,14 +41,10 @@ const getUserById = async (id) => {
 const getAllUsers = async () => {
     try {
         const users = await prisma.user.findMany({
-            select: {
-                id: true,
-                username: true,
-                avatar: true,
-            },
             orderBy: {
                 username: 'asc',
             },
+            select: USER_SELECT,
         });
         return users;
     } catch (error) {
@@ -87,12 +79,7 @@ const updateBio = async (id, bio) => {
             where: {
                 id,
             },
-            select: {
-                id: true,
-                username: true,
-                avatar: true,
-                bio: true,
-            },
+            select: USER_SELECT,
         });
         return user;
     } catch (error) {
@@ -109,11 +96,7 @@ const updateAvatar = async (id, avatarSrc) => {
             where: {
                 id,
             },
-            select: {
-                id: true,
-                username: true,
-                avatar: true,
-            },
+            select: USER_SELECT,
         });
         return user;
     } catch (error) {

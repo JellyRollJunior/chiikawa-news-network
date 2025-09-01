@@ -138,12 +138,14 @@ VITE_SERVER_URL
 -   server
 
     -   refactor returnDataPresets. It's ugly and not extendable tbh
+    -   refactor services. it's kind of a mess
+    -   delete posts
+    -   post comments
 
 -   order
 
     -   github login
     -   users page
-    -   post comments
     -   follows
         -   when implementing followers -> only serve posts created by followed users
 
@@ -163,7 +165,6 @@ VITE_SERVER_URL
         "meta": { "count": 20, "next": "/posts?page=2" }
         }
         -   PAGINATION FOR POSTS
-    -   refactor services. it's kind of a mess
 
 ## DATA
 
