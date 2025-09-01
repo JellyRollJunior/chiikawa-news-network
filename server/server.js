@@ -5,7 +5,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { attachSocketListeners } from './sockets/attachSocketListeners.js';
 import { instrument } from '@socket.io/admin-ui';
-import { seedPublicChats } from './services/seedPublicChats.js';
+import { seedPublicChats } from './scripts/seedPublicChats.js';
 dotenv.config();
 
 const server = createServer(app);

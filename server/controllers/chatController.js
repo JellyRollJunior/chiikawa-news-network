@@ -1,8 +1,5 @@
 import { validateInput } from '../middleware/validations.js';
-import {
-    formatChat,
-    reorderChatsWithLatestMessageToFront,
-} from '../services/formatChats.js';
+import { formatChat, sortChatsByLatest } from '../services/chat.services.js';
 import { isUserAuthorizedForChat } from '../services/chat.services.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import * as chatQueries from '../db/chat.queries.js';
@@ -13,7 +10,7 @@ const getChats = async (req, res, next) => {
         const userId = req.user.id;
         const chats = await chatQueries.getChats(userId);
         if (!chats) throw new DatabaseError('Unable to retrieve chats', 404);
-        const orderedChats = reorderChatsWithLatestMessageToFront(chats);
+        const orderedChats = sortChatsByLatest(chats);
         const formattedChats = orderedChats.map((chat) =>
             formatChat(chat, userId)
         );

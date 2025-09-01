@@ -137,7 +137,6 @@ VITE_SERVER_URL
 
 -   server
 
-    -   refactor services. it's kind of a mess
     -   delete posts
     -   post comments
 
