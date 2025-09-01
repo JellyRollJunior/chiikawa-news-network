@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { postSelect } from './selects/post.select.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
@@ -6,26 +7,7 @@ const prisma = new PrismaClient();
 const getPosts = async (requesterId) => {
     try {
         const data = await prisma.post.findMany({
-            include: {
-                author: {
-                    select: {
-                        id: true,
-                        username: true,
-                        avatar: true,
-                    },
-                },
-                likers: {
-                    select: {
-                        id: true,
-                    },
-                    where: {
-                        id: requesterId,
-                    },
-                },
-                _count: {
-                    select: { likers: true },
-                },
-            },
+            select: postSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -39,26 +21,7 @@ const getPostsByAuthor = async (requesterId, authorId) => {
             where: {
                 authorId,
             },
-            include: {
-                author: {
-                    select: {
-                        id: true,
-                        username: true,
-                        avatar: true,
-                    },
-                },
-                likers: {
-                    select: {
-                        id: true,
-                    },
-                    where: {
-                        id: requesterId,
-                    },
-                },
-                _count: {
-                    select: { likers: true },
-                },
-            },
+            select: postSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -79,15 +42,7 @@ const createPost = async (authorId, title, content, media = null) => {
                     },
                 },
             },
-            include: {
-                author: {
-                    select: {
-                        id: true,
-                        username: true,
-                        avatar: true,
-                    },
-                },
-            },
+            select: postSelect(authorId),
         });
         return data;
     } catch (error) {
@@ -108,26 +63,7 @@ const likePost = async (postId, likerId) => {
                     },
                 },
             },
-            include: {
-                author: {
-                    select: {
-                        id: true,
-                        username: true,
-                        avatar: true,
-                    },
-                },
-                likers: {
-                    select: {
-                        id: true,
-                    },
-                    where: {
-                        id: likerId,
-                    },
-                },
-                _count: {
-                    select: { likers: true },
-                },
-            },
+            select: postSelect(likerId),
         });
         return data;
     } catch (error) {
@@ -148,26 +84,7 @@ const unlikePost = async (postId, likerId) => {
                     },
                 },
             },
-            include: {
-                author: {
-                    select: {
-                        id: true,
-                        username: true,
-                        avatar: true,
-                    },
-                },
-                likers: {
-                    select: {
-                        id: true,
-                    },
-                    where: {
-                        id: likerId,
-                    },
-                },
-                _count: {
-                    select: { likers: true },
-                },
-            },
+            select: postSelect(likerId),
         });
         return data;
     } catch (error) {

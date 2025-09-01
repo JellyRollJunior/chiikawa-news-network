@@ -137,8 +137,7 @@ VITE_SERVER_URL
 
 -   server
 
-    -   Posts
-        -   extract DB query like presets
+    -   refactor returnDataPresets. It's ugly and not extendable tbh
 
 -   order
 
@@ -149,12 +148,12 @@ VITE_SERVER_URL
         -   when implementing followers -> only serve posts created by followed users
 
 -   low prio
+
     -   update login/signup
         -   add images and stuff idk just a form is kinda boring
     -   test UI with long usernames
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
-    -   refactor returnDataPresets. It's ugly and not extendable tbh
     -   POSTS
         -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
         -   DELETE /posts/:postId

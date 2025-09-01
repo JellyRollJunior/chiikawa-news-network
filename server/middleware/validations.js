@@ -24,6 +24,11 @@ const userIdValidations = [
         .isUUID().withMessage(`user id ${UUID_ERROR}`),
 ];
 
+const userIdValidationsOptional = [
+    check('userId').optional()
+        .isUUID().withMessage(`user id ${UUID_ERROR}`),
+];
+
 const chatValidations = [
     check('userIds')
         .isArray().withMessage(`userIds ${ARRAY_ERROR}`)
@@ -76,13 +81,14 @@ const validateInput = (req) => {
 };
 
 export {
-    userIdValidations,
     userValidation, 
+    userIdValidations,
+    userIdValidationsOptional,
+    chatValidations, 
     chatIdValidations, 
     chatNameValidations,
-    chatValidations, 
     bioValidations,
-    postIdValidations,
     postValidations,
+    postIdValidations,
     validateInput,
 };

@@ -3,7 +3,7 @@ import { authenticateToken } from '../middleware/handleVerifyToken.js';
 import {
     postIdValidations,
     postValidations,
-    userIdValidations,
+    userIdValidationsOptional,
 } from '../middleware/validations.js';
 import * as postController from '../controllers/postController.js';
 
@@ -12,7 +12,7 @@ const postRouter = Router();
 postRouter.get(
     '/',
     authenticateToken,
-    userIdValidations,
+    userIdValidationsOptional,
     postController.getPosts
 );
 postRouter.post(
