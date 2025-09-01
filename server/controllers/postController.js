@@ -37,7 +37,7 @@ const likePost = async (req, res, next) => {
         validateInput(req);
         const userId = req.user.id;
         const { postId } = req.params;
-        const post = await postQueries.likePost(postId, userId);
+        const post = await postQueries.likePost(userId, postId);
         const formattedPost = setLikes(post);
         res.json(formattedPost);
     } catch (error) {
@@ -50,7 +50,7 @@ const unlikePost = async (req, res, next) => {
         validateInput(req);
         const userId = req.user.id;
         const { postId } = req.params;
-        const post = await postQueries.unlikePost(postId, userId);
+        const post = await postQueries.unlikePost(userId, postId);
         const formattedPost = setLikes(post);
         res.json(formattedPost);
     } catch (error) {

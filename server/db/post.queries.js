@@ -29,7 +29,7 @@ const getPostsByAuthor = async (requesterId, authorId) => {
     }
 };
 
-const createPost = async (authorId, title, content, media = null) => {
+const createPost = async (requesterId, title, content, media = null) => {
     try {
         const data = await prisma.post.create({
             data: {
@@ -38,11 +38,11 @@ const createPost = async (authorId, title, content, media = null) => {
                 media,
                 author: {
                     connect: {
-                        id: authorId,
+                        id: requesterId,
                     },
                 },
             },
-            select: postSelect(authorId),
+            select: postSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -50,7 +50,7 @@ const createPost = async (authorId, title, content, media = null) => {
     }
 };
 
-const likePost = async (postId, likerId) => {
+const likePost = async (requesterId, postId) => {
     try {
         const data = await prisma.post.update({
             where: {
@@ -59,11 +59,11 @@ const likePost = async (postId, likerId) => {
             data: {
                 likers: {
                     connect: {
-                        id: likerId,
+                        id: requesterId,
                     },
                 },
             },
-            select: postSelect(likerId),
+            select: postSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -71,7 +71,7 @@ const likePost = async (postId, likerId) => {
     }
 };
 
-const unlikePost = async (postId, likerId) => {
+const unlikePost = async (requesterId, postId) => {
     try {
         const data = await prisma.post.update({
             where: {
@@ -80,11 +80,11 @@ const unlikePost = async (postId, likerId) => {
             data: {
                 likers: {
                     disconnect: {
-                        id: likerId,
+                        id: requesterId,
                     },
                 },
             },
-            select: postSelect(likerId),
+            select: postSelect(requesterId),
         });
         return data;
     } catch (error) {
