@@ -1,5 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-import { MESSAGE_SELECT, USERS_INCLUDE } from './returnDataPresets.js';
+import {
+    CHAT_MESSAGES_SELECT,
+    MESSAGE_SELECT,
+} from './selects/message.select.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
@@ -7,23 +10,10 @@ const prisma = new PrismaClient();
 const getChatMessages = async (chatId) => {
     try {
         const data = await prisma.chat.findFirst({
-            include: {
-                signature: false,
-                latestMessageId: false,
-                latestMessage: false,
-                messages: {
-                    select: MESSAGE_SELECT,
-                    orderBy: {
-                        sendTime: 'asc',
-                    },
-                },
-                users: {
-                    include: USERS_INCLUDE,
-                },
-            },
             where: {
                 id: chatId,
             },
+            select: CHAT_MESSAGES_SELECT,
         });
         return data;
     } catch (error) {
