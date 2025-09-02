@@ -1,4 +1,4 @@
-import { setLikes } from '../services/post.services.js';
+import { setPostAndCommentLikes } from '../services/post.services.js';
 import { validateInput } from '../middleware/validations.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
@@ -12,7 +12,7 @@ const getPosts = async (req, res, next) => {
         const posts = authorId
             ? await postQueries.getPostsByAuthor(requesterId, authorId)
             : await postQueries.getPosts(requesterId);
-        const formattedPosts = posts.map((post) => setLikes(post));
+        const formattedPosts = posts.map((post) => setPostAndCommentLikes(post));
         res.json({ posts: formattedPosts });
     } catch (error) {
         next(error);
@@ -27,7 +27,7 @@ const createPost = async (req, res, next) => {
         const content = req.body.content;
         // support media later (upload file to supabase & save link in db)
         const post = await postQueries.createPost(userId, title, content);
-        const formattedPost = setLikes(post);
+        const formattedPost = setPostAndCommentLikes(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -40,7 +40,7 @@ const likePost = async (req, res, next) => {
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.likePost(userId, postId);
-        const formattedPost = setLikes(post);
+        const formattedPost = setPostAndCommentLikes(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -53,7 +53,7 @@ const unlikePost = async (req, res, next) => {
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.unlikePost(userId, postId);
-        const formattedPost = setLikes(post);
+        const formattedPost = setPostAndCommentLikes(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -73,7 +73,7 @@ const deletePost = async (req, res, next) => {
         }
         // verified. Delete post
         const deletedPost = await postQueries.deletePost(userId, postId);
-        const formattedPost = setLikes(deletedPost);
+        const formattedPost = setPostAndCommentLikes(deletedPost);
         res.json({ data: formattedPost });
     } catch (error) {
         next(error);

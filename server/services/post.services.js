@@ -1,8 +1,10 @@
-const setLikes = (post) => {
-    const { likers, _count: count, ...formattedPost } = post;
-    formattedPost.hasLiked = likers ? likers.length > 0 : false;
-    formattedPost.likes = count ? count.likers : 0;
-    return formattedPost;
+import { setLikes } from './like.services.js';
+
+const setPostAndCommentLikes = (post) => {
+    if (post.comments) {
+        post.comments = post.comments.map((comment) => setLikes(comment));
+    }
+    return setLikes(post);
 };
 
-export { setLikes };
+export { setPostAndCommentLikes };

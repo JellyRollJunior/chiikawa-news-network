@@ -142,7 +142,6 @@ VITE_SERVER_URL
         - routes
             - POST /comments/:commentId/likes
             - DELETE /comments/:commentId/likes
-        - comment data formatting (setLikes)
         - comment validation
         - extract likes select?
 
