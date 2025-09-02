@@ -64,7 +64,7 @@ model Post {
   author   User      @relation(name: "authorToPost", fields: [authorId], references: [id])
   authorId String
   likers   User[]    @relation(name: "likersToLikes")
-  Comments Comment[]
+  comments Comment[]
 }
 
 model Comment {

@@ -10,7 +10,7 @@ const getPosts = async (requesterId) => {
             select: postSelect(requesterId),
             orderBy: {
                 createdAt: 'desc',
-            }
+            },
         });
         return data;
     } catch (error) {
@@ -27,7 +27,7 @@ const getPostsByAuthor = async (requesterId, authorId) => {
             select: postSelect(requesterId),
             orderBy: {
                 createdAt: 'desc',
-            }
+            },
         });
         return data;
     } catch (error) {

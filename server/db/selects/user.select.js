@@ -5,4 +5,10 @@ const USER_SELECT = {
     bio: true,
 };
 
-export { USER_SELECT };
+const USER_SELECT_BASIC = {
+    id: true,
+    username: true,
+    avatar: true,
+};
+
+export { USER_SELECT, USER_SELECT_BASIC };

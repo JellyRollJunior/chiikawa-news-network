@@ -141,13 +141,12 @@ VITE_SERVER_URL
     -   post comments
         - schema
         - db queries
+        - comment likes.. yikes!!!
         - routes
             - POST /post/:postId/comments
             - Delete /post/:postId/comments
             - POST /comments/:commentId/likes
             - DELETE /comments/:commentId/likes
-        - return comments in get posts
-            - order comments by createdAt
 
 -   order
 

@@ -1,3 +1,6 @@
+import { COMMENT_SELECT } from './comments.select.js';
+import { USER_SELECT_BASIC } from './user.select.js';
+
 const postSelect = (requesterId) => {
     return {
         id: true,
@@ -6,11 +9,7 @@ const postSelect = (requesterId) => {
         media: true,
         createdAt: true,
         author: {
-            select: {
-                id: true,
-                username: true,
-                avatar: true,
-            },
+            select: USER_SELECT_BASIC,
         },
         likers: {
             select: {
@@ -21,6 +20,12 @@ const postSelect = (requesterId) => {
         _count: {
             select: {
                 likers: true,
+            },
+        },
+        comments: {
+            select: COMMENT_SELECT,
+            orderBy: {
+                createdAt: 'desc',
             },
         },
     };
