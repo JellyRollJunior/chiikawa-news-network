@@ -6,6 +6,7 @@ import {
     userIdValidationsOptional,
 } from '../middleware/validations.js';
 import * as postController from '../controllers/postController.js';
+import * as commentController from '../controllers/commentController.js';
 
 const postRouter = Router();
 
@@ -26,7 +27,7 @@ postRouter.delete(
     authenticateToken,
     postIdValidations,
     postController.deletePost
-)
+);
 
 // likes
 postRouter.post(
@@ -40,6 +41,14 @@ postRouter.delete(
     authenticateToken,
     postIdValidations,
     postController.unlikePost
+);
+
+// comments
+postRouter.post(
+    '/:postId/comments',
+    authenticateToken,
+    postIdValidations,
+    commentController.createComment
 );
 
 export { postRouter };

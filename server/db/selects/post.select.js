@@ -25,7 +25,7 @@ const postSelect = (requesterId) => {
         comments: {
             select: commentsSelect(requesterId),
             orderBy: {
-                createdAt: 'desc',
+                createdAt: 'asc',
             },
         },
     };
