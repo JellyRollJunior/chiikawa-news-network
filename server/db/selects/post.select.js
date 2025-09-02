@@ -1,4 +1,5 @@
 import { commentsSelect } from './comments.select.js';
+import { likesSelect } from './likes.select.js';
 import { USER_SELECT_BASIC } from './user.select.js';
 
 const postSelect = (requesterId) => {
@@ -12,17 +13,7 @@ const postSelect = (requesterId) => {
         author: {
             select: USER_SELECT_BASIC,
         },
-        likers: {
-            select: {
-                id: true,
-            },
-            where: requesterId ? { id: requesterId } : undefined,
-        },
-        _count: {
-            select: {
-                likers: true,
-            },
-        },
+        ...likesSelect(requesterId),
         comments: {
             select: commentsSelect(requesterId),
             orderBy: {

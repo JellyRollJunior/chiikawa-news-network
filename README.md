@@ -140,9 +140,6 @@ VITE_SERVER_URL
 
 -   server
 
-    -   post comments
-        -   extract likes select?
-
 -   order
 
     -   github login
@@ -160,7 +157,6 @@ VITE_SERVER_URL
         -   when keyboard pops up, does everything go to shit? (probably...)
     -   POSTS
         -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
-        -   DELETE /posts/:postId
     -   Return data in this style
         {
         "data": [ ... ],

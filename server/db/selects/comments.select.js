@@ -1,3 +1,4 @@
+import { likesSelect } from './likes.select.js';
 import { USER_SELECT_BASIC } from './user.select.js';
 
 const commentsSelect = (requesterId) => {
@@ -10,17 +11,7 @@ const commentsSelect = (requesterId) => {
         author: {
             select: USER_SELECT_BASIC,
         },
-        likers: {
-            select: {
-                id: true,
-            },
-            where: requesterId ? { id: requesterId } : undefined,
-        },
-        _count: {
-            select: {
-                likers: true,
-            },
-        },
+        ...likesSelect(requesterId),
     };
 };
 
