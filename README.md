@@ -139,9 +139,7 @@ VITE_SERVER_URL
 -   server
 
     -   post comments
-        - db queries
         - comment likes.. yikes!!!
-            - schema
             - query
         - routes
             - POST /post/:postId/comments
