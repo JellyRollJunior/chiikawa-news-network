@@ -148,7 +148,6 @@ VITE_SERVER_URL
             - DELETE /comments/:commentId/likes
         - return comments in get posts
             - order comments by createdAt
-            - order posts by createdAt
 
 -   order
 

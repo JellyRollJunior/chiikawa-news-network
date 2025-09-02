@@ -8,6 +8,9 @@ const getPosts = async (requesterId) => {
     try {
         const data = await prisma.post.findMany({
             select: postSelect(requesterId),
+            orderBy: {
+                createdAt: 'desc',
+            }
         });
         return data;
     } catch (error) {
@@ -22,6 +25,9 @@ const getPostsByAuthor = async (requesterId, authorId) => {
                 authorId,
             },
             select: postSelect(requesterId),
+            orderBy: {
+                createdAt: 'desc',
+            }
         });
         return data;
     } catch (error) {
