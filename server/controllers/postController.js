@@ -68,13 +68,13 @@ const deletePost = async (req, res, next) => {
         // verify user is authorized to delete post
         const post = await postQueries.getPostById(userId, postId);
         if (!post) throw new DatabaseError('Unable to delete post', 404);
-        if (post.author && post.author.id != userId) {
+        if (post.authorId != userId) {
             throw new AuthorizationError('Unable to delete post');
         }
         // verified. Delete post
         const deletedPost = await postQueries.deletePost(userId, postId);
         const formattedPost = setLikes(deletedPost);
-        res.json(formattedPost);
+        res.json({ data: formattedPost });
     } catch (error) {
         next(error);
     }

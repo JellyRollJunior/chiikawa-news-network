@@ -140,7 +140,6 @@ VITE_SERVER_URL
 
     -   post comments
         - routes
-            - Delete /comments/:commentId
             - POST /comments/:commentId/likes
             - DELETE /comments/:commentId/likes
         - comment data formatting (setLikes)

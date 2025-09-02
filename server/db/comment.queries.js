@@ -4,6 +4,19 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
+const getCommentById = async (commentId) => {
+    try {
+        const data = prisma.comment.findFirst({
+            where: {
+                id: commentId,
+            },
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve comment');
+    }
+};
+
 const createComment = async (requesterId, postId, content, media = null) => {
     try {
         const data = prisma.comment.create({
@@ -29,7 +42,7 @@ const createComment = async (requesterId, postId, content, media = null) => {
     }
 };
 
-const deleteComment = async (commentId) => {
+const deleteComment = async (requesterId, commentId) => {
     try {
         const data = prisma.comment.delete({
             where: {
@@ -85,4 +98,4 @@ const unlikeComment = async (requesterId, commentId) => {
     }
 };
 
-export { createComment, deleteComment, likeComment, unlikeComment };
+export { getCommentById, createComment, deleteComment, likeComment, unlikeComment };

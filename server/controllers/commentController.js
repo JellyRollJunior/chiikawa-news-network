@@ -1,4 +1,6 @@
 import * as commentQueries from '../db/comment.queries.js';
+import { AuthorizationError } from '../errors/AuthorizationError.js';
+import { DatabaseError } from '../errors/DatabaseError.js';
 
 const createComment = async (req, res, next) => {
     try {
@@ -23,9 +25,15 @@ const deleteComment = async (req, res, next) => {
         const userId = req.user.id;
         const { commentId } = req.params;
         // verify user has permission to delete comment
-        const comment = await commentQueries.deleteComment(commentId);
+        const comment = await commentQueries.getCommentById(commentId);
+        if (!comment) throw new DatabaseError('Unable to delete comment', 404);
+        if (comment.authorId != userId) {
+            throw new AuthorizationError('Unable to delete comment');
+        }
+        // verifed. Delete comment
+        const deletedComment = await commentQueries.deleteComment(userId, commentId);
         res.json({
-            data: comment,
+            data: deletedComment,
         });
     } catch (error) {
         next(error);

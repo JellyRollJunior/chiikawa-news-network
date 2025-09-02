@@ -6,6 +6,7 @@ const commentsSelect = (requesterId) => {
         content: true,
         media: true,
         createdAt: true,
+        authorId: true,
         author: {
             select: USER_SELECT_BASIC,
         },
