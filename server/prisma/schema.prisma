@@ -23,8 +23,9 @@ model User {
 
   chats    Chat[]
   messages Message[]
-  Posts    Post[]    @relation(name: "authorToPost")
-  Likes    Post[]    @relation(name: "likersToLikes")
+  posts    Post[]    @relation(name: "authorToPost")
+  likes    Post[]    @relation(name: "likersToLikes")
+  comments Comment[]
 }
 
 model Message {
@@ -54,12 +55,26 @@ model Chat {
 }
 
 model Post {
-  id      String  @id @default(uuid())
-  title   String
-  content String
-  media   String?
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  media     String?
+  createdAt DateTime @default(now())
 
-  author   User   @relation(name: "authorToPost", fields: [authorId], references: [id])
+  author   User      @relation(name: "authorToPost", fields: [authorId], references: [id])
   authorId String
-  likers   User[] @relation(name: "likersToLikes")
+  likers   User[]    @relation(name: "likersToLikes")
+  Comments Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  media     String?
+  createdAt DateTime @default(now())
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+  post     Post   @relation(fields: [postId], references: [id])
+  postId   String
 }

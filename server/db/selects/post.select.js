@@ -4,6 +4,7 @@ const postSelect = (requesterId) => {
         title: true,
         content: true,
         media: true,
+        createdAt: true,
         author: {
             select: {
                 id: true,
