@@ -18,4 +18,18 @@ const createComment = async (req, res, next) => {
     }
 };
 
-export { createComment };
+const deleteComment = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const { commentId } = req.params;
+        // verify user has permission to delete comment
+        const comment = await commentQueries.deleteComment(commentId);
+        res.json({
+            data: comment,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { createComment, deleteComment };

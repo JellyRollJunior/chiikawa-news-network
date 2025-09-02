@@ -140,7 +140,7 @@ VITE_SERVER_URL
 
     -   post comments
         - routes
-            - Delete /post/:postId/comments
+            - Delete /comments/:commentId
             - POST /comments/:commentId/likes
             - DELETE /comments/:commentId/likes
         - comment data formatting (setLikes)
@@ -153,6 +153,7 @@ VITE_SERVER_URL
     -   users page
     -   follows
         -   when implementing followers -> only serve posts created by followed users
+        -   enforce creating comments on only authorized posts 
 
 -   low prio
 
