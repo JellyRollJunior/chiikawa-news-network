@@ -8,6 +8,7 @@ const ARRAY_ERROR = 'must be an array of user ids.';
 const UUID_ERROR = 'must be a user id.';
 const USER_ID_LENGTH_ERROR = 'must be of length >= 1 and <= 4';
 const LENGTH_ERROR_75 = 'must be between 1 and 75 characters';
+const LENGTH_ERROR_200 = 'must be between 1 and 200 characters';
 const LENGTH_ERROR_350 = 'must be between 1 and 350 characters';
 
 const userValidation = [
@@ -73,6 +74,17 @@ const postIdValidations = [
         .isUUID().withMessage(`post id ${UUID_ERROR}`),
 ];
 
+const commentValidations = [
+    check('content').trim()
+        .notEmpty().withMessage(`content ${EMPTY_ERROR}`)
+        .isLength({ min: 1, max: 200 }).withMessage(`content ${LENGTH_ERROR_200}`),
+];
+
+const commentIdValidations = [
+    check('commentId')
+        .isUUID().withMessage(`comment id ${UUID_ERROR}`),
+];
+
 const validateInput = (req) => {
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
@@ -90,5 +102,7 @@ export {
     bioValidations,
     postValidations,
     postIdValidations,
+    commentValidations,
+    commentIdValidations,
     validateInput,
 };

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { authenticateToken } from '../middleware/handleVerifyToken.js';
 import {
+    commentValidations,
     postIdValidations,
     postValidations,
     userIdValidationsOptional,
@@ -48,6 +49,7 @@ postRouter.post(
     '/:postId/comments',
     authenticateToken,
     postIdValidations,
+    commentValidations,
     commentController.createComment
 );
 

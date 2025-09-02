@@ -141,10 +141,6 @@ VITE_SERVER_URL
 -   server
 
     -   post comments
-        -   routes
-            -   POST /comments/:commentId/likes
-            -   DELETE /comments/:commentId/likes
-        -   comment validation
         -   extract likes select?
 
 -   order

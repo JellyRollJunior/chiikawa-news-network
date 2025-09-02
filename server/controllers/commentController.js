@@ -1,10 +1,12 @@
 import * as commentQueries from '../db/comment.queries.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
+import { validateInput } from '../middleware/validations.js';
 import { setLikes } from '../services/like.services.js';
 
 const createComment = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { postId } = req.params;
         const content = req.body.content;
@@ -24,6 +26,7 @@ const createComment = async (req, res, next) => {
 
 const deleteComment = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { commentId } = req.params;
         // verify user has permission to delete comment
@@ -48,6 +51,7 @@ const deleteComment = async (req, res, next) => {
 
 const likeComment = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { commentId } = req.params;
         const comment = await commentQueries.likeComment(userId, commentId);
@@ -62,6 +66,7 @@ const likeComment = async (req, res, next) => {
 
 const unlikeComment = async (req, res, next) => {
     try {
+        validateInput(req);
         const userId = req.user.id;
         const { commentId } = req.params;
         const comment = await commentQueries.unlikeComment(userId, commentId);
