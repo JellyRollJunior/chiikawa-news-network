@@ -8,27 +8,29 @@
 
 ## Endpoints & Socket Events
 
-| Method | URI                   | Function               | Token | Body                                | Notes         |
-| ------ | --------------------- | ---------------------- | ----- | ----------------------------------- | ------------- |
-| POST   | /signup               | Create user            | N     | { username, password}               |               |
-| POST   | /login                | Login user             | N     | { username, password}               |               |
-| GET    | /current              | Retrieve current user  | Y     |                                     |               |
-| GET    | /users                | Retrieve all users     | Y     |                                     |               |
-| GET    | /users/:userId        | Retrieve user data     | Y     |                                     |               |
-| PATCH  | /users/:userId        | Update bio             | Y     | { bio }                             |               |
-| PATCH  | /users/:userId/avatar | Update profile picture | Y     | { avatar }                          |               |
-| GET    | /users/:userId/posts  | Retrieve posts by user | Y     |                                     |               |
-| GET    | /chats-public         | Retrieve public chats  | Y     |                                     |               |
-| GET    | /chats                | Retrieve chats         | Y     |                                     |               |
-| POST   | /chats                | Create chat            | Y     | { name, userIds: ['id_1', 'id_2'] } |               |
-| GET    | /chats/:chatId        | Retrieve chat          | Y     |                                     |               |
-| PATCH  | /chats/:chatId        | Update chat name       | Y     | { name }                            | name optional |
-| DELETE | /chats/:chatId        | Delete chat            | Y     |                                     |               |
-| GET    | /posts                | Retrieve all posts     | Y     |                                     | query: userId |
-| POST   | /posts                | Create post            | Y     | { title, content, media }           |               |
-| DELETE | /posts/:postId        | Delete post            | Y     |                                     |               |
-| POST   | /posts/:postId/likes  | Like post              | Y     |                                     |               |
-| DELETE | /posts/:postId/likes  | Unlike post            | Y     |                                     |               |
+| Method | URI                     | Function               | Token | Body                                | Notes         |
+| ------ | ----------------------- | ---------------------- | ----- | ----------------------------------- | ------------- |
+| POST   | /signup                 | Create user            | N     | { username, password}               |               |
+| POST   | /login                  | Login user             | N     | { username, password}               |               |
+| GET    | /current                | Retrieve current user  | Y     |                                     |               |
+| GET    | /users                  | Retrieve all users     | Y     |                                     |               |
+| GET    | /users/:userId          | Retrieve user data     | Y     |                                     |               |
+| PATCH  | /users/:userId          | Update bio             | Y     | { bio }                             |               |
+| PATCH  | /users/:userId/avatar   | Update profile picture | Y     | { avatar }                          |               |
+| GET    | /users/:userId/posts    | Retrieve posts by user | Y     |                                     |               |
+| GET    | /chats-public           | Retrieve public chats  | Y     |                                     |               |
+| GET    | /chats                  | Retrieve chats         | Y     |                                     |               |
+| POST   | /chats                  | Create chat            | Y     | { name, userIds: ['id_1', 'id_2'] } |               |
+| GET    | /chats/:chatId          | Retrieve chat          | Y     |                                     |               |
+| PATCH  | /chats/:chatId          | Update chat name       | Y     | { name }                            | name optional |
+| DELETE | /chats/:chatId          | Delete chat            | Y     |                                     |               |
+| GET    | /posts                  | Retrieve all posts     | Y     |                                     | query: userId |
+| POST   | /posts                  | Create post            | Y     | { title, content, media }           |               |
+| DELETE | /posts/:postId          | Delete post            | Y     |                                     |               |
+| POST   | /posts/:postId/likes    | Like post              | Y     |                                     |               |
+| DELETE | /posts/:postId/likes    | Unlike post            | Y     |                                     |               |
+| POST   | /posts/:postId/comments | Create comment         | Y     | { content, media }                  |               |
+| DELETE | /comments/:commentId    | Delete comment         | Y     |                                     |               |
 
 | Socket Event      | Arguments      | Use                              |
 | ----------------- | -------------- | -------------------------------- |
@@ -139,11 +141,11 @@ VITE_SERVER_URL
 -   server
 
     -   post comments
-        - routes
-            - POST /comments/:commentId/likes
-            - DELETE /comments/:commentId/likes
-        - comment validation
-        - extract likes select?
+        -   routes
+            -   POST /comments/:commentId/likes
+            -   DELETE /comments/:commentId/likes
+        -   comment validation
+        -   extract likes select?
 
 -   order
 
@@ -151,7 +153,7 @@ VITE_SERVER_URL
     -   users page
     -   follows
         -   when implementing followers -> only serve posts created by followed users
-        -   enforce creating comments on only authorized posts 
+        -   enforce creating comments on only authorized posts
 
 -   low prio
 
@@ -180,7 +182,8 @@ VITE_SERVER_URL
 -   1736b7af-8c60-4c2b-9254-6c08662fb2e4 | usagii
 
 -   POST
+
     -   95de95c3-d28a-4040-8060-9f6d096a0b4a | kurimanju
 
-- createComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '95de95c3-d28a-4040-8060-9f6d096a0b4a', 'Let\'s share a cold Orion beer when I get my drinking license~');
-- likeComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '6a22f041-e461-4cb1-a0d1-8d2bea72359c')
+-   createComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '95de95c3-d28a-4040-8060-9f6d096a0b4a', 'Let\'s share a cold Orion beer when I get my drinking license~');
+-   likeComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '6a22f041-e461-4cb1-a0d1-8d2bea72359c')
