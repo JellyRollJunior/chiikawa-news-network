@@ -1,4 +1,4 @@
-import { COMMENT_SELECT } from './comments.select.js';
+import { commentsSelect } from './comments.select.js';
 import { USER_SELECT_BASIC } from './user.select.js';
 
 const postSelect = (requesterId) => {
@@ -23,7 +23,7 @@ const postSelect = (requesterId) => {
             },
         },
         comments: {
-            select: COMMENT_SELECT,
+            select: commentsSelect(requesterId),
             orderBy: {
                 createdAt: 'desc',
             },

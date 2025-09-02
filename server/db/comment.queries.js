@@ -3,7 +3,7 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
-const createComment = async (userId, postId, content, media = null) => {
+const createComment = async (requesterId, postId, content, media = null) => {
     try {
         const data = prisma.comment.create({
             data: {
@@ -16,7 +16,7 @@ const createComment = async (userId, postId, content, media = null) => {
                 },
                 author: {
                     connect: {
-                        id: userId,
+                        id: requesterId,
                     },
                 },
             },
@@ -31,13 +31,33 @@ const deleteComment = async (commentId) => {
     try {
         const data = prisma.comment.delete({
             where: {
-                id: commentId
-            }
-        })
+                id: commentId,
+            },
+        });
         return data;
     } catch (error) {
         throw new DatabaseError('Unable to delete comment');
     }
-}
+};
 
-export { createComment, deleteComment };
+const likeComment = async (requesterId, commentId) => {
+    try {
+        const data = prisma.comment.update({
+            where: {
+                id: commentId,
+            },
+            data: {
+                likers: {
+                    connect: {
+                        id: requesterId,
+                    },
+                },
+            },
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to like comment');
+    }
+};
+
+export { createComment, deleteComment, likeComment };

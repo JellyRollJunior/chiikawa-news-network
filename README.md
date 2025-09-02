@@ -146,6 +146,7 @@ VITE_SERVER_URL
             - Delete /post/:postId/comments
             - POST /comments/:commentId/likes
             - DELETE /comments/:commentId/likes
+        - comment data formatting (setLikes)
 
 -   order
 

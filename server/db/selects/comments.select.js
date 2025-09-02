@@ -1,13 +1,26 @@
-import { USER_SELECT_BASIC } from "./user.select.js";
+import { USER_SELECT_BASIC } from './user.select.js';
 
-const COMMENT_SELECT = {
-    id: true,
-    content: true,
-    media: true,
-    createdAt: true,
-    author: {
-        select: USER_SELECT_BASIC
-    },
+const commentsSelect = (requesterId) => {
+    return {
+        id: true,
+        content: true,
+        media: true,
+        createdAt: true,
+        author: {
+            select: USER_SELECT_BASIC,
+        },
+        likers: {
+            select: {
+                id: true,
+            },
+            where: requesterId ? { id: requesterId } : undefined,
+        },
+        _count: {
+            select: {
+                likers: true,
+            },
+        },
+    };
 };
 
-export { COMMENT_SELECT };
+export { commentsSelect };
