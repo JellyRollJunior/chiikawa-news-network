@@ -139,8 +139,6 @@ VITE_SERVER_URL
 -   server
 
     -   post comments
-        - comment likes.. yikes!!!
-            - query
         - routes
             - POST /post/:postId/comments
             - Delete /post/:postId/comments
@@ -185,3 +183,4 @@ VITE_SERVER_URL
     -   95de95c3-d28a-4040-8060-9f6d096a0b4a | kurimanju
 
 - createComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '95de95c3-d28a-4040-8060-9f6d096a0b4a', 'Let\'s share a cold Orion beer when I get my drinking license~');
+- likeComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '6a22f041-e461-4cb1-a0d1-8d2bea72359c')

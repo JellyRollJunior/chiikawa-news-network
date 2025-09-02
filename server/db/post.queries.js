@@ -108,7 +108,7 @@ const unlikePost = async (requesterId, postId) => {
         });
         return data;
     } catch (error) {
-        throw new DatabaseError('Unable to un-like post');
+        throw new DatabaseError('Unable to unlike post');
     }
 };
 

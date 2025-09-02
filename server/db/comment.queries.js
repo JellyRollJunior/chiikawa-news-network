@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { commentsSelect } from './selects/comments.select.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
@@ -20,6 +21,7 @@ const createComment = async (requesterId, postId, content, media = null) => {
                     },
                 },
             },
+            select: commentsSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -33,6 +35,7 @@ const deleteComment = async (commentId) => {
             where: {
                 id: commentId,
             },
+            select: commentsSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -53,6 +56,7 @@ const likeComment = async (requesterId, commentId) => {
                     },
                 },
             },
+            select: commentsSelect(requesterId),
         });
         return data;
     } catch (error) {
@@ -60,4 +64,25 @@ const likeComment = async (requesterId, commentId) => {
     }
 };
 
-export { createComment, deleteComment, likeComment };
+const unlikeComment = async (requesterId, commentId) => {
+    try {
+        const data = prisma.comment.update({
+            where: {
+                id: commentId,
+            },
+            data: {
+                likers: {
+                    disconnect: {
+                        id: requesterId,
+                    },
+                },
+            },
+            select: commentsSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to unlike comment');
+    }
+};
+
+export { createComment, deleteComment, likeComment, unlikeComment };
