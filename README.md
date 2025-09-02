@@ -139,9 +139,10 @@ VITE_SERVER_URL
 -   server
 
     -   post comments
-        - schema
         - db queries
         - comment likes.. yikes!!!
+            - schema
+            - query
         - routes
             - POST /post/:postId/comments
             - Delete /post/:postId/comments
@@ -183,3 +184,5 @@ VITE_SERVER_URL
 
 -   POST
     -   95de95c3-d28a-4040-8060-9f6d096a0b4a | kurimanju
+
+- createComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '95de95c3-d28a-4040-8060-9f6d096a0b4a', 'Let\'s share a cold Orion beer when I get my drinking license~');

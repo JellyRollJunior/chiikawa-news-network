@@ -27,4 +27,17 @@ const createComment = async (userId, postId, content, media = null) => {
     }
 };
 
-export { createComment };
+const deleteComment = async (commentId) => {
+    try {
+        const data = prisma.comment.delete({
+            where: {
+                id: commentId
+            }
+        })
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to delete comment');
+    }
+}
+
+export { createComment, deleteComment };
