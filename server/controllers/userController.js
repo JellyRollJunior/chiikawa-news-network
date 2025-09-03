@@ -61,4 +61,38 @@ const patchAvatar = async (req, res, next) => {
     }
 };
 
-export { getCurrentUser, getUser, getAllUsers, patchBio, patchAvatar };
+const getFollowers = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const { userId } = req.params;
+        const followers = await userQueries.getFollowers(userId);
+        res.json({
+            data: followers,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getFollowing = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const { userId } = req.params;
+        const followers = await userQueries.getFollowing(userId);
+        res.json({
+            data: followers,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export {
+    getCurrentUser,
+    getUser,
+    getAllUsers,
+    patchBio,
+    patchAvatar,
+    getFollowers,
+    getFollowing,
+};

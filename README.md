@@ -141,15 +141,13 @@ VITE_SERVER_URL
 -   server
 
     -   follows
-        -   queries
-            -   returns isFollowing for all user retrieval
-                -   format isFollowing
         -   routes
-            -   get followers
-            -   get following
             -   add following
-        -   format to remove _count object
+        -   returns isFollowing for all user retrieval
+            -   format isFollowing
+            -   format to remove _count object
         -   when implementing followers -> only serve posts created by followed users
+        -   move editing user to /current?
 
 -   order
 

@@ -2,7 +2,10 @@ import { Router } from 'express';
 import { authenticateToken } from '../middleware/handleVerifyToken.js';
 import { retrieveAvatar } from '../middleware/multer.js';
 import { resizeAvatar } from '../errors/Sharp.js';
-import { bioValidations, userIdValidations } from '../middleware/validations.js';
+import {
+    bioValidations,
+    userIdValidations,
+} from '../middleware/validations.js';
 import * as userController from '../controllers/userController.js';
 import * as postController from '../controllers/postController.js';
 
@@ -10,7 +13,12 @@ const userRouter = Router();
 
 userRouter.get('/', authenticateToken, userController.getAllUsers);
 userRouter.get('/:userId', authenticateToken, userController.getUser);
-userRouter.patch('/:userId', authenticateToken, bioValidations, userController.patchBio);
+userRouter.patch(
+    '/:userId',
+    authenticateToken,
+    bioValidations,
+    userController.patchBio
+);
 userRouter.patch(
     '/:userId/avatar',
     authenticateToken,
@@ -18,6 +26,23 @@ userRouter.patch(
     resizeAvatar,
     userController.patchAvatar
 );
-userRouter.get('/:userId/posts', authenticateToken, userIdValidations, postController.getPosts);
+userRouter.get(
+    '/:userId/followers',
+    authenticateToken,
+    userIdValidations,
+    userController.getFollowers
+);
+userRouter.get(
+    '/:userId/following',
+    authenticateToken,
+    userIdValidations,
+    userController.getFollowing
+);
+userRouter.get(
+    '/:userId/posts',
+    authenticateToken,
+    userIdValidations,
+    postController.getPosts
+);
 
 export { userRouter };

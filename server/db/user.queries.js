@@ -104,11 +104,11 @@ const updateAvatar = async (id, avatarSrc) => {
     }
 };
 
-const getFollowing = async (requesterId) => {
+const getFollowing = async (userId) => {
     try {
         const data = await prisma.user.findFirst({
             where: {
-                id: requesterId,
+                id: userId,
             },
             select: {
                 following: {
@@ -122,11 +122,11 @@ const getFollowing = async (requesterId) => {
     }
 }
 
-const getFollowers = async (requesterId) => {
+const getFollowers = async (userId) => {
     try {
         const data = await prisma.user.findFirst({
             where: {
-                id: requesterId,
+                id: userId,
             },
             select: {
                 followers: {
