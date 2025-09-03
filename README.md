@@ -145,7 +145,6 @@ VITE_SERVER_URL
             -   add following
         -   returns isFollowing for all user retrieval
             -   format isFollowing
-            -   format to remove _count object
         -   when implementing followers -> only serve posts created by followed users
         -   move editing user to /current?
 

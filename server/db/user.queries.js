@@ -116,7 +116,7 @@ const getFollowing = async (userId) => {
                 }
             }
         })
-        return data;
+        return data.following;
     } catch (error) {
         throw new DatabaseError('Unable to retrieve following')
     }
@@ -134,7 +134,7 @@ const getFollowers = async (userId) => {
                 }
             }
         })
-        return data;
+        return data.followers;
     } catch (error) {
         throw new DatabaseError('Unable to retrieve following')
     }
