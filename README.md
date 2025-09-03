@@ -141,8 +141,13 @@ VITE_SERVER_URL
 -   server
 
     -   follows
-        -   schema
         -   queries
+            -   get followers
+            -   get following
+            -   add following
+            -   retrieve user info return count followers and following
+                -   format to remove _count object
+            -   /users returns isFollowing 
         -   routes
             -   get followers
             -   get following

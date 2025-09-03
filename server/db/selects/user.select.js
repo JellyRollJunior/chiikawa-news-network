@@ -3,6 +3,12 @@ const USER_SELECT = {
     username: true,
     avatar: true,
     bio: true,
+    _count: {
+        select: {
+            followers: true,
+            following: true,
+        },
+    },
 };
 
 const USER_SELECT_BASIC = {

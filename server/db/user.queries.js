@@ -104,6 +104,27 @@ const updateAvatar = async (id, avatarSrc) => {
     }
 };
 
+const addFollowing = async (requesterId, followingId) => {
+    try {
+        const user = await prisma.user.update({
+            data: {
+                following: {
+                    connect: {
+                        id: followingId,
+                    },
+                },
+            },
+            where: {
+                id: requesterId,
+            },
+            select: USER_SELECT,
+        });
+        return user;
+    } catch (error) {
+        throw new DatabaseError('Unable to update following');
+    }
+};
+
 export {
     getUserByUsername,
     getUserById,
@@ -111,4 +132,5 @@ export {
     createUser,
     updateBio,
     updateAvatar,
+    addFollowing,
 };
