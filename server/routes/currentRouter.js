@@ -5,6 +5,5 @@ import * as userQueries from '../controllers/userController.js';
 const currentRouter = Router();
 
 currentRouter.get('/', authenticateToken, userQueries.getCurrentUser)
-currentRouter.patch('/following', authenticateToken);
 
 export { currentRouter}

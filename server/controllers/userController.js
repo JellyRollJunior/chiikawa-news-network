@@ -99,6 +99,19 @@ const getFollowing = async (req, res, next) => {
     }
 };
 
+const followUser = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const followerId = req.user.id;
+        const { userId: followingId } = req.params;
+        const user = await userQueries.followUser(followerId, followingId);
+        const formattedUser = setFollows(user);
+        res.json(formattedUser);
+    } catch (error) {
+        next(error);
+    }
+};
+
 export {
     getCurrentUser,
     getUser,
@@ -107,4 +120,5 @@ export {
     patchAvatar,
     getFollowers,
     getFollowing,
+    followUser,
 };

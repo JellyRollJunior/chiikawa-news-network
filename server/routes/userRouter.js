@@ -26,11 +26,19 @@ userRouter.patch(
     resizeAvatar,
     userController.patchAvatar
 );
+
+/* Follows */
 userRouter.get(
     '/:userId/followers',
     authenticateToken,
     userIdValidations,
     userController.getFollowers
+);
+userRouter.post(
+    '/:userId/followers',
+    authenticateToken,
+    userIdValidations,
+    userController.followUser
 );
 userRouter.get(
     '/:userId/following',
@@ -38,6 +46,8 @@ userRouter.get(
     userIdValidations,
     userController.getFollowing
 );
+
+/* Posts */
 userRouter.get(
     '/:userId/posts',
     authenticateToken,

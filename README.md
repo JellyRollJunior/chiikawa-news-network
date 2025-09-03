@@ -8,29 +8,31 @@
 
 ## Endpoints & Socket Events
 
-| Method | URI                     | Function               | Token | Body                                | Notes         |
-| ------ | ----------------------- | ---------------------- | ----- | ----------------------------------- | ------------- |
-| POST   | /signup                 | Create user            | N     | { username, password}               |               |
-| POST   | /login                  | Login user             | N     | { username, password}               |               |
-| GET    | /current                | Retrieve current user  | Y     |                                     |               |
-| GET    | /users                  | Retrieve all users     | Y     |                                     |               |
-| GET    | /users/:userId          | Retrieve user data     | Y     |                                     |               |
-| PATCH  | /users/:userId          | Update bio             | Y     | { bio }                             |               |
-| PATCH  | /users/:userId/avatar   | Update profile picture | Y     | { avatar }                          |               |
-| GET    | /users/:userId/posts    | Retrieve posts by user | Y     |                                     |               |
-| GET    | /chats-public           | Retrieve public chats  | Y     |                                     |               |
-| GET    | /chats                  | Retrieve chats         | Y     |                                     |               |
-| POST   | /chats                  | Create chat            | Y     | { name, userIds: ['id_1', 'id_2'] } |               |
-| GET    | /chats/:chatId          | Retrieve chat          | Y     |                                     |               |
-| PATCH  | /chats/:chatId          | Update chat name       | Y     | { name }                            | name optional |
-| DELETE | /chats/:chatId          | Delete chat            | Y     |                                     |               |
-| GET    | /posts                  | Retrieve all posts     | Y     |                                     | query: userId |
-| POST   | /posts                  | Create post            | Y     | { title, content, media }           |               |
-| DELETE | /posts/:postId          | Delete post            | Y     |                                     |               |
-| POST   | /posts/:postId/likes    | Like post              | Y     |                                     |               |
-| DELETE | /posts/:postId/likes    | Unlike post            | Y     |                                     |               |
-| POST   | /posts/:postId/comments | Create comment         | Y     | { content, media }                  |               |
-| DELETE | /comments/:commentId    | Delete comment         | Y     |                                     |               |
+| Method | URI                      | Function                   | Token | Body                                | Notes         |
+| ------ | ------------------------ | -------------------------- | ----- | ----------------------------------- | ------------- |
+| POST   | /signup                  | Create user                | N     | { username, password}               |               |
+| POST   | /login                   | Login user                 | N     | { username, password}               |               |
+| GET    | /current                 | Retrieve current user      | Y     |                                     |               |
+| GET    | /users                   | Retrieve all users         | Y     |                                     |               |
+| GET    | /users/:userId           | Retrieve user data         | Y     |                                     |               |
+| PATCH  | /users/:userId           | Update bio                 | Y     | { bio }                             |               |
+| PATCH  | /users/:userId/avatar    | Update profile picture     | Y     | { avatar }                          |               |
+| GET    | /users/:userId/posts     | Retrieve posts by user     | Y     |                                     |               |
+| GET    | /users/:userId/followers | Retrieve followers by user | Y     |                                     |               |
+| GET    | /users/:userId/following | Retrieve following by user | Y     |                                     |               |
+| GET    | /chats-public            | Retrieve public chats      | Y     |                                     |               |
+| GET    | /chats                   | Retrieve chats             | Y     |                                     |               |
+| POST   | /chats                   | Create chat                | Y     | { name, userIds: ['id_1', 'id_2'] } |               |
+| GET    | /chats/:chatId           | Retrieve chat              | Y     |                                     |               |
+| PATCH  | /chats/:chatId           | Update chat name           | Y     | { name }                            | name optional |
+| DELETE | /chats/:chatId           | Delete chat                | Y     |                                     |               |
+| GET    | /posts                   | Retrieve all posts         | Y     |                                     | query: userId |
+| POST   | /posts                   | Create post                | Y     | { title, content, media }           |               |
+| DELETE | /posts/:postId           | Delete post                | Y     |                                     |               |
+| POST   | /posts/:postId/likes     | Like post                  | Y     |                                     |               |
+| DELETE | /posts/:postId/likes     | Unlike post                | Y     |                                     |               |
+| POST   | /posts/:postId/comments  | Create comment             | Y     | { content, media }                  |               |
+| DELETE | /comments/:commentId     | Delete comment             | Y     |                                     |               |
 
 | Socket Event      | Arguments      | Use                              |
 | ----------------- | -------------- | -------------------------------- |

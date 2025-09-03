@@ -140,7 +140,7 @@ const getFollowers = async (userId) => {
     }
 }
 
-const addFollowing = async (requesterId, followingId) => {
+const followUser = async (followerId, followingId) => {
     try {
         const user = await prisma.user.update({
             data: {
@@ -151,7 +151,7 @@ const addFollowing = async (requesterId, followingId) => {
                 },
             },
             where: {
-                id: requesterId,
+                id: followerId,
             },
             select: USER_SELECT,
         });
@@ -170,5 +170,5 @@ export {
     updateAvatar,
     getFollowers,
     getFollowing,
-    addFollowing,
+    followUser,
 };
