@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { DatabaseError } from '../errors/DatabaseError.js';
-import { USER_SELECT } from './selects/user.select.js';
+import { USER_SELECT, userSelect } from './selects/user.select.js';
 
 const prisma = new PrismaClient();
 
@@ -17,13 +17,13 @@ const getUserByUsername = async (username) => {
     }
 };
 
-const getUserById = async (id) => {
+const getUserById = async (requesterId, userId) => {
     try {
         const user = await prisma.user.findFirst({
             where: {
-                id,
+                id: userId,
             },
-            select: USER_SELECT,
+            select: userSelect(requesterId)
         });
         if (!user) throw new Error('404');
         return user;

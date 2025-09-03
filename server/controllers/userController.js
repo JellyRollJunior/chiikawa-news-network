@@ -19,7 +19,7 @@ const getCurrentUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
     try {
         const { userId } = req.params;
-        const user = await userQueries.getUserById(userId);
+        const user = await userQueries.getUserById(req.user.id, userId);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {

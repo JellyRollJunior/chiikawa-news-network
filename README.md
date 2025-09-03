@@ -19,6 +19,7 @@
 | PATCH  | /users/:userId/avatar    | Update profile picture     | Y     | { avatar }                          |               |
 | GET    | /users/:userId/posts     | Retrieve posts by user     | Y     |                                     |               |
 | GET    | /users/:userId/followers | Retrieve followers by user | Y     |                                     |               |
+| POST   | /users/:userId/followers | Follow :userId             | Y     |                                     |               |
 | GET    | /users/:userId/following | Retrieve following by user | Y     |                                     |               |
 | GET    | /chats-public            | Retrieve public chats      | Y     |                                     |               |
 | GET    | /chats                   | Retrieve chats             | Y     |                                     |               |
@@ -143,8 +144,6 @@ VITE_SERVER_URL
 -   server
 
     -   follows
-        -   routes
-            -   add following
         -   returns isFollowing for all user retrieval
             -   format isFollowing
         -   when implementing followers -> only serve posts created by followed users
