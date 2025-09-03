@@ -140,13 +140,18 @@ VITE_SERVER_URL
 
 -   server
 
+    -   follows
+        -   schema
+        -   queries
+        -   routes
+            -   get followers
+            -   get following
+            -   add following
+        -   when implementing followers -> only serve posts created by followed users
+
 -   order
 
     -   github login
-    -   users page
-    -   follows
-        -   when implementing followers -> only serve posts created by followed users
-        -   enforce creating comments on only authorized posts
 
 -   low prio
 
