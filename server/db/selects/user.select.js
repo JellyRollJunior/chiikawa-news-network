@@ -1,16 +1,3 @@
-const USER_SELECT = {
-    id: true,
-    username: true,
-    avatar: true,
-    bio: true,
-    _count: {
-        select: {
-            followers: true,
-            following: true,
-        },
-    },
-};
-
 const userSelect = (requesterId) => {
     return {
         id: true,
@@ -41,4 +28,4 @@ const USER_SELECT_BASIC = {
     avatar: true,
 };
 
-export { USER_SELECT, userSelect, USER_SELECT_BASIC };
+export { userSelect, USER_SELECT_BASIC };

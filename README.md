@@ -144,8 +144,6 @@ VITE_SERVER_URL
 -   server
 
     -   follows
-        -   returns isFollowing for all user retrieval
-            -   format isFollowing
         -   when implementing followers -> only serve posts created by followed users
         -   move editing user to /current?
 

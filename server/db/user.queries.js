@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+import { userSelect } from './selects/user.select.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
-import { USER_SELECT, userSelect } from './selects/user.select.js';
 
 const prisma = new PrismaClient();
 
@@ -23,7 +23,7 @@ const getUserById = async (requesterId, userId) => {
             where: {
                 id: userId,
             },
-            select: userSelect(requesterId)
+            select: userSelect(requesterId),
         });
         if (!user) throw new Error('404');
         return user;
@@ -38,13 +38,13 @@ const getUserById = async (requesterId, userId) => {
     }
 };
 
-const getAllUsers = async () => {
+const getAllUsers = async (requesterId) => {
     try {
         const users = await prisma.user.findMany({
             orderBy: {
                 username: 'asc',
             },
-            select: USER_SELECT,
+            select: userSelect(requesterId),
         });
         return users;
     } catch (error) {
@@ -70,16 +70,16 @@ const createUser = async (username, password) => {
     }
 };
 
-const updateBio = async (id, bio) => {
+const updateBio = async (requesterId, bio) => {
     try {
         const user = await prisma.user.update({
             data: {
                 bio,
             },
             where: {
-                id,
+                id: requesterId,
             },
-            select: USER_SELECT,
+            select: userSelect(requesterId),
         });
         return user;
     } catch (error) {
@@ -87,16 +87,16 @@ const updateBio = async (id, bio) => {
     }
 };
 
-const updateAvatar = async (id, avatarSrc) => {
+const updateAvatar = async (requesterId, avatarSrc) => {
     try {
         const user = await prisma.user.update({
             data: {
                 avatar: avatarSrc,
             },
             where: {
-                id,
+                id: requesterId,
             },
-            select: USER_SELECT,
+            select: userSelect(requesterId),
         });
         return user;
     } catch (error) {
@@ -104,7 +104,7 @@ const updateAvatar = async (id, avatarSrc) => {
     }
 };
 
-const getFollowing = async (userId) => {
+const getFollowing = async (requesterId, userId) => {
     try {
         const data = await prisma.user.findFirst({
             where: {
@@ -112,17 +112,17 @@ const getFollowing = async (userId) => {
             },
             select: {
                 following: {
-                    select: USER_SELECT,
-                }
-            }
-        })
+                    select: userSelect(requesterId),
+                },
+            },
+        });
         return data.following;
     } catch (error) {
-        throw new DatabaseError('Unable to retrieve following')
+        throw new DatabaseError('Unable to retrieve following');
     }
-}
+};
 
-const getFollowers = async (userId) => {
+const getFollowers = async (requesterId, userId) => {
     try {
         const data = await prisma.user.findFirst({
             where: {
@@ -130,17 +130,17 @@ const getFollowers = async (userId) => {
             },
             select: {
                 followers: {
-                    select: USER_SELECT,
-                }
-            }
-        })
+                    select: userSelect(requesterId),
+                },
+            },
+        });
         return data.followers;
     } catch (error) {
-        throw new DatabaseError('Unable to retrieve following')
+        throw new DatabaseError('Unable to retrieve following');
     }
-}
+};
 
-const followUser = async (followerId, followingId) => {
+const followUser = async (requesterId, followingId) => {
     try {
         const user = await prisma.user.update({
             data: {
@@ -151,9 +151,9 @@ const followUser = async (followerId, followingId) => {
                 },
             },
             where: {
-                id: followerId,
+                id: requesterId,
             },
-            select: USER_SELECT,
+            select: userSelect(requesterId),
         });
         return user;
     } catch (error) {

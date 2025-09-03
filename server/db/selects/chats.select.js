@@ -1,4 +1,4 @@
-import { USER_SELECT } from './user.select.js';
+import { USER_SELECT_BASIC } from './user.select.js';
 
 const CHATS_SELECT = {
     id: true,
@@ -7,7 +7,7 @@ const CHATS_SELECT = {
     avatar: true,
     latestMessage: true,
     users: {
-        select: USER_SELECT,
+        select: USER_SELECT_BASIC,
     },
 };
 

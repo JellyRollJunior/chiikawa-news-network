@@ -1,4 +1,4 @@
-import { USER_SELECT } from "./user.select.js";
+import { USER_SELECT_BASIC } from "./user.select.js";
 
 const MESSAGE_SELECT = {
     id: true,
@@ -25,7 +25,7 @@ const CHAT_MESSAGES_SELECT = {
         },
     },
     users: {
-        select: USER_SELECT,
+        select: USER_SELECT_BASIC,
     },
 };
 

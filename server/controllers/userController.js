@@ -18,8 +18,9 @@ const getCurrentUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
     try {
+        const requesterId = req.user.id;
         const { userId } = req.params;
-        const user = await userQueries.getUserById(req.user.id, userId);
+        const user = await userQueries.getUserById(requesterId, userId);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {
@@ -29,7 +30,8 @@ const getUser = async (req, res, next) => {
 
 const getAllUsers = async (req, res, next) => {
     try {
-        const users = await userQueries.getAllUsers();
+        const requesterId = req.user.id;
+        const users = await userQueries.getAllUsers(requesterId);
         const formattedUsers = users.map((user) => setFollows(user));
         res.json({ users: formattedUsers });
     } catch (error) {
@@ -70,8 +72,9 @@ const patchAvatar = async (req, res, next) => {
 const getFollowers = async (req, res, next) => {
     try {
         validateInput(req);
+        const requesterId = req.user.id;
         const { userId } = req.params;
-        const followers = await userQueries.getFollowers(userId);
+        const followers = await userQueries.getFollowers(requesterId, userId);
         const formattedFollowers = followers.map((follower) =>
             setFollows(follower)
         );
@@ -86,8 +89,9 @@ const getFollowers = async (req, res, next) => {
 const getFollowing = async (req, res, next) => {
     try {
         validateInput(req);
+        const requesterId = req.user.id;
         const { userId } = req.params;
-        const following = await userQueries.getFollowing(userId);
+        const following = await userQueries.getFollowing(requesterId, userId);
         const formattedFollowing = following.map((follow) =>
             setFollows(follow)
         );
@@ -102,9 +106,9 @@ const getFollowing = async (req, res, next) => {
 const followUser = async (req, res, next) => {
     try {
         validateInput(req);
-        const followerId = req.user.id;
+        const requesterId = req.user.id;
         const { userId: followingId } = req.params;
-        const user = await userQueries.followUser(followerId, followingId);
+        const user = await userQueries.followUser(requesterId, followingId);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {
