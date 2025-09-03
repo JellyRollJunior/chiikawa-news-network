@@ -8,7 +8,7 @@ import * as userQueries from '../db/user.queries.js';
 const getCurrentUser = async (req, res, next) => {
     try {
         if (!req.user) throw new AuthenticationError();
-        const user = await userQueries.getUserById(req.user.id);
+        const user = await userQueries.getUserById(req.user.id, req.user.id);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {
