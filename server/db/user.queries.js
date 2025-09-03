@@ -104,6 +104,42 @@ const updateAvatar = async (id, avatarSrc) => {
     }
 };
 
+const getFollowing = async (requesterId) => {
+    try {
+        const data = await prisma.user.findFirst({
+            where: {
+                id: requesterId,
+            },
+            select: {
+                following: {
+                    select: USER_SELECT,
+                }
+            }
+        })
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve following')
+    }
+}
+
+const getFollowers = async (requesterId) => {
+    try {
+        const data = await prisma.user.findFirst({
+            where: {
+                id: requesterId,
+            },
+            select: {
+                followers: {
+                    select: USER_SELECT,
+                }
+            }
+        })
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve following')
+    }
+}
+
 const addFollowing = async (requesterId, followingId) => {
     try {
         const user = await prisma.user.update({
@@ -132,5 +168,7 @@ export {
     createUser,
     updateBio,
     updateAvatar,
+    getFollowers,
+    getFollowing,
     addFollowing,
 };
