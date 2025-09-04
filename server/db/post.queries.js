@@ -4,10 +4,17 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
-const getPosts = async (requesterId) => {
+const getPosts = async (requesterId, followingIds = null) => {
     try {
         const data = await prisma.post.findMany({
             select: postSelect(requesterId),
+            where: followingIds
+                ? {
+                    authorId: {
+                        in: [requesterId, ...followingIds],
+                    },
+                }
+                : {},
             orderBy: {
                 createdAt: 'desc',
             },

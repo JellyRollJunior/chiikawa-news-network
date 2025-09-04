@@ -144,8 +144,7 @@ VITE_SERVER_URL
 -   server
 
     -   follows
-        -   when implementing followers -> only serve posts created by followed users
-        -   move editing user to /current?
+        -   when implementing followers -> only serve posts created by followed users and self
 
 -   order
 
@@ -166,6 +165,9 @@ VITE_SERVER_URL
         "meta": { "count": 20, "next": "/posts?page=2" }
         }
         -   PAGINATION FOR POSTS
+    -   move editing user to /current?
+        - /current/bio
+        - /current/avatar
 
 ## DATA
 
