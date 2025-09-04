@@ -4,17 +4,10 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
-const getPosts = async (requesterId, followingIds = null) => {
+const getPosts = async (requesterId) => {
     try {
         const data = await prisma.post.findMany({
             select: postSelect(requesterId),
-            where: followingIds
-                ? {
-                    authorId: {
-                        in: [requesterId, ...followingIds],
-                    },
-                }
-                : {},
             orderBy: {
                 createdAt: 'desc',
             },
@@ -25,11 +18,13 @@ const getPosts = async (requesterId, followingIds = null) => {
     }
 };
 
-const getPostsByAuthor = async (requesterId, authorId) => {
+const getPostsByAuthor = async (requesterId, authorIds) => {
     try {
         const data = await prisma.post.findMany({
             where: {
-                authorId,
+                authorId: {
+                    in: Array.isArray(authorIds) ? authorIds : [authorIds],
+                },
             },
             select: postSelect(requesterId),
             orderBy: {

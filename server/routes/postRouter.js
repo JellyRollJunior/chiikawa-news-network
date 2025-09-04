@@ -29,6 +29,12 @@ postRouter.delete(
     postIdValidations,
     postController.deletePost
 );
+postRouter.get(
+    '/feed',
+    authenticateToken,
+    userIdValidationsOptional,
+    postController.getFollowingPosts
+);
 
 // likes
 postRouter.post(

@@ -3,6 +3,7 @@ import { validateInput } from '../middleware/validations.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 import * as postQueries from '../db/post.queries.js';
+import * as userQueries from '../db/user.queries.js';
 
 const getPosts = async (req, res, next) => {
     try {
@@ -12,7 +13,31 @@ const getPosts = async (req, res, next) => {
         const posts = authorId
             ? await postQueries.getPostsByAuthor(requesterId, authorId)
             : await postQueries.getPosts(requesterId);
-        const formattedPosts = posts.map((post) => setPostAndCommentLikes(post));
+        const formattedPosts = posts.map((post) =>
+            setPostAndCommentLikes(post)
+        );
+        res.json({ posts: formattedPosts });
+    } catch (error) {
+        next(error);
+    }
+};
+
+const getFollowingPosts = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const requesterId = req.user.id;
+        const following = await userQueries.getFollowing(
+            requesterId,
+            requesterId
+        );
+        const followingIds = following.map((user) => user.id);
+        const posts = await postQueries.getPostsByAuthor(requesterId, [
+            requesterId,
+            ...followingIds,
+        ]);
+        const formattedPosts = posts.map((post) => {
+            return setPostAndCommentLikes(post);
+        });
         res.json({ posts: formattedPosts });
     } catch (error) {
         next(error);
@@ -80,4 +105,11 @@ const deletePost = async (req, res, next) => {
     }
 };
 
-export { createPost, getPosts, likePost, unlikePost, deletePost };
+export {
+    getPosts,
+    getFollowingPosts,
+    createPost,
+    likePost,
+    unlikePost,
+    deletePost,
+};
