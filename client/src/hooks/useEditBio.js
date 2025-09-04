@@ -8,10 +8,10 @@ const useEditBio = () => {
     const { toast } = useContext(ToastContext);
     const { handleTokenErrors } = useTokenErrorHandler();
 
-    const editBio = async (id, bio) => {
+    const editBio = async (bio) => {
         setIsLoading(true);
         try {
-            const data = await patchUserBio(id, bio);
+            const data = await patchUserBio(bio);
             return data;
         } catch (error) {
             handleTokenErrors(error);

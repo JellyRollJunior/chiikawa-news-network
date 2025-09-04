@@ -8,7 +8,7 @@ import chiiPeace from '../assets/images/chii-peace.png';
 import hachiCamera from '../assets/images/hachi-camera-back.png';
 
 const SettingsUserInfo = () => {
-  const { id, bio, setBio, avatar, isLoading } = useContext(CurrentContext);
+  const { bio, setBio, avatar, isLoading } = useContext(CurrentContext);
   const { uploadAvatar, isLoading: isUploadingAvatar } = useUploadAvatar();
   const { editBio, isLoading: isEditingBio } = useEditBio();
   const [bioTextarea, setBioTextarea] = useState('');
@@ -20,7 +20,7 @@ const SettingsUserInfo = () => {
 
   const handleEditBio = async (event) => {
     event.preventDefault();
-    const data = await editBio(id, bioTextarea);
+    const data = await editBio(bioTextarea);
     if (data && data.bio) {
       setBio(data.bio);
     }

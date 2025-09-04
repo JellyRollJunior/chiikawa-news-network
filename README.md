@@ -141,6 +141,7 @@ VITE_SERVER_URL
 -   client
 
     -   refactor for /current editing
+    -   add confirmation toast when editing bio
     -   bug: profile, settings, chat overflow scroll
 
 -   server
@@ -148,6 +149,7 @@ VITE_SERVER_URL
     -   posts
         -   media
         -   comments media
+        -   postCount to user info
     -   PAGINATION FOR POSTS
         -   Return data in this style
             {

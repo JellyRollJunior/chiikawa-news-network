@@ -39,9 +39,9 @@ const fetchUser = async (signal, userId) => {
     return data;
 };
 
-const patchUserBio = async (userId, bio) => {
+const patchUserBio = async (bio) => {
     const data = await request(
-        `/users/${userId}`,
+        `/current/bio`,
         {
             mode: 'cors',
             method: 'PATCH',
@@ -57,9 +57,9 @@ const patchUserBio = async (userId, bio) => {
     return data;
 };
 
-const patchUserAvatar = async (userId, fileFormData) => {
+const patchUserAvatar = async (fileFormData) => {
     const data = await request(
-        `/users/${userId}/avatar`,
+        `/current/avatar`,
         {
             mode: 'cors',
             method: 'PATCH',

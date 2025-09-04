@@ -5,7 +5,7 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 
 const useUploadAvatar = () => {
-    const { id, setAvatar } = useContext(CurrentContext);
+    const { setAvatar } = useContext(CurrentContext);
     const { toast } = useContext(ToastContext);
     const { handleTokenErrors } = useTokenErrorHandler();
     const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ const useUploadAvatar = () => {
     const uploadAvatar = async (fileFormData) => {
         setIsLoading(true);
         try {
-            const data = await patchUserAvatar(id, fileFormData);
+            const data = await patchUserAvatar(fileFormData);
             if (data.avatar) {
                 setAvatar(data.avatar);
             }
