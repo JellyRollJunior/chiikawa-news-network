@@ -1,15 +1,14 @@
 import { validateInput } from '../middleware/validations.js';
 import { AuthenticationError } from '../errors/AuthenticationError.js';
-import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { uploadAvatar } from '../adapters/supabase.client.js';
-import { setFollows } from '../services/user.services.js';
+import { formatUser } from '../services/user.services.js';
 import * as userQueries from '../db/user.queries.js';
 
 const getCurrentUser = async (req, res, next) => {
     try {
         if (!req.user) throw new AuthenticationError();
         const user = await userQueries.getUserById(req.user.id, req.user.id);
-        const formattedUser = setFollows(user);
+        const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
         next(error);
@@ -21,7 +20,7 @@ const getUser = async (req, res, next) => {
         const requesterId = req.user.id;
         const { userId } = req.params;
         const user = await userQueries.getUserById(requesterId, userId);
-        const formattedUser = setFollows(user);
+        const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
         next(error);
@@ -32,7 +31,7 @@ const getAllUsers = async (req, res, next) => {
     try {
         const requesterId = req.user.id;
         const users = await userQueries.getAllUsers(requesterId);
-        const formattedUsers = users.map((user) => setFollows(user));
+        const formattedUsers = users.map((user) => formatUser(user));
         res.json({ users: formattedUsers });
     } catch (error) {
         next(error);
@@ -45,7 +44,7 @@ const patchBio = async (req, res, next) => {
         const userId = req.user.id;
         const bio = req.body.bio;
         const user = await userQueries.updateBio(userId, bio);
-        const formattedUser = setFollows(user);
+        const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
         next(error);
@@ -58,7 +57,7 @@ const patchAvatar = async (req, res, next) => {
         // upload to supabase & insert image url into DB
         const url = await uploadAvatar(userId, req.file);
         const user = await userQueries.updateAvatar(userId, url);
-        const formattedUser = setFollows(user);
+        const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
         next(error);
@@ -72,7 +71,7 @@ const getFollowers = async (req, res, next) => {
         const { userId } = req.params;
         const followers = await userQueries.getFollowers(requesterId, userId);
         const formattedFollowers = followers.map((follower) =>
-            setFollows(follower)
+            formatUser(follower)
         );
         res.json({
             data: formattedFollowers,
@@ -89,7 +88,7 @@ const getFollowing = async (req, res, next) => {
         const { userId } = req.params;
         const following = await userQueries.getFollowing(requesterId, userId);
         const formattedFollowing = following.map((follow) =>
-            setFollows(follow)
+            formatUser(follow)
         );
         res.json({
             data: formattedFollowing,
@@ -105,7 +104,7 @@ const followUser = async (req, res, next) => {
         const requesterId = req.user.id;
         const { userId: followingId } = req.params;
         const user = await userQueries.followUser(requesterId, followingId);
-        const formattedUser = setFollows(user);
+        const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
         next(error);

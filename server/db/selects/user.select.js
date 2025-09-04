@@ -8,6 +8,7 @@ const userSelect = (requesterId) => {
             select: {
                 followers: true,
                 following: true,
+                posts: true,
             },
         },
         // ID will be selected if requesterId is a follower of User

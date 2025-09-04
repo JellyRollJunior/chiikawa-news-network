@@ -1,15 +1,16 @@
-const setFollows = (user) => {
-    const userFollowCounts = setFollowCounts(user);
+const formatUser = (user) => {
+    const userFollowCounts = setStatistics(user);
     const userIsFollowing = setIsFollowing(userFollowCounts);
     return userIsFollowing;
 };
 
-const setFollowCounts = (user) => {
+const setStatistics = (user) => {
     const { _count: count, ...baseUser } = user;
     const formattedUser = {
         ...baseUser,
         followersCount: count.followers,
         followingCount: count.following,
+        postCount: count.posts
     };
     return formattedUser;
 };
@@ -23,4 +24,4 @@ const setIsFollowing = (user) => {
     return baseUser;
 };
 
-export { setFollows };
+export { formatUser };
