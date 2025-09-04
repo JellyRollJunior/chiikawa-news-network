@@ -1,9 +1,25 @@
-import { Router } from "express";
-import { authenticateToken } from "../middleware/handleVerifyToken.js";
-import * as userQueries from '../controllers/userController.js';
+import { Router } from 'express';
+import { authenticateToken } from '../middleware/handleVerifyToken.js';
+import { bioValidations } from '../middleware/validations.js';
+import { retrieveAvatar } from '../middleware/multer.js';
+import { resizeAvatar } from '../errors/Sharp.js';
+import * as userController from '../controllers/userController.js';
 
 const currentRouter = Router();
 
-currentRouter.get('/', authenticateToken, userQueries.getCurrentUser)
+currentRouter.get('/', authenticateToken, userController.getCurrentUser);
+currentRouter.patch(
+    '/bio',
+    authenticateToken,
+    bioValidations,
+    userController.patchBio
+);
+currentRouter.patch(
+    '/avatar',
+    authenticateToken,
+    retrieveAvatar,
+    resizeAvatar,
+    userController.patchAvatar
+);
 
-export { currentRouter}
+export { currentRouter };

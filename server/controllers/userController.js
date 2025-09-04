@@ -42,11 +42,9 @@ const getAllUsers = async (req, res, next) => {
 const patchBio = async (req, res, next) => {
     try {
         validateInput(req);
-        const { userId } = req.params;
-        if (req.user.id != userId)
-            throw new AuthorizationError('Unable to update bio');
+        const userId = req.user.id;
         const bio = req.body.bio;
-        const user = await userQueries.updateBio(req.user.id, bio);
+        const user = await userQueries.updateBio(userId, bio);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {
@@ -56,12 +54,10 @@ const patchBio = async (req, res, next) => {
 
 const patchAvatar = async (req, res, next) => {
     try {
-        const { userId } = req.params;
-        if (req.user.id != userId)
-            throw new AuthorizationError('Unable to update avatars');
+        const userId = req.user.id;
         // upload to supabase & insert image url into DB
-        const url = await uploadAvatar(req.user.id, req.file);
-        const user = await userQueries.updateAvatar(req.user.id, url);
+        const url = await uploadAvatar(userId, req.file);
+        const user = await userQueries.updateAvatar(userId, url);
         const formattedUser = setFollows(user);
         res.json(formattedUser);
     } catch (error) {

@@ -13,10 +13,10 @@
 | POST   | /signup                  | Create user                 | N     | { username, password}               |               |
 | POST   | /login                   | Login user                  | N     | { username, password}               |               |
 | GET    | /current                 | Retrieve current user       | Y     |                                     |               |
+| PATCH  | /current/bio             | Update bio                  | Y     | { bio }                             |               |
+| PATCH  | /current/avatar          | Update avatar               | Y     | { avatar }                          |               |
 | GET    | /users                   | Retrieve all users          | Y     |                                     |               |
 | GET    | /users/:userId           | Retrieve user data          | Y     |                                     |               |
-| PATCH  | /users/:userId           | Update bio                  | Y     | { bio }                             |               |
-| PATCH  | /users/:userId/avatar    | Update profile picture      | Y     | { avatar }                          |               |
 | GET    | /users/:userId/posts     | Retrieve posts by user      | Y     |                                     |               |
 | GET    | /users/:userId/followers | Retrieve followers by user  | Y     |                                     |               |
 | POST   | /users/:userId/followers | Follow :userId              | Y     |                                     |               |
@@ -140,6 +140,7 @@ VITE_SERVER_URL
 
 -   client
 
+    -   refactor for /current editing
     -   bug: profile, settings, chat overflow scroll
 
 -   server
@@ -147,9 +148,6 @@ VITE_SERVER_URL
     -   posts
         -   media
         -   comments media
-    -   move editing user to /current?
-        -   /current/bio
-        -   /current/avatar
     -   PAGINATION FOR POSTS
         -   Return data in this style
             {

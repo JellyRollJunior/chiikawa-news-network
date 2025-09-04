@@ -13,19 +13,6 @@ const userRouter = Router();
 
 userRouter.get('/', authenticateToken, userController.getAllUsers);
 userRouter.get('/:userId', authenticateToken, userController.getUser);
-userRouter.patch(
-    '/:userId',
-    authenticateToken,
-    bioValidations,
-    userController.patchBio
-);
-userRouter.patch(
-    '/:userId/avatar',
-    authenticateToken,
-    retrieveAvatar,
-    resizeAvatar,
-    userController.patchAvatar
-);
 
 /* Follows */
 userRouter.get(
