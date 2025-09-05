@@ -6,6 +6,7 @@ import { Server } from 'socket.io';
 import { attachSocketListeners } from './sockets/attachSocketListeners.js';
 import { instrument } from '@socket.io/admin-ui';
 import { seedPublicChats } from './scripts/seedPublicChats.js';
+import { seedSupabaseBuckets } from './adapters/supabase.client.js';
 dotenv.config();
 
 const server = createServer(app);
@@ -36,6 +37,7 @@ server.listen(PORT, async () => {
     console.log(`Listening on port: ${PORT}`);
     try {
         await seedPublicChats();
+        await seedSupabaseBuckets();
     } catch (error) {
         console.log('Error seeding public chats');
     }
