@@ -6,7 +6,7 @@ import { Server } from 'socket.io';
 import { attachSocketListeners } from './sockets/attachSocketListeners.js';
 import { instrument } from '@socket.io/admin-ui';
 import { seedPublicChats } from './scripts/seedPublicChats.js';
-import { seedSupabaseBuckets } from './adapters/supabase.client.js';
+import { seedSupabaseBuckets } from './scripts/seedSupabaseBuckets.js';
 dotenv.config();
 
 const server = createServer(app);

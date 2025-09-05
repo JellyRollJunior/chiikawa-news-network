@@ -5,36 +5,10 @@ dotenv.config();
 
 const AVATAR_BUCKET = 'avatar';
 const POSTS_BUCKET = 'posts';
+const buckets = [AVATAR_BUCKET, POSTS_BUCKET];
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
-
-const seedSupabaseBuckets = async () => {
-    const { error: errorAvatar } = await supabase.storage.getBucket(
-        AVATAR_BUCKET
-    );
-    if (errorAvatar) {
-        const { data, error } = await supabase.storage.createBucket(
-            AVATAR_BUCKET,
-            {
-                public: true,
-            }
-        );
-        console.log(`Seeded ${AVATAR_BUCKET} bucket on Supabase`);
-    }
-    const { error: errorPosts } = await supabase.storage.getBucket(
-        POSTS_BUCKET
-    );
-    if (errorPosts) {
-        const { data, error } = await supabase.storage.createBucket(
-            POSTS_BUCKET,
-            {
-                public: true,
-            }
-        );
-        console.log(`Seeded ${POSTS_BUCKET} bucket on Supabase`);
-    }
-};
 
 const getPublicUrl = (bucket, path) => {
     const { data } = supabase.storage.from(bucket).getPublicUrl(path);
@@ -88,4 +62,4 @@ const uploadAvatar = async (userId, file) => {
     }
 };
 
-export { seedSupabaseBuckets, uploadAvatar };
+export { buckets, uploadAvatar };
