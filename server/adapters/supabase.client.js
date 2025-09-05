@@ -62,4 +62,25 @@ const uploadAvatar = async (userId, file) => {
     }
 };
 
-export { buckets, uploadAvatar };
+const uploadPostMedia = async (userId, postId, file) => {
+    const folder = `user-${userId}/${postId}`;
+    const timestamp = Date.now();
+    const ext = file.mimetype.split('/')[1];
+    const path = `${folder}/post-${timestamp}.${ext}`;
+    try {
+        await emptyFolder(POSTS_BUCKET, folder);
+        const { error } = await supabase.storage
+            .from(POSTS_BUCKET)
+            .upload(path, file.buffer, {
+                contentType: `image/${ext}`,
+                cacheControl: 3600,
+                upsert: true,
+            });
+        if (error) throw Error;
+        return getPublicUrl(POSTS_BUCKET, path);
+    } catch (error) {
+        throw SupabaseError('Unable to upload post media');
+    }
+};
+
+export { buckets, uploadAvatar, uploadPostMedia };

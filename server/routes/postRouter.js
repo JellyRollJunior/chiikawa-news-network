@@ -8,6 +8,7 @@ import {
 } from '../middleware/validations.js';
 import * as postController from '../controllers/postController.js';
 import * as commentController from '../controllers/commentController.js';
+import { retrieveMedia } from '../middleware/multer.js';
 
 const postRouter = Router();
 
@@ -20,6 +21,7 @@ postRouter.get(
 postRouter.post(
     '/',
     authenticateToken,
+    retrieveMedia,
     postValidations,
     postController.createPost
 );

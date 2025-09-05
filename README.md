@@ -146,12 +146,8 @@ VITE_SERVER_URL
 -   server
 
     -   posts
-        -   supabase
-            -   on server startup, create buckets if they don't exist
-                -   avatar bucket
-                -   post bucket
         -   media
-            -   retrieve media
+            -   resize / reformat media
             -   upload media to supabase
             -   save url into db
         -   comments media (no comment media tbh... remove from schema)
