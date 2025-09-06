@@ -60,10 +60,11 @@ const createPost = async (req, res, next) => {
         const userId = req.user.id;
         const title = req.body.title;
         const content = req.body.content;
-        let post = await postQueries.createPost(userId, title, content);
-        // if file exists, upload to supabase
-        if (req.file) {
-            const url = await uploadPostMedia(userId, post.id, req.file);
+        let url = req.body.media;
+        let post = await postQueries.createPost(userId, title, content, url);
+        // if file exists & was not sent as URL, upload to supabase
+        if (!url && req.file) {
+            url = await uploadPostMedia(userId, post.id, req.file);
             post = await postQueries.updatePostMedia(userId, post.id, url);
         }
         // add url to post

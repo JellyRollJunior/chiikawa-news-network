@@ -146,6 +146,9 @@ VITE_SERVER_URL
 
 -   server
 
+    -   post media: allow user to provide img URLs
+        -   media validations
+
 -   order
 
     -   github login
