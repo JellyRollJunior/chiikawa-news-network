@@ -18,47 +18,23 @@ const getPostById = async (requesterId, postId) => {
     }
 };
 
-const getPosts = async (requesterId) => {
+const getPosts = async (
+    requesterId,
+    authorIds = null,
+    cursor = null,
+    limit = 20
+) => {
     try {
         const data = await prisma.post.findMany({
-            select: postSelect(requesterId),
-            orderBy: {
-                createdAt: 'desc',
-            },
-        });
-        return data;
-    } catch (error) {
-        throw new DatabaseError('Unable to retrieve posts');
-    }
-};
-
-const getPostsByAuthor = async (requesterId, authorIds) => {
-    try {
-        const data = await prisma.post.findMany({
-            where: {
-                authorId: {
-                    in: Array.isArray(authorIds) ? authorIds : [authorIds],
-                },
-            },
-            select: postSelect(requesterId),
-            orderBy: {
-                createdAt: 'desc',
-            },
-        });
-        return data;
-    } catch (error) {
-        throw new DatabaseError('Unable to retrieve posts');
-    }
-};
-
-const getFeed = async (requesterId, authorIds, cursor = null, limit = 20) => {
-    try {
-        const data = await prisma.post.findMany({
-            where: {
-                authorId: {
-                    in: Array.isArray(authorIds) ? authorIds : [authorIds],
-                },
-            },
+            where: authorIds
+                ? {
+                      authorId: {
+                          in: Array.isArray(authorIds)
+                              ? authorIds
+                              : [authorIds],
+                      },
+                  }
+                : undefined,
             orderBy: {
                 createdAt: 'desc',
             },
@@ -68,18 +44,16 @@ const getFeed = async (requesterId, authorIds, cursor = null, limit = 20) => {
             select: postSelect(requesterId),
         });
         // if data has limit + 1 items, then there exists a next page
-        const hasNextPage = data.length > limit;
-        const posts = hasNextPage ? data.slice(0, -1) : data;
-        const endCursor = posts.length > 0 ? posts[posts.length - 1].id : null;
+        const meta = {};
+        meta.hasNextPage = data.length > limit;
+        const posts = meta.hasNextPage ? data.slice(0, -1) : data;
+        meta.endCursor = posts.length > 0 ? posts[posts.length - 1].id : null;
         return {
             posts,
-            meta: {
-                hasNextPage,
-                endCursor,
-            },
+            meta,
         };
     } catch (error) {
-        throw new DatabaseError('Unable to retrieve feed');
+        throw new DatabaseError('Unable to retrieve posts');
     }
 };
 
@@ -180,8 +154,6 @@ const deletePost = async (requesterId, postId) => {
 export {
     getPostById,
     getPosts,
-    getPostsByAuthor,
-    getFeed,
     createPost,
     updatePostMedia,
     likePost,
