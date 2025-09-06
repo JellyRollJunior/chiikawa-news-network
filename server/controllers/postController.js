@@ -40,9 +40,9 @@ const getFollowingPosts = async (req, res, next) => {
             cursor,
             Number(limit)
         );
-        // const formattedPosts = posts.map((post) => {
-        //     return setPostAndCommentLikes(post);
-        // });
+        data.posts = data.posts.map((post) => {
+            return setPostAndCommentLikes(post);
+        });
         res.json(data);
     } catch (error) {
         next(error);

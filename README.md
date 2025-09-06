@@ -147,7 +147,11 @@ VITE_SERVER_URL
 
     -   PAGINATION FOR POSTS
         -   every posts route
+            -   /posts/feed
+            -   /posts
+            -   /users/:userId/posts
         -   format new data return type
+        -   
         -   only for pagination lists actually
             -   posts
             -   maybe users 

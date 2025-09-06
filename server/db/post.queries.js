@@ -67,7 +67,6 @@ const getFeed = async (requesterId, authorIds, cursor = null, limit = 20) => {
             skip: cursor ? 1 : 0, // skip cursor if present
             select: postSelect(requesterId),
         });
-
         // if data has limit + 1 items, then there exists a next page
         const hasNextPage = data.length > limit;
         const posts = hasNextPage ? data.slice(0, -1) : data;
