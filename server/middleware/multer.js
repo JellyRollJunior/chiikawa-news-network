@@ -1,15 +1,15 @@
 import multer from 'multer';
 
 const storage = multer.memoryStorage();
+const allowedMimeTypes = [
+    'image/jpg',
+    'image/jpeg',
+    'image/png',
+    'image/gif',
+    'image/webp',
+];
 
 const imageFilter = (req, file, cb) => {
-    const allowedMimeTypes = [
-        'image/jpg',
-        'image/jpeg',
-        'image/png',
-        'image/gif',
-        'image/webp',
-    ];
     allowedMimeTypes.includes(file.mimetype) ? cb(null, true) : cb(null, false);
 };
 
@@ -24,4 +24,4 @@ const retrieveImageMulter = multer({
 const retrieveAvatar = retrieveImageMulter.single('avatar');
 const retrieveMedia = retrieveImageMulter.single('media');
 
-export { retrieveAvatar, retrieveMedia };
+export { allowedMimeTypes, retrieveAvatar, retrieveMedia };
