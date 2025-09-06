@@ -41,43 +41,37 @@ const emptyFolder = async (bucket, folder) => {
     }
 };
 
-const uploadAvatar = async (userId, file) => {
-    const folder = `user-${userId}`;
+const uploadFile = async (folderPath, file, bucket) => {
     const timestamp = Date.now();
     const ext = file.mimetype.split('/')[1];
-    const path = `${folder}/avatar-${timestamp}.${ext}`;
+    const path = `${folderPath}/${timestamp}.${ext}`;
+    await emptyFolder(bucket, folderPath);
+    const { error } = await supabase.storage
+        .from(bucket)
+        .upload(path, file.buffer, {
+            contentType: `image/${ext}`,
+            cacheControl: 3600,
+            upsert: true,
+        });
+    if (error) throw Error;
+    return getPublicUrl(bucket, path);
+};
+
+const uploadAvatar = async (userId, file) => {
     try {
-        await emptyFolder(AVATAR_BUCKET, folder);
-        const { error } = await supabase.storage
-            .from(AVATAR_BUCKET)
-            .upload(path, file.buffer, {
-                contentType: `image/${ext}`,
-                cacheControl: 3600,
-                upsert: true,
-            });
-        if (error) throw Error;
-        return getPublicUrl(AVATAR_BUCKET, path);
+        const folderPath = `user-${userId}`;
+        const fileUrl = uploadFile(folderPath, file, AVATAR_BUCKET)
+        return fileUrl;
     } catch (error) {
         throw SupabaseError('Unable to upload avatar');
     }
 };
 
 const uploadPostMedia = async (userId, postId, file) => {
-    const folder = `user-${userId}/post-${postId}`;
-    const timestamp = Date.now();
-    const ext = file.mimetype.split('/')[1];
-    const path = `${folder}/media-${timestamp}.${ext}`;
     try {
-        await emptyFolder(POSTS_BUCKET, folder);
-        const { error } = await supabase.storage
-            .from(POSTS_BUCKET)
-            .upload(path, file.buffer, {
-                contentType: `image/${ext}`,
-                cacheControl: 3600,
-                upsert: true,
-            });
-        if (error) throw Error;
-        return getPublicUrl(POSTS_BUCKET, path);
+        const folderPath = `user-${userId}/post-${postId}`;
+        const fileUrl = uploadFile(folderPath, file, POSTS_BUCKET)
+        return fileUrl;
     } catch (error) {
         throw SupabaseError('Unable to upload post media');
     }

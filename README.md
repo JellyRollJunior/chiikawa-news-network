@@ -146,8 +146,6 @@ VITE_SERVER_URL
 -   server
 
     -   posts
-        -   media
-            -   refactor upload post media
         -   comments media (no comment media tbh... remove from schema)
         -   media validations
     -   PAGINATION FOR POSTS
