@@ -72,6 +72,23 @@ const createPost = async (requesterId, title, content, media = null) => {
     }
 };
 
+const updatePostMedia = async (requesterId, postId, media) => {
+    try {
+        const data = await prisma.post.update({
+            data: {
+                media,
+            },
+            where: {
+                id: postId,
+            },
+            select: postSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to update post media');
+    }
+};
+
 const likePost = async (requesterId, postId) => {
     try {
         const data = await prisma.post.update({
@@ -133,6 +150,7 @@ export {
     getPostsByAuthor,
     getPostById,
     createPost,
+    updatePostMedia,
     likePost,
     unlikePost,
     deletePost,

@@ -147,9 +147,7 @@ VITE_SERVER_URL
 
     -   posts
         -   media
-            -   resize / reformat media
-            -   upload media to supabase
-            -   save url into db
+            -   refactor upload post media
         -   comments media (no comment media tbh... remove from schema)
         -   media validations
     -   PAGINATION FOR POSTS

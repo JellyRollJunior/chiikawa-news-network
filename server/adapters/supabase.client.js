@@ -63,10 +63,10 @@ const uploadAvatar = async (userId, file) => {
 };
 
 const uploadPostMedia = async (userId, postId, file) => {
-    const folder = `user-${userId}/${postId}`;
+    const folder = `user-${userId}/post-${postId}`;
     const timestamp = Date.now();
     const ext = file.mimetype.split('/')[1];
-    const path = `${folder}/post-${timestamp}.${ext}`;
+    const path = `${folder}/media-${timestamp}.${ext}`;
     try {
         await emptyFolder(POSTS_BUCKET, folder);
         const { error } = await supabase.storage

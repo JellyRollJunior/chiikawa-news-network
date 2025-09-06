@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { authenticateToken } from '../middleware/handleVerifyToken.js';
 import { bioValidations } from '../middleware/validations.js';
 import { retrieveAvatar } from '../middleware/multer.js';
-import { resizeAvatar } from '../middleware/Sharp.js';
+import { formatAvatar } from '../middleware/Sharp.js';
 import * as userController from '../controllers/userController.js';
 
 const currentRouter = Router();
@@ -18,7 +18,7 @@ currentRouter.patch(
     '/avatar',
     authenticateToken,
     retrieveAvatar,
-    resizeAvatar,
+    formatAvatar,
     userController.patchAvatar
 );
 

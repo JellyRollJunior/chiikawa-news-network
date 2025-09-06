@@ -16,7 +16,7 @@ const convertToWebp = async (file, quality) => {
     return convertedBuffer;
 };
 
-const resizeAvatar = async (req, res, next) => {
+const formatAvatar = async (req, res, next) => {
     if (!req.file || !req.file.buffer) next();
     try {
         req.file.buffer = await resizeImage(req.file, 200);
@@ -28,4 +28,16 @@ const resizeAvatar = async (req, res, next) => {
     }
 };
 
-export { resizeAvatar };
+const formatPost = async (req, res, next) => {
+    if (!req.file || !req.file.buffer) next();
+    try {
+        req.file.buffer = await resizeImage(req.file, 500);
+        req.file.buffer = await convertToWebp(req.file, 75);
+        req.file.mimetype = 'image/webp';
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { formatAvatar, formatPost };

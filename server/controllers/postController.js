@@ -4,6 +4,7 @@ import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 import * as postQueries from '../db/post.queries.js';
 import * as userQueries from '../db/user.queries.js';
+import { uploadPostMedia } from '../adapters/supabase.client.js';
 
 const getPosts = async (req, res, next) => {
     try {
@@ -50,8 +51,13 @@ const createPost = async (req, res, next) => {
         const userId = req.user.id;
         const title = req.body.title;
         const content = req.body.content;
-        // support media later (upload file to supabase & save link in db)
-        const post = await postQueries.createPost(userId, title, content);
+        let post = await postQueries.createPost(userId, title, content);
+        // if file exists, upload to supabase
+        if (req.file) {
+            const url = await uploadPostMedia(userId, post.id, req.file);
+            post = await postQueries.updatePostMedia(userId, post.id, url);
+        }
+        // add url to post
         const formattedPost = setPostAndCommentLikes(post);
         res.json(formattedPost);
     } catch (error) {
