@@ -145,19 +145,21 @@ VITE_SERVER_URL
 
 -   server
 
-    -   posts
-        -   comments media (no comment media tbh... remove from schema)
-        -   media validations
     -   PAGINATION FOR POSTS
         -   Return data in this style
             {
             "data": [ ... ],
             "meta": { "count": 20, "next": "/posts?page=2" }
             }
+            -   only for pagination lists actually
+                -   posts
+                -   maybe users 
+                -   maybe messages?
 
 -   order
 
     -   github login
+    -   guest account
 
 -   low prio
 

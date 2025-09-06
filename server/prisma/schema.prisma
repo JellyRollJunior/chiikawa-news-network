@@ -76,7 +76,6 @@ model Post {
 model Comment {
   id        String   @id @default(uuid())
   content   String
-  media     String?
   createdAt DateTime @default(now())
 
   author   User   @relation(fields: [authorId], references: [id])
