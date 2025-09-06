@@ -146,15 +146,12 @@ VITE_SERVER_URL
 -   server
 
     -   PAGINATION FOR POSTS
-        -   Return data in this style
-            {
-            "data": [ ... ],
-            "meta": { "count": 20, "next": "/posts?page=2" }
-            }
-            -   only for pagination lists actually
-                -   posts
-                -   maybe users 
-                -   maybe messages?
+        -   every posts route
+        -   format new data return type
+        -   only for pagination lists actually
+            -   posts
+            -   maybe users 
+            -   maybe messages?
 
 -   order
 

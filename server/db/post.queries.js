@@ -4,6 +4,20 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
+const getPostById = async (requesterId, postId) => {
+    try {
+        const data = await prisma.post.findFirst({
+            where: {
+                id: postId,
+            },
+            select: postSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve post');
+    }
+};
+
 const getPosts = async (requesterId) => {
     try {
         const data = await prisma.post.findMany({
@@ -37,17 +51,36 @@ const getPostsByAuthor = async (requesterId, authorIds) => {
     }
 };
 
-const getPostById = async (requesterId, postId) => {
+const getFeed = async (requesterId, authorIds, cursor = null, limit = 20) => {
     try {
-        const data = await prisma.post.findFirst({
+        const data = await prisma.post.findMany({
             where: {
-                id: postId,
+                authorId: {
+                    in: Array.isArray(authorIds) ? authorIds : [authorIds],
+                },
             },
+            orderBy: {
+                createdAt: 'desc',
+            },
+            take: limit + 1,
+            cursor: cursor ? { id: cursor } : undefined,
+            skip: cursor ? 1 : 0, // skip cursor if present
             select: postSelect(requesterId),
         });
-        return data;
+
+        // if data has limit + 1 items, then there exists a next page
+        const hasNextPage = data.length > limit;
+        const posts = hasNextPage ? data.slice(0, -1) : data;
+        const endCursor = posts.length > 0 ? posts[posts.length - 1].id : null;
+        return {
+            posts,
+            meta: {
+                hasNextPage,
+                endCursor,
+            },
+        };
     } catch (error) {
-        throw new DatabaseError('Unable to retrieve post');
+        throw new DatabaseError('Unable to retrieve feed');
     }
 };
 
@@ -146,9 +179,10 @@ const deletePost = async (requesterId, postId) => {
 };
 
 export {
+    getPostById,
     getPosts,
     getPostsByAuthor,
-    getPostById,
+    getFeed,
     createPost,
     updatePostMedia,
     likePost,

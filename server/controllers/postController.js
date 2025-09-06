@@ -32,14 +32,18 @@ const getFollowingPosts = async (req, res, next) => {
             requesterId
         );
         const followingIds = following.map((user) => user.id);
-        const posts = await postQueries.getPostsByAuthor(requesterId, [
+        const cursor = req.query.cursor ? req.query.cursor : null;
+        const limit = req.query.limit ? req.query.limit : 20;
+        const data = await postQueries.getFeed(
             requesterId,
-            ...followingIds,
-        ]);
-        const formattedPosts = posts.map((post) => {
-            return setPostAndCommentLikes(post);
-        });
-        res.json({ posts: formattedPosts });
+            [requesterId, ...followingIds],
+            cursor,
+            Number(limit)
+        );
+        // const formattedPosts = posts.map((post) => {
+        //     return setPostAndCommentLikes(post);
+        // });
+        res.json(data);
     } catch (error) {
         next(error);
     }

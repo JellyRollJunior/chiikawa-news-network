@@ -5,7 +5,6 @@ const commentsSelect = (requesterId) => {
     return {
         id: true,
         content: true,
-        media: true,
         createdAt: true,
         authorId: true,
         author: {
