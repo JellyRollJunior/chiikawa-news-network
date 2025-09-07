@@ -140,10 +140,10 @@ VITE_SERVER_URL
 ## TODO
 
 -   current task: home page post feed
-    -   main container
-    -   scrolling?
-    -   
-    -   Post block
+    -   API CALL
+    -   CALL API IN HOME CONTAINER
+    -   pass it down to post list
+    -   implement post list
 
 -   client
 
