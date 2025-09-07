@@ -141,15 +141,36 @@ VITE_SERVER_URL
 
 -   client
 
+    -   posts
+        -   create
+            -   text
+            -   media
+            -   url media
+        -   feed
+        -   user posts
+        -   all posts
+        -   like post
+        -   un like post
+        -   delete post
+        -   comment
+        -   like comment
+        -   un like comment
+        -   delete comment
+    -   follow
+        -   follower stats
+        -   view followers
+        -   view following
+        -   follow user
+    -   user page
+        -   list users
+        -   user stats
     -   add confirmation toast when editing bio
     -   bug: profile, settings, chat overflow scroll
 
 -   server
 
--   order
-
     -   github login
-    -   guest account
+    -   guest account login route
 
 -   low prio
 
