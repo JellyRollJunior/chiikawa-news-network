@@ -38,12 +38,28 @@ const usePostsFeed = (limit = 20) => {
     }, [initFeed]);
 
     // fetch next page function
+    const fetchNextPage = async () => {
+        try {
+            setIsLoading(true);
+            const data = await fetchPostFeed(null, endCursor, limit);
+            setPosts((posts) => [...posts, ...data.posts]);
+            setHasNextPage(data.meta.hasNextPage);
+            setEndCursor(data.meta.endCursor);
+        } catch (error) {
+            handleTokenErrors(error);
+            toast('Unable to fetch feed');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     // fetch all posts function
 
     // fetch next page all posts function
 
-    return { posts, hasNextPage, isLoading };
+    // refresh feed
+
+    return { posts, hasNextPage, isLoading, fetchNextPage };
 };
 
 export { usePostsFeed };
