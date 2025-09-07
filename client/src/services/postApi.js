@@ -1,10 +1,11 @@
 import { request } from './request.js';
 
 const fetchPostFeed = async (signal, cursor, limit = 20) => {
-    const endpoint = cursor
-        ? `/posts/feed?cursor=${cursor}&limit=${limit}`
-        : `/posts/feed?limit=${limit}`;
-    const data = await request(endpoint, {
+    const params = new URLSearchParams();
+    params.append('limit', limit);
+    if (cursor) params.append('cursor', cursor);
+
+    const data = request(`/posts/feed?${params.toString()}`, {
         mode: 'cors',
         method: 'GET',
         signal,

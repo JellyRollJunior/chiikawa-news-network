@@ -15,6 +15,7 @@ const usePostsFeed = (limit = 20) => {
         async (signal, cursor) => {
             try {
                 setIsLoading(true);
+                setPosts([]);
                 const data = await fetchPostFeed(signal, cursor, limit);
                 setPosts(data.posts);
                 setHasNextPage(data.meta.hasNextPage);
@@ -37,7 +38,6 @@ const usePostsFeed = (limit = 20) => {
         return () => abortController.abort();
     }, [initFeed]);
 
-    // fetch next page function
     const fetchNextPage = async () => {
         try {
             setIsLoading(true);
@@ -57,9 +57,14 @@ const usePostsFeed = (limit = 20) => {
 
     // fetch next page all posts function
 
-    // refresh feed
+    let refreshAbortController = new AbortController(); 
+    const refreshFeed = async () => {
+        if (refreshAbortController) refreshAbortController.abort();
+        refreshAbortController = new AbortController();
+        initFeed(refreshAbortController.signal, null);
+    };
 
-    return { posts, hasNextPage, isLoading, fetchNextPage };
+    return { posts, hasNextPage, isLoading, fetchNextPage, refreshFeed };
 };
 
 export { usePostsFeed };
