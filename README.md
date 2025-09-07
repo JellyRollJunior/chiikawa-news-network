@@ -190,6 +190,7 @@ VITE_SERVER_URL
     -   Pagination
         -   users
         -   messages
+    -   change all titles to style like simple title in home (without yellow block!)
 
 ## DATA
 
