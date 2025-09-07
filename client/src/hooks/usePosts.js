@@ -7,14 +7,15 @@ const usePostsFeed = (limit = 20) => {
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
     const [hasNextPage, setHasNextPage] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingInit, setIsLoadingInit] = useState(false);
+    const [isLoadingNext, setIsLoadingNext] = useState(false);
     const { handleTokenErrors } = useTokenErrorHandler();
     const { toast } = useContext(ToastContext);
 
     const initFeed = useCallback(
         async (signal, cursor) => {
             try {
-                setIsLoading(true);
+                setIsLoadingInit(true);
                 setPosts([]);
                 const data = await fetchPostFeed(signal, cursor, limit);
                 setPosts(data.posts);
@@ -24,7 +25,7 @@ const usePostsFeed = (limit = 20) => {
                 handleTokenErrors(error);
                 toast('Unable to fetch feed');
             } finally {
-                setIsLoading(false);
+                setIsLoadingInit(false);
             }
         },
         [handleTokenErrors, toast, limit]
@@ -40,7 +41,7 @@ const usePostsFeed = (limit = 20) => {
 
     const fetchNextPage = async () => {
         try {
-            setIsLoading(true);
+            setIsLoadingNext(true);
             const data = await fetchPostFeed(null, endCursor, limit);
             setPosts((posts) => [...posts, ...data.posts]);
             setHasNextPage(data.meta.hasNextPage);
@@ -49,7 +50,7 @@ const usePostsFeed = (limit = 20) => {
             handleTokenErrors(error);
             toast('Unable to fetch feed');
         } finally {
-            setIsLoading(false);
+            setIsLoadingNext(false);
         }
     };
 
@@ -57,14 +58,21 @@ const usePostsFeed = (limit = 20) => {
 
     // fetch next page all posts function
 
-    let refreshAbortController = new AbortController(); 
+    let refreshAbortController = new AbortController();
     const refreshFeed = async () => {
         if (refreshAbortController) refreshAbortController.abort();
         refreshAbortController = new AbortController();
         initFeed(refreshAbortController.signal, null);
     };
 
-    return { posts, hasNextPage, isLoading, fetchNextPage, refreshFeed };
+    return {
+        posts,
+        hasNextPage,
+        isLoadingInit,
+        fetchNextPage,
+        isLoadingNext,
+        refreshFeed,
+    };
 };
 
 export { usePostsFeed };
