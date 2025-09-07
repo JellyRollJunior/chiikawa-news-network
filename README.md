@@ -177,6 +177,7 @@ VITE_SERVER_URL
 
     -   github login
     -   guest account login route
+    -   pagination: ensure limit and cursor query are UUID
 
 -   low prio
 

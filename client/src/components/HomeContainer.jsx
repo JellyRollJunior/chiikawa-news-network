@@ -1,7 +1,12 @@
+import { usePostsFeed } from '../hooks/usePosts.js';
 import { Home } from './Home.jsx';
 
 const HomeContainer = () => {
-  // call posts API
+  
+  const { posts } = usePostsFeed(3);
+
+  console.log(posts);
+
   return (
     <>
       <Home />
