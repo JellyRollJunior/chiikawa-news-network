@@ -139,6 +139,12 @@ VITE_SERVER_URL
 
 ## TODO
 
+-   current task: home page post feed
+    -   main container
+    -   scrolling?
+    -   
+    -   Post block
+
 -   client
 
     -   posts
