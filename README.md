@@ -142,8 +142,7 @@ VITE_SERVER_URL
 -   client
 
     -   home
-        -   request new page on scrolling to bottom
-            -   when !hasnextpage, show end of feed msg
+
 
 -   server
 

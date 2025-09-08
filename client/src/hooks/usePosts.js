@@ -41,6 +41,7 @@ const usePostsFeed = (limit = 20) => {
 
     const fetchNextPage = async () => {
         try {
+            if (!hasNextPage) return;
             setIsLoadingNext(true);
             const data = await fetchPostFeed(null, endCursor, limit);
             setPosts((posts) => [...posts, ...data.posts]);

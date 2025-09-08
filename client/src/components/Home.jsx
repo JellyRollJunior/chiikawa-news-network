@@ -9,16 +9,16 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
-  const { posts } = usePostsFeed(5);
+  const { posts, hasNextPage, fetchNextPage } = usePostsFeed(5);
 
   return (
     <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
-      <Scrollable onScrollToBottom={() => console.log('I am at the bottom')}>
+      <Scrollable onScrollToBottom={fetchNextPage}>
         <header className="mx-2 mt-3 flex items-center justify-center gap-2">
           <img
             className="w-[43px]"
             src={logo}
-            alt="Chiikawa with glasses (CNN Logo)`"
+            alt="Chiikawa with glasses (CNN Logo)"
           />
           <h1 className="text-shadow-wrap font-chiikawa text-center text-[15px]">
             Chiikawa News Network
@@ -35,8 +35,8 @@ const Home = () => {
             Whats on your mind?
           </button>
         </section>
-        <section className="mx-2 mt-3 mb-3">
-          <PostList posts={posts} />
+        <section className="mx-2 mt-3 mb-2">
+          <PostList posts={posts} hasNextPage={hasNextPage} />
         </section>
       </Scrollable>
     </div>
