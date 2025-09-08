@@ -9,7 +9,8 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
-  const { posts, hasNextPage, fetchNextPage } = usePostsFeed(5);
+  const { posts, hasNextPage, isLoadingInit, fetchNextPage, isLoadingNext } =
+    usePostsFeed(5);
 
   return (
     <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
@@ -36,7 +37,12 @@ const Home = () => {
           </button>
         </section>
         <section className="mx-2 mt-3 mb-2">
-          <PostList posts={posts} hasNextPage={hasNextPage} />
+          <PostList
+            posts={posts}
+            hasNextPage={hasNextPage}
+            isLoadingInit={isLoadingInit}
+            isLoadingNext={isLoadingNext}
+          />
         </section>
       </Scrollable>
     </div>

@@ -17,10 +17,10 @@ const MediaFrame = ({ src }) => {
   );
 };
 
-const PostsListItem = ({ post }) => {
+const PostsListItem = ({ post, isLoading = false }) => {
   const author = post && post.author;
 
-  return (
+  return !isLoading ? (
     <li className="yellow-block flex flex-col px-3 py-2">
       <header className="flex items-center gap-2">
         <Avatar
@@ -38,6 +38,9 @@ const PostsListItem = ({ post }) => {
         </div>
       )}
     </li>
+  ) : (
+    /* Loading display */
+    <div> hi</div>
   );
 };
 

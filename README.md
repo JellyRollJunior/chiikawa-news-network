@@ -142,7 +142,8 @@ VITE_SERVER_URL
 -   client
 
     -   home
-
+        -   loading skeleton animation
+        -   fetch animation
 
 -   server
 
