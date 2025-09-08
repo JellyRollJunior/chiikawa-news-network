@@ -1,4 +1,21 @@
+import { useState } from 'react';
 import { Avatar } from './Avatar.jsx';
+
+const MediaFrame = ({ src }) => {
+  const [error, setError] = useState(false);
+
+  return (
+    <>
+      {!error && src && (
+        <img
+          className="rounded-xl border-1 border-pink-200 bg-pink-100"
+          src={src}
+          onError={() => setError(true)}
+        />
+      )}
+    </>
+  );
+};
 
 const PostsListItem = ({ post }) => {
   const author = post && post.author;
@@ -6,17 +23,20 @@ const PostsListItem = ({ post }) => {
   return (
     <li className="yellow-block flex flex-col px-3 py-2">
       <header className="flex items-center gap-2">
-        <Avatar avatar={author ? author.avatar : null} size={2} secondaryStyling={true} />
+        <Avatar
+          avatar={author ? author.avatar : null}
+          size={1.75}
+          secondaryStyling={true}
+        />
         <h3 className="text-lg">{author.username}</h3>
       </header>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-      {post.media && <img src={post.media} className="rounded-lg bg-pink-200" alt="" />}
-      <p className="text-end text-sm">2 hours ago</p>
-      <footer className="flex">
-        <button>like</button>
-        <button>comment</button>
-      </footer>
+      <h2 className="mt-2 font-semibold">{post.title}</h2>
+      <p className="mt-1 text-sm text-yellow-900">{post.content}</p>
+      {post.media && (
+        <div className="mt-2 flex justify-center items-center">
+          <MediaFrame src={post.media} />
+        </div>
+      )}
     </li>
   );
 };

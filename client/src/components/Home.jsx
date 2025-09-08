@@ -8,8 +8,8 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
-  const { posts } = usePostsFeed(3);
-console.log(posts)
+  const { posts } = usePostsFeed(5);
+
   return (
     <div className="main-container mx-4 mt-3 mb-2 flex h-full flex-col">
       <header className="mx-2 mt-3 flex items-center justify-center gap-2">
