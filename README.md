@@ -149,6 +149,7 @@ VITE_SERVER_URL
 
     -   posts
         -   create
+            -   fixed create post button on bottom right
             -   text
             -   media
             -   url media
