@@ -139,46 +139,23 @@ VITE_SERVER_URL
 
 ## TODO
 
--   current task: home page post feed
-    -   API CALL
-    -   CALL API IN HOME CONTAINER
-    -   pass it down to post list
-    -   implement post list
-
 -   client
 
-    -   posts
-        -   create
-            -   fixed create post button on bottom right
-            -   text
-            -   media
-            -   url media
-        -   feed
-        -   user posts
-        -   all posts
-        -   like post
-        -   un like post
-        -   delete post
-        -   comment
-        -   like comment
-        -   un like comment
-        -   delete comment
-    -   follow
-        -   follower stats
-        -   view followers
-        -   view following
-        -   follow user
-    -   user page
-        -   list users
-        -   user stats
-    -   add confirmation toast when editing bio
-    -   bug: profile, settings, chat overflow scroll
+    -   home
+        -   request new page on scrolling to bottom
+            -   when !hasnextpage, show end of feed msg
 
 -   server
 
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
+
+-   Task List
+
+    -   posts
+    -   post like
+    -   post comments
 
 -   low prio
 
@@ -193,6 +170,7 @@ VITE_SERVER_URL
         -   users
         -   messages
     -   change all titles to style like simple title in home (without yellow block!)
+    -   refactor scrolling just to scroll off entire page instead of off a block or smth
 
 ## DATA
 
@@ -209,3 +187,20 @@ VITE_SERVER_URL
 
 -   createComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '95de95c3-d28a-4040-8060-9f6d096a0b4a', 'Let\'s share a cold Orion beer when I get my drinking license~');
 -   likeComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '6a22f041-e461-4cb1-a0d1-8d2bea72359c')
+
+{
+"id": "41c8e640-107e-42d3-bc54-19bd839c5bd4",
+"title": "REFACTORED UPLOAD",
+"content": "TEST TEST TEST MEDIA",
+"media": null,
+"createdAt": "2025-09-06T20:47:46.414Z",
+"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"author": {
+"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"username": "usagii",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
+},
+"comments": [],
+"hasLiked": false,
+"likeCount": 0
+},

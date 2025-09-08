@@ -2,8 +2,10 @@ import { HomeContainer } from '../components/HomeContainer.jsx';
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col h-full">
-      <HomeContainer />
+    <div className="flex h-full">
+      <div className='flex'>
+        <HomeContainer />
+      </div>
     </div>
   );
 };

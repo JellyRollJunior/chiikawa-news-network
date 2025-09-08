@@ -11,7 +11,7 @@ const Home = () => {
   const { posts } = usePostsFeed(5);
 
   return (
-    <div className="main-container mx-4 mt-3 mb-2 flex h-full flex-col">
+    <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col overflow-y-scroll scrollbar-thin scrollbar-track-yellow-50">
       <header className="mx-2 mt-3 flex items-center justify-center gap-2">
         <img
           className="w-[43px]"
@@ -33,7 +33,7 @@ const Home = () => {
           Whats on your mind?
         </button>
       </section>
-      <section className="mx-2 mt-3">
+      <section className="mx-2 mt-3 mb-3">
         <PostList posts={posts} />
       </section>
     </div>
