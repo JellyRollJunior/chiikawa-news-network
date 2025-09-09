@@ -141,9 +141,8 @@ VITE_SERVER_URL
 
 -   client
 
-    -   bug: show unable to load image label when media fails
+    -   bug: posts will leak into other feed (error in usePosts)
     -   liking posts
-        -   frontend like
         -   API call like post
         -   API call unlike post
 

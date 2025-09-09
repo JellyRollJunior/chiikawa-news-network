@@ -3,6 +3,7 @@ import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
+import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
 
 
@@ -55,7 +56,7 @@ const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
         </div>
       )}
       <footer className='mt-3 flex gap-2.5'>
-        <PostFooterButton  src={heart} count={post.likeCount}/>
+        <PostFooterButton  src={post.hasLiked ? heartFilled : heart} count={post.likeCount}/>
         <PostFooterButton  src={comment} count={post.comments.length}/>
       </footer>
     </li>
