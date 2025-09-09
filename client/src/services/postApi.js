@@ -26,4 +26,22 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
     return data;
 };
 
-export { fetchPosts, fetchPostFeed };
+const likePost = async (signal, postId) => {
+    const data = request(`/posts/${postId}/likes`, {
+        mode: 'cors',
+        method: 'POST',
+        signal,
+    });
+    return data;
+};
+
+const unlikePost = async (signal, postId) => {
+    const data = request(`/posts/${postId}/likes`, {
+        mode: 'cors',
+        method: 'DELETE',
+        signal,
+    });
+    return data;
+};
+
+export { fetchPosts, fetchPostFeed, likePost, unlikePost };

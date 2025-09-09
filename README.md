@@ -141,7 +141,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   bug: posts will leak into other feed (error in usePosts)
     -   liking posts
         -   API call like post
         -   API call unlike post
