@@ -43,8 +43,6 @@ const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
     /* Loading display */
     <LoadingElement
       className="rounded-lg border-1 border-yellow-200 px-3 py-2"
-      initialColor="#ffffff"
-      transitionColor="#fefce8"
       delay={loadingDelay}
     >
       <header className="flex items-center gap-2">

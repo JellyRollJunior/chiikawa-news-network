@@ -38,10 +38,10 @@ const ChatsListItem = ({
       className="mx-1 flex gap-2 rounded-md px-2 py-2"
       delay={loadingDelay}
     >
-      <div className="size-14 shrink-0 rounded-full bg-stone-300"></div>
+      <div className="size-14 shrink-0 rounded-full bg-gray-300"></div>
       <div className="flex flex-col justify-center">
-        <h4 className="h-4 w-18 rounded-sm bg-stone-300"></h4>
-        <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-stone-300"></p>
+        <h4 className="h-4 w-18 rounded-sm bg-gray-300"></h4>
+        <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-gray-300"></p>
       </div>
     </LoadingElement>
   );

@@ -141,9 +141,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   home
-        -   rework loading colors. they kinda hurt my eyes
-
 -   server
 
     -   github login
