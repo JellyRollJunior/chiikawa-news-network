@@ -5,6 +5,7 @@ import {
     fetchPostFeed,
     fetchPosts,
     createPostLike,
+    deletePostLike,
 } from '../services/postApi.js';
 
 const usePostsFeed = (limit = 20) => {
@@ -85,20 +86,22 @@ const usePostsFeed = (limit = 20) => {
     }, [initPosts]);
 
     let likeAbortController = new AbortController();
-    const likePost = async (postId) => {
+    const toggleLike = async (postId, hasLiked = false) => {
         if (likeAbortController) likeAbortController.abort();
         likeAbortController = new AbortController();
-        const likedPost = await createPostLike(
-            likeAbortController.signal,
-            postId
-        );
+        const updatedPost = !hasLiked
+            ? await createPostLike(likeAbortController.signal, postId)
+            : await deletePostLike(likeAbortController.signal, postId);
         // update posts array with new data
-        const index = posts.findIndex((post) => post.id == likedPost.id);
-        if (index) {
-            const updatedPosts = [...posts];
-            updatedPosts[index] = likedPost;
-            setPosts(updatedPosts);
-        }
+        setPosts((prevPosts) => {
+            const index = prevPosts.findIndex((post) => post.id == updatedPost.id);
+            if (index >= 0) {
+                const updatedPosts = [...prevPosts];
+                updatedPosts[index] = updatedPost;
+                return updatedPosts;
+            }
+            return prevPosts;
+        });
     };
 
     return {
@@ -111,7 +114,7 @@ const usePostsFeed = (limit = 20) => {
         setPostsToAll,
         setPostsToFeed,
         refreshPosts,
-        likePost,
+        toggleLike,
     };
 };
 

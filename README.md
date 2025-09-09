@@ -141,9 +141,9 @@ VITE_SERVER_URL
 
 -   client
 
-    -   liking posts
-        -   API call like post
-        -   API call unlike post
+    -   usePosts
+        -   disable btn while loading~
+        -   error hanlding usePosts
 
 -   server
 

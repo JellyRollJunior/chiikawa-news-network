@@ -6,7 +6,7 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const PostList = ({
   posts = [],
-  likePost,
+  toggleLike,
   hasNextPage,
   isLoadingInit,
   isLoadingNext,
@@ -16,7 +16,7 @@ const PostList = ({
       {!isLoadingInit
         ? posts.map((post) => (
             <Fragment key={post.id}>
-              <PostsListItem post={post} likePost={likePost} />
+              <PostsListItem post={post} toggleLike={toggleLike} />
             </Fragment>
           ))
         : /* Loading display */

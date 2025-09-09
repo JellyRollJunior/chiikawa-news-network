@@ -41,7 +41,7 @@ const PostFooterButton = ({ src, count, onClick }) => {
 
 const PostsListItem = ({
   post,
-  likePost,
+  toggleLike = { toggleLike },
   isLoading = false,
   loadingDelay = 0,
 }) => {
@@ -68,7 +68,7 @@ const PostsListItem = ({
         <PostFooterButton
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
-          onClick={() => likePost(post.id)}
+          onClick={() => toggleLike(post.id, post.hasLiked)}
         />
         <PostFooterButton src={comment} count={post.comments.length} />
       </footer>
