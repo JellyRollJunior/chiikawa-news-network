@@ -6,7 +6,7 @@ const PostList = ({
   posts = [],
   hasNextPage,
   isLoadingInit,
-  isLoadingNext,
+  // isLoadingNext,
 }) => {
   return (
     <ul className="flex flex-col gap-2">

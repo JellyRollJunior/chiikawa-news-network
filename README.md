@@ -142,8 +142,8 @@ VITE_SERVER_URL
 -   client
 
     -   home
-        -   loading skeleton animation
         -   fetch animation
+        -   rework loading colors. they kinda hurt my eyes
 
 -   server
 

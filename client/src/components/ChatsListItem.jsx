@@ -40,8 +40,8 @@ const ChatsListItem = ({
     >
       <div className="size-14 shrink-0 rounded-full bg-stone-300"></div>
       <div className="flex flex-col justify-center">
-        <h4 className="w-18 h-4 rounded-sm bg-stone-300"></h4>
-        <p className="w-30 mt-1 h-4 items-start justify-self-start rounded-sm bg-stone-300"></p>
+        <h4 className="h-4 w-18 rounded-sm bg-stone-300"></h4>
+        <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-stone-300"></p>
       </div>
     </LoadingElement>
   );
