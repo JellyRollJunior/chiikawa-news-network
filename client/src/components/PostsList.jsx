@@ -1,12 +1,14 @@
 import { Fragment } from 'react';
 import { PostsListItem } from './PostsListItem.jsx';
+import { LoadingDots } from './LoadingDots.jsx';
 import kuriPeace from '../assets/images/kuri-beer.png';
+import logo from '../assets/nav/chiikawa-glasses.png';
 
 const PostList = ({
   posts = [],
   hasNextPage,
   isLoadingInit,
-  // isLoadingNext,
+  isLoadingNext,
 }) => {
   return (
     <ul className="flex flex-col gap-2">
@@ -23,10 +25,21 @@ const PostList = ({
               <PostsListItem isLoading={true} loadingDelay={0.8} />
             </Fragment>
           ))}
+      {isLoadingNext && (
+        <li className="blue-block flex flex-col px-3 py-2">
+          <div className="mt-2 flex items-center justify-center">
+            <img className="w-1/4" src={logo} alt="Chiikawa with glasses" />
+          </div>
+          <h2 className="mt-2 text-center font-semibold">
+            Loading{' '}
+            <LoadingDots dotTravelDistance={8} />
+          </h2>
+        </li>
+      )}
       {!hasNextPage && posts.length > 0 && (
         <li className="blue-block flex flex-col px-3 py-2">
           <div className="mt-2 flex items-center justify-center">
-            <img className="w-1/2" src={kuriPeace} alt="" />
+            <img className="w-1/4" src={kuriPeace} alt="" />
           </div>
           <h2 className="mt-2 text-center font-semibold">
             You scrolled to the end!

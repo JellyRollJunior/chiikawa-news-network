@@ -2,12 +2,11 @@ import { format } from 'date-fns';
 import { Fragment, useContext } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { Avatar } from './Avatar.jsx';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
+import { LoadingDots } from './LoadingDots.jsx';
 
 const SystemMessage = ({ children }) => {
   return (
-    <li className="max-w-4/5 block-shadow w-fit self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2">
+    <li className="block-shadow w-fit max-w-4/5 self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2">
       {children}
     </li>
   );
@@ -43,7 +42,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
               )}
               <li
                 key={message.id}
-                className={`max-w-4/5 flex items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
+                className={`flex max-w-4/5 items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
               >
                 <Avatar
                   avatar={message.sender.avatar}
@@ -51,7 +50,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
                   secondaryStyling={true}
                 />
                 <div
-                  className={`min-w-26 w-fit rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
+                  className={`w-fit min-w-26 rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
                 >
                   <h3>{message.content}</h3>
                   <p
@@ -68,23 +67,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
       ) : (
         /* Loading Display */
         <SystemMessage>
-          {[...Array(3)].map((item, index) => (
-            <Fragment key={index}>
-              <motion.span
-                className="inline-block"
-                animate={{ translateY: -12 }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                  duration: 0.8,
-                  delay: 0.2 * index,
-                  ease: 'easeInOut',
-                }}
-              >
-                <div className="size-1 rounded-full bg-amber-900"></div>
-              </motion.span>{' '}
-            </Fragment>
-          ))}
+          <LoadingDots />
         </SystemMessage>
       )}
     </ul>

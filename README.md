@@ -142,7 +142,6 @@ VITE_SERVER_URL
 -   client
 
     -   home
-        -   fetch animation
         -   rework loading colors. they kinda hurt my eyes
 
 -   server
