@@ -9,8 +9,16 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
-  const { posts, hasNextPage, isLoadingInit, fetchNextPage, isLoadingNext } =
-    usePostsFeed(5);
+  const {
+    posts,
+    hasNextPage,
+    isLoadingInit,
+    fetchNextPage,
+    isLoadingNext,
+    isFeed,
+    setPostsToAll,
+    setPostsToFeed,
+  } = usePostsFeed(5);
 
   return (
     <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
@@ -26,9 +34,21 @@ const Home = () => {
           </h1>
         </header>
         <section className="mx-4 mt-2 flex gap-3">
-          <button className="blue-button flex-1 px-7 py-1">For you</button>
+          <button
+            className={`flex-1 px-7 py-1 ${isFeed ? 'blue-button' : 'yellow-button'}`}
+            onClick={setPostsToFeed}
+            disabled={isLoadingInit}
+          >
+            For you
+          </button>
           <RefreshButton />
-          <button className="yellow-button flex-1 px-7 py-1">All</button>
+          <button
+            className={`flex-1 px-7 py-1 ${isFeed ? 'yellow-button' : 'blue-button'}`}
+            onClick={setPostsToAll}
+            disabled={isLoadingInit}
+          >
+            All
+          </button>
         </section>
         <section className="mx-2 mt-3 flex gap-2">
           <Avatar avatar={avatar} size={2.5} secondaryStyling={true} />

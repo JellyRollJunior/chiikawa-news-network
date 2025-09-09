@@ -4,7 +4,7 @@ import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { fetchPostFeed, fetchPosts } from '../services/postApi.js';
 
 const usePostsFeed = (limit = 20) => {
-    const [isFeed, setIsFeed] = useState(false);
+    const [isFeed, setIsFeed] = useState(true);
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
     const [hasNextPage, setHasNextPage] = useState(false);
@@ -86,6 +86,7 @@ const usePostsFeed = (limit = 20) => {
         isLoadingInit,
         fetchNextPage,
         isLoadingNext,
+        isFeed,
         setPostsToAll,
         setPostsToFeed,
         refreshPosts,
