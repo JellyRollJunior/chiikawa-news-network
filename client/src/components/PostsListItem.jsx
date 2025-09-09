@@ -6,20 +6,21 @@ import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
 
-
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
 
   return (
     <>
-      <div className='relative flex items-center justify-center'>
+      <div className="relative flex items-center justify-center">
         <img
           className={`rounded-xl border-1 border-pink-200 bg-pink-100 ${error && 'max-w-3xs'}`}
           src={!error ? src : errorImg}
           onError={() => setError(true)}
         />
         {error && (
-          <div className='absolute text-shadow-wrap font-bold text-xl'>Error loading image</div>
+          <div className="text-shadow-wrap absolute text-xl font-bold">
+            Error loading image
+          </div>
         )}
       </div>
     </>
@@ -28,14 +29,19 @@ const MediaFrame = ({ src }) => {
 
 const PostFooterButton = ({ src, count }) => {
   return (
-    <button className='flex gap-1 items-center pl-2.5 pr-4 py-1 rounded-xl border-1 border-pink-200'>
-      <img className='w-4.5' src={src}  />
-      <div className='text-sm'>{count}</div>
+    <button className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5">
+      <img className="w-4.5" src={src} />
+      <div className="text-sm">{count}</div>
     </button>
-  )
-}
+  );
+};
 
-const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
+const PostsListItem = ({
+  post,
+  likePost,
+  isLoading = false,
+  loadingDelay = 0,
+}) => {
   const author = post && post.author;
 
   return !isLoading ? (
@@ -55,9 +61,12 @@ const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
           <MediaFrame src={post.media} />
         </div>
       )}
-      <footer className='mt-3 flex gap-2.5'>
-        <PostFooterButton  src={post.hasLiked ? heartFilled : heart} count={post.likeCount}/>
-        <PostFooterButton  src={comment} count={post.comments.length}/>
+      <footer className="mt-3 flex gap-2.5">
+        <PostFooterButton
+          src={post.hasLiked ? heartFilled : heart}
+          count={post.likeCount}
+        />
+        <PostFooterButton src={comment} count={post.comments.length} />
       </footer>
     </li>
   ) : (

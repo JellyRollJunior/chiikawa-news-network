@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useTokenErrorHandler } from './useTokenErrorHandler.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { fetchPostFeed, fetchPosts } from '../services/postApi.js';
+import { fetchPostFeed, fetchPosts, createPostLike } from '../services/postApi.js';
 
 const usePostsFeed = (limit = 20) => {
     const [isFeed, setIsFeed] = useState(true);
@@ -80,6 +80,21 @@ const usePostsFeed = (limit = 20) => {
         return () => abortController.abort();
     }, [initPosts]);
 
+
+    let likeAbortController = new AbortController();
+    const likePost = async (postId) => {
+        if (likeAbortController) likeAbortController.abort();
+        likeAbortController = new AbortController();
+        const likedPost = await createPostLike(likeAbortController.signal, postId);
+        // update posts array with new data
+        setPosts((posts) => {
+            const index = posts.findIndex((post) => post.id == likedPost.id);
+            const updatedPosts = posts;
+            updatedPosts[index] = likedPost;
+            return updatedPosts;
+        })
+    }
+
     return {
         posts,
         hasNextPage,
@@ -90,6 +105,7 @@ const usePostsFeed = (limit = 20) => {
         setPostsToAll,
         setPostsToFeed,
         refreshPosts,
+        likePost
     };
 };
 

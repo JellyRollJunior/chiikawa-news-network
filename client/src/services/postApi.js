@@ -26,7 +26,7 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
     return data;
 };
 
-const likePost = async (signal, postId) => {
+const createPostLike = async (signal, postId) => {
     const data = request(`/posts/${postId}/likes`, {
         mode: 'cors',
         method: 'POST',
@@ -35,7 +35,7 @@ const likePost = async (signal, postId) => {
     return data;
 };
 
-const unlikePost = async (signal, postId) => {
+const deletePostLike = async (signal, postId) => {
     const data = request(`/posts/${postId}/likes`, {
         mode: 'cors',
         method: 'DELETE',
@@ -44,4 +44,4 @@ const unlikePost = async (signal, postId) => {
     return data;
 };
 
-export { fetchPosts, fetchPostFeed, likePost, unlikePost };
+export { fetchPosts, fetchPostFeed, createPostLike, deletePostLike };
