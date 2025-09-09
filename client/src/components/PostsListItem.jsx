@@ -27,9 +27,12 @@ const MediaFrame = ({ src }) => {
   );
 };
 
-const PostFooterButton = ({ src, count }) => {
+const PostFooterButton = ({ src, count, onClick }) => {
   return (
-    <button className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5">
+    <button
+      className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
+      onClick={onClick}
+    >
       <img className="w-4.5" src={src} />
       <div className="text-sm">{count}</div>
     </button>
@@ -65,6 +68,7 @@ const PostsListItem = ({
         <PostFooterButton
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
+          onClick={() => likePost(post.id)}
         />
         <PostFooterButton src={comment} count={post.comments.length} />
       </footer>

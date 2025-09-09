@@ -6,6 +6,7 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const PostList = ({
   posts = [],
+  likePost,
   hasNextPage,
   isLoadingInit,
   isLoadingNext,
@@ -15,7 +16,7 @@ const PostList = ({
       {!isLoadingInit
         ? posts.map((post) => (
             <Fragment key={post.id}>
-              <PostsListItem post={post} />
+              <PostsListItem post={post} likePost={likePost} />
             </Fragment>
           ))
         : /* Loading display */
@@ -31,8 +32,7 @@ const PostList = ({
             <img className="w-1/4" src={logo} alt="Chiikawa with glasses" />
           </div>
           <h2 className="mt-2 text-center font-semibold">
-            Loading{' '}
-            <LoadingDots dotTravelDistance={8} />
+            Loading <LoadingDots dotTravelDistance={8} />
           </h2>
         </li>
       )}

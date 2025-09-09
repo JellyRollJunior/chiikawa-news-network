@@ -19,6 +19,7 @@ const Home = () => {
     setPostsToAll,
     setPostsToFeed,
     refreshPosts,
+    likePost,
   } = usePostsFeed(5);
 
   return (
@@ -60,6 +61,7 @@ const Home = () => {
         <section className="mx-2 mt-3 mb-2">
           <PostList
             posts={posts}
+            likePost={likePost}
             hasNextPage={hasNextPage}
             isLoadingInit={isLoadingInit}
             isLoadingNext={isLoadingNext}
