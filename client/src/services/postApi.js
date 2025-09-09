@@ -1,5 +1,18 @@
 import { request } from './request.js';
 
+const fetchPosts = async (signal, cursor, limit = 20) => {
+    const params = new URLSearchParams();
+    params.append('limit', limit);
+    if (cursor) params.append('cursor', cursor);
+
+    const data = request(`/posts?${params.toString()}`, {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
+    return data;
+};
+
 const fetchPostFeed = async (signal, cursor, limit = 20) => {
     const params = new URLSearchParams();
     params.append('limit', limit);
@@ -13,4 +26,4 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
     return data;
 };
 
-export { fetchPostFeed };
+export { fetchPosts, fetchPostFeed };
