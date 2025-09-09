@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import errorImg from '../assets/images/chii-hachi-scared.png';
+import heart from '../assets/svgs/heart.svg';
+import comment from '../assets/svgs/comment.svg';
+
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -21,6 +24,15 @@ const MediaFrame = ({ src }) => {
     </>
   );
 };
+
+const PostFooterButton = ({ src, count }) => {
+  return (
+    <button className='flex gap-1 items-center pl-2.5 pr-4 py-1 rounded-xl border-1 border-pink-200'>
+      <img className='w-4.5' src={src}  />
+      <div className='text-sm'>{count}</div>
+    </button>
+  )
+}
 
 const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
   const author = post && post.author;
@@ -42,6 +54,10 @@ const PostsListItem = ({ post, isLoading = false, loadingDelay = 0 }) => {
           <MediaFrame src={post.media} />
         </div>
       )}
+      <footer className='mt-3 flex gap-2.5'>
+        <PostFooterButton  src={heart} count={post.likeCount}/>
+        <PostFooterButton  src={comment} count={post.comments.length}/>
+      </footer>
     </li>
   ) : (
     /* Loading display */
