@@ -141,6 +141,12 @@ VITE_SERVER_URL
 
 -   client
 
+    -   bug: show unable to load image label when media fails
+    -   liking posts
+        -   frontend like
+        -   API call like post
+        -   API call unlike post
+
 -   server
 
     -   github login
@@ -149,7 +155,7 @@ VITE_SERVER_URL
 
 -   Task List
 
-    -   posts
+    -   create posts
     -   post like
     -   post comments
 

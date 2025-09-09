@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
+import errorImg from '../assets/images/chii-hachi-scared.png';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
 
   return (
     <>
-      {!error && src && (
+      <div className='relative flex items-center justify-center'>
         <img
-          className="rounded-xl border-1 border-pink-200 bg-pink-100"
-          src={src}
+          className={`rounded-xl border-1 border-pink-200 bg-pink-100 ${error && 'max-w-3xs'}`}
+          src={!error ? src : errorImg}
           onError={() => setError(true)}
         />
-      )}
+        {error && (
+          <div className='absolute text-shadow-wrap font-bold text-xl'>Error loading image</div>
+        )}
+      </div>
     </>
   );
 };
