@@ -141,11 +141,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   home - all posts
-        -   init all posts
-        -   fetch next page
-        -   switch post feeds by clicking button
-
 -   server
 
     -   github login

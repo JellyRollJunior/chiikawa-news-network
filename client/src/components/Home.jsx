@@ -18,6 +18,7 @@ const Home = () => {
     isFeed,
     setPostsToAll,
     setPostsToFeed,
+    refreshPosts,
   } = usePostsFeed(5);
 
   return (
@@ -41,7 +42,7 @@ const Home = () => {
           >
             For you
           </button>
-          <RefreshButton />
+          <RefreshButton onclick={refreshPosts} />
           <button
             className={`flex-1 px-7 py-1 ${isFeed ? 'yellow-button' : 'blue-button'}`}
             onClick={setPostsToAll}
