@@ -10,7 +10,7 @@ const useComments = (postId) => {
     const { toast } = useContext(ToastContext);
 
     const getComments = useCallback(
-        async (signal) => {
+        async (signal, postId) => {
             try {
                 setIsLoading(true);
                 const data = await fetchComments(signal, postId);
@@ -22,18 +22,20 @@ const useComments = (postId) => {
                 setIsLoading(false);
             }
         },
-        [postId, handleTokenErrors, toast]
+        [handleTokenErrors, toast]
     );
 
     useEffect(() => {
         const abortController = new AbortController();
 
-        getComments(abortController.signal);
+        if (postId) {
+            getComments(abortController.signal, postId);
+        }
 
         return () => abortController.abort();
-    }, [getComments]);
+    }, [postId, getComments]);
 
-    return { comments, isLoading }
+    return { comments, isLoading };
 };
 
 export { useComments };
