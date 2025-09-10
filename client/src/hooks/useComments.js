@@ -72,7 +72,14 @@ const useComments = (postId) => {
         }
     };
 
-    return { comments, isLoading, toggleLike, isLoadingLike };
+    let refetchAbortController = new AbortController();
+    const refetch = async () => {
+        if (refetchAbortController) refetchAbortController.abort();
+        refetchAbortController = new AbortController();
+        getComments(refetchAbortController.signal, postId);
+    }
+
+    return { comments, isLoading, toggleLike, isLoadingLike, refetch };
 };
 
 export { useComments };

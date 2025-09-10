@@ -153,6 +153,7 @@ VITE_SERVER_URL
 
 -   server
 
+    -   FIX: order comments by createdAt
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
