@@ -145,7 +145,7 @@ VITE_SERVER_URL
 -   client
 
     -   comments
-        -   fetch comments
+        -   style comments
         -   create comments
         -   like comments
         -   unlike comments
