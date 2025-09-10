@@ -5,6 +5,7 @@ import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
+import { PostListComments } from './PostListComments.jsx';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -47,7 +48,10 @@ const PostsListItem = ({
   isLoadingLike = false,
   loadingDelay = 0,
 }) => {
+  const [isShowingComments, setIsShowingComments] = useState(false);
   const author = post && post.author;
+  const comments = post && post.comments;
+  const commentCount = comments && comments.length
 
   return !isLoading ? (
     <li className="yellow-block flex flex-col px-3 py-2">
@@ -73,8 +77,15 @@ const PostsListItem = ({
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
-        <PostFooterButton src={comment} count={post.comments.length} />
+        <PostFooterButton
+          src={comment}
+          count={post.comments.length}
+          onClick={() => setIsShowingComments(!isShowingComments)}
+        />
       </footer>
+      {isShowingComments && commentCount > 0 && (
+        <PostListComments comments={comments} />
+      )}
     </li>
   ) : (
     /* Loading display */
