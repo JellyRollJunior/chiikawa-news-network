@@ -32,12 +32,11 @@ const getCommentsByPost = async (requesterId, postId) => {
     }
 };
 
-const createComment = async (requesterId, postId, content, media = null) => {
+const createComment = async (requesterId, postId, content) => {
     try {
         const data = prisma.comment.create({
             data: {
                 content,
-                media,
                 post: {
                     connect: {
                         id: postId,
