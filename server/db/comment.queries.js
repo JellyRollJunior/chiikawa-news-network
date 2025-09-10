@@ -17,6 +17,20 @@ const getCommentById = async (commentId) => {
     }
 };
 
+const getCommentsByPost = async (requesterId, postId) => {
+    try {
+        const data = prisma.comment.findMany({
+            where: {
+                postId,
+            },
+            select: commentsSelect(requesterId),
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve comments');
+    }
+};
+
 const createComment = async (requesterId, postId, content, media = null) => {
     try {
         const data = prisma.comment.create({
@@ -98,4 +112,11 @@ const unlikeComment = async (requesterId, commentId) => {
     }
 };
 
-export { getCommentById, createComment, deleteComment, likeComment, unlikeComment };
+export {
+    getCommentById,
+    getCommentsByPost,
+    createComment,
+    deleteComment,
+    likeComment,
+    unlikeComment,
+};
