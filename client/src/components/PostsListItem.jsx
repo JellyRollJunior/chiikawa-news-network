@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar } from './Avatar.jsx';
-import { PostListItemComments } from './PostListItemComments.jsx';
+import { PostsListItemComments } from './PostsListItemComments.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import errorImg from '../assets/images/chii-hachi-scared.png';
@@ -72,8 +72,8 @@ const PostsListItem = ({
           onClick={() => setIsShowingComments(!isShowingComments)}
         />
       </footer>
-      {isShowingComments && post.commentCount > 0 && (
-        <PostListItemComments postId={post.id} />
+      {isShowingComments && (
+        <PostsListItemComments postId={post.id} />
       )}
     </li>
   ) : (

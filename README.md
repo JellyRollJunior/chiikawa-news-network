@@ -144,11 +144,11 @@ VITE_SERVER_URL
 
 -   client
 
+    -   open comments section for posts with 0 comments...
     -   posts desktop view
     -   post time
     -   comment time
     -   comments
-        -   create comments
         -   loading animation
 
 -   server

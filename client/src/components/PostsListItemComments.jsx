@@ -8,10 +8,15 @@ import heartFilled from '../assets/svgs/heart-filled.svg';
 import send from '../assets/svgs/send.svg';
 import { useCommentsCreate } from '../hooks/useCommentsCreate.js';
 
-const PostListItemComments = ({ postId }) => {
+const PostsListItemComments = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
   const { avatar } = useContext(CurrentContext);
-  const { comments, toggleLike, isLoadingLike, refetch: refetchComments } = useComments(postId);
+  const {
+    comments,
+    toggleLike,
+    isLoadingLike,
+    refetch: refetchComments,
+  } = useComments(postId);
   const { postComment, isLoading: isPostingComment } = useCommentsCreate();
 
   const handlePostComment = async (event) => {
@@ -25,9 +30,9 @@ const PostListItemComments = ({ postId }) => {
   return (
     <>
       <hr className="mt-3 h-1 w-full border-yellow-300" />
-      <ul className="mt-3 flex flex-col gap-4">
-        {comments &&
-          comments.map((comment) => (
+      {comments && comments.length > 0 && (
+        <ul className="mt-3 flex flex-col gap-4">
+          {comments.map((comment) => (
             <li className="flex text-sm" key={comment.id}>
               <Avatar
                 size={2}
@@ -48,8 +53,9 @@ const PostListItemComments = ({ postId }) => {
               />
             </li>
           ))}
-      </ul>
-      <form className="mt-3 flex" onSubmit={handlePostComment}>
+        </ul>
+      )}
+      <form className="mt-3 mb-1 flex" onSubmit={handlePostComment}>
         <Avatar size={2} avatar={avatar} />
         <textarea
           className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2"
@@ -69,4 +75,4 @@ const PostListItemComments = ({ postId }) => {
   );
 };
 
-export { PostListItemComments };
+export { PostsListItemComments };
