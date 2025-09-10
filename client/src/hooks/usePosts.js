@@ -15,6 +15,7 @@ const usePostsFeed = (limit = 20) => {
     const [hasNextPage, setHasNextPage] = useState(false);
     const [isLoadingInit, setIsLoadingInit] = useState(false);
     const [isLoadingNext, setIsLoadingNext] = useState(false);
+    const [isLoadingLike, setIsLoadingLike] = useState(false);
     const { handleTokenErrors } = useTokenErrorHandler();
     const { toast } = useContext(ToastContext);
 
@@ -87,21 +88,31 @@ const usePostsFeed = (limit = 20) => {
 
     let likeAbortController = new AbortController();
     const toggleLike = async (postId, hasLiked = false) => {
-        if (likeAbortController) likeAbortController.abort();
-        likeAbortController = new AbortController();
-        const updatedPost = !hasLiked
-            ? await createPostLike(likeAbortController.signal, postId)
-            : await deletePostLike(likeAbortController.signal, postId);
-        // update posts array with new data
-        setPosts((prevPosts) => {
-            const index = prevPosts.findIndex((post) => post.id == updatedPost.id);
-            if (index >= 0) {
-                const updatedPosts = [...prevPosts];
-                updatedPosts[index] = updatedPost;
-                return updatedPosts;
-            }
-            return prevPosts;
-        });
+        try {
+            setIsLoadingLike(true);
+            if (likeAbortController) likeAbortController.abort();
+            likeAbortController = new AbortController();
+            const updatedPost = !hasLiked
+                ? await createPostLike(likeAbortController.signal, postId)
+                : await deletePostLike(likeAbortController.signal, postId);
+            // update posts array with new data
+            setPosts((prevPosts) => {
+                const index = prevPosts.findIndex(
+                    (post) => post.id == updatedPost.id
+                );
+                if (index >= 0) {
+                    const updatedPosts = [...prevPosts];
+                    updatedPosts[index] = updatedPost;
+                    return updatedPosts;
+                }
+                return prevPosts;
+            });
+        } catch (error) {
+            handleTokenErrors(error);
+            toast('Unable to like post');
+        } finally {
+            setIsLoadingLike(false);
+        }
     };
 
     return {
