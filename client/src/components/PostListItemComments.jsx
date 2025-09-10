@@ -9,7 +9,7 @@ import send from '../assets/svgs/send.svg';
 
 const PostListItemComments = ({ postId }) => {
   const { avatar } = useContext(CurrentContext);
-  const { comments, isLoading } = useComments(postId);
+  const { comments } = useComments(postId);
 
   return (
     <>

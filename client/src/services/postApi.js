@@ -44,10 +44,29 @@ const deletePostLike = async (signal, postId) => {
     return data;
 };
 
+/* comments */
 const fetchComments = async (signal, postId) => {
     const data = await request(`/posts/${postId}/comments`, {
         mode: 'cors',
         method: 'GET',
+        signal,
+    });
+    return data;
+};
+
+const createCommentLike = async (signal, commentId) => {
+    const data = await request(`/comments/${commentId}/likes`, {
+        mode: 'cors',
+        method: 'POST',
+        signal,
+    });
+    return data;
+};
+
+const deleteCommentLike = async (signal, commentId) => {
+    const data = await request(`/comments/${commentId}/likes`, {
+        mode: 'cors',
+        method: 'DELETE',
         signal,
     });
     return data;
@@ -59,4 +78,6 @@ export {
     createPostLike,
     deletePostLike,
     fetchComments,
+    createCommentLike,
+    deleteCommentLike,
 };

@@ -144,13 +144,14 @@ VITE_SERVER_URL
 
 -   client
 
+    -   posts desktop view
     -   post time
     -   comment time
     -   comments
-        -   style comments
         -   create comments
         -   like comments
         -   unlike comments
+        -   loading animation
 
 -   server
 
