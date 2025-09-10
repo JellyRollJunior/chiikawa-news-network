@@ -53,6 +53,12 @@ postRouter.delete(
 );
 
 // comments
+// postRouter.get(
+//     '/:postId/comments',
+//     authenticateToken,
+//     postIdValidations,
+//     commentController.getComments
+// )
 postRouter.post(
     '/:postId/comments',
     authenticateToken,
