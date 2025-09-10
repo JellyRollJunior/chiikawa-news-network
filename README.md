@@ -146,7 +146,6 @@ VITE_SERVER_URL
 -   server
 
     -   serve comments separately
-        -   return commentCount in /posts stuff instead of list of comments
         -   get /posts/postId/comments
         -
     -   github login

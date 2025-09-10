@@ -1,5 +1,5 @@
 import { uploadPostMedia } from '../adapters/supabase.client.js';
-import { setPostAndCommentLikes } from '../services/post.services.js';
+import { formatPostData } from '../services/post.services.js';
 import { validateInput } from '../middleware/validations.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
@@ -20,7 +20,7 @@ const getPosts = async (req, res, next) => {
             Number(limit)
         );
         data.posts = data.posts.map((post) => {
-            return setPostAndCommentLikes(post);
+            return formatPostData(post);
         });
         res.json(data);
     } catch (error) {
@@ -46,7 +46,7 @@ const getFollowingPosts = async (req, res, next) => {
             Number(limit)
         );
         data.posts = data.posts.map((post) => {
-            return setPostAndCommentLikes(post);
+            return formatPostData(post);
         });
         res.json(data);
     } catch (error) {
@@ -68,7 +68,7 @@ const createPost = async (req, res, next) => {
             post = await postQueries.updatePostMedia(userId, post.id, url);
         }
         // add url to post
-        const formattedPost = setPostAndCommentLikes(post);
+        const formattedPost = formatPostData(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -81,7 +81,7 @@ const likePost = async (req, res, next) => {
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.likePost(userId, postId);
-        const formattedPost = setPostAndCommentLikes(post);
+        const formattedPost = formatPostData(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -94,7 +94,7 @@ const unlikePost = async (req, res, next) => {
         const userId = req.user.id;
         const { postId } = req.params;
         const post = await postQueries.unlikePost(userId, postId);
-        const formattedPost = setPostAndCommentLikes(post);
+        const formattedPost = formatPostData(post);
         res.json(formattedPost);
     } catch (error) {
         next(error);
@@ -114,7 +114,7 @@ const deletePost = async (req, res, next) => {
         }
         // verified. Delete post
         const deletedPost = await postQueries.deletePost(userId, postId);
-        const formattedPost = setPostAndCommentLikes(deletedPost);
+        const formattedPost = formatPostData(deletedPost);
         res.json(formattedPost);
     } catch (error) {
         next(error);
