@@ -47,6 +47,14 @@ const usePostsFeed = (limit = 20) => {
         [fetchData, handleTokenErrors, toast, limit]
     );
 
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        initPosts(abortController.signal);
+
+        return () => abortController.abort();
+    }, [initPosts]);
+
     const fetchNextPage = async () => {
         try {
             if (!hasNextPage) return;
@@ -77,14 +85,6 @@ const usePostsFeed = (limit = 20) => {
         refreshAbortController = new AbortController();
         initPosts(refreshAbortController.signal, null);
     };
-
-    useEffect(() => {
-        const abortController = new AbortController();
-
-        initPosts(abortController.signal);
-
-        return () => abortController.abort();
-    }, [initPosts]);
 
     let likeAbortController = new AbortController();
     const toggleLike = async (postId, hasLiked = false) => {
