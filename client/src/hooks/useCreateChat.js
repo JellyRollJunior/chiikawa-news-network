@@ -9,8 +9,8 @@ const useCreateChat = () => {
     const { toast } = useContext(ToastContext);
 
     const createChat = async (name, chatters) => {
-        setIsLoading(true);
         try {
+            setIsLoading(true);
             const data = await postChats(name, chatters);
             return data;
         } catch (error) {

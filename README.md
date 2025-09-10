@@ -34,7 +34,7 @@
 | POST   | /posts/:postId/likes       | Like post                   | Y     |                                     |                              |
 | DELETE | /posts/:postId/likes       | Unlike post                 | Y     |                                     |                              |
 | GET    | /posts/:postId/comments    | Retrieve comments           | Y     |                                     |                              |
-| POST   | /posts/:postId/comments    | Create comment              | Y     | { content, media }                  |                              |
+| POST   | /posts/:postId/comments    | Create comment              | Y     | { content }                         |                              |
 | DELETE | /comments/:commentId       | Delete comment              | Y     |                                     |                              |
 | POST   | /comments/:commentId/likes | Like comment                | Y     |                                     |                              |
 | DELETE | /comments/:commentId/likes | Unlike comment              | Y     |                                     |                              |
@@ -162,6 +162,9 @@ VITE_SERVER_URL
 
     -   create posts
     -   post comments
+    -   users
+    -   follows
+    -   user posts
 
 -   low prio
 
@@ -196,79 +199,79 @@ VITE_SERVER_URL
 -   likeComment('55e1d476-6430-4b52-936c-a84d2fed8d82', '6a22f041-e461-4cb1-a0d1-8d2bea72359c')
 
 {
-	"posts": [
-		{
-			"id": "95de95c3-d28a-4040-8060-9f6d096a0b4a",
-			"title": "I love beer",
-			"content": "its true I really love beer",
-			"media": null,
-			"createdAt": "2025-09-02T11:45:44.073Z",
-			"authorId": "ad5d9cc2-bf80-4ab2-90c0-e60619883660",
-			"author": {
-				"id": "ad5d9cc2-bf80-4ab2-90c0-e60619883660",
-				"username": "kurimanju",
-				"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-ad5d9cc2-bf80-4ab2-90c0-e60619883660/avatar-1757117037316.webp"
-			},
-			"comments": [
-				{
-					"id": "6a22f041-e461-4cb1-a0d1-8d2bea72359c",
-					"content": "Let's share a cold Orion beer when I get my drinking license~",
-					"createdAt": "2025-09-02T04:17:06.268Z",
-					"authorId": "55e1d476-6430-4b52-936c-a84d2fed8d82",
-					"author": {
-						"id": "55e1d476-6430-4b52-936c-a84d2fed8d82",
-						"username": "shisaa",
-						"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-55e1d476-6430-4b52-936c-a84d2fed8d82/avatar-1755303625925.webp"
-					},
-					"hasLiked": false,
-					"likeCount": 1
-				},
-				{
-					"id": "d88e8d8c-9d69-4cef-8cb4-ced5382df369",
-					"content": "hmmmmm~ yaha!",
-					"createdAt": "2025-09-02T18:22:47.204Z",
-					"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-					"author": {
-						"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-						"username": "usagii",
-						"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
-					},
-					"hasLiked": false,
-					"likeCount": 0
-				},
-				{
-					"id": "b09fc145-8d99-4ee4-addf-b4ddf2076baa",
-					"content": "Priiii~!",
-					"createdAt": "2025-09-02T22:25:12.653Z",
-					"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-					"author": {
-						"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-						"username": "usagii",
-						"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
-					},
-					"hasLiked": false,
-					"likeCount": 0
-				},
-				{
-					"id": "bdfd58d8-f126-4f4f-aef4-53ea6401b68b",
-					"content": "Priiii~!",
-					"createdAt": "2025-09-02T22:41:52.571Z",
-					"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-					"author": {
-						"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
-						"username": "usagii",
-						"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
-					},
-					"hasLiked": false,
-					"likeCount": 0
-				}
-			],
-			"hasLiked": true,
-			"likeCount": 1
-		}
-	],
-	"meta": {
-		"hasNextPage": false,
-		"endCursor": "95de95c3-d28a-4040-8060-9f6d096a0b4a"
-	}
+"posts": [
+{
+"id": "95de95c3-d28a-4040-8060-9f6d096a0b4a",
+"title": "I love beer",
+"content": "its true I really love beer",
+"media": null,
+"createdAt": "2025-09-02T11:45:44.073Z",
+"authorId": "ad5d9cc2-bf80-4ab2-90c0-e60619883660",
+"author": {
+"id": "ad5d9cc2-bf80-4ab2-90c0-e60619883660",
+"username": "kurimanju",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-ad5d9cc2-bf80-4ab2-90c0-e60619883660/avatar-1757117037316.webp"
+},
+"comments": [
+{
+"id": "6a22f041-e461-4cb1-a0d1-8d2bea72359c",
+"content": "Let's share a cold Orion beer when I get my drinking license~",
+"createdAt": "2025-09-02T04:17:06.268Z",
+"authorId": "55e1d476-6430-4b52-936c-a84d2fed8d82",
+"author": {
+"id": "55e1d476-6430-4b52-936c-a84d2fed8d82",
+"username": "shisaa",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-55e1d476-6430-4b52-936c-a84d2fed8d82/avatar-1755303625925.webp"
+},
+"hasLiked": false,
+"likeCount": 1
+},
+{
+"id": "d88e8d8c-9d69-4cef-8cb4-ced5382df369",
+"content": "hmmmmm~ yaha!",
+"createdAt": "2025-09-02T18:22:47.204Z",
+"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"author": {
+"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"username": "usagii",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
+},
+"hasLiked": false,
+"likeCount": 0
+},
+{
+"id": "b09fc145-8d99-4ee4-addf-b4ddf2076baa",
+"content": "Priiii~!",
+"createdAt": "2025-09-02T22:25:12.653Z",
+"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"author": {
+"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"username": "usagii",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
+},
+"hasLiked": false,
+"likeCount": 0
+},
+{
+"id": "bdfd58d8-f126-4f4f-aef4-53ea6401b68b",
+"content": "Priiii~!",
+"createdAt": "2025-09-02T22:41:52.571Z",
+"authorId": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"author": {
+"id": "1736b7af-8c60-4c2b-9254-6c08662fb2e4",
+"username": "usagii",
+"avatar": "https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/user-1736b7af-8c60-4c2b-9254-6c08662fb2e4/avatar-1756332287321.webp"
+},
+"hasLiked": false,
+"likeCount": 0
+}
+],
+"hasLiked": true,
+"likeCount": 1
+}
+],
+"meta": {
+"hasNextPage": false,
+"endCursor": "95de95c3-d28a-4040-8060-9f6d096a0b4a"
+}
 }

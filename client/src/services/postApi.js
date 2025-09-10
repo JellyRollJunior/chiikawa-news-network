@@ -54,6 +54,16 @@ const fetchComments = async (signal, postId) => {
     return data;
 };
 
+const createComment = async (signal, postId, content) => {
+    const data = await request(`/posts/${postId}/comments`, {
+        mode: 'cors',
+        method: 'POST',
+        body: JSON.stringify(content),
+        signal,
+    });
+    return data;
+};
+
 const createCommentLike = async (signal, commentId) => {
     const data = await request(`/comments/${commentId}/likes`, {
         mode: 'cors',
@@ -75,6 +85,7 @@ const deleteCommentLike = async (signal, commentId) => {
 export {
     fetchPosts,
     fetchPostFeed,
+    createComment,
     createPostLike,
     deletePostLike,
     fetchComments,
