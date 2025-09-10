@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Avatar } from './Avatar.jsx';
+import { PostListItemComments } from './PostListItemComments.jsx';
+import { IncrementButton } from './IncrementButton.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
-import { PostListItemComments } from './PostListItemComments.jsx';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -25,19 +26,6 @@ const MediaFrame = ({ src }) => {
         )}
       </div>
     </>
-  );
-};
-
-const PostFooterButton = ({ src, count, onClick, isDisabled = false }) => {
-  return (
-    <button
-      className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 disabled:bg-gray-100"
-      onClick={onClick}
-      disabled={isDisabled}
-    >
-      <img className="w-4.5" src={src} />
-      <div className="text-sm">{count}</div>
-    </button>
   );
 };
 
@@ -70,13 +58,13 @@ const PostsListItem = ({
         </div>
       )}
       <footer className="mt-3 flex gap-2.5">
-        <PostFooterButton
+        <IncrementButton
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
-        <PostFooterButton
+        <IncrementButton
           src={comment}
           count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}
