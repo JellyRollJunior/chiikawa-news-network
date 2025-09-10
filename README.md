@@ -144,6 +144,8 @@ VITE_SERVER_URL
 
 -   client
 
+    -   post time
+    -   comment time
     -   comments
         -   style comments
         -   create comments

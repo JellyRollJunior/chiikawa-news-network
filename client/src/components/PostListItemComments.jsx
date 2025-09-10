@@ -39,7 +39,7 @@ const PostListItemComments = ({ postId }) => {
       <form className="mt-3 flex">
         <Avatar size={2} avatar={avatar} />
         <textarea
-          className="ml-2 flex-1 rounded-lg border-1 border-pink-200 bg-white py-1 pl-2"
+          className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2"
           type="text"
           placeholder="Share your thoughts..."
         />

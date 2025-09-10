@@ -50,7 +50,7 @@ const PostsListItem = ({
         />
         <h3 className="text-lg">{author.username}</h3>
       </header>
-      <h2 className="mt-2 font-semibold">{post.title}</h2>
+      <h2 className="mt-2 text-lg font-semibold">{post.title}</h2>
       <p className="mt-1 text-sm text-yellow-900">{post.content}</p>
       {post.media && (
         <div className="mt-2 flex items-center justify-center">
@@ -59,14 +59,14 @@ const PostsListItem = ({
       )}
       <footer className="mt-3 flex gap-2.5">
         <IncrementButton
-          className="rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 gap-1"
+          className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
         <IncrementButton
-          className="rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 gap-1"
+          className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
           src={comment}
           count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}
