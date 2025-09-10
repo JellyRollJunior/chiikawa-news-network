@@ -1,15 +1,20 @@
 import { useComments } from '../hooks/useComments.js';
 import { Avatar } from './Avatar.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import send from '../assets/svgs/send.svg';
 
 const PostListItemComments = ({ postId }) => {
+  const [commentInput, setCommentInput] = useState('');
   const { avatar } = useContext(CurrentContext);
   const { comments, toggleLike, isLoadingLike } = useComments(postId);
+
+  const handlePostComment = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -29,7 +34,7 @@ const PostListItemComments = ({ postId }) => {
                 <p>{comment.content}</p>
               </div>
               <IncrementButton
-                className="mt-0.5 mr-0.5 ml-1 flex-col"
+                className="mt-1 mr-0.5 ml-1 flex-col"
                 src={comment.hasLiked ? heartFilled : heart}
                 count={comment.likeCount}
                 onClick={() => toggleLike(comment.id, comment.hasLiked)}
@@ -38,11 +43,13 @@ const PostListItemComments = ({ postId }) => {
             </li>
           ))}
       </ul>
-      <form className="mt-3 flex">
+      <form className="mt-3 flex" onSubmit={handlePostComment}>
         <Avatar size={2} avatar={avatar} />
         <textarea
           className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2"
           type="text"
+          value={commentInput}
+          onChange={(event) => setCommentInput(event.target.value)}
           placeholder="Share your thoughts..."
         />
         <button className="ml-2">
