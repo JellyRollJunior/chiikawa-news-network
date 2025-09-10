@@ -33,6 +33,7 @@
 | DELETE | /posts/:postId             | Delete post                 | Y     |                                     |                              |
 | POST   | /posts/:postId/likes       | Like post                   | Y     |                                     |                              |
 | DELETE | /posts/:postId/likes       | Unlike post                 | Y     |                                     |                              |
+| GET    | /posts/:postId/comments    | Retrieve comments           | Y     |                                     |                              |
 | POST   | /posts/:postId/comments    | Create comment              | Y     | { content, media }                  |                              |
 | DELETE | /comments/:commentId       | Delete comment              | Y     |                                     |                              |
 | POST   | /comments/:commentId/likes | Like comment                | Y     |                                     |                              |
@@ -145,9 +146,6 @@ VITE_SERVER_URL
 
 -   server
 
-    -   serve comments separately
-        -   get /posts/postId/comments
-        -
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID

@@ -2,7 +2,7 @@ import * as commentQueries from '../db/comment.queries.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 import { validateInput } from '../middleware/validations.js';
-import { setLikes } from '../services/like.services.js';
+import { formatCommentData } from '../services/comment.services.js';
 
 const getComments = async (req, res, next) => {
     try {
@@ -10,7 +10,10 @@ const getComments = async (req, res, next) => {
         const userId = req.user.id;
         const { postId } = req.params;
         const comments = await commentQueries.getCommentsByPost(userId, postId);
-        res.json({ comments });
+        const formattedComments = comments.map((comment) =>
+            formatCommentData(comment)
+        );
+        res.json({ comments: formattedComments });
     } catch (error) {
         next(error);
     }
@@ -27,7 +30,7 @@ const createComment = async (req, res, next) => {
             postId,
             content
         );
-        const formattedComment = setLikes(comment);
+        const formattedComment = formatCommentData(comment)
         res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
@@ -50,7 +53,7 @@ const deleteComment = async (req, res, next) => {
             userId,
             commentId
         );
-        const formattedComment = setLikes(deletedComment);
+        const formattedComment = formatCommentData(comment)
         res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
@@ -63,7 +66,7 @@ const likeComment = async (req, res, next) => {
         const userId = req.user.id;
         const { commentId } = req.params;
         const comment = await commentQueries.likeComment(userId, commentId);
-        const formattedComment = setLikes(comment);
+        const formattedComment = formatCommentData(comment)
         res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
@@ -76,7 +79,7 @@ const unlikeComment = async (req, res, next) => {
         const userId = req.user.id;
         const { commentId } = req.params;
         const comment = await commentQueries.unlikeComment(userId, commentId);
-        const formattedComment = setLikes(comment);
+        const formattedComment = formatCommentData(comment)
         res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
