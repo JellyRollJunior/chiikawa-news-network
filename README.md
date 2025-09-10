@@ -144,6 +144,12 @@ VITE_SERVER_URL
 
 -   client
 
+    -   comments
+        -   fetch comments
+        -   create comments
+        -   like comments
+        -   unlike comments
+
 -   server
 
     -   github login

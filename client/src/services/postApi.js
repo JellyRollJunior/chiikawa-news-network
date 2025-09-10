@@ -5,7 +5,7 @@ const fetchPosts = async (signal, cursor, limit = 20) => {
     params.append('limit', limit);
     if (cursor) params.append('cursor', cursor);
 
-    const data = request(`/posts?${params.toString()}`, {
+    const data = await request(`/posts?${params.toString()}`, {
         mode: 'cors',
         method: 'GET',
         signal,
@@ -18,7 +18,7 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
     params.append('limit', limit);
     if (cursor) params.append('cursor', cursor);
 
-    const data = request(`/posts/feed?${params.toString()}`, {
+    const data = await request(`/posts/feed?${params.toString()}`, {
         mode: 'cors',
         method: 'GET',
         signal,
@@ -27,7 +27,7 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
 };
 
 const createPostLike = async (signal, postId) => {
-    const data = request(`/posts/${postId}/likes`, {
+    const data = await request(`/posts/${postId}/likes`, {
         mode: 'cors',
         method: 'POST',
         signal,
@@ -36,7 +36,7 @@ const createPostLike = async (signal, postId) => {
 };
 
 const deletePostLike = async (signal, postId) => {
-    const data = request(`/posts/${postId}/likes`, {
+    const data = await request(`/posts/${postId}/likes`, {
         mode: 'cors',
         method: 'DELETE',
         signal,
@@ -44,4 +44,19 @@ const deletePostLike = async (signal, postId) => {
     return data;
 };
 
-export { fetchPosts, fetchPostFeed, createPostLike, deletePostLike };
+const fetchComments = async (signal, postId) => {
+    const data = await request(`/posts/${postId}/comments`, {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
+    return data;
+};
+
+export {
+    fetchPosts,
+    fetchPostFeed,
+    createPostLike,
+    deletePostLike,
+    fetchComments,
+};
