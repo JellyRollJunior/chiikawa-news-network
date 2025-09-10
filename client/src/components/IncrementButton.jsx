@@ -1,7 +1,7 @@
-const IncrementButton = ({ src, count, onClick, isDisabled = false }) => {
+const IncrementButton = ({ className, src, count, onClick, isDisabled = false }) => {
   return (
     <button
-      className="flex h-fit items-center gap-1 py-1 pr-4 pl-2.5 disabled:bg-gray-100"
+      className={`flex h-fit items-center disabled:bg-gray-100 ${className}`}
       onClick={onClick}
       disabled={isDisabled}
     >

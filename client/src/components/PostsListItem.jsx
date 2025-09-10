@@ -58,21 +58,19 @@ const PostsListItem = ({
         </div>
       )}
       <footer className="mt-3 flex gap-2.5">
-        <div className="rounded-xl border-1 border-pink-200">
-          <IncrementButton
-            src={post.hasLiked ? heartFilled : heart}
-            count={post.likeCount}
-            onClick={() => toggleLike(post.id, post.hasLiked)}
-            isDisabled={isLoadingLike}
-          />
-        </div>
-        <div className="rounded-xl border-1 border-pink-200">
-          <IncrementButton
-            src={comment}
-            count={post.commentCount}
-            onClick={() => setIsShowingComments(!isShowingComments)}
-          />
-        </div>
+        <IncrementButton
+          className="rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 gap-1"
+          src={post.hasLiked ? heartFilled : heart}
+          count={post.likeCount}
+          onClick={() => toggleLike(post.id, post.hasLiked)}
+          isDisabled={isLoadingLike}
+        />
+        <IncrementButton
+          className="rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 gap-1"
+          src={comment}
+          count={post.commentCount}
+          onClick={() => setIsShowingComments(!isShowingComments)}
+        />
       </footer>
       {isShowingComments && post.commentCount > 0 && (
         <PostListItemComments postId={post.id} />
