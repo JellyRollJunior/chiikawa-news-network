@@ -35,10 +35,7 @@ const getPosts = async (
                       },
                   }
                 : undefined,
-            orderBy: [
-                {createdAt: 'desc'},
-                {id: 'desc'},
-            ],
+            orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
             take: limit + 1,
             cursor: cursor ? { id: cursor } : undefined,
             skip: cursor ? 1 : 0, // skip cursor if present
