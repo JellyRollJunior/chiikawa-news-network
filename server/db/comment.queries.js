@@ -17,7 +17,7 @@ const getCommentById = async (commentId) => {
     }
 };
 
-const getCommentsByPost = async (postId) => {
+const getCommentsByPost = async (requesterId, postId) => {
     try {
         const data = prisma.comment.findMany({
             where: {

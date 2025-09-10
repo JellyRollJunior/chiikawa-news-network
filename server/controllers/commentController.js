@@ -4,6 +4,18 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 import { validateInput } from '../middleware/validations.js';
 import { setLikes } from '../services/like.services.js';
 
+const getComments = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const userId = req.user.id;
+        const { postId } = req.params;
+        const comments = await commentQueries.getCommentsByPost(userId, postId);
+        res.json({ comments });
+    } catch (error) {
+        next(error);
+    }
+};
+
 const createComment = async (req, res, next) => {
     try {
         validateInput(req);
@@ -16,9 +28,7 @@ const createComment = async (req, res, next) => {
             content
         );
         const formattedComment = setLikes(comment);
-        res.json({
-            data: formattedComment,
-        });
+        res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
     }
@@ -41,9 +51,7 @@ const deleteComment = async (req, res, next) => {
             commentId
         );
         const formattedComment = setLikes(deletedComment);
-        res.json({
-            data: formattedComment,
-        });
+        res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
     }
@@ -56,9 +64,7 @@ const likeComment = async (req, res, next) => {
         const { commentId } = req.params;
         const comment = await commentQueries.likeComment(userId, commentId);
         const formattedComment = setLikes(comment);
-        res.json({
-            data: formattedComment,
-        });
+        res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
     }
@@ -71,12 +77,16 @@ const unlikeComment = async (req, res, next) => {
         const { commentId } = req.params;
         const comment = await commentQueries.unlikeComment(userId, commentId);
         const formattedComment = setLikes(comment);
-        res.json({
-            data: formattedComment,
-        });
+        res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
     }
-}
+};
 
-export { createComment, deleteComment, likeComment, unlikeComment };
+export {
+    getComments,
+    createComment,
+    deleteComment,
+    likeComment,
+    unlikeComment,
+};
