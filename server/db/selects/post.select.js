@@ -14,10 +14,10 @@ const postSelect = (requesterId) => {
             select: USER_SELECT_BASIC,
         },
         ...likesSelect(requesterId),
-        comments: {
-            select: commentsSelect(requesterId),
-            orderBy: {
-                createdAt: 'asc',
+        _count: {
+            select: {
+                likers: true,
+                comments: true,
             },
         },
     };

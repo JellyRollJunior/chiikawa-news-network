@@ -11,6 +11,11 @@ const commentsSelect = (requesterId) => {
             select: USER_SELECT_BASIC,
         },
         ...likesSelect(requesterId),
+        _count: {
+            select: {
+                likers: true,
+            },
+        },
     };
 };
 
