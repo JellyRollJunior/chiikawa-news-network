@@ -58,7 +58,12 @@ const createComment = async (signal, postId, content) => {
     const data = await request(`/posts/${postId}/comments`, {
         mode: 'cors',
         method: 'POST',
-        body: JSON.stringify(content),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content,
+        }),
         signal,
     });
     return data;

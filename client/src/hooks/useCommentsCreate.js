@@ -14,11 +14,12 @@ const useCommentsCreate = () => {
         abortController = new AbortController();
         try {
             setIsLoading(true);
-            await createComment(
+            const comment = await createComment(
                 abortController.signal,
                 postId,
                 content
             );
+            console.log(comment);
         } catch (error) {
             handleTokenErrors(error);
             toast('Unable to post comment');

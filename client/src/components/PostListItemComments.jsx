@@ -6,14 +6,20 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import send from '../assets/svgs/send.svg';
+import { useCommentsCreate } from '../hooks/useCommentsCreate.js';
 
 const PostListItemComments = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
   const { avatar } = useContext(CurrentContext);
-  const { comments, toggleLike, isLoadingLike } = useComments(postId);
+  const { comments, toggleLike, isLoadingLike, refetch: refetchComments } = useComments(postId);
+  const { postComment, isLoading: isPostingComment } = useCommentsCreate();
 
-  const handlePostComment = (event) => {
+  const handlePostComment = async (event) => {
     event.preventDefault();
+    await postComment(postId, commentInput);
+    // reset text area
+    setCommentInput('');
+    await refetchComments();
   };
 
   return (
@@ -48,9 +54,12 @@ const PostListItemComments = ({ postId }) => {
         <textarea
           className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2"
           type="text"
+          name="comment"
+          id="comment"
           value={commentInput}
           onChange={(event) => setCommentInput(event.target.value)}
           placeholder="Share your thoughts..."
+          required
         />
         <button className="ml-2">
           <img className="w-5" src={send} />
