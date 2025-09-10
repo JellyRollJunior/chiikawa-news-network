@@ -5,7 +5,7 @@ import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
-import { PostListComments } from './PostListComments.jsx';
+import { PostListItemComments } from './PostListItemComments.jsx';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -50,9 +50,8 @@ const PostsListItem = ({
 }) => {
   const [isShowingComments, setIsShowingComments] = useState(false);
   const author = post && post.author;
-  const comments = post && post.comments;
-  const commentCount = comments && comments.length
 
+  if (!post) return;
   return !isLoading ? (
     <li className="yellow-block flex flex-col px-3 py-2">
       <header className="flex items-center gap-2">
@@ -79,12 +78,12 @@ const PostsListItem = ({
         />
         <PostFooterButton
           src={comment}
-          count={post.comments.length}
+          count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}
         />
       </footer>
-      {isShowingComments && commentCount > 0 && (
-        <PostListComments comments={comments} />
+      {isShowingComments && post.commentCount > 0 && (
+        <PostListItemComments postId={post.id} />
       )}
     </li>
   ) : (
