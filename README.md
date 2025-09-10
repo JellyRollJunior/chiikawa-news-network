@@ -149,8 +149,6 @@ VITE_SERVER_URL
     -   comment time
     -   comments
         -   create comments
-        -   like comments
-        -   unlike comments
         -   loading animation
 
 -   server

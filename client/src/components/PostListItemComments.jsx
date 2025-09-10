@@ -9,7 +9,7 @@ import send from '../assets/svgs/send.svg';
 
 const PostListItemComments = ({ postId }) => {
   const { avatar } = useContext(CurrentContext);
-  const { comments } = useComments(postId);
+  const { comments, toggleLike, isLoadingLike } = useComments(postId);
 
   return (
     <>
@@ -32,6 +32,8 @@ const PostListItemComments = ({ postId }) => {
                 className="mt-0.5 mr-0.5 ml-1 flex-col"
                 src={comment.hasLiked ? heartFilled : heart}
                 count={comment.likeCount}
+                onClick={() => toggleLike(comment.id, comment.hasLiked)}
+                isDisable={isLoadingLike}
               />
             </li>
           ))}

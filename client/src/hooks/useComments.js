@@ -18,8 +18,8 @@ const useComments = (postId) => {
         async (signal, postId) => {
             try {
                 setIsLoading(true);
-                const data = await fetchComments(signal, postId);
-                setComments(data.comments);
+                const { comments: data } = await fetchComments(signal, postId);
+                setComments(data);
             } catch (error) {
                 handleTokenErrors(error);
                 toast('Unable to fetch comments');
@@ -46,7 +46,7 @@ const useComments = (postId) => {
             setIsLoadingLike(true);
             if (likeAbortController) likeAbortController.abort();
             likeAbortController = new AbortController();
-            const updatedComment = !hasLiked
+            const { comment: updatedComment } = !hasLiked
                 ? await createCommentLike(likeAbortController.signal, commentId)
                 : await deleteCommentLike(
                       likeAbortController.signal,
@@ -55,12 +55,12 @@ const useComments = (postId) => {
             // update comment arry with new data
             setComments((prevComments) => {
                 const index = prevComments.findIndex(
-                    (comment) => comment.id == commentId
+                    (comment) => comment.id == updatedComment.id
                 );
                 if (index >= 0) {
-                    const updatedComments = [...prevComments];
-                    updatedComment[index] = updatedComment;
-                    return updatedComments;
+                    const newComments = [...prevComments];
+                    newComments[index] = updatedComment;
+                    return newComments;
                 }
                 return prevComments;
             });

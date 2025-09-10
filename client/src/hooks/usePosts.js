@@ -101,15 +101,15 @@ const usePostsFeed = (limit = 20) => {
                     (post) => post.id == updatedPost.id
                 );
                 if (index >= 0) {
-                    const updatedPosts = [...prevPosts];
-                    updatedPosts[index] = updatedPost;
-                    return updatedPosts;
+                    const newPosts = [...prevPosts];
+                    newPosts[index] = updatedPost;
+                    return newPosts;
                 }
                 return prevPosts;
             });
         } catch (error) {
             handleTokenErrors(error);
-            toast('Unable to like post');
+            toast('Unable to like/unlike post')
         } finally {
             setIsLoadingLike(false);
         }
