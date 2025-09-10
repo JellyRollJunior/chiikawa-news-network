@@ -24,6 +24,7 @@ const getCommentsByPost = async (requesterId, postId) => {
                 postId,
             },
             select: commentsSelect(requesterId),
+            orderBy: [{ createdAt: 'asc' }, { id: 'desc' }],
         });
         return data;
     } catch (error) {
