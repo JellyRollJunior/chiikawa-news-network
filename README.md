@@ -171,6 +171,7 @@ VITE_SERVER_URL
         -   messages
     -   change all titles to style like simple title in home (without yellow block!)
     -   refactor scrolling just to scroll off entire page instead of off a block or smth
+    -   like button liking animation
 
 ## DATA
 

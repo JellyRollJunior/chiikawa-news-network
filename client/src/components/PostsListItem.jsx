@@ -27,11 +27,12 @@ const MediaFrame = ({ src }) => {
   );
 };
 
-const PostFooterButton = ({ src, count, onClick }) => {
+const PostFooterButton = ({ src, count, onClick, isDisabled = false }) => {
   return (
     <button
-      className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
+      className="flex items-center gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 disabled:bg-gray-100"
       onClick={onClick}
+      disabled={isDisabled}
     >
       <img className="w-4.5" src={src} />
       <div className="text-sm">{count}</div>
@@ -43,6 +44,7 @@ const PostsListItem = ({
   post,
   toggleLike = { toggleLike },
   isLoading = false,
+  isLoadingLike = false,
   loadingDelay = 0,
 }) => {
   const author = post && post.author;
@@ -69,6 +71,7 @@ const PostsListItem = ({
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
+          isDisabled={isLoadingLike}
         />
         <PostFooterButton src={comment} count={post.comments.length} />
       </footer>

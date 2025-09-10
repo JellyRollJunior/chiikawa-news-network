@@ -20,6 +20,7 @@ const Home = () => {
     setPostsToFeed,
     refreshPosts,
     toggleLike,
+    isLoadingLike,
   } = usePostsFeed(5);
 
   return (
@@ -65,6 +66,7 @@ const Home = () => {
             hasNextPage={hasNextPage}
             isLoadingInit={isLoadingInit}
             isLoadingNext={isLoadingNext}
+            isLoadingLike={isLoadingLike}
           />
         </section>
       </Scrollable>

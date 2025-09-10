@@ -10,13 +10,14 @@ const PostList = ({
   hasNextPage,
   isLoadingInit,
   isLoadingNext,
+  isLoadingLike,
 }) => {
   return (
     <ul className="flex flex-col gap-2">
       {!isLoadingInit
         ? posts.map((post) => (
             <Fragment key={post.id}>
-              <PostsListItem post={post} toggleLike={toggleLike} />
+              <PostsListItem post={post} toggleLike={toggleLike} isLoadingLike={isLoadingLike} />
             </Fragment>
           ))
         : /* Loading display */

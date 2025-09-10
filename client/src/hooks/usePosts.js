@@ -121,11 +121,12 @@ const usePostsFeed = (limit = 20) => {
         isLoadingInit,
         fetchNextPage,
         isLoadingNext,
-        isFeed,
         setPostsToAll,
         setPostsToFeed,
+        isFeed,
         refreshPosts,
         toggleLike,
+        isLoadingLike,
     };
 };
 
