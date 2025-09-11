@@ -7,7 +7,7 @@ import { PostList } from './PostsList.jsx';
 import { Scrollable } from './Scrollable.jsx';
 import logo from '../assets/nav/chiikawa-glasses.png';
 
-const Home = () => {
+const Home = ({ openCreatePostModal }) => {
   const { avatar } = useContext(CurrentContext);
   const {
     posts,
@@ -55,7 +55,10 @@ const Home = () => {
         </section>
         <section className="mx-2 mt-3 flex gap-2">
           <Avatar avatar={avatar} size={2.5} secondaryStyling={true} />
-          <button className="block-shadow flex-1 rounded-lg bg-white">
+          <button
+            className="block-shadow flex-1 rounded-lg bg-white"
+            onClick={openCreatePostModal}
+          >
             Whats on your mind?
           </button>
         </section>
