@@ -143,29 +143,23 @@ VITE_SERVER_URL
 ## TODO
 
 -   TODO
-
-    -   delete comment
+    -   comment time
+    -   post time
 
 -   client
 
-    -   posts desktop view
-    -   post time
-    -   comment time
+    -   create posts
     -   delete post
-    -   comments
-        -   loading animation
+    -   posts desktop view
 
 -   server
 
-    -   FIX: order comments by createdAt
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
 
 -   Task List
 
-    -   create posts
-    -   post comments
     -   users
     -   follows
     -   user posts

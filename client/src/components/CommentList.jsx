@@ -6,6 +6,7 @@ import { Avatar } from './Avatar.jsx';
 import { CommentListItem } from './CommentListItem.jsx';
 import { LoadingDots } from './LoadingDots.jsx';
 import send from '../assets/svgs/send.svg';
+import { useDeleteComment } from '../hooks/useDeleteComment.js';
 
 const CommentList = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
@@ -27,6 +28,12 @@ const CommentList = ({ postId }) => {
     await refetchComments();
   };
 
+  const { deleteComment } = useDeleteComment();
+  const handleDeleteComment = async (commentId) => {
+    await deleteComment(commentId);
+    await refetchComments();
+  };
+
   return (
     <>
       <hr className="mt-3 h-1 w-full border-yellow-300" />
@@ -38,6 +45,7 @@ const CommentList = ({ postId }) => {
                 comment={comment}
                 toggleLike={toggleLike}
                 isLoadingLike={isLoadingLike}
+                handleDeleteComment={handleDeleteComment}
               />
             ))}
           </ul>
