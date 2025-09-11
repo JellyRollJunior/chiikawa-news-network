@@ -3,7 +3,7 @@ import { useTokenErrorHandler } from './useTokenErrorHandler.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { createComment } from '../services/postApi.js';
 
-const useCommentsCreate = () => {
+const useCreateComment = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { handleTokenErrors } = useTokenErrorHandler();
     const { toast } = useContext(ToastContext);
@@ -14,12 +14,11 @@ const useCommentsCreate = () => {
         abortController = new AbortController();
         try {
             setIsLoading(true);
-            const comment = await createComment(
+            await createComment(
                 abortController.signal,
                 postId,
                 content
             );
-            console.log(comment);
         } catch (error) {
             handleTokenErrors(error);
             toast('Unable to post comment');
@@ -31,4 +30,4 @@ const useCommentsCreate = () => {
     return { postComment, isLoading };
 };
 
-export { useCommentsCreate };
+export { useCreateComment };
