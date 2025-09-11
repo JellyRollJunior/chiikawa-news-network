@@ -142,9 +142,13 @@ VITE_SERVER_URL
 
 ## TODO
 
+-   TODO
+    -   min max len
+    -   rename to comments list
+    -   disable comment input on loading
+
 -   client
 
-    -   open comments section for posts with 0 comments...
     -   posts desktop view
     -   post time
     -   comment time
