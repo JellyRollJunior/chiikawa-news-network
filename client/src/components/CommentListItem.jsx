@@ -17,30 +17,32 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li className="flex" key={comment.id}>
-      <Avatar size={2} avatar={comment.author && comment.author.avatar} />
-      <div className="ml-2 flex-1">
-        <h4 className="font-medium text-base">
-          {comment.author && comment.author.username}
-        </h4>
-        <p className='text-sm'>{comment.content}</p>
-        <p className='text-xs text-center mt-0.5 text-gray-500'> — {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true})} — </p>
+    <li key={comment.id}>
+      <div className="flex">
+        <Avatar size={2} avatar={comment.author && comment.author.avatar} />
+        <div className="ml-2 flex-1">
+          <h4 className="text-base font-medium">
+            {comment.author && comment.author.username}
+          </h4>
+          <p className="text-sm">{comment.content}</p>
+        </div>
+        {comment.author.id == id && (
+          <DotsMenu>
+            <DotsMenuItem
+              label="Delete comment"
+              onClick={() => handleDeleteComment(comment.id)}
+            />
+          </DotsMenu>
+        )}
+        <IncrementButton
+          className="mt-1 mr-0.5 ml-1 flex-col"
+          src={comment.hasLiked ? heartFilled : heart}
+          count={comment.likeCount}
+          onClick={() => toggleLike(comment.id, comment.hasLiked)}
+          isDisabled={isLoadingLike}
+        />
       </div>
-      {comment.author.id == id && (
-        <DotsMenu>
-          <DotsMenuItem
-            label="Delete comment"
-            onClick={() => handleDeleteComment(comment.id)}
-          />
-        </DotsMenu>
-      )}
-      <IncrementButton
-        className="mt-1 mr-0.5 ml-1 flex-col"
-        src={comment.hasLiked ? heartFilled : heart}
-        count={comment.likeCount}
-        onClick={() => toggleLike(comment.id, comment.hasLiked)}
-        isDisabled={isLoadingLike}
-      />
+        <p className='text-xs text-center text-gray-500'> — {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true})} — </p>
     </li>
   );
 };
