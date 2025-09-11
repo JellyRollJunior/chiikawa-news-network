@@ -142,9 +142,6 @@ VITE_SERVER_URL
 
 ## TODO
 
--   TODO
-    -   post time
-
 -   client
 
     -   create posts
