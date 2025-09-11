@@ -3,11 +3,11 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useComments } from '../hooks/useComments.js';
 import { useCreateComment } from '../hooks/useCreateComment.js';
 import { Avatar } from './Avatar.jsx';
-import { Comment } from './Comment.jsx';
+import { CommentListItem } from './CommentListItem.jsx';
 import { LoadingDots } from './LoadingDots.jsx';
 import send from '../assets/svgs/send.svg';
 
-const PostsListItemComments = ({ postId }) => {
+const CommentList = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
   const { avatar } = useContext(CurrentContext);
   const { postComment, isLoading: isPostingComment } = useCreateComment();
@@ -34,7 +34,7 @@ const PostsListItemComments = ({ postId }) => {
         comments.length > 0 && (
           <ul className="mt-3 flex flex-col gap-4">
             {comments.map((comment) => (
-              <Comment
+              <CommentListItem
                 comment={comment}
                 toggleLike={toggleLike}
                 isLoadingLike={isLoadingLike}
@@ -70,4 +70,4 @@ const PostsListItemComments = ({ postId }) => {
   );
 };
 
-export { PostsListItemComments };
+export { CommentList };

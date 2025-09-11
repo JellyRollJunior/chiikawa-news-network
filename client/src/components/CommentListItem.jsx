@@ -3,7 +3,7 @@ import { IncrementButton } from './IncrementButton.jsx';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 
-const Comment = ({ comment, toggleLike, isLoadingLike }) => {
+const CommentListItem = ({ comment, toggleLike, isLoadingLike }) => {
   return (
     <li className="flex text-sm" key={comment.id}>
       <Avatar size={2} avatar={comment.author && comment.author.avatar} />
@@ -24,4 +24,4 @@ const Comment = ({ comment, toggleLike, isLoadingLike }) => {
   );
 };
 
-export { Comment };
+export { CommentListItem };
