@@ -87,6 +87,15 @@ const deleteCommentLike = async (signal, commentId) => {
     return data;
 };
 
+const deleteComment = async (signal, commentId) => {
+    const data = await request(`/comments/${commentId}`, {
+        mode: 'cors',
+        method: 'DELETE',
+        signal,
+    });
+    return data;
+};
+
 export {
     fetchPosts,
     fetchPostFeed,
@@ -96,4 +105,5 @@ export {
     fetchComments,
     createCommentLike,
     deleteCommentLike,
+    deleteComment,
 };

@@ -144,7 +144,6 @@ VITE_SERVER_URL
 
 -   TODO
 
-    -   rename to comments list
     -   delete comment
 
 -   client
