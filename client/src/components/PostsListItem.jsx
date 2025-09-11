@@ -8,6 +8,8 @@ import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
 
+import { format } from 'date-fns';
+
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
 
@@ -57,6 +59,7 @@ const PostsListItem = ({
           <MediaFrame src={post.media} />
         </div>
       )}
+      <div className='text-sm text-center mt-1.5 text-gray-500 '> — {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')} — </div>
       <footer className="mt-3 flex gap-2.5">
         <IncrementButton
           className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
