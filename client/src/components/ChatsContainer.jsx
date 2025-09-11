@@ -7,8 +7,8 @@ import { ChatsCreateModal } from './ChatsCreateModal.jsx';
 const ChatsContainer = () => {
   const { chats, isLoading, refetchChats } = useContext(ChatsContext);
   const { publicChats, isLoading: isPublicLoading, refetch: refetchPublic } = usePublicChats();
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openNewChatModal = () => setIsModalOpen(true);
   const closeNewChatModal = () => setIsModalOpen(false);
 

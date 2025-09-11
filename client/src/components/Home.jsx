@@ -59,7 +59,7 @@ const Home = ({ openCreatePostModal }) => {
             className="block-shadow flex-1 rounded-lg bg-white"
             onClick={openCreatePostModal}
           >
-            Whats on your mind?
+            What's on your mind?
           </button>
         </section>
         <section className="mx-2 mt-3 mb-2">

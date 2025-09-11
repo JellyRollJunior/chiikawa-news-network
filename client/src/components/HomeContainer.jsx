@@ -4,9 +4,9 @@ import { PostCreateModal } from './PostsCreateModal.jsx';
 
 const HomeContainer = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
   const openCreatePostModal = () => setIsCreateModalOpen(true);
   const closeCreatePostModal = () => setIsCreateModalOpen(false);
+  
   return (
     <>
       <Home openCreatePostModal={openCreatePostModal} />
