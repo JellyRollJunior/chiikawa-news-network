@@ -143,7 +143,6 @@ VITE_SERVER_URL
 ## TODO
 
 -   TODO
-    -   comment time
     -   post time
 
 -   client

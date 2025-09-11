@@ -4,6 +4,7 @@ import { Avatar } from './Avatar.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
 import { DotsMenuItem } from './DotsMenuItem.jsx';
 import { DotsMenu } from './DotsMenu.jsx';
+import { formatDistanceToNow } from 'date-fns';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 
@@ -16,13 +17,14 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li className="flex text-sm" key={comment.id}>
+    <li className="flex" key={comment.id}>
       <Avatar size={2} avatar={comment.author && comment.author.avatar} />
       <div className="ml-2 flex-1">
-        <h4 className="font-bold">
+        <h4 className="font-medium text-base">
           {comment.author && comment.author.username}
         </h4>
-        <p>{comment.content}</p>
+        <p className='text-sm'>{comment.content}</p>
+        <p className='text-xs text-center mt-0.5 text-gray-500'> — {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true})} — </p>
       </div>
       {comment.author.id == id && (
         <DotsMenu>

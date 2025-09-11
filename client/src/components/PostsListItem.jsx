@@ -48,7 +48,7 @@ const PostsListItem = ({
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="text-lg">{author.username}</h3>
+        <h3 className="text-lg font-medium">{author.username}</h3>
       </header>
       <h2 className="mt-2 text-lg font-semibold">{post.title}</h2>
       <p className="mt-1 text-sm text-yellow-900">{post.content}</p>
@@ -72,9 +72,7 @@ const PostsListItem = ({
           onClick={() => setIsShowingComments(!isShowingComments)}
         />
       </footer>
-      {isShowingComments && (
-        <CommentList postId={post.id} />
-      )}
+      {isShowingComments && <CommentList postId={post.id} />}
     </li>
   ) : (
     /* Loading display */
