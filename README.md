@@ -145,6 +145,12 @@ VITE_SERVER_URL
 -   client
 
     -   create posts
+        -   style modal
+            -   inputs
+        -   file filters
+        -   length errors
+        -   textarea size limit counter
+        -   submit btns
     -   delete post
     -   posts desktop view
 

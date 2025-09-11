@@ -12,19 +12,24 @@ const PostCreateModal = ({ closeFunction }) => {
             Title
           </label>
           <input
-            className="block-shadow mt-2 mb-2 h-10 rounded-lg bg-white pl-3"
+            className="block-shadow mt-1 mb-2 h-10 rounded-lg bg-white pl-3"
             id="title"
             name="title"
+            minLength={1}
+            maxLength={75}
+            required
           />
           <label className="text-shadow-wrap mt-2 ml-1" htmlFor="content">
             Content
           </label>
           <textarea
-            className="block-shadow mt-2 flex-1 resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
+            className="block-shadow mt-1 h-32 resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
             id="content"
             name="content"
+            minLength={1}
+            maxLength={350}
+            required
           />
-          {/* media (?) */}
           <label className="text-shadow-wrap mt-4 ml-1" htmlFor="content">
             Media (optional)
           </label>
@@ -34,7 +39,18 @@ const PostCreateModal = ({ closeFunction }) => {
             accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
           />
         </main>
-        <footer></footer>
+        <footer className="mt-3 flex gap-3">
+          <button
+            type="button"
+            className="pink-button flex-1 px-6 py-1 text-lg font-bold"
+            onClick={closeFunction}
+          >
+            Cancel
+          </button>
+          <button className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold">
+            Post
+          </button>
+        </footer>
       </form>
     </ModalDialog>
   );
