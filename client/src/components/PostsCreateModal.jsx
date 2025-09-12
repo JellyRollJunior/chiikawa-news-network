@@ -1,8 +1,20 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 
 const PostCreateModal = ({ closeFunction }) => {
+  const [fileName, setFileName] = useState('');
   const fileInputRef = useRef(null);
+
+  const handleClickUpload = () => {
+    if (fileInputRef) {
+      fileInputRef.current.click();
+    }
+  }
+
+  const handleUploadMedia = (event) => {
+    const file = event.target.files[0];
+    setFileName(file.name);
+  }
 
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
@@ -33,10 +45,18 @@ const PostCreateModal = ({ closeFunction }) => {
           <label className="text-shadow-wrap mt-4 ml-1" htmlFor="content">
             Media (optional)
           </label>
+          <div className='flex items-center'>
+            <button className="blue-button mt-1 w-fit px-5 py-1" onClick={handleClickUpload}>
+              Upload Media
+            </button>
+            <div className='flex-1 ml-3 mt-1'>{fileName}</div>
+          </div>
           <input
+            className="hidden"
             type="file"
             ref={fileInputRef}
             accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+            onChange={handleUploadMedia}
           />
         </main>
         <footer className="mt-3 flex gap-3">

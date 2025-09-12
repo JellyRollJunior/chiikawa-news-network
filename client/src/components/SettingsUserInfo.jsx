@@ -57,9 +57,9 @@ const SettingsUserInfo = () => {
           Change Picture
         </button>
         <input
+          className="hidden"
           type="file"
           ref={fileInputRef}
-          className="hidden"
           onChange={handleUploadAvatar}
           accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
         />
