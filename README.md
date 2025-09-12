@@ -148,8 +148,8 @@ VITE_SERVER_URL
 
         -   remove file btn from upload form
         -   file size limit (check avatar input too for this)
-        -   refetch posts on submit
         -   disable post inputs while loading
+        -   check if how i upload files is right or not
 
     -   delete post
     -   posts desktop view

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
+import trash from '../assets/svgs/trash.svg';
 
 const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const [title, setTitle] = useState('');
@@ -25,7 +26,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     await createPost(title, content, mediaFile);
     closeFunction();
     onSubmit();
-  }
+  };
 
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
@@ -66,14 +67,21 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
             Media (optional)
           </label>
-          <div className="flex items-center mt-1">
+          <div className="mt-1 flex h-12 items-center">
             <button
-              className="blue-button w-fit px-5 py-1 flex-none"
+              className="blue-button w-fit flex-none px-3 py-1"
               onClick={handleClickUpload}
             >
               Upload Media
             </button>
-            <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">{mediaFile && mediaFile.name}</div>
+            <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
+              {mediaFile && mediaFile.name}
+            </div>
+            {mediaFile && (
+              <button onClick={() => setMediaFile(null)}>
+                <img src={trash} alt="" />
+              </button>
+            )}
           </div>
           <input
             className="hidden"
@@ -83,7 +91,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             onChange={handleUploadMedia}
           />
         </main>
-        <hr className='mt-4 border-blue-200 h-1 bg-blue-200 rounded-xl' />
+        <hr className="mt-4 h-1 rounded-xl border-blue-200 bg-blue-200" />
         <footer className="mt-2.5 flex gap-3">
           <button
             type="button"
