@@ -1,10 +1,10 @@
-import { HomeContainer } from '../components/HomeContainer.jsx';
+import { Home } from '../components/Home.jsx';
 
 const HomePage = () => {
   return (
     <div className="flex h-full">
-      <div className='flex'>
-        <HomeContainer />
+      <div className="flex">
+        <Home />
       </div>
     </div>
   );

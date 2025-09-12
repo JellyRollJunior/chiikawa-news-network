@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
 
-const PostCreateModal = ({ closeFunction }) => {
+const HomeNewPostModal = ({ closeFunction }) => {
   const [fileName, setFileName] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -104,4 +104,4 @@ const PostCreateModal = ({ closeFunction }) => {
   );
 };
 
-export { PostCreateModal };
+export { HomeNewPostModal };
