@@ -35,10 +35,10 @@ const PostCreateModal = ({ closeFunction }) => {
             maxLength={75}
             required
           />
-          <div className="text-shadow-wrap mt-2 mr-2 ml-auto">
+          <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
             {title.length} / 75
           </div>
-          <label className="text-shadow-wrap mt-2 ml-1" htmlFor="content">
+          <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
             Content
           </label>
           <textarea
@@ -51,20 +51,20 @@ const PostCreateModal = ({ closeFunction }) => {
             maxLength={350}
             required
           />
-          <div className="text-shadow-wrap mt-2 mr-2 ml-auto">
+          <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
             {content.length} / 350
           </div>
-          <label className="text-shadow-wrap ml-1" htmlFor="content">
+          <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
             Media (optional)
           </label>
-          <div className="flex items-center">
+          <div className="flex items-center mt-1">
             <button
-              className="blue-button mt-1 w-fit px-5 py-1 flex-none"
+              className="blue-button w-fit px-5 py-1 flex-none"
               onClick={handleClickUpload}
             >
               Upload Media
             </button>
-            <div className="mt-1 ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">{fileName}</div>
+            <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">{fileName}</div>
           </div>
           <input
             className="hidden"
@@ -74,7 +74,8 @@ const PostCreateModal = ({ closeFunction }) => {
             onChange={handleUploadMedia}
           />
         </main>
-        <footer className="mt-3 flex gap-3">
+        <hr className='mt-4 border-blue-200 h-1 bg-blue-200 rounded-xl' />
+        <footer className="mt-2.5 flex gap-3">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
