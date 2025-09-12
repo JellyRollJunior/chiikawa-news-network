@@ -64,7 +64,10 @@ const Home = () => {
         </Scrollable>
       </div>
       {isCreateModalOpen && (
-        <HomeNewPostModal closeFunction={closeCreatePostModal} />
+        <HomeNewPostModal
+          closeFunction={closeCreatePostModal}
+          onSubmit={refreshPosts}
+        />
       )}
     </>
   );

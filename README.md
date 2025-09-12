@@ -144,11 +144,13 @@ VITE_SERVER_URL
 
 -   client
 
-File { name: "6-kurimanju.png", lastModified: 1742602447722, webkitRelativePath: "", size: 31418, type: "image/png" }
     -   create posts
-        -   how to upload with file?
+
         -   remove file btn from upload form
-        -   API call
+        -   file size limit (check avatar input too for this)
+        -   refetch posts on submit
+        -   disable post inputs while loading
+
     -   delete post
     -   posts desktop view
 
@@ -188,3 +190,5 @@ File { name: "6-kurimanju.png", lastModified: 1742602447722, webkitRelativePath:
 -   b5f53d61-373e-4777-804a-5d6cd4330d02 | chiikawa
 -   55e1d476-6430-4b52-936c-a84d2fed8d82 | shisaa
 -   1736b7af-8c60-4c2b-9254-6c08662fb2e4 | usagii
+
+File { name: "6-kurimanju.png", lastModified: 1742602447722, webkitRelativePath: "", size: 31418, type: "image/png" }
