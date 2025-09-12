@@ -1,72 +1,52 @@
 import { request } from './request.js';
 
 const fetchCurrent = async (signal) => {
-    const data = await request(
-        '/current',
-        {
-            mode: 'cors',
-            method: 'GET',
-            signal,
-        },
-        true
-    );
+    const data = await request('/current', {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
     return data;
 };
 
 const fetchUsers = async (signal) => {
-    const data = await request(
-        '/users',
-        {
-            mode: 'cors',
-            method: 'GET',
-            signal,
-        },
-        true
-    );
+    const data = await request('/users', {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
     return data;
 };
 
 const fetchUser = async (signal, userId) => {
-    const data = await request(
-        `/users/${userId}`,
-        {
-            mode: 'cors',
-            method: 'GET',
-            signal,
-        },
-        true
-    );
+    const data = await request(`/users/${userId}`, {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
     return data;
 };
 
 const patchUserBio = async (bio) => {
-    const data = await request(
-        `/current/bio`,
-        {
-            mode: 'cors',
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                bio,
-            }),
+    const data = await request(`/current/bio`, {
+        mode: 'cors',
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
         },
-        true
-    );
+        body: JSON.stringify({
+            bio,
+        }),
+    });
     return data;
 };
 
 const patchUserAvatar = async (fileFormData) => {
-    const data = await request(
-        `/current/avatar`,
-        {
-            mode: 'cors',
-            method: 'PATCH',
-            body: fileFormData,
-        },
-        true
-    );
+    const data = await request(`/current/avatar`, {
+        mode: 'cors',
+        method: 'PATCH',
+        body: fileFormData,
+    });
     return data;
 };
 

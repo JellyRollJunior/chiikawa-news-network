@@ -26,6 +26,20 @@ const fetchPostFeed = async (signal, cursor, limit = 20) => {
     return data;
 };
 
+const createPost = async (signal, title, content, media = null) => {
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    if (media) formData.append('media', media);
+    const data = await request(`/posts`, {
+        mode: 'cors',
+        method: 'POST',
+        body: formData,
+        signal,
+    });
+    return data;
+};
+
 const createPostLike = async (signal, postId) => {
     const data = await request(`/posts/${postId}/likes`, {
         mode: 'cors',
@@ -99,10 +113,11 @@ const deleteComment = async (signal, commentId) => {
 export {
     fetchPosts,
     fetchPostFeed,
-    createComment,
+    createPost,
     createPostLike,
     deletePostLike,
     fetchComments,
+    createComment,
     createCommentLike,
     deleteCommentLike,
     deleteComment,
