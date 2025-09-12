@@ -20,7 +20,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     setMediaFile(file);
   };
 
-  const { createPost } = useCreatePost();
+  const { createPost, isLoading } = useCreatePost();
   const handleSubmit = async (event) => {
     event.preventDefault();
     await createPost(title, content, mediaFile);
@@ -71,6 +71,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             <button
               className="blue-button w-fit flex-none px-3 py-1"
               onClick={handleClickUpload}
+              disabled={isLoading}
             >
               Upload Media
             </button>
@@ -97,10 +98,14 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
             onClick={closeFunction}
+            disabled={isLoading}
           >
             Cancel
           </button>
-          <button className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold">
+          <button
+            className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold"
+            disabled={isLoading}
+          >
             Post
           </button>
         </footer>

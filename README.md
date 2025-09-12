@@ -146,9 +146,7 @@ VITE_SERVER_URL
 
     -   create posts
 
-        -   remove file btn from upload form
         -   file size limit (check avatar input too for this)
-        -   disable post inputs while loading
         -   check if how i upload files is right or not
 
     -   delete post
