@@ -147,6 +147,7 @@ VITE_SERVER_URL
 File { name: "6-kurimanju.png", lastModified: 1742602447722, webkitRelativePath: "", size: 31418, type: "image/png" }
     -   create posts
         -   how to upload with file?
+        -   remove file btn from upload form
         -   API call
     -   delete post
     -   posts desktop view

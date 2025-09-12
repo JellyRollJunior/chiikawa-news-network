@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
+import { useCreatePost } from '../hooks/useCreatePost.js';
 
 const PostCreateModal = ({ closeFunction }) => {
   const [fileName, setFileName] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [mediaFile, setMediaFile] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleClickUpload = () => {
@@ -16,11 +18,21 @@ const PostCreateModal = ({ closeFunction }) => {
   const handleUploadMedia = (event) => {
     const file = event.target.files[0];
     setFileName(file.name);
+    setMediaFile(file);
   };
+
+  const { createPost } = useCreatePost();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // How to get the file here? 
+    await createPost(title, content, mediaFile);
+    // TODO: refetch posts or something here
+    closeFunction();
+  }
 
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
-      <form className="text-amber-800">
+      <form className="text-amber-800" onSubmit={handleSubmit}>
         <main className="flex flex-col px-2">
           <label className="text-shadow-wrap mt-4 ml-1" htmlFor="title">
             Title
