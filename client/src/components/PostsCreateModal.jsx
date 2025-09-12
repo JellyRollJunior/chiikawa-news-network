@@ -3,6 +3,7 @@ import { ModalDialog } from './ModalDialog.jsx';
 
 const PostCreateModal = ({ closeFunction }) => {
   const [fileName, setFileName] = useState('');
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const fileInputRef = useRef(null);
 
@@ -25,32 +26,35 @@ const PostCreateModal = ({ closeFunction }) => {
             Title
           </label>
           <input
-            className="block-shadow mt-1 mb-2 h-10 rounded-lg bg-white pl-3"
+            className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3"
             id="title"
             name="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
             minLength={1}
             maxLength={75}
             required
           />
+          <div className="text-shadow-wrap mt-2 mr-2 ml-auto">
+            {title.length} / 75
+          </div>
           <label className="text-shadow-wrap mt-2 ml-1" htmlFor="content">
             Content
           </label>
-          <div className="relative">
-            <textarea
-              className="block-shadow mt-1 h-36 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
-              id="content"
-              name="content"
-              value={content}
-              onChange={(event) => setContent(event.target.value)}
-              minLength={1}
-              maxLength={350}
-              required
-            />
-            <div className="text-shadow-wrap absolute mt-0.5 right-2">
-              {content.length} / 350
-            </div>
+          <textarea
+            className="block-shadow mt-1 h-36 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
+            id="content"
+            name="content"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+            minLength={1}
+            maxLength={350}
+            required
+          />
+          <div className="text-shadow-wrap mt-2 mr-2 ml-auto">
+            {content.length} / 350
           </div>
-          <label className="text-shadow-wrap mt-4 ml-1" htmlFor="content">
+          <label className="text-shadow-wrap ml-1" htmlFor="content">
             Media (optional)
           </label>
           <div className="flex items-center">

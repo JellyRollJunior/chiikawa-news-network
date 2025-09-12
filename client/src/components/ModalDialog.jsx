@@ -9,7 +9,7 @@ const ModalDialog = ({ closeFunction, children, title }) => {
 
   return (
     <dialog
-      className="top-1/8 w-9/10 xs:w-sm secondary-container left-1/2 translate-x-[-50%] px-2 pb-2 pt-3 text-yellow-900"
+      className="top-1/10 w-9/10 xs:w-sm secondary-container left-1/2 translate-x-[-50%] px-2 pb-2 pt-3 text-yellow-900"
       ref={modalRef}
     >
       <div className="flex flex-col">
