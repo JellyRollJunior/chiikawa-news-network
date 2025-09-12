@@ -17,7 +17,7 @@ const retrieveImageMulter = multer({
     storage,
     fileFilter: imageFilter,
     limits: {
-        fileSize: 1024 * 250, // 200kb limit
+        fileSize: 1024 * 250, // 250kb limit
     },
 });
 

@@ -146,6 +146,7 @@ VITE_SERVER_URL
 
     -   create posts
 
+        -   form errors
         -   file size limit (check avatar input too for this)
         -   check if how i upload files is right or not
 
