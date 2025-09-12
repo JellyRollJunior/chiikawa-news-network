@@ -3,18 +3,19 @@ import { ModalDialog } from './ModalDialog.jsx';
 
 const PostCreateModal = ({ closeFunction }) => {
   const [fileName, setFileName] = useState('');
+  const [content, setContent] = useState('');
   const fileInputRef = useRef(null);
 
   const handleClickUpload = () => {
     if (fileInputRef) {
       fileInputRef.current.click();
     }
-  }
+  };
 
   const handleUploadMedia = (event) => {
     const file = event.target.files[0];
     setFileName(file.name);
-  }
+  };
 
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
@@ -34,22 +35,32 @@ const PostCreateModal = ({ closeFunction }) => {
           <label className="text-shadow-wrap mt-2 ml-1" htmlFor="content">
             Content
           </label>
-          <textarea
-            className="block-shadow mt-1 h-32 resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
-            id="content"
-            name="content"
-            minLength={1}
-            maxLength={350}
-            required
-          />
+          <div className="relative">
+            <textarea
+              className="block-shadow mt-1 h-36 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
+              id="content"
+              name="content"
+              value={content}
+              onChange={(event) => setContent(event.target.value)}
+              minLength={1}
+              maxLength={350}
+              required
+            />
+            <div className="text-shadow-wrap absolute mt-0.5 right-2">
+              {content.length} / 350
+            </div>
+          </div>
           <label className="text-shadow-wrap mt-4 ml-1" htmlFor="content">
             Media (optional)
           </label>
-          <div className='flex items-center'>
-            <button className="blue-button mt-1 w-fit px-5 py-1" onClick={handleClickUpload}>
+          <div className="flex items-center">
+            <button
+              className="blue-button mt-1 w-fit px-5 py-1"
+              onClick={handleClickUpload}
+            >
               Upload Media
             </button>
-            <div className='flex-1 ml-3 mt-1'>{fileName}</div>
+            <div className="mt-1 ml-3 flex-1">{fileName}</div>
           </div>
           <input
             className="hidden"
