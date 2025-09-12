@@ -8,36 +8,36 @@
 
 ## Endpoints & Socket Events
 
-| Method | URI                        | Function                    | Token | Body                                | Notes                        |
-| ------ | -------------------------- | --------------------------- | ----- | ----------------------------------- | ---------------------------- |
-| POST   | /signup                    | Create user                 | N     | { username, password}               |                              |
-| POST   | /login                     | Login user                  | N     | { username, password}               |                              |
-| GET    | /current                   | Retrieve current user       | Y     |                                     |                              |
-| PATCH  | /current/bio               | Update bio                  | Y     | { bio }                             |                              |
-| PATCH  | /current/avatar            | Update avatar               | Y     | { avatar }                          |                              |
-| GET    | /users                     | Retrieve all users          | Y     |                                     |                              |
-| GET    | /users/:userId             | Retrieve user data          | Y     |                                     |                              |
-| GET    | /users/:userId/posts       | Retrieve posts by user      | Y     |                                     | query: limit, cursor         |
-| GET    | /users/:userId/followers   | Retrieve followers by user  | Y     |                                     |                              |
-| POST   | /users/:userId/followers   | Follow :userId              | Y     |                                     |                              |
-| GET    | /users/:userId/following   | Retrieve following by user  | Y     |                                     |                              |
-| GET    | /chats-public              | Retrieve public chats       | Y     |                                     |                              |
-| GET    | /chats                     | Retrieve chats              | Y     |                                     |                              |
-| POST   | /chats                     | Create chat                 | Y     | { name, userIds: ['id_1', 'id_2'] } |                              |
-| GET    | /chats/:chatId             | Retrieve chat               | Y     |                                     |                              |
-| PATCH  | /chats/:chatId             | Update chat name            | Y     | { name }                            | name optional                |
-| DELETE | /chats/:chatId             | Delete chat                 | Y     |                                     |                              |
-| GET    | /posts                     | Retrieve all posts          | Y     |                                     | query: userId, limit, cursor |
-| GET    | /posts/feed                | Retrieve posts by following | Y     |                                     | query: limit, cursor         |
-| POST   | /posts                     | Create post                 | Y     | { title, content, media }           |                              |
-| DELETE | /posts/:postId             | Delete post                 | Y     |                                     |                              |
-| POST   | /posts/:postId/likes       | Like post                   | Y     |                                     |                              |
-| DELETE | /posts/:postId/likes       | Unlike post                 | Y     |                                     |                              |
-| GET    | /posts/:postId/comments    | Retrieve comments           | Y     |                                     |                              |
-| POST   | /posts/:postId/comments    | Create comment              | Y     | { content }                         |                              |
-| DELETE | /comments/:commentId       | Delete comment              | Y     |                                     |                              |
-| POST   | /comments/:commentId/likes | Like comment                | Y     |                                     |                              |
-| DELETE | /comments/:commentId/likes | Unlike comment              | Y     |                                     |                              |
+| Method | URI                        | Function                    | Token | Body                                | Notes                               |
+| ------ | -------------------------- | --------------------------- | ----- | ----------------------------------- | ----------------------------------- |
+| POST   | /signup                    | Create user                 | N     | { username, password}               |                                     |
+| POST   | /login                     | Login user                  | N     | { username, password}               |                                     |
+| GET    | /current                   | Retrieve current user       | Y     |                                     |                                     |
+| PATCH  | /current/bio               | Update bio                  | Y     | { bio }                             |                                     |
+| PATCH  | /current/avatar            | Update avatar               | Y     | { avatar }                          | max 250kb upload                    |
+| GET    | /users                     | Retrieve all users          | Y     |                                     |                                     |
+| GET    | /users/:userId             | Retrieve user data          | Y     |                                     |                                     |
+| GET    | /users/:userId/posts       | Retrieve posts by user      | Y     |                                     | query: limit, cursor                |
+| GET    | /users/:userId/followers   | Retrieve followers by user  | Y     |                                     |                                     |
+| POST   | /users/:userId/followers   | Follow :userId              | Y     |                                     |                                     |
+| GET    | /users/:userId/following   | Retrieve following by user  | Y     |                                     |                                     |
+| GET    | /chats-public              | Retrieve public chats       | Y     |                                     |                                     |
+| GET    | /chats                     | Retrieve chats              | Y     |                                     |                                     |
+| POST   | /chats                     | Create chat                 | Y     | { name, userIds: ['id_1', 'id_2'] } |                                     |
+| GET    | /chats/:chatId             | Retrieve chat               | Y     |                                     |                                     |
+| PATCH  | /chats/:chatId             | Update chat name            | Y     | { name }                            | name optional                       |
+| DELETE | /chats/:chatId             | Delete chat                 | Y     |                                     |                                     |
+| GET    | /posts                     | Retrieve all posts          | Y     |                                     | query: userId, limit, cursor        |
+| GET    | /posts/feed                | Retrieve posts by following | Y     |                                     | query: limit, cursor                |
+| POST   | /posts                     | Create post                 | Y     | { title, content, media }           | max 250kb upload, accepts media URL |
+| DELETE | /posts/:postId             | Delete post                 | Y     |                                     |                                     |
+| POST   | /posts/:postId/likes       | Like post                   | Y     |                                     |                                     |
+| DELETE | /posts/:postId/likes       | Unlike post                 | Y     |                                     |                                     |
+| GET    | /posts/:postId/comments    | Retrieve comments           | Y     |                                     |                                     |
+| POST   | /posts/:postId/comments    | Create comment              | Y     | { content }                         |                                     |
+| DELETE | /comments/:commentId       | Delete comment              | Y     |                                     |                                     |
+| POST   | /comments/:commentId/likes | Like comment                | Y     |                                     |                                     |
+| DELETE | /comments/:commentId/likes | Unlike comment              | Y     |                                     |                                     |
 
 | Socket Event      | Arguments      | Use                              |
 | ----------------- | -------------- | -------------------------------- |
@@ -146,8 +146,7 @@ VITE_SERVER_URL
 
     -   create posts
 
-        -   form errors
-        -   file size limit (check avatar input too for this)
+        -   media URL
         -   check if how i upload files is right or not
 
     -   delete post

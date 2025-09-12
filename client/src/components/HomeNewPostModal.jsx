@@ -19,9 +19,13 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const handleUploadMedia = (event) => {
     const file = event.target.files[0];
     const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
-    file.size <= FILE_SIZE_LIMIT
-      ? setMediaFile(file)
-      : setMediaError('File too large');
+
+    if (file.size <= FILE_SIZE_LIMIT) {
+      setMediaFile(file);
+      setMediaError('');
+    } else {
+      setMediaError('File too large');
+    }
   };
 
   const { createPost, isLoading } = useCreatePost();
@@ -69,8 +73,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             {content.length} / 350
           </div>
           <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
-            Media (optional)
-            <span className="text-red-400">{mediaError && ` — ${mediaError}`}</span>
+            Media (optional) (max 250Kb)
           </label>
           <div className="mt-1 flex h-12 items-center">
             <button
@@ -82,6 +85,9 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             </button>
             <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
               {mediaFile && mediaFile.name}
+              <span className="text-red-400">
+                {mediaError && ` — ${mediaError}`}
+              </span>
             </div>
             {mediaFile && (
               <button onClick={() => setMediaFile(null)}>

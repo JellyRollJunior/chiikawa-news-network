@@ -12,7 +12,7 @@ const SettingsPage = () => {
           <h2 className="font-chiikawa py-2 text-center text-lg">Edit Settings</h2>
         </header>
         <SettingsUserInfo />
-        <div className="yellow-block ml-auto mt-3 w-fit px-3 py-2">
+        <div className="yellow-block ml-auto mt-2 w-fit px-3 py-2">
           <button className="pink-button px-7 py-1" onClick={logout}>
             Logout
           </button>
