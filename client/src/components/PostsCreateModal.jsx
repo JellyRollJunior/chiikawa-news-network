@@ -59,12 +59,12 @@ const PostCreateModal = ({ closeFunction }) => {
           </label>
           <div className="flex items-center">
             <button
-              className="blue-button mt-1 w-fit px-5 py-1"
+              className="blue-button mt-1 w-fit px-5 py-1 flex-none"
               onClick={handleClickUpload}
             >
               Upload Media
             </button>
-            <div className="mt-1 ml-3 flex-1">{fileName}</div>
+            <div className="mt-1 ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">{fileName}</div>
           </div>
           <input
             className="hidden"
