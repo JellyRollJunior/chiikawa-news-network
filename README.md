@@ -147,6 +147,7 @@ VITE_SERVER_URL
     -   create posts
 
         -   media URL
+            -   media URL error
         -   check if how i upload files is right or not
 
     -   delete post

@@ -32,7 +32,9 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const { createPost, isLoading } = useCreatePost();
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await createPost(title, content, mediaFile);
+    isUploadMode
+      ? await createPost(title, content, mediaFile)
+      : await createPost(title, content, mediaUrl);
     closeFunction();
     onSubmit();
   };
@@ -102,6 +104,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             <div className="mt-1 flex h-12 items-center">
               <button
                 className="blue-button w-fit flex-none px-3 py-1"
+                type='button'
                 onClick={handleClickUpload}
                 disabled={isLoading}
               >
@@ -133,8 +136,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               name="mediaUrl"
               value={mediaUrl}
               onChange={(event) => setMediaUrl(event.target.value)}
-              placeholder='Media URL'
-              required
+              placeholder="Media URL"
             />
           )}
         </main>
