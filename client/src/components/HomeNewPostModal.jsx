@@ -36,6 +36,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     onSubmit();
   };
 
+  const [isUploadMode, setIsUploadMode] = useState(true);
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
       <form className="text-amber-800" onSubmit={handleSubmit}>
@@ -56,11 +57,11 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
             {title.length} / 75
           </div>
-          <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
+          <label className="text-shadow-wrap ml-1" htmlFor="content">
             Content
           </label>
           <textarea
-            className="block-shadow mt-1 h-36 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
+            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
             id="content"
             name="content"
             value={content}
@@ -72,9 +73,30 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
             {content.length} / 350
           </div>
-          <label className="text-shadow-wrap mt-1 ml-1" htmlFor="content">
-            Media (optional) (max 250Kb)
-          </label>
+          <div className="mt-2 flex items-center gap-3">
+            <div className="flex">
+              <button
+                className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
+                type="button"
+                onClick={() => setIsUploadMode(true)}
+              >
+                Upload
+              </button>
+              <button
+                className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${!isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
+                type="button"
+                onClick={() => setIsUploadMode(false)}
+              >
+                Link
+              </button>
+            </div>
+            <div className="text-shadow-wrap">
+              {isUploadMode && '(max 250Kb)'}
+            </div>
+          </div>
+          <div className="text-shadow-wrap mt-2 ml-2">
+            Accepts [.jpg, .jpeg, .png, .gif, .webp]
+          </div>
           <div className="mt-1 flex h-12 items-center">
             <button
               className="blue-button w-fit flex-none px-3 py-1"
