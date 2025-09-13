@@ -156,7 +156,6 @@ VITE_SERVER_URL
 -   client
 
     -   posts desktop view
-    -   restyle dot menu items. its kinda ugly
 
 -   server
 

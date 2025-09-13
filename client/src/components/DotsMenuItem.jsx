@@ -2,7 +2,7 @@ const DotsMenuItem = ({ onClick, label, closeMenu }) => {
   return (
     <li>
       <button
-        className="w-full text-nowrap px-3 py-1 text-start hover:bg-emerald-200"
+        className="w-full text-nowrap px-3 py-1 text-start hover:bg-pink-100"
         onClick={() => {
           onClick();
           closeMenu();
