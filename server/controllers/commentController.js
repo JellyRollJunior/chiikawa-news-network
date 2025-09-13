@@ -53,7 +53,7 @@ const deleteComment = async (req, res, next) => {
             userId,
             commentId
         );
-        const formattedComment = formatCommentData(comment)
+        const formattedComment = formatCommentData(deletedComment)
         res.json({ comment: formattedComment });
     } catch (error) {
         next(error);
