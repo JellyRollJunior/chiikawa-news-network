@@ -8,13 +8,22 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isUploadMode, setIsUploadMode] = useState(true);
-  const [mediaFile, setMediaFile] = useState(null);
-  const [mediaUrl, setMediaUrl] = useState('');
+  const [media, setMedia] = useState(null);
   const [uploadError, setUploadError] = useState('');
   const [urlError, setUrlError] = useState(false);
   const fileInputRef = useRef(null);
   const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
   const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
+  const useUploadMode = () => {
+    setMedia(null);
+    setIsUploadMode(true);
+  };
+
+  const useUrlMode = () => {
+    setMedia('');
+    setIsUploadMode(false);
+  };
 
   const handleClickUpload = () => {
     if (fileInputRef) {
@@ -27,28 +36,35 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
 
     if (file.size <= FILE_SIZE_LIMIT) {
-      setMediaFile(file);
+      setMedia(file);
       setUploadError('');
     } else {
+      setMedia(null);
       setUploadError('File too large');
     }
   };
 
-  const isMediaUrlValid = () => {
-    return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
-      return hasAllowedExtension || mediaUrl.endsWith(extension);
-    }, false);
+  const isMediaUrlValid = (value) => {
+    console.log('tes');
+    if (typeof value == 'string' || value instanceof String) {
+      return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
+        return hasAllowedExtension || value.endsWith(extension);
+      }, false);
+    }
+    return false;
   };
 
+  // switch modes clears media
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (isUploadMode) {
-      await createPost(title, content, mediaFile);
-    }
-    if (!isUploadMode && isMediaUrlValid()) {
-      await createPost(title, content, mediaUrl);
-    } else {
+    // validate URL if URL mode + user entered URL
+    if (!isUploadMode && media && !isMediaUrlValid(media)) {
       return setUrlError(true);
+    }
+    if (media) {
+      await createPost(title, content, media);
+    } else {
+      await createPost(title, content, null);
     }
     closeFunction();
     onSubmit();
@@ -78,7 +94,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             Content
           </label>
           <textarea
-            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pl-2 pr-1 disabled:bg-gray-200"
+            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
             id="content"
             name="content"
             value={content}
@@ -95,19 +111,21 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               <button
                 className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
                 type="button"
-                onClick={() => setIsUploadMode(true)}
+                onClick={useUploadMode}
               >
                 Upload
               </button>
               <button
                 className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${!isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
                 type="button"
-                onClick={() => setIsUploadMode(false)}
+                onClick={useUrlMode}
               >
                 Link
               </button>
             </div>
-            <div className="text-shadow-wrap">
+            <div
+              className={`text-shadow-wrap ${uploadError && 'font-bold text-red-400'}`}
+            >
               {isUploadMode && '(max 250Kb)'}
             </div>
           </div>
@@ -127,14 +145,11 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
                 Upload Media
               </button>
               <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
-                {mediaFile && mediaFile.name}
-                <span className="text-red-400">
-                  {uploadError && ` — ${uploadError}`}
-                </span>
+                {media && media.name}
               </div>
-              {mediaFile && (
-                <button onClick={() => setMediaFile(null)}>
-                  <img src={trash} alt="" />
+              {media && (
+                <button onClick={() => setMedia(null)}>
+                  <img src={trash} alt="Delete media button" />
                 </button>
               )}
               <input
@@ -151,8 +166,8 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               id="mediaUrl"
               name="mediaUrl"
               type="url"
-              value={mediaUrl}
-              onChange={(event) => setMediaUrl(event.target.value)}
+              value={media}
+              onChange={(event) => setMedia(event.target.value)}
               placeholder="www.my-media.com/media-url.png"
             />
           )}

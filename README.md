@@ -148,10 +148,10 @@ VITE_SERVER_URL
 
     -   bug: posts will shift positions when deleting / refreshing (?) find root cause
         -   2 children with the same key error...
-    -   bug: error creating posts -> url error for some reason
-    -   bug: delete comment throws 500 but still deletes
-    -   bug: add keys to commentList
-    -   cannot delete posts with comments: CASCADE DELETE COMMENTS && LIKES
+        -   the duplicated post is the first post of the next page... maybe a hint as to the root cause
+    -   server: delete comment throws 500 but still deletes
+    -   server: cannot delete posts with comments: CASCADE DELETE COMMENTS && LIKES
+    -   server: I dont think deleting post deletes media on supabase... check that lol
 
 -   client
 
