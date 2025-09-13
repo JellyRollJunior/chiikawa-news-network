@@ -31,9 +31,9 @@ const Home = () => {
   const closeCreatePostModal = () => setIsCreateModalOpen(false);
 
   // Delete Post Modal
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
-  const openDeleteModal = () => setIsDeleteModalOpen(true);
-  const closeDeleteModal = () => setIsDeleteModalOpen(false);
+  const [postToBeDeletedId, setPostToBeDeletedId] = useState(null);
+  const openDeleteModal = (postId) => setPostToBeDeletedId(postId);
+  const closeDeleteModal = () => setPostToBeDeletedId(null);
 
   return (
     <>
@@ -65,6 +65,7 @@ const Home = () => {
               isLoadingInit={isLoadingInit}
               isLoadingNext={isLoadingNext}
               isLoadingLike={isLoadingLike}
+              openDeleteModal={openDeleteModal}
             />
           </section>
         </Scrollable>
@@ -75,7 +76,7 @@ const Home = () => {
           onSubmit={refreshPosts}
         />
       )}
-      {isDeleteModalOpen && (
+      {postToBeDeletedId && (
         <HomeDeletePostModal
           closeFunction={closeDeleteModal}
           onSubmit={refreshPosts}

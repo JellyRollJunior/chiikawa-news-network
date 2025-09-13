@@ -11,13 +11,19 @@ const PostList = ({
   isLoadingInit,
   isLoadingNext,
   isLoadingLike,
+  openDeleteModal,
 }) => {
   return (
     <ul className="flex flex-col gap-2">
       {!isLoadingInit
         ? posts.map((post) => (
             <Fragment key={post.id}>
-              <PostsListItem post={post} toggleLike={toggleLike} isLoadingLike={isLoadingLike} />
+              <PostsListItem
+                post={post}
+                toggleLike={toggleLike}
+                isLoadingLike={isLoadingLike}
+                openDeleteModal={openDeleteModal}
+              />
             </Fragment>
           ))
         : /* Loading display */

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { format } from 'date-fns';
 import { Avatar } from './Avatar.jsx';
 import { CommentList } from './CommentList.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
@@ -7,8 +8,9 @@ import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
-
-import { format } from 'date-fns';
+import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { DotsMenu } from './DotsMenu.jsx';
+import { DotsMenuItem } from './DotsMenuItem.jsx';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -34,10 +36,12 @@ const MediaFrame = ({ src }) => {
 const PostsListItem = ({
   post,
   toggleLike = { toggleLike },
+  openDeleteModal,
   isLoading = false,
   isLoadingLike = false,
   loadingDelay = 0,
 }) => {
+  const { id } = useContext(CurrentContext);
   const [isShowingComments, setIsShowingComments] = useState(false);
   const author = post && post.author;
 
@@ -51,6 +55,14 @@ const PostsListItem = ({
           secondaryStyling={true}
         />
         <h3 className="text-lg font-medium">{author.username}</h3>
+        {author.id == id && (
+          <DotsMenu>
+            <DotsMenuItem
+              label="Delete post"
+              onClick={() => openDeleteModal(post.id)}
+            />
+          </DotsMenu>
+        )}
       </header>
       <h2 className="mt-2 text-lg font-semibold">{post.title}</h2>
       <p className="mt-1 text-sm text-yellow-900">{post.content}</p>
@@ -59,7 +71,10 @@ const PostsListItem = ({
           <MediaFrame src={post.media} />
         </div>
       )}
-      <div className='text-sm text-center mt-1.5 text-gray-500 '> — {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')} — </div>
+      <div className="mt-1.5 text-center text-sm text-gray-500">
+        {' '}
+        — {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')} —{' '}
+      </div>
       <footer className="mt-3 flex gap-2.5">
         <IncrementButton
           className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5"
