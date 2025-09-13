@@ -21,11 +21,11 @@ model User {
   bio      String @default("Thank you for visiting my profile")
   avatar   String @default("https://bpchhgiihbdqtamrfehs.supabase.co/storage/v1/object/public/avatar/default/avatar.png")
 
-  following User[]    @relation(name: "followersToFollowing")
-  followers User[]    @relation(name: "followersToFollowing")
-  
-  chats     Chat[]
-  messages  Message[]
+  following User[] @relation(name: "followersToFollowing")
+  followers User[] @relation(name: "followersToFollowing")
+
+  chats    Chat[]
+  messages Message[]
 
   posts        Post[]
   postLikes    Post[]    @relation(name: "likersToPostLikes")
@@ -80,7 +80,7 @@ model Comment {
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String
-  post     Post   @relation(fields: [postId], references: [id])
+  post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId   String
 
   likers User[] @relation(name: "likersToCommentLikes")
