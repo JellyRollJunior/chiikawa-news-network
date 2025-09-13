@@ -86,7 +86,9 @@ server/            # Backend (Express, Prisma, Passport, etc.)
     -   Prisma CASE Statement: Prisma doesn't support CASE statement so I jerry rigged one to implement a hasLiked field for posts
 
 -   Frontend
-    -   revisiting how stacking contexts work
+    
+    -   Executing code on scrolling to bottom on component
+    -   Revisiting how stacking contexts work
 
 ### Retrospective aka yapping
 
@@ -144,6 +146,11 @@ VITE_SERVER_URL
 
 -   client
 
+    -   extract warning form
+    -   post dot menu on user posts
+    -   pass open modal down
+    -   disable delete btn on loading 
+    -   delete API
     -   delete post
     -   posts desktop view
 

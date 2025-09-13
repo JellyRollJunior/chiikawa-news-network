@@ -7,6 +7,7 @@ import { Scrollable } from './Scrollable.jsx';
 import { HomeHeader } from './HomeHeader.jsx';
 import { HomePostControlButtons } from './HomePostControlButtons.jsx';
 import { HomeNewPostModal } from './HomeNewPostModal.jsx';
+import { HomeDeletePostModal } from './HomeDeletePostModal.jsx';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
@@ -28,6 +29,11 @@ const Home = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const openCreatePostModal = () => setIsCreateModalOpen(true);
   const closeCreatePostModal = () => setIsCreateModalOpen(false);
+
+  // Delete Post Modal
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
+  const openDeleteModal = () => setIsDeleteModalOpen(true);
+  const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
     <>
@@ -66,6 +72,12 @@ const Home = () => {
       {isCreateModalOpen && (
         <HomeNewPostModal
           closeFunction={closeCreatePostModal}
+          onSubmit={refreshPosts}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <HomeDeletePostModal
+          closeFunction={closeDeleteModal}
           onSubmit={refreshPosts}
         />
       )}
