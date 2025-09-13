@@ -144,10 +144,19 @@ VITE_SERVER_URL
 
 ## TODO
 
+-   bugs
+
+    -   bug: posts will shift positions when deleting / refreshing (?) find root cause
+        -   2 children with the same key error...
+    -   bug: error creating posts -> url error for some reason
+    -   bug: delete comment throws 500 but still deletes
+    -   bug: add keys to commentList
+    -   cannot delete posts with comments: CASCADE DELETE COMMENTS && LIKES
+
 -   client
 
-    -   extract warning form
     -   posts desktop view
+    -   restyle dot menu items. its kinda ugly
 
 -   server
 

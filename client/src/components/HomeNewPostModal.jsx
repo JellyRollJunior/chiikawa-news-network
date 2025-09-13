@@ -78,7 +78,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             Content
           </label>
           <textarea
-            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pl-2 disabled:bg-gray-200"
+            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pl-2 pr-1 disabled:bg-gray-200"
             id="content"
             name="content"
             value={content}
