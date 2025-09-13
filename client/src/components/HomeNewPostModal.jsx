@@ -4,11 +4,17 @@ import { useCreatePost } from '../hooks/useCreatePost.js';
 import trash from '../assets/svgs/trash.svg';
 
 const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
+  const { createPost, isLoading } = useCreatePost();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [isUploadMode, setIsUploadMode] = useState(true);
   const [mediaFile, setMediaFile] = useState(null);
   const [mediaUrl, setMediaUrl] = useState('');
+  const [uploadError, setUploadError] = useState('');
+  const [urlError, setUrlError] = useState(false);
   const fileInputRef = useRef(null);
+  const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
+  const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
 
   const handleClickUpload = () => {
     if (fileInputRef) {
@@ -16,30 +22,38 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     }
   };
 
-  const [mediaError, setMediaError] = useState('');
   const handleUploadMedia = (event) => {
     const file = event.target.files[0];
     const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
 
     if (file.size <= FILE_SIZE_LIMIT) {
       setMediaFile(file);
-      setMediaError('');
+      setUploadError('');
     } else {
-      setMediaError('File too large');
+      setUploadError('File too large');
     }
   };
 
-  const { createPost, isLoading } = useCreatePost();
+  const isMediaUrlValid = () => {
+    return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
+      return hasAllowedExtension || mediaUrl.endsWith(extension);
+    }, false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    isUploadMode
-      ? await createPost(title, content, mediaFile)
-      : await createPost(title, content, mediaUrl);
+    if (isUploadMode) {
+      await createPost(title, content, mediaFile);
+    }
+    if (!isUploadMode && isMediaUrlValid()) {
+      await createPost(title, content, mediaUrl);
+    } else {
+      return setUrlError(true);
+    }
     closeFunction();
     onSubmit();
   };
 
-  const [isUploadMode, setIsUploadMode] = useState(true);
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
       <form className="text-amber-800" onSubmit={handleSubmit}>
@@ -97,14 +111,16 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               {isUploadMode && '(max 250Kb)'}
             </div>
           </div>
-          <div className="text-shadow-wrap mt-2 ml-2">
-            Accepts [.jpg, .jpeg, .png, .gif, .webp]
+          <div
+            className={`text-shadow-wrap mt-2 ml-2 text-xs ${urlError && 'font-bold text-red-400'}`}
+          >
+            URL must end with [.jpg, .jpeg, .png, .gif, .webp]
           </div>
           {isUploadMode ? (
             <div className="mt-1 flex h-12 items-center">
               <button
                 className="blue-button w-fit flex-none px-3 py-1"
-                type='button'
+                type="button"
                 onClick={handleClickUpload}
                 disabled={isLoading}
               >
@@ -113,7 +129,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
                 {mediaFile && mediaFile.name}
                 <span className="text-red-400">
-                  {mediaError && ` — ${mediaError}`}
+                  {uploadError && ` — ${uploadError}`}
                 </span>
               </div>
               {mediaFile && (
@@ -125,7 +141,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
                 className="hidden"
                 type="file"
                 ref={fileInputRef}
-                accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+                accept={MIMETYPES}
                 onChange={handleUploadMedia}
               />
             </div>
@@ -134,9 +150,10 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               className="block-shadow mt-2 h-10 rounded-lg bg-white pl-3"
               id="mediaUrl"
               name="mediaUrl"
+              type="url"
               value={mediaUrl}
               onChange={(event) => setMediaUrl(event.target.value)}
-              placeholder="Media URL"
+              placeholder="www.my-media.com/media-url.png"
             />
           )}
         </main>
