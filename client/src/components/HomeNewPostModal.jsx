@@ -7,6 +7,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [mediaFile, setMediaFile] = useState(null);
+  const [mediaUrl, setMediaUrl] = useState('');
   const fileInputRef = useRef(null);
 
   const handleClickUpload = () => {
@@ -97,33 +98,45 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           <div className="text-shadow-wrap mt-2 ml-2">
             Accepts [.jpg, .jpeg, .png, .gif, .webp]
           </div>
-          <div className="mt-1 flex h-12 items-center">
-            <button
-              className="blue-button w-fit flex-none px-3 py-1"
-              onClick={handleClickUpload}
-              disabled={isLoading}
-            >
-              Upload Media
-            </button>
-            <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
-              {mediaFile && mediaFile.name}
-              <span className="text-red-400">
-                {mediaError && ` — ${mediaError}`}
-              </span>
-            </div>
-            {mediaFile && (
-              <button onClick={() => setMediaFile(null)}>
-                <img src={trash} alt="" />
+          {isUploadMode ? (
+            <div className="mt-1 flex h-12 items-center">
+              <button
+                className="blue-button w-fit flex-none px-3 py-1"
+                onClick={handleClickUpload}
+                disabled={isLoading}
+              >
+                Upload Media
               </button>
-            )}
-          </div>
-          <input
-            className="hidden"
-            type="file"
-            ref={fileInputRef}
-            accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
-            onChange={handleUploadMedia}
-          />
+              <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
+                {mediaFile && mediaFile.name}
+                <span className="text-red-400">
+                  {mediaError && ` — ${mediaError}`}
+                </span>
+              </div>
+              {mediaFile && (
+                <button onClick={() => setMediaFile(null)}>
+                  <img src={trash} alt="" />
+                </button>
+              )}
+              <input
+                className="hidden"
+                type="file"
+                ref={fileInputRef}
+                accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+                onChange={handleUploadMedia}
+              />
+            </div>
+          ) : (
+            <input
+              className="block-shadow mt-2 h-10 rounded-lg bg-white pl-3"
+              id="mediaUrl"
+              name="mediaUrl"
+              value={mediaUrl}
+              onChange={(event) => setMediaUrl(event.target.value)}
+              placeholder='Media URL'
+              required
+            />
+          )}
         </main>
         <hr className="mt-4 h-1 rounded-xl border-blue-200 bg-blue-200" />
         <footer className="mt-2.5 flex gap-3">
