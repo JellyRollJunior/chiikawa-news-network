@@ -1,9 +1,15 @@
+import { useDeletePost } from '../hooks/useDeletePost.js';
 import { ModalDialog } from './ModalDialog.jsx';
 import warning from '../assets/svgs/warning.svg';
 
-const HomeDeletePostModal = ({ closeFunction, onSubmit }) => {
-  const handleDeletePost = (event) => {
+const HomeDeletePostModal = ({ postId, closeFunction, onSubmit }) => {
+  const { deletePost, isLoading } = useDeletePost();
+
+  const handleDeletePost = async (event) => {
     event.preventDefault();
+    if (!postId) return;
+    await deletePost(postId);
+    closeFunction();
     onSubmit();
   };
 
@@ -19,11 +25,14 @@ const HomeDeletePostModal = ({ closeFunction, onSubmit }) => {
           Are you sure?
         </h2>
         <footer className="mt-6 flex gap-3">
-          <button className="yellow-button px-5 py-1.5">Delete</button>
+          <button className="yellow-button px-5 py-1.5" disabled={isLoading}>
+            Delete
+          </button>
           <button
             className="pink-button flex-1 px-5 py-1.5"
             type="button"
             onClick={closeFunction}
+            disabled={isLoading}
           >
             Cancel
           </button>

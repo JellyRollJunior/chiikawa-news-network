@@ -147,11 +147,6 @@ VITE_SERVER_URL
 -   client
 
     -   extract warning form
-    -   post dot menu on user posts
-    -   pass open modal down
-    -   disable delete btn on loading 
-    -   delete API
-    -   delete post
     -   posts desktop view
 
 -   server

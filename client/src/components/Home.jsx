@@ -78,6 +78,7 @@ const Home = () => {
       )}
       {postToBeDeletedId && (
         <HomeDeletePostModal
+          postId={postToBeDeletedId}
           closeFunction={closeDeleteModal}
           onSubmit={refreshPosts}
         />
