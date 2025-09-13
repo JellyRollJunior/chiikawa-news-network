@@ -1,4 +1,7 @@
-import { uploadPostMedia } from '../adapters/supabase.client.js';
+import {
+    deletePostMedia,
+    uploadPostMedia,
+} from '../adapters/supabase.client.js';
 import { formatPostData } from '../services/post.services.js';
 import { validateInput } from '../middleware/validations.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
@@ -112,7 +115,9 @@ const deletePost = async (req, res, next) => {
         if (post.authorId != userId) {
             throw new AuthorizationError('Unable to delete post');
         }
-        // verified. Delete post
+        // Delete media on supabase (if present)
+        if (post.media) await deletePostMedia(userId, postId);
+        // Delete post on DB
         const deletedPost = await postQueries.deletePost(userId, postId);
         const formattedPost = formatPostData(deletedPost);
         res.json(formattedPost);

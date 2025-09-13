@@ -15,6 +15,10 @@ const getPublicUrl = (bucket, path) => {
     return data.publicUrl;
 };
 
+const getPostMediaFolder = (userId, postId) => {
+    return `user-${userId}/post-${postId}`;
+};
+
 const emptyFolder = async (bucket, folder) => {
     try {
         // get file list for folder
@@ -60,7 +64,7 @@ const uploadFile = async (folderPath, file, bucket) => {
 const uploadAvatar = async (userId, file) => {
     try {
         const folderPath = `user-${userId}`;
-        const fileUrl = uploadFile(folderPath, file, AVATAR_BUCKET)
+        const fileUrl = uploadFile(folderPath, file, AVATAR_BUCKET);
         return fileUrl;
     } catch (error) {
         throw SupabaseError('Unable to upload avatar');
@@ -69,12 +73,32 @@ const uploadAvatar = async (userId, file) => {
 
 const uploadPostMedia = async (userId, postId, file) => {
     try {
-        const folderPath = `user-${userId}/post-${postId}`;
-        const fileUrl = uploadFile(folderPath, file, POSTS_BUCKET)
+        const folderPath = getPostMediaFolder(userId, postId);
+        const fileUrl = uploadFile(folderPath, file, POSTS_BUCKET);
         return fileUrl;
     } catch (error) {
         throw SupabaseError('Unable to upload post media');
     }
 };
 
-export { buckets, uploadAvatar, uploadPostMedia };
+const deletePostMedia = async (userId, postId) => {
+    try {
+        // fetch file names to delete
+        const folderPath = getPostMediaFolder(userId, postId);
+        const { data: fileList } = await supabase.storage
+            .from(POSTS_BUCKET)
+            .list(folderPath);
+        const filesToRemove = fileList.map(
+            (file) => `${folderPath}/${file.name}`
+        );
+        // delete files
+        const { error: deleteError } = await supabase.storage
+            .from(POSTS_BUCKET)
+            .remove(filesToRemove);
+        if (deleteError) throw new SupabaseError('Error deleting post media');
+    } catch (error) {
+        throw SupabaseError('Unable to delete post media');
+    }
+};
+
+export { buckets, uploadAvatar, uploadPostMedia, deletePostMedia };
