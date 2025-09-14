@@ -6,30 +6,30 @@ const UserProfile = ({ userId }) => {
   const { user, isLoading } = useUser(userId);
 
   return !isLoading ? (
-    <section className="yellow-block px-2 pb-2 pt-3">
+    <section className="yellow-block px-2 pt-3 pb-2">
       <header className="ml-2 flex">
         <Avatar avatar={user && user.avatar} size={5} />
         <div className="mt-2 flex w-full flex-col items-center justify-center">
-          <h2 className="font-chiikawa border-5 max-w-45 xxs:max-w-55 xs:max-w-64 -mt-2 break-words border-dashed border-pink-300 px-2 py-2 text-sm font-bold">
+          <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 -mt-2 max-w-45 border-5 border-dashed border-pink-300 px-2 py-2 text-sm font-bold break-words">
             {user && user.username}
           </h2>
         </div>
       </header>
-      <div className="mt-3 flex w-full justify-around gap-3 text-sm">
-        <div>100 Posts</div>
-        <div>100 Followers</div>
-        <div>100 Following</div>
+      <div className="grid-cols-3 text-center mt-3 grid w-full text-sm">
+        <div>{user.followingCount ? user.followingCount : 0} Following</div>
+        <div>{user.postCount ? user.postCount : 0} Posts</div>
+        <div>{user.followerCount ? user.followerCount : 0} Followers</div>
       </div>
       <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
       <p className="mt-3 text-center">{user && user.bio}</p>
     </section>
   ) : (
     /* Loading Display */
-    <section className="yellow-block px-2 pb-2 pt-3">
+    <section className="yellow-block px-2 pt-3 pb-2">
       <header className="ml-2 flex">
         <LoadingElement className="size-20 shrink-0 rounded-full" />
         <div className="mt-2 flex w-full flex-col items-center justify-center">
-          <h2 className="border-5 max-w-45 xxs:max-w-55 xs:max-w-64 -mt-2 shrink self-center border-dashed border-pink-300 px-2 py-2">
+          <h2 className="xxs:max-w-55 xs:max-w-64 -mt-2 max-w-45 shrink self-center border-5 border-dashed border-pink-300 px-2 py-2">
             <LoadingElement className="h-6 w-32 rounded-full" />
           </h2>
         </div>

@@ -146,11 +146,17 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   bug: posts will shift positions when deleting / refreshing (?) find root cause
+    -   client: posts will shift positions when deleting / refreshing (?) find root cause
         -   2 children with the same key error...
         -   the duplicated post is the first post of the next page... maybe a hint as to the root cause
+    -   client: Empty string passed to getElementById().
+    -   client: comment list keys (?) unknown root cause
+    -   client: Cookie “__cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
 
 -   client
+
+    -   user posts
+
 
 -   server
 
@@ -162,7 +168,6 @@ VITE_SERVER_URL
 
     -   users
     -   follows
-    -   user posts
 
 -   low prio
 
