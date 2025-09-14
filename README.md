@@ -86,7 +86,7 @@ server/            # Backend (Express, Prisma, Passport, etc.)
     -   Prisma CASE Statement: Prisma doesn't support CASE statement so I jerry rigged one to implement a hasLiked field for posts
 
 -   Frontend
-    
+
     -   Executing code on scrolling to bottom on component
     -   Revisiting how stacking contexts work
 
@@ -151,21 +151,15 @@ VITE_SERVER_URL
         -   the duplicated post is the first post of the next page... maybe a hint as to the root cause
     -   client: Empty string passed to getElementById().
     -   client: comment list keys (?) unknown root cause
-    -   client: Cookie “__cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
+    -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   server: error with pagination and userQuery
 
 -   client
 
     -   user posts
-        -   display post
-        -   title
         -   delete modal
             -   move delete modal to postList
-        -   make whole page scroll tbh
         -   extract header
-        -   refeactor userProfile -> userInfo
-        -   userProfile -> userInfo + userPosts
-
 
 -   server
 
