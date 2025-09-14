@@ -68,7 +68,7 @@ const createPost = async (req, res, next) => {
         // if file exists & was not sent as URL, upload to supabase
         if (!url && req.file) {
             url = await uploadPostMedia(userId, post.id, req.file);
-            post = await postQueries.updatePostMedia(userId, post.id, url);
+            post = await postQueries.updateSelfHostedPostMedia(userId, post.id, url);
         }
         // add url to post
         const formattedPost = formatPostData(post);
@@ -116,7 +116,7 @@ const deletePost = async (req, res, next) => {
             throw new AuthorizationError('Unable to delete post');
         }
         // Delete media on supabase (if present)
-        if (post.media) await deletePostMedia(userId, postId);
+        if (post.isSelfHosted) await deletePostMedia(userId, postId);
         // Delete post on DB
         const deletedPost = await postQueries.deletePost(userId, postId);
         const formattedPost = formatPostData(deletedPost);

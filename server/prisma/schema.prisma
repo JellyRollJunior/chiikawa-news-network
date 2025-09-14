@@ -60,11 +60,12 @@ model Chat {
 }
 
 model Post {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
-  media     String?
-  createdAt DateTime @default(now())
+  id           String   @id @default(uuid())
+  title        String
+  content      String
+  media        String?
+  isSelfHosted Boolean  @default(false)
+  createdAt    DateTime @default(now())
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String

@@ -8,6 +8,7 @@ const postSelect = (requesterId) => {
         title: true,
         content: true,
         media: true,
+        isSelfHosted: true,
         createdAt: true,
         authorId: true,
         author: {

@@ -149,8 +149,6 @@ VITE_SERVER_URL
     -   bug: posts will shift positions when deleting / refreshing (?) find root cause
         -   2 children with the same key error...
         -   the duplicated post is the first post of the next page... maybe a hint as to the root cause
-    -   server: I dont think deleting post deletes media on supabase... check that lol
-        -   need a self-hosted variable to know if we gotta delete the media or not 
 
 -   client
 

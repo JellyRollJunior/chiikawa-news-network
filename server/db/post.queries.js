@@ -76,11 +76,12 @@ const createPost = async (requesterId, title, content, media = null) => {
     }
 };
 
-const updatePostMedia = async (requesterId, postId, media) => {
+const updateSelfHostedPostMedia = async (requesterId, postId, media) => {
     try {
         const data = await prisma.post.update({
             data: {
                 media,
+                isSelfHosted: true,
             },
             where: {
                 id: postId,
@@ -153,7 +154,7 @@ export {
     getPostById,
     getPosts,
     createPost,
-    updatePostMedia,
+    updateSelfHostedPostMedia,
     likePost,
     unlikePost,
     deletePost,
