@@ -12,7 +12,7 @@ const UserPosts = ({
   isLoadingLike,
 }) => {
   return (
-    <section className="mx-2 mt-1 mb-2 flex flex-1 flex-col overflow-hidden">
+    <section className="mx-2 mt-1 mb-2 flex flex-1 flex-col">
       <div className="my-2 flex items-center justify-center gap-4">
         <img
           className="w-[43px]"
@@ -26,7 +26,7 @@ const UserPosts = ({
           <RefreshButton onclick={refreshPosts} />
         </div>
       </div>
-      <div className="mt-1 flex-1 overflow-y-scroll">
+      <div className="mt-1 flex-1">
         <PostList
           posts={posts}
           hasNextPage={hasNextPage}

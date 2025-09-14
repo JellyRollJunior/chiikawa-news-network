@@ -6,8 +6,10 @@ const UserPage = () => {
 
 
   return (
-    <div className="flex h-full w-full max-w-lg justify-center">
-      <UserProfile userId={userId} />
+    <div className="flex h-full w-full justify-center">
+      <div className="flex max-w-lg">
+        <UserProfile userId={userId} />
+      </div>
     </div>
   );
 };
