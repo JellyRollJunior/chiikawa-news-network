@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { usePostsFeed } from '../hooks/usePosts.js';
+import { usePosts } from '../hooks/usePosts.js';
 import { Avatar } from './Avatar.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { PostList } from './PostsList.jsx';
@@ -23,7 +23,7 @@ const Home = () => {
     refreshPosts,
     toggleLike,
     isLoadingLike,
-  } = usePostsFeed(5);
+  } = usePosts(5);
 
   // New Post Modal
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);

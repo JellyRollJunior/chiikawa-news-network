@@ -8,7 +8,7 @@ import {
     deletePostLike,
 } from '../services/postApi.js';
 
-const usePostsFeed = (limit = 20) => {
+const usePosts = (limit = 20) => {
     const [isFeed, setIsFeed] = useState(true);
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
@@ -130,4 +130,4 @@ const usePostsFeed = (limit = 20) => {
     };
 };
 
-export { usePostsFeed };
+export { usePosts };
