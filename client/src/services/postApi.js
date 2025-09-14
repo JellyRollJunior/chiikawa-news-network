@@ -1,9 +1,10 @@
 import { request } from './request.js';
 
-const fetchPosts = async (signal, cursor, limit = 20) => {
+const fetchPosts = async (signal, cursor, limit = 20, userId = null) => {
     const params = new URLSearchParams();
     params.append('limit', limit);
     if (cursor) params.append('cursor', cursor);
+    if (userId) params.append('userId', userId);
 
     const data = await request(`/posts?${params.toString()}`, {
         mode: 'cors',

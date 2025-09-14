@@ -8,7 +8,7 @@ import {
     deletePostLike,
 } from '../services/postApi.js';
 
-const usePosts = (limit = 20) => {
+const usePosts = (limit = 20, userId = null) => {
     const [isFeed, setIsFeed] = useState(true);
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
@@ -33,7 +33,7 @@ const usePosts = (limit = 20) => {
             try {
                 setIsLoadingInit(true);
                 setPosts([]);
-                const data = await fetchData(signal, cursor, limit);
+                const data = await fetchData(signal, cursor, limit, userId);
                 setPosts(data.posts);
                 setHasNextPage(data.meta.hasNextPage);
                 setEndCursor(data.meta.endCursor);
