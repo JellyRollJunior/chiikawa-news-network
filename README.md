@@ -152,6 +152,7 @@ VITE_SERVER_URL
     -   client: Empty string passed to getElementById().
     -   client: comment list keys (?) unknown root cause
     -   client: Cookie “__cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
+    -   server: error with pagination and userQuery
 
 -   client
 
@@ -162,6 +163,8 @@ VITE_SERVER_URL
             -   move delete modal to postList
         -   make whole page scroll tbh
         -   extract header
+        -   refeactor userProfile -> userInfo
+        -   userProfile -> userInfo + userPosts
 
 
 -   server
