@@ -152,7 +152,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   posts desktop view
 
 -   server
 
