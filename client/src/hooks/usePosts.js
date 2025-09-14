@@ -20,7 +20,8 @@ const usePosts = (limit = 20, userId = null) => {
     const { toast } = useContext(ToastContext);
 
     const fetchData = useCallback(
-        async (signal, cursor, limit) => {
+        async (signal, cursor, limit, userId = null) => {
+            if (userId) return await fetchPosts(signal, cursor, limit, userId);
             return isFeed
                 ? await fetchPostFeed(signal, cursor, limit)
                 : await fetchPosts(signal, cursor, limit);
@@ -44,7 +45,7 @@ const usePosts = (limit = 20, userId = null) => {
                 setIsLoadingInit(false);
             }
         },
-        [fetchData, handleTokenErrors, toast, limit]
+        [fetchData, handleTokenErrors, toast, limit, userId]
     );
 
     useEffect(() => {
@@ -109,7 +110,7 @@ const usePosts = (limit = 20, userId = null) => {
             });
         } catch (error) {
             handleTokenErrors(error);
-            toast('Unable to like/unlike post')
+            toast('Unable to like/unlike post');
         } finally {
             setIsLoadingLike(false);
         }

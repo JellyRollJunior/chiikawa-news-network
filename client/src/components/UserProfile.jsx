@@ -8,7 +8,7 @@ const UserProfile = ({ userId }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block px-2 pt-3 pb-2">
+      <section className="yellow-block flex-0 mt-3 mx-2 px-2 pt-3 pb-2">
         <header className="ml-2 flex">
           <Avatar avatar={user && user.avatar} size={5} />
           <div className="mt-2 flex w-full flex-col items-center justify-center">
@@ -18,15 +18,19 @@ const UserProfile = ({ userId }) => {
           </div>
         </header>
         <div className="mt-3 grid w-full grid-cols-3 text-center text-sm">
-          <div>{user.followingCount ? user.followingCount : 0} Following</div>
-          <div>{user.postCount ? user.postCount : 0} Posts</div>
-          <div>{user.followerCount ? user.followerCount : 0} Followers</div>
+          <div>
+            {user && user.followingCount ? user.followingCount : 0} Following
+          </div>
+          <div>{user && user.postCount ? user.postCount : 0} Posts</div>
+          <div>
+            {user && user.followerCount ? user.followerCount : 0} Followers
+          </div>
         </div>
         <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
         <p className="mt-3 text-center">{user && user.bio}</p>
       </section>
-      <section>
-        <UserPosts />
+      <section className='mt-3 mx-2 mb-2 flex-1 overflow-y-scroll'>
+        <UserPosts userId={userId} />
       </section>
     </>
   ) : (
