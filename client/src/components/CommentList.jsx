@@ -5,8 +5,8 @@ import { useCreateComment } from '../hooks/useCreateComment.js';
 import { Avatar } from './Avatar.jsx';
 import { CommentListItem } from './CommentListItem.jsx';
 import { LoadingDots } from './LoadingDots.jsx';
+import { CommentDeleteModal } from './CommentDeleteModal.jsx';
 import send from '../assets/svgs/send.svg';
-import { useDeleteComment } from '../hooks/useDeleteComment.js';
 
 const CommentList = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
@@ -28,11 +28,10 @@ const CommentList = ({ postId }) => {
     await refetchComments();
   };
 
-  const { deleteComment } = useDeleteComment();
-  const handleDeleteComment = async (commentId) => {
-    await deleteComment(commentId);
-    await refetchComments();
-  };
+  // Delete Comment Modal
+  const [commentToDeleteId, setCommentToDeleteId] = useState(null);
+  const openDeleteModal = (commentId) => setCommentToDeleteId(commentId);
+  const closeDeleteModal = () => setCommentToDeleteId(null);
 
   return (
     <>
@@ -45,7 +44,7 @@ const CommentList = ({ postId }) => {
                 comment={comment}
                 toggleLike={toggleLike}
                 isLoadingLike={isLoadingLike}
-                handleDeleteComment={handleDeleteComment}
+                openDeleteModal={openDeleteModal}
               />
             ))}
           </ul>
@@ -74,6 +73,13 @@ const CommentList = ({ postId }) => {
           <img className="w-5" src={send} />
         </button>
       </form>
+      {commentToDeleteId && (
+        <CommentDeleteModal
+          commentId={commentToDeleteId}
+          closeFunction={closeDeleteModal}
+          onSubmit={refetchComments}
+        />
+      )}
     </>
   );
 };

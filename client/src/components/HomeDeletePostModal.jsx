@@ -16,7 +16,7 @@ const HomeDeletePostModal = ({ postId, closeFunction, onSubmit }) => {
   return (
     <ModalDialog title="Delete Post" closeFunction={closeFunction}>
       <DeleteForm
-        label="Post"
+        label="The post"
         onSubmit={handleDeletePost}
         isLoading={isLoading}
         closeFunction={closeFunction}

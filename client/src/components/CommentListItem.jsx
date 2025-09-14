@@ -12,7 +12,7 @@ const CommentListItem = ({
   comment,
   toggleLike,
   isLoadingLike,
-  handleDeleteComment,
+  openDeleteModal,
 }) => {
   const { id } = useContext(CurrentContext);
 
@@ -30,7 +30,7 @@ const CommentListItem = ({
           <DotsMenu>
             <DotsMenuItem
               label="Delete comment"
-              onClick={() => handleDeleteComment(comment.id)}
+              onClick={() => openDeleteModal(comment.id)}
             />
           </DotsMenu>
         )}
