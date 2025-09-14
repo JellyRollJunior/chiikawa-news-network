@@ -54,7 +54,7 @@ const PostsListItem = ({
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="text-lg font-medium">{author.username}</h3>
+        <h3 className="text-lg font-medium md:text-xl">{author.username}</h3>
         {author.id == id && (
           <DotsMenu>
             <DotsMenuItem
@@ -64,8 +64,8 @@ const PostsListItem = ({
           </DotsMenu>
         )}
       </header>
-      <h2 className="mt-2 text-lg font-semibold">{post.title}</h2>
-      <p className="mt-1 text-sm text-yellow-900">{post.content}</p>
+      <h2 className="mt-2 text-lg font-semibold md:text-xl">{post.title}</h2>
+      <p className="mt-1 text-sm md:text-base text-yellow-900">{post.content}</p>
       {post.media && (
         <div className="mt-2 flex items-center justify-center">
           <MediaFrame src={post.media} />

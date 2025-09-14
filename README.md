@@ -160,6 +160,8 @@ VITE_SERVER_URL
             -   text larger
         -   comments list item
             -   text larger
+        -   avatar to -> classname styling -> i can style tailwind depending on screen size
+        -   increment button bigger too
 
 -   server
 
