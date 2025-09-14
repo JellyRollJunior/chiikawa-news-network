@@ -17,7 +17,7 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li key={comment.id}>
+    <li>
       <div className="flex">
         <Avatar size={2} avatar={comment.author && comment.author.avatar} />
         <div className="ml-2 flex-1">

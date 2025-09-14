@@ -45,7 +45,6 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   };
 
   const isMediaUrlValid = (value) => {
-    console.log('tes');
     if (typeof value == 'string' || value instanceof String) {
       return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
         return hasAllowedExtension || value.endsWith(extension);

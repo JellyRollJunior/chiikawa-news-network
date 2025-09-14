@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, Fragment } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useComments } from '../hooks/useComments.js';
 import { useCreateComment } from '../hooks/useCreateComment.js';
@@ -40,12 +40,14 @@ const CommentList = ({ postId }) => {
         comments.length > 0 && (
           <ul className="mt-3 flex flex-col gap-4">
             {comments.map((comment) => (
-              <CommentListItem
-                comment={comment}
-                toggleLike={toggleLike}
-                isLoadingLike={isLoadingLike}
-                openDeleteModal={openDeleteModal}
-              />
+              <Fragment key={comment.id}>
+                <CommentListItem
+                  comment={comment}
+                  toggleLike={toggleLike}
+                  isLoadingLike={isLoadingLike}
+                  openDeleteModal={openDeleteModal}
+                />
+              </Fragment>
             ))}
           </ul>
         )
