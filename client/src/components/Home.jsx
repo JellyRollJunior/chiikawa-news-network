@@ -54,10 +54,10 @@ const Home = () => {
           <section className="mx-2 mt-3 mb-2">
             <PostList
               posts={posts}
-              toggleLike={toggleLike}
               hasNextPage={hasNextPage}
               isLoadingInit={isLoadingInit}
               isLoadingNext={isLoadingNext}
+              toggleLike={toggleLike}
               isLoadingLike={isLoadingLike}
               refreshPosts={refreshPosts}
             />

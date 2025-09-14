@@ -29,12 +29,12 @@ const UserPosts = ({
       <div className="mt-1 flex-1 overflow-y-scroll">
         <PostList
           posts={posts}
-          toggleLike={toggleLike}
           hasNextPage={hasNextPage}
           isLoadingInit={isLoadingInit}
           isLoadingNext={isLoadingNext}
+          toggleLike={toggleLike}
           isLoadingLike={isLoadingLike}
-          // openDeleteModal={openDeleteModal}
+          refreshPosts={refreshPosts}
         />
       </div>
     </section>

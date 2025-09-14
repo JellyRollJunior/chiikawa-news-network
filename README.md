@@ -156,11 +156,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   user posts
-        -   delete modal
-            -   move delete modal to postList
-        -   extract header
-
 -   server
 
     -   github login
@@ -188,6 +183,7 @@ VITE_SERVER_URL
     -   change all titles to style like simple title in home (without yellow block!)
     -   refactor scrolling just to scroll off entire page instead of off a block or smth
     -   like button liking animation
+    -   move modals (?) chats modals, chat modals etc
 
 ## DATA
 

@@ -7,10 +7,10 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const PostList = ({
   posts = [],
-  toggleLike,
   hasNextPage,
   isLoadingInit,
   isLoadingNext,
+  toggleLike,
   isLoadingLike,
   refreshPosts,
 }) => {
