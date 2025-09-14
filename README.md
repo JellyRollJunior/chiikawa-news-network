@@ -155,6 +155,12 @@ VITE_SERVER_URL
 
 -   client
 
+    -   desktop styling
+        -   post list item
+            -   text larger
+        -   comments list item
+            -   text larger
+
 -   server
 
     -   github login

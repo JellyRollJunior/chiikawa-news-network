@@ -7,16 +7,16 @@ const UserInfo = ({ userId }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2">
+      <section className="yellow-block mx-2 mt-3 max-w-md flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6">
         <header className="ml-2 flex">
           <Avatar avatar={user && user.avatar} size={5} />
           <div className="mt-2 flex w-full flex-col items-center justify-center">
-            <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 -mt-2 max-w-45 border-5 border-dashed border-pink-300 px-2 py-2 text-sm font-bold break-words">
+            <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 -mt-2 max-w-45 border-5 border-dashed border-pink-300 px-2 py-2 text-sm font-bold break-words md:text-base">
               {user && user.username}
             </h2>
           </div>
         </header>
-        <div className="mt-3 grid w-full grid-cols-3 text-center text-sm">
+        <div className="mt-3 grid w-full grid-cols-3 text-center text-sm md:text-base">
           <div>
             {user && user.followingCount ? user.followingCount : 0} Following
           </div>
@@ -26,7 +26,7 @@ const UserInfo = ({ userId }) => {
           </div>
         </div>
         <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
-        <p className="mt-3 text-center">{user && user.bio}</p>
+        <p className="mt-3 text-center md:text-lg">{user && user.bio}</p>
       </section>
     </>
   ) : (
