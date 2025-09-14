@@ -157,6 +157,11 @@ VITE_SERVER_URL
 
     -   user posts
         -   display post
+        -   title
+        -   delete modal
+            -   move delete modal to postList
+        -   make whole page scroll tbh
+        -   extract header
 
 
 -   server

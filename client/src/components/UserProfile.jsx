@@ -2,13 +2,14 @@ import { useUser } from '../hooks/useUser.js';
 import { Avatar } from './Avatar.jsx';
 import { UserPosts } from './UserPosts.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
+import logo from '../assets/nav/chiikawa-glasses.png';
 
 const UserProfile = ({ userId }) => {
   const { user, isLoading } = useUser(userId);
 
   return !isLoading ? (
     <>
-      <section className="yellow-block flex-0 mt-3 mx-2 px-2 pt-3 pb-2">
+      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2">
         <header className="ml-2 flex">
           <Avatar avatar={user && user.avatar} size={5} />
           <div className="mt-2 flex w-full flex-col items-center justify-center">
@@ -29,8 +30,20 @@ const UserProfile = ({ userId }) => {
         <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
         <p className="mt-3 text-center">{user && user.bio}</p>
       </section>
-      <section className='mt-3 mx-2 mb-2 flex-1 overflow-y-scroll'>
-        <UserPosts userId={userId} />
+      <section className="mx-2 mt-1 mb-2 flex flex-1 flex-col overflow-hidden">
+        <div className='flex items-center justify-center gap-2 my-2 ' >
+          <img
+            className="w-[43px]"
+            src={logo}
+            alt="Chiikawa with glasses (CNN Logo)"
+          />
+          <h2 className="font-chiikawa text-shadow-wrap text-center text-2xl font-bold">
+            Posts
+          </h2>
+        </div>
+        <div className="mt-1 flex-1 overflow-y-scroll">
+          <UserPosts userId={userId} />
+        </div>
       </section>
     </>
   ) : (
