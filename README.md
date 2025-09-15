@@ -159,7 +159,6 @@ VITE_SERVER_URL
         -   chats / chat text size
         -   new convo modal
         -   settings page
-        -   increment button bigger too
 
 -   server
 

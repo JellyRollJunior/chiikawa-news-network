@@ -5,7 +5,7 @@ const IncrementButton = ({ className, src, count, onClick, isDisabled = false })
       onClick={onClick}
       disabled={isDisabled}
     >
-      <img className="w-4.5" src={src} />
+      <img className="w-4.5 md:w-6" src={src} />
       <div className="text-sm">{count}</div>
     </button>
   );
