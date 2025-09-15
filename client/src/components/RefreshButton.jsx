@@ -17,7 +17,7 @@ const RefreshButton = ({ onclick }) => {
           ease: 'easeInOut',
         },
       }}
-      className="rounded-2xl px-1 py-1 hover:bg-gray-200"
+      className="rounded-2xl px-1 py-1 hover:bg-pink-200"
       onClick={onclick}
     >
       <img src={refreshIcon} alt="Refresh icon" />

@@ -152,12 +152,17 @@ VITE_SERVER_URL
         -   server: error with pagination and userQuery (I SUSPECT THIS IS THE SAME ISSUE. SOME PAGINATION WEIRDNESS GOING ON)
     -   client: Empty string passed to getElementById(). (login)
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
+    -   client: loading skeelton does not appear when loading
 
 -   client
 
     -   desktop styling
-
-        -   settings page
+        -   edit page
+            -   title
+            -   pfp title
+            -   size warnign
+            -   maybe change to flex LR on dekstop tbh
+        -   profile - follow btn
 
 -   server
 

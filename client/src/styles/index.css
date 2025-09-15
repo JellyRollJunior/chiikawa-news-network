@@ -62,15 +62,15 @@
 }
 
 @utility block-shadow {
-  @apply inset-shadow-[2px_2px_3px] inset-shadow-white shadow-[2px_2px_1px] shadow-pink-200;
+  @apply shadow-[2px_2px_1px] inset-shadow-[2px_2px_3px] shadow-pink-200 inset-shadow-white;
 }
 
 @utility main-container {
-  @apply bg-dotted-sm border-5 rounded-xl border-pink-200 bg-pink-100;
+  @apply bg-dotted-sm rounded-xl border-5 border-pink-200 bg-pink-100;
 }
 
 @utility secondary-container {
-  @apply bg-dotted-lg border-5 rounded-xl border-blue-200 bg-blue-100;
+  @apply bg-dotted-lg rounded-xl border-5 border-blue-200 bg-blue-100;
 }
 
 @utility pink-dotted-block {
@@ -78,29 +78,29 @@
 }
 
 @utility yellow-block {
-  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-yellow-200 from-orange-50 to-yellow-50;
+  @apply block-shadow rounded-lg border-2 border-yellow-200 bg-linear-to-b from-orange-50 to-yellow-50;
 }
 
 @utility blue-block {
-  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-emerald-200 from-emerald-50 to-teal-100;
+  @apply block-shadow rounded-lg border-2 border-emerald-200 bg-linear-to-b from-emerald-50 to-teal-100;
 }
 
 @utility pink-block {
-  @apply bg-linear-to-b block-shadow rounded-lg border-2 border-pink-200 from-red-50 to-pink-100;
+  @apply block-shadow rounded-lg border-2 border-pink-200 bg-linear-to-b from-red-50 to-pink-100;
 }
 
 @utility button {
-  @apply text-shadow-wrap block-shadow disabled:text-shadow-none rounded-2xl border-2 disabled:border-gray-400 disabled:text-gray-50 disabled:shadow-none;
+  @apply text-shadow-wrap block-shadow rounded-2xl border-2 disabled:border-gray-400 disabled:bg-gray-400 disabled:text-gray-50 disabled:shadow-none disabled:text-shadow-none;
 }
 
 @utility pink-button {
-  @apply button border-pink-200 bg-pink-50 hover:bg-pink-100 disabled:bg-gray-400;
+  @apply button border-pink-200 bg-pink-50 hover:bg-pink-100;
 }
 
 @utility yellow-button {
-  @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100 disabled:bg-gray-400;
+  @apply button border-yellow-200 bg-yellow-50 hover:bg-yellow-100;
 }
 
 @utility blue-button {
-  @apply button border-emerald-200 bg-emerald-50 hover:bg-emerald-100 disabled:bg-gray-400;
+  @apply button border-emerald-200 bg-emerald-50 hover:bg-emerald-100;
 }

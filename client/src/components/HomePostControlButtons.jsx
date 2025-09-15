@@ -11,15 +11,23 @@ const HomePostControlButtons = ({
   return (
     <section className={`flex gap-3 ${className}`}>
       <button
-        className={`flex-1 px-7 py-1 ${isFeed ? 'blue-button' : 'yellow-button'}`}
+        className={`button flex-1 px-5 py-1 ${
+          isFeed
+            ? 'rounded-xl border-2 border-pink-400 bg-pink-300 font-bold hover:bg-pink-400'
+            : 'rounded-xl border-2 border-pink-300 bg-pink-200 hover:bg-pink-300'
+        }`}
         onClick={setPostsToFeed}
         disabled={isLoadingInit}
       >
-        For you
+        For You
       </button>
       <RefreshButton onclick={refreshPosts} />
       <button
-        className={`flex-1 px-7 py-1 ${isFeed ? 'yellow-button' : 'blue-button'}`}
+        className={`button flex-1 px-5 py-1 ${
+          !isFeed
+            ? 'rounded-xl border-2 border-pink-400 bg-pink-300 font-bold hover:bg-pink-400'
+            : 'rounded-xl border-2 border-pink-300 bg-pink-200 hover:bg-pink-300'
+        }`}
         onClick={setPostsToAll}
         disabled={isLoadingInit}
       >

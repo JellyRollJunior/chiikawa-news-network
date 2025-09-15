@@ -72,7 +72,7 @@ const CommentList = ({ postId }) => {
           required
         />
         <button className="ml-2" disabled={isPostingComment}>
-          <img className="w-5" src={send} />
+          <img className="w-5 md:w-6" src={send} />
         </button>
       </form>
       {commentToDeleteId && (

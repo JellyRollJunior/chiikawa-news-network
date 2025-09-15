@@ -49,7 +49,7 @@ const Home = () => {
               secondaryStyling={true}
             />
             <button
-              className="block-shadow flex-1 rounded-lg bg-white"
+              className="block-shadow flex-1 rounded-lg bg-white h-9"
               onClick={openCreatePostModal}
             >
               What's on your mind?

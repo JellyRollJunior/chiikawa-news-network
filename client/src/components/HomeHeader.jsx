@@ -8,7 +8,7 @@ const HomeHeader = ({ className }) => {
         src={logo}
         alt="Chiikawa with glasses (CNN Logo)"
       />
-      <h1 className="text-shadow-wrap font-chiikawa text-center text-[15px]">
+      <h1 className="text-shadow-wrap font-chiikawa text-center text-[15px] md:text-lg md:my-2">
         Chiikawa News Network
       </h1>
     </header>
