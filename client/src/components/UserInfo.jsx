@@ -8,7 +8,7 @@ const UserInfo = ({ userId }) => {
   return !isLoading ? (
     <>
       <section className="yellow-block mx-2 mt-3 max-w-md flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6">
-        <header className="ml-2 flex">
+        <header className="ml-2 flex md:text-lg">
           <Avatar
             className="size-[80px] md:size-[90px]"
             avatar={user && user.avatar}
@@ -29,7 +29,7 @@ const UserInfo = ({ userId }) => {
           </div>
         </div>
         <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
-        <p className="mt-3 text-center md:text-lg">{user && user.bio}</p>
+        <p className="mt-3 text-center">{user && user.bio}</p>
       </section>
     </>
   ) : (

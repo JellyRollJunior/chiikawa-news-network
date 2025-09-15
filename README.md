@@ -153,16 +153,9 @@ VITE_SERVER_URL
     -   client: Empty string passed to getElementById(). (login)
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: loading skeelton does not appear when loading
+        -   check all loading and see if its working
 
--   client
-
-    -   desktop styling
-        -   edit page
-            -   title
-            -   pfp title
-            -   size warnign
-            -   maybe change to flex LR on dekstop tbh
-        -   profile - follow btn
+-   client  
 
 -   server
 

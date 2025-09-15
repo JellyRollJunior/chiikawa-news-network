@@ -47,8 +47,8 @@ const SettingsUserInfo = () => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mt-2 flex flex-col items-center py-2">
-        <div className="relative flex items-center px-[16px]">
+      <section className="yellow-block mt-2 flex flex-col items-center pt-5 pb-3 md:grid md:grid-cols-2 md:justify-center md:py-5 ">
+        <div className="relative px-[16px] w-fit md:justify-self-center md:ml-12">
           <Avatar className='size-[96px] md:size-[120px]' avatar={avatar ? avatar : null}  />
           <img
             className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
@@ -59,27 +59,29 @@ const SettingsUserInfo = () => {
             src={hachiCamera}
           />
         </div>
-        <h3 className="mt-2 font-medium">Profile Picture</h3>
-        <p className="text-xs">
-          (Max 250Kb)
-          <span className="text-red-400">
-            {mediaError && ` — ${mediaError}`}
-          </span>
-        </p>
-        <button
-          className="blue-button mt-1 px-3 py-1"
-          onClick={handleClickChangePhoto}
-          disabled={isUploadingAvatar}
-        >
-          Upload Picture
-        </button>
-        <input
-          className="hidden"
-          type="file"
-          ref={fileInputRef}
-          onChange={handleUploadAvatar}
-          accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
-        />
+        <div className='flex flex-col items-center'>
+          <h3 className="mt-2 font-medium md:text-lg">Profile Picture</h3>
+          <p className="text-xs md:text-sm">
+            (Max 250Kb)
+            <span className="text-red-400">
+              {mediaError && ` — ${mediaError}`}
+            </span>
+          </p>
+          <button
+            className="blue-button mt-1 md:mt-2 px-3 py-1"
+            onClick={handleClickChangePhoto}
+            disabled={isUploadingAvatar}
+          >
+            Upload Picture
+          </button>
+          <input
+            className="hidden"
+            type="file"
+            ref={fileInputRef}
+            onChange={handleUploadAvatar}
+            accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
+          />
+        </div>
       </section>
       <section className="yellow-block mt-2 px-3 py-2">
         <form className="flex flex-col" onSubmit={handleEditBio}>

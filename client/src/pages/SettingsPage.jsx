@@ -9,7 +9,7 @@ const SettingsPage = () => {
     <div className="flex min-h-full justify-center">
       <div className="main-container relative mx-4 mb-2 mt-3 w-full max-w-lg px-2 pb-3 pt-3">
         <header className="yellow-block">
-          <h2 className="font-chiikawa py-2 text-center text-lg">Edit Settings</h2>
+          <h2 className="font-chiikawa py-2 text-center text-lg md:text-2xl">Edit Settings</h2>
         </header>
         <SettingsUserInfo />
         <div className="yellow-block ml-auto mt-2 w-fit px-3 py-2">
