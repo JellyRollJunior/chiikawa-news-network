@@ -55,7 +55,7 @@ const ChatsCreateModal = ({ closeFunction }) => {
             Users
             <span className="text-red-400">{userError}</span>
           </label>
-          <ul className="scrollbar-thin h-40 overflow-y-scroll">
+          <ul className="scrollbar-thin h-50 md:h-70 overflow-y-scroll">
             {!isLoading
               ? filteredUsers.map((user) => (
                   <Fragment key={user.id}>

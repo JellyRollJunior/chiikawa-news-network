@@ -38,7 +38,7 @@ const Chats = ({
       />
       <div className="relative mt-3 flex w-full justify-center">
         <button
-          className="blue-button relative px-6 py-1 font-medium"
+          className="blue-button relative px-6 py-1 font-medium text-lg"
           onClick={openNewChatModal}
         >
           New Conversation

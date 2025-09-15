@@ -156,7 +156,7 @@ VITE_SERVER_URL
 -   client
 
     -   desktop styling
-        -   new convo modal
+
         -   settings page
 
 -   server
