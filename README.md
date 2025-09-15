@@ -167,7 +167,6 @@ VITE_SERVER_URL
 
     -   users
     -   follows
-        -   remove follow btn if current user
 
 -   low prio
 

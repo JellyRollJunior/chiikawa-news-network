@@ -42,7 +42,7 @@ const Home = () => {
             isLoadingInit={isLoadingInit}
             refreshPosts={refreshPosts}
           />
-          <section className="mx-2 mt-3 flex gap-2">
+          <section className="mx-2 mt-3 flex gap-2 items-center">
             <Avatar
               className="size-[32px] md:size-[42px]"
               avatar={avatar}

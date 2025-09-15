@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useUser } from '../hooks/useUser.js';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 
 const UserInfo = ({ userId }) => {
+  const { id } = useContext(CurrentContext);
   const { user, isLoading } = useUser(userId);
 
   return !isLoading ? (
@@ -28,7 +31,13 @@ const UserInfo = ({ userId }) => {
             {user && user.followerCount ? user.followerCount : 0} Followers
           </div>
         </div>
-        <button className="blue-button mt-3 w-full px-7 py-0.5">Follow</button>
+        {userId != id ? (
+          <button className="blue-button mt-3 w-full px-7 py-0.5">
+            Follow
+          </button>
+        ) : (
+          <hr className="mt-3 w-full border-1 border-yellow-300" />
+        )}
         <p className="mt-3 text-center">{user && user.bio}</p>
       </section>
     </>
