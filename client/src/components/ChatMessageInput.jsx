@@ -11,7 +11,7 @@ const ChatMessageInput = ({ sendMessage, isDisabled = false }) => {
 
   return (
     <form
-      className="block-shadow mx-2 mb-3 mt-2 flex h-11 items-center gap-3 rounded-xl bg-white pl-3 pr-5"
+      className="block-shadow mx-2 mb-3 flex h-11 items-center gap-3 rounded-xl bg-white pl-3 pr-5"
       onSubmit={handleSendMessage}
     >
       <input

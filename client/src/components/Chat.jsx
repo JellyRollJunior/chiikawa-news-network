@@ -97,7 +97,7 @@ const Chat = () => {
       </header>
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin flex-1 overflow-y-scroll pl-3 pr-4 pt-3"
+        className="scrollbar-thin mt-2 flex-1 overflow-y-scroll pl-3 pr-4 pt-3"
       >
         <ChatMessages
           messages={messages}

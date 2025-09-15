@@ -156,7 +156,6 @@ VITE_SERVER_URL
 -   client
 
     -   desktop styling
-        -   chats / chat text size
         -   new convo modal
         -   settings page
 
