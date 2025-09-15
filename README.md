@@ -156,11 +156,9 @@ VITE_SERVER_URL
 -   client
 
     -   desktop styling
-        -   post list item
-            -   text larger
-        -   comments list item
-            -   text larger
-        -   avatar to -> classname styling -> i can style tailwind depending on screen size
+        -   chats / chat text size
+        -   new convo modal
+        -   settings page
         -   increment button bigger too
 
 -   server

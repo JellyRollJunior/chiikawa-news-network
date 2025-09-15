@@ -43,7 +43,11 @@ const Home = () => {
             refreshPosts={refreshPosts}
           />
           <section className="mx-2 mt-3 flex gap-2">
-            <Avatar avatar={avatar} size={2.5} secondaryStyling={true} />
+            <Avatar
+              className="size-[32px] md:size-[42px]"
+              avatar={avatar}
+              secondaryStyling={true}
+            />
             <button
               className="block-shadow flex-1 rounded-lg bg-white"
               onClick={openCreatePostModal}

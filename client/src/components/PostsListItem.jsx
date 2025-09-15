@@ -50,6 +50,7 @@ const PostsListItem = ({
     <li className="yellow-block flex flex-col px-3 py-2">
       <header className="flex items-center gap-2">
         <Avatar
+          className="size-[28px] md:size-[40px]"
           avatar={author ? author.avatar : null}
           size={1.75}
           secondaryStyling={true}

@@ -63,7 +63,7 @@ const Chat = () => {
   return (
     <div className="main-container relative mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
       <header className="yellow-block block-shadow mx-2 mt-3 flex gap-2 rounded-lg px-4 py-4">
-        <Avatar avatar={chat && chat.avatar} size={3} />
+        <Avatar className='size-[48px] md:size-[56px]' avatar={chat && chat.avatar} />
         <div className="flex flex-col justify-center">
           <h2 className="text-lg font-medium">
             {chat && chat.name ? chat.name : chatterNames}

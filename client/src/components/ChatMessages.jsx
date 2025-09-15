@@ -45,8 +45,8 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
                 className={`flex max-w-4/5 items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
               >
                 <Avatar
+                  className='size-[40px] md:size-[46px]'
                   avatar={message.sender.avatar}
-                  size={2.5}
                   secondaryStyling={true}
                 />
                 <div

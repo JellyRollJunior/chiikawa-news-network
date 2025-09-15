@@ -49,7 +49,7 @@ const SettingsUserInfo = () => {
     <>
       <section className="yellow-block mt-2 flex flex-col items-center py-2">
         <div className="relative flex items-center px-[16px]">
-          <Avatar avatar={avatar ? avatar : null} size={6} />
+          <Avatar className='size-[96px] md:size-[120px]' avatar={avatar ? avatar : null}  />
           <img
             className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
             src={chiiPeace}

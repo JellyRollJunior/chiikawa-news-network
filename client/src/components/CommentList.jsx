@@ -57,7 +57,7 @@ const CommentList = ({ postId }) => {
         </div>
       )}
       <form className="mt-3 mb-1 flex" onSubmit={handlePostComment}>
-        <Avatar size={2} avatar={avatar} />
+        <Avatar className="size-[32px] md:size-[42px]" avatar={avatar} />
         <textarea
           className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2 disabled:bg-gray-200"
           type="text"

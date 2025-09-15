@@ -18,12 +18,16 @@ const ChatsCreateListItem = ({
         onClick={onClick}
         type="button"
       >
-        <Avatar avatar={avatar} size={2.5} secondaryStyling={true} />
+        <Avatar
+          className="size-[40px] md:size-[46px]"
+          avatar={avatar}
+          secondaryStyling={true}
+        />
         <div className="flex items-center">
           <h4 className="text-lg font-medium">{username}</h4>
         </div>
         {selected && (
-          <div className="ml-auto mr-2 flex items-center text-2xl">
+          <div className="mr-2 ml-auto flex items-center text-2xl">
             <img className="w-8" src={usagiIcon} alt="Selected" />
           </div>
         )}

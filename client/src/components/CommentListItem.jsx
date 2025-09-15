@@ -19,7 +19,10 @@ const CommentListItem = ({
   return (
     <li>
       <div className="flex">
-        <Avatar size={2} avatar={comment.author && comment.author.avatar} />
+        <Avatar
+          className="size-[32px] md:size-[42px]"
+          avatar={comment.author && comment.author.avatar}
+        />
         <div className="ml-2 flex-1">
           <h4 className="text-base font-medium md:text-lg">
             {comment.author && comment.author.username}
