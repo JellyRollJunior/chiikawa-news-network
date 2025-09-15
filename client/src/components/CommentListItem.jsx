@@ -21,10 +21,10 @@ const CommentListItem = ({
       <div className="flex">
         <Avatar size={2} avatar={comment.author && comment.author.avatar} />
         <div className="ml-2 flex-1">
-          <h4 className="text-base font-medium">
+          <h4 className="text-base font-medium md:text-lg">
             {comment.author && comment.author.username}
           </h4>
-          <p className="text-sm">{comment.content}</p>
+          <p className="text-sm md:text-base">{comment.content}</p>
         </div>
         {comment.author.id == id && (
           <DotsMenu>
@@ -35,14 +35,21 @@ const CommentListItem = ({
           </DotsMenu>
         )}
         <IncrementButton
-          className="mt-1 mr-0.5 ml-1 flex-col"
+          className="mt-1 mr-0.5 ml-1 flex-col md:mt-2"
           src={comment.hasLiked ? heartFilled : heart}
           count={comment.likeCount}
           onClick={() => toggleLike(comment.id, comment.hasLiked)}
           isDisabled={isLoadingLike}
         />
       </div>
-        <p className='text-xs text-center text-gray-500'> — {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true})} — </p>
+      <p className="text-center text-xs text-gray-500">
+        {' '}
+        —{' '}
+        {formatDistanceToNow(new Date(comment.createdAt), {
+          addSuffix: true,
+        })}{' '}
+        —{' '}
+      </p>
     </li>
   );
 };
