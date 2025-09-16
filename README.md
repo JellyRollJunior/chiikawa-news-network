@@ -154,7 +154,6 @@ VITE_SERVER_URL
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
     -   client:
-        -   static main container w
         -   single small post -> does not show full scrollable -> cannot get to next post
 
 -   client  
