@@ -1,21 +1,39 @@
+import { useEffect, useRef } from 'react';
+
 const Scrollable = ({ onScrollToBottom, children }) => {
-  const handleScroll = (event) => {
-    const element = event.target;
-    const isAtBottom =
-      Math.abs(
-        element.scrollHeight - (element.scrollTop + element.clientHeight)
-      ) <= 1;
-    if (isAtBottom) {
-      onScrollToBottom();
-    }
-  };
+  const containerRef = useRef(null);
+  const sentinelRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const sentinel = sentinelRef.current;
+
+    const observerOptions = {
+      root: container,
+      rootMargin: '0px',
+      threshhold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          onScrollToBottom();
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(sentinel);
+
+    return () => observer.disconnect();
+  }, [onScrollToBottom]);
 
   return (
     <div
       className="scrollbar-thin scrollbar-track-yellow-50 overflow-y-scroll"
-      onScroll={handleScroll}
+      ref={containerRef}
     >
       {children}
+      <div className="h-1" ref={sentinelRef}></div>
     </div>
   );
 };

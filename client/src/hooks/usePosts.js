@@ -58,10 +58,17 @@ const usePosts = (limit = 20, userId = null) => {
 
     const fetchNextPage = async () => {
         try {
-            if (!hasNextPage) return;
+            if (!hasNextPage || isLoadingNext) return;
             setIsLoadingNext(true);
             const data = await fetchData(null, endCursor, limit, userId);
-            setPosts((posts) => [...posts, ...data.posts]);
+            setPosts((prev) => {
+                // remove duplicates
+                const updatedPosts = [...prev, ...data.posts];
+                const uniquePosts = Array.from(
+                    new Map(updatedPosts.map((p) => [p.id, p])).values()
+                );
+                return uniquePosts;
+            });
             setHasNextPage(data.meta.hasNextPage);
             setEndCursor(data.meta.endCursor);
         } catch (error) {

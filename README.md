@@ -88,6 +88,7 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 -   Frontend
 
     -   Executing code on scrolling to bottom on component
+    -   Learning sentinel pattern with IntersectionObserver API for infinite scrolling
     -   Revisiting how stacking contexts work
 
 ### Retrospective aka yapping
@@ -146,15 +147,10 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   server: posts will shift positions when deleting / refreshing (?) find root cause
-        -   2 children with the same key error...
-        -   the duplicated post is the first post of the next page... maybe a hint as to the root cause
     -   client: Empty string passed to getElementById(). (login)
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
-    -   client:
-        -   single small post -> does not show full scrollable -> cannot get to next post
 
 -   client  
 
