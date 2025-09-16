@@ -13,7 +13,7 @@ const UserProfile = ({ userId }) => {
     refreshPosts,
     toggleLike,
     isLoadingLike,
-  } = usePosts(5, userId);
+  } = usePosts(3, userId);
 
   return (
     <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">

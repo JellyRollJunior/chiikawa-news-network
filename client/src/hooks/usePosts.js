@@ -60,7 +60,7 @@ const usePosts = (limit = 20, userId = null) => {
         try {
             if (!hasNextPage) return;
             setIsLoadingNext(true);
-            const data = await fetchData(null, endCursor, limit);
+            const data = await fetchData(null, endCursor, limit, userId);
             setPosts((posts) => [...posts, ...data.posts]);
             setHasNextPage(data.meta.hasNextPage);
             setEndCursor(data.meta.endCursor);
