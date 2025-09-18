@@ -14,29 +14,41 @@ const UsersDisplay = () => {
           src={logo}
           alt="Chiikawa with glasses (CNN Logo)"
         />
-        <h1 className="text-shadow-wrap font-chiikawa text-center text-xl md:my-2 md:text-lg">
+        <h1 className="text-shadow-wrap font-chiikawa text-center text-xl">
           Users
         </h1>
       </header>
-      <ul className="mx-2 mt-3 mb-2 flex flex-col gap-2">
+      <ul className="mx-2 mt-3 mb-2 flex flex-col gap-2 ">
         {users &&
           users.map((user) => (
             <li
               className="yellow-block flex flex-col px-2 pt-3 pb-2"
               key={user.id}
             >
-              <div className="ml-2 flex md:text-lg">
-                <Avatar
-                  className="size-[80px] md:size-[90px]"
-                  avatar={user.avatar}
-                />
-                <div className="flex flex-col gap-2">
-                  <div>{user.username}</div>
-                  <div>{user.bio}</div>
-                  <button>View profile</button>
+              <div className="ml-2 flex gap-5 md:text-lg">
+                <Avatar className="size-[70px]" avatar={user.avatar} />
+                <div className="mt-2 flex flex-col gap-2">
+                  <div className="font-chiikawa text-center">{user.username}</div>
+                  <div className="grid w-full grid-cols-2 text-sm md:text-base">
+                    <div>
+                      {user && user.postCount ? user.postCount : 0} Posts
+                    </div>
+                    <div>
+                      {user && user.followersCount ? user.followersCount : 0}{' '}
+                      Followers
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button>Follow</button>
+              <p className='ml-2 mt-1'>{user.bio}</p>
+              <div className="mt-2 flex gap-3">
+                <button className="blue-button flex-1 px-3 py-0.5 text-sm">
+                  Follow
+                </button>
+                <button className="pink-button flex-1 px-3 py-0.5 text-sm">
+                  View profile
+                </button>
+              </div>
             </li>
           ))}
       </ul>

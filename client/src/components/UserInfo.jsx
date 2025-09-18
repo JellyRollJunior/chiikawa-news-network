@@ -28,7 +28,7 @@ const UserInfo = ({ userId }) => {
           </div>
           <div>{user && user.postCount ? user.postCount : 0} Posts</div>
           <div>
-            {user && user.followerCount ? user.followerCount : 0} Followers
+            {user && user.followersCount ? user.followersCount : 0} Followers
           </div>
         </div>
         {userId != id ? (
