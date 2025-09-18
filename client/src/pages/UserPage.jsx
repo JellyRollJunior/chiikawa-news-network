@@ -4,10 +4,9 @@ import { UserProfile } from '../components/UserProfile.jsx';
 const UserPage = () => {
   const { userId } = useParams();
 
-
   return (
     <div className="flex h-full w-full justify-center">
-      <div className="flex max-w-xl w-full">
+      <div className="flex w-full max-w-xl">
         <UserProfile userId={userId} />
       </div>
     </div>

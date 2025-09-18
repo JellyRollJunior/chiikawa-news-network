@@ -1,7 +1,13 @@
-const UsersPage = () => {
-    return (
-        <div>I am the users page</div>
-    )
-}
+import { Users } from '../components/Users.jsx';
 
-export { UsersPage}
+const UsersPage = () => {
+  return (
+    <div className="flex h-full w-full justify-center">
+      <div className="flex w-full max-w-xl">
+        <Users />
+      </div>
+    </div>
+  );
+};
+
+export { UsersPage };

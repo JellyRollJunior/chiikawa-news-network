@@ -154,6 +154,16 @@ VITE_SERVER_URL
 
 -   client  
     -   users
+        -   users list
+            -   title
+            -   user cards
+            -   on click -> goto userProfile(clickedUserId) (SAME URL)
+        -   desktop view
+    -   refactor to profiles route -> no longer need /users/:userId route 
+    -   server: mayhaps return users in some order? not sure
+        -   most posts
+        -   alphabetical (nah)
+        -   most followers
 
 -   server
 
@@ -181,6 +191,8 @@ VITE_SERVER_URL
     -   refactor scrolling just to scroll off entire page instead of off a block or smth
     -   like button liking animation
     -   move modals (?) chats modals, chat modals etc
+    -   useLogin
+    -   mayhaps extract list? idk lol
 
 ## DATA
 
