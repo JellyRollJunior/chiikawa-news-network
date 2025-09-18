@@ -153,6 +153,7 @@ VITE_SERVER_URL
         -   check all loading and see if its working
 
 -   client  
+    -   users
 
 -   server
 
@@ -162,7 +163,6 @@ VITE_SERVER_URL
 
 -   Task List
 
-    -   users
     -   follows
 
 -   low prio
