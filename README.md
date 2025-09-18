@@ -164,6 +164,7 @@ VITE_SERVER_URL
         -   most posts
         -   alphabetical (nah)
         -   most followers
+    -   client: mayhaps change UserInfo to be same as Users section (I think i like this layout more)
 
 -   server
 

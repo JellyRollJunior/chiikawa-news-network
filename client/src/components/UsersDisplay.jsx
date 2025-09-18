@@ -18,7 +18,7 @@ const UsersDisplay = () => {
           Users
         </h1>
       </header>
-      <ul className="mx-2 mt-3 mb-2 flex flex-col gap-2 ">
+      <ul className="mx-2 mt-3 mb-2 flex flex-col gap-2">
         {users &&
           users.map((user) => (
             <li
@@ -28,7 +28,9 @@ const UsersDisplay = () => {
               <div className="ml-2 flex gap-5 md:text-lg">
                 <Avatar className="size-[70px]" avatar={user.avatar} />
                 <div className="mt-2 flex flex-col gap-2">
-                  <div className="font-chiikawa text-center">{user.username}</div>
+                  <div className="font-chiikawa text-center">
+                    {user.username}
+                  </div>
                   <div className="grid w-full grid-cols-2 text-sm md:text-base">
                     <div>
                       {user && user.postCount ? user.postCount : 0} Posts
@@ -40,11 +42,15 @@ const UsersDisplay = () => {
                   </div>
                 </div>
               </div>
-              <p className='ml-2 mt-1'>{user.bio}</p>
-              <div className="mt-2 flex gap-3">
-                <button className="blue-button flex-1 px-3 py-0.5 text-sm">
-                  Follow
-                </button>
+              <p className="mt-2 ml-2">{user.bio}</p>
+              <div className="mt-2 grid grid-cols-2 gap-3 items-center">
+                {!user.isFollowing ? (
+                  <button className="blue-button flex-1 px-3 py-0.5 text-sm">
+                    Follow
+                  </button>
+                ) : (
+                  <div className='flex-1 text-center text-sm text-gray-500'>— following —</div>
+                )}
                 <button className="pink-button flex-1 px-3 py-0.5 text-sm">
                   View profile
                 </button>
