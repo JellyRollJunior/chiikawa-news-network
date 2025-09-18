@@ -10,7 +10,7 @@ const UserInfo = ({ userId }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mx-2 mt-3 max-w-md flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6">
+      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mt-6 md:w-md md:mx-auto">
         <header className="ml-2 flex md:text-lg">
           <Avatar
             className="size-[80px] md:size-[90px]"

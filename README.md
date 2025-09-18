@@ -151,7 +151,6 @@ VITE_SERVER_URL
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
-    -   client: userInfo not centered
 
 -   client  
     -   users
