@@ -9,20 +9,21 @@ const Users = () => {
   const closeViewProfile = () => setProfileUserId(null);
 
   return profileUserId ? (
-    <>
-      <nav>
+    <div className="flex w-full max-w-xl">
+      <UserProfile userId={profileUserId}>
         <button
-          className="font-chiikawa mt-3 ml-2 flex self-start px-5 py-0.5"
+          className="font-chiikawa mt-3 ml-1 flex self-start px-5 py-0.5"
           onClick={closeViewProfile}
         >
           <img className="w-[20px]" src={arrowBack} />
           Return to Users
         </button>
-      </nav>
-      <UserProfile userId={profileUserId} />
-    </>
+      </UserProfile>
+    </div>
   ) : (
-    <UsersDisplay openViewProfile={openViewProfile} />
+    <div className="main-container mx-4 mt-3 mb-2 flex w-full max-w-sm flex-1 flex-col">
+      <UsersDisplay openViewProfile={openViewProfile} />
+    </div>
   );
 };
 

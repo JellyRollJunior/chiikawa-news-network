@@ -29,7 +29,7 @@ const Scrollable = ({ onScrollToBottom, children }) => {
 
   return (
     <div
-      className="scrollbar-thin scrollbar-track-yellow-50 overflow-y-scroll"
+      className="scrollbar-thin h-full scrollbar-track-yellow-50 overflow-y-scroll"
       ref={containerRef}
     >
       {children}

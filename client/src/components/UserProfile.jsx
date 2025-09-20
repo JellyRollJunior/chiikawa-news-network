@@ -3,7 +3,7 @@ import { UserInfo } from './UserInfo.jsx';
 import { Scrollable } from './Scrollable.jsx';
 import { UserPosts } from './UserPosts.jsx';
 
-const UserProfile = ({ userId }) => {
+const UserProfile = ({ userId, children }) => {
   const {
     posts,
     hasNextPage,
@@ -16,18 +16,21 @@ const UserProfile = ({ userId }) => {
   } = usePosts(3, userId);
 
   return (
-    <Scrollable onScrollToBottom={fetchNextPage}>
-      <UserInfo userId={userId} />
-      <UserPosts
-        posts={posts}
-        hasNextPage={hasNextPage}
-        isLoadingInit={isLoadingInit}
-        isLoadingNext={isLoadingNext}
-        refreshPosts={refreshPosts}
-        toggleLike={toggleLike}
-        isLoadingLike={isLoadingLike}
-      />
-    </Scrollable>
+    <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col md:max-w-xl">
+      <Scrollable onScrollToBottom={fetchNextPage}>
+        {children}
+        <UserInfo userId={userId} />
+        <UserPosts
+          posts={posts}
+          hasNextPage={hasNextPage}
+          isLoadingInit={isLoadingInit}
+          isLoadingNext={isLoadingNext}
+          refreshPosts={refreshPosts}
+          toggleLike={toggleLike}
+          isLoadingLike={isLoadingLike}
+        />
+      </Scrollable>
+    </div>
   );
 };
 
