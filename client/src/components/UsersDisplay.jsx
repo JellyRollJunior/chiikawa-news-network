@@ -1,14 +1,22 @@
 import { useUsers } from '../hooks/useUsers.js';
 import { Avatar } from './Avatar.jsx';
 import logo from '../assets/nav/chiikawa-glasses.png';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 
 const UsersDisplay = () => {
   const { id } = useContext(CurrentContext);
   const { users, loading } = useUsers();
+  const [filter, setFilter] = useState('');
   const usersWithoutCurrent = users
     ? users.filter((user) => user.id != id)
+    : [];
+
+  // search filter
+  const filteredUsers = usersWithoutCurrent
+    ? usersWithoutCurrent.filter((user) =>
+        user.username.toLowerCase().includes(filter.trim().toLowerCase())
+      )
     : [];
 
   return (
@@ -23,13 +31,20 @@ const UsersDisplay = () => {
           Users
         </h1>
       </header>
-      <ul className="mx-2 mt-3 mb-2 flex flex-col gap-2">
-        {usersWithoutCurrent.map((user) => (
+      <input
+        className="block-shadow mx-2 mt-3 h-9 shrink-0 rounded-lg bg-white pl-3"
+        type="text"
+        value={filter}
+        onChange={(event) => setFilter(event.target.value)}
+        placeholder="Search"
+      />
+      <ul className="mx-2 mt-3 mb-2 flex flex-1 flex-col gap-2">
+        {filteredUsers.map((user) => (
           <li
             className="yellow-block flex flex-col px-2 pt-3 pb-2"
             key={user.id}
           >
-            <div className="ml-2 flex gap-5 md:text-lg">
+            <div className="ml-2 flex justify-around md:text-lg">
               <Avatar className="size-[70px]" avatar={user.avatar} />
               <div className="mt-2 flex flex-col gap-2">
                 <div className="font-chiikawa text-center">{user.username}</div>
