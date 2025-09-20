@@ -10,7 +10,7 @@ const UserInfo = ({ userId }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mt-6 md:w-md md:mx-auto">
+      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6 md:w-md">
         <header className="ml-2 flex md:text-lg">
           <Avatar
             className="size-[80px] md:size-[90px]"
@@ -52,7 +52,7 @@ const UserInfo = ({ userId }) => {
           </h2>
         </div>
       </header>
-      <div className="mt-3 flex w-full justify-around gap-3 text-sm">
+      <div className="mt-3 flex w-full justify-around gap-3">
         <div className="flex items-center gap-2">
           <LoadingElement className="h-4 w-7 rounded-full" /> Posts
         </div>
@@ -66,7 +66,7 @@ const UserInfo = ({ userId }) => {
       <button className="blue-button mt-3 w-full px-7 py-0.5" disabled={true}>
         Follow
       </button>
-      <LoadingElement className="mt-3 h-12 w-full rounded-sm text-xl font-bold" />
+      <LoadingElement className="mt-3 h-12 w-full rounded-sm" />
     </section>
   );
 };

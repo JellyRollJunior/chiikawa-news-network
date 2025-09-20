@@ -153,10 +153,6 @@ VITE_SERVER_URL
         -   check all loading and see if its working
 
 -   client  
-    -   users
-        -   users list
-            -   loading
-        -   desktop view
     -   server: mayhaps return users in some order? not sure
         -   most posts
         -   alphabetical (nah)
@@ -195,6 +191,7 @@ VITE_SERVER_URL
         -   user it in users & profile posts user page
     -   move main container logic to PAGE (for all pages)
     -   change all button color to #461901 amber-950
+    -   postslist -> NO POSTS MESSAGE (USER HAS NO POSTS)
 
 ## DATA
 

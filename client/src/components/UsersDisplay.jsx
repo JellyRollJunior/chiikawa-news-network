@@ -20,7 +20,7 @@ const UsersDisplay = ({ openViewProfile }) => {
     : [];
 
   return (
-    <div className="scrollbar-thin scrollbar-track-yellow-50 flex max-w-sm flex-col overflow-y-scroll">
+    <div className="scrollbar-thin scrollbar-track-yellow-50 flex h-full max-w-sm flex-col overflow-y-scroll">
       <header className="mt-3 flex items-center justify-center gap-2">
         <img
           className="w-[43px]"
@@ -39,7 +39,11 @@ const UsersDisplay = ({ openViewProfile }) => {
         placeholder="Search"
       />
       <section className="mx-2 mt-3 mb-2 flex-1">
-        <UsersList users={filteredUsers} openViewProfile={openViewProfile} isLoading={isLoading} />
+        <UsersList
+          users={filteredUsers}
+          openViewProfile={openViewProfile}
+          isLoading={isLoading}
+        />
       </section>
     </div>
   );

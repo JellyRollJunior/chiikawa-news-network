@@ -1,7 +1,8 @@
 import { Avatar } from './Avatar.jsx';
+import { LoadingElement } from './LoadingElement.jsx';
 
-const UsersListItem = ({ user, openViewProfile }) => {
-  return (
+const UsersListItem = ({ user, openViewProfile, isLoading = false }) => {
+  return !isLoading ? (
     <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
       <div className="ml-2 flex justify-around md:text-lg">
         <Avatar className="size-[70px]" avatar={user.avatar} />
@@ -32,6 +33,39 @@ const UsersListItem = ({ user, openViewProfile }) => {
             — following —
           </div>
         )}
+      </div>
+    </li>
+  ) : (
+    /* Loading Display */
+    <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
+      <div className="ml-2 flex justify-around">
+        <LoadingElement className="size-[70px] shrink-0 rounded-full" />
+        <div className="mt-2 flex flex-col gap-2">
+          <LoadingElement className="h-6 w-32 self-center rounded-lg" />
+          <div className="grid w-full grid-cols-2">
+            <div className="flex items-center gap-2">
+              <LoadingElement className="h-4 w-7 rounded-full" /> Posts
+            </div>
+            <div className="flex items-center gap-2">
+              <LoadingElement className="h-4 w-7 rounded-full" /> Followers
+            </div>
+          </div>
+        </div>
+      </div>
+      <LoadingElement className="mt-2 ml-2 h-12 rounded-lg" />
+      <div className="mt-2 grid grid-cols-2 items-center gap-3">
+        <button
+          className="pink-button flex-1 px-3 py-0.5 text-sm"
+          disabled={true}
+        >
+          View profile
+        </button>
+        <button
+          className="blue-button flex-1 px-3 py-0.5 text-sm"
+          disabled={true}
+        >
+          Follow
+        </button>
       </div>
     </li>
   );

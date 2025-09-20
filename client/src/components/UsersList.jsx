@@ -10,9 +10,9 @@ const UsersList = ({ users, openViewProfile, isLoading = false }) => {
               <UsersListItem user={user} openViewProfile={openViewProfile} />
             </Fragment>
           ))
-        : [...Array(3)].map((item, index) => (
+        : [...Array(5)].map((item, index) => (
             <Fragment key={index}>
-              <div>hi</div>
+              <UsersListItem isLoading={true}/>
             </Fragment>
           ))}
     </ul>
