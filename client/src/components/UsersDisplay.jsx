@@ -1,10 +1,10 @@
+import { useContext, useState } from 'react';
+import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useUsers } from '../hooks/useUsers.js';
 import { Avatar } from './Avatar.jsx';
 import logo from '../assets/nav/chiikawa-glasses.png';
-import { useContext, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 
-const UsersDisplay = () => {
+const UsersDisplay = ({ openViewProfile }) => {
   const { id } = useContext(CurrentContext);
   const { users, loading } = useUsers();
   const [filter, setFilter] = useState('');
@@ -20,7 +20,7 @@ const UsersDisplay = () => {
     : [];
 
   return (
-    <div className="main-container scrollbar-thin mx-4 mt-3 mb-2 flex flex-1 flex-col overflow-y-scroll">
+    <>
       <header className="mt-3 flex items-center justify-center gap-2">
         <img
           className="w-[43px]"
@@ -59,7 +59,10 @@ const UsersDisplay = () => {
             </div>
             <p className="mt-2 ml-2">{user.bio}</p>
             <div className="mt-2 grid grid-cols-2 items-center gap-3">
-              <button className="pink-button flex-1 px-3 py-0.5 text-sm">
+              <button
+                className="pink-button flex-1 px-3 py-0.5 text-sm"
+                onClick={() => openViewProfile(user.id)}
+              >
                 View profile
               </button>
               {!user.isFollowing ? (
@@ -75,7 +78,7 @@ const UsersDisplay = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

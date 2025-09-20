@@ -16,20 +16,18 @@ const UserProfile = ({ userId }) => {
   } = usePosts(3, userId);
 
   return (
-    <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
-      <Scrollable onScrollToBottom={fetchNextPage}>
-        <UserInfo userId={userId} />
-        <UserPosts
-          posts={posts}
-          hasNextPage={hasNextPage}
-          isLoadingInit={isLoadingInit}
-          isLoadingNext={isLoadingNext}
-          refreshPosts={refreshPosts}
-          toggleLike={toggleLike}
-          isLoadingLike={isLoadingLike}
-        />
-      </Scrollable>
-    </div>
+    <Scrollable onScrollToBottom={fetchNextPage}>
+      <UserInfo userId={userId} />
+      <UserPosts
+        posts={posts}
+        hasNextPage={hasNextPage}
+        isLoadingInit={isLoadingInit}
+        isLoadingNext={isLoadingNext}
+        refreshPosts={refreshPosts}
+        toggleLike={toggleLike}
+        isLoadingLike={isLoadingLike}
+      />
+    </Scrollable>
   );
 };
 

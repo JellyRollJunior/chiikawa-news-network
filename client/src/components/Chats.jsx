@@ -23,9 +23,9 @@ const Chats = ({
     : [];
 
   return (
-    <div className="main-container relative mx-4 mb-2 mt-3 flex flex-1 flex-col">
-      <header className="yellow-block mx-2 mt-3 flex items-end justify-between pl-5 pr-2">
-        <h2 className="text-shadow-wrap mb-1 mt-2 text-3xl font-bold">
+    <div className="main-container relative mx-4 mt-3 mb-2 flex flex-1 flex-col">
+      <header className="yellow-block mx-2 mt-3 flex items-end justify-between pr-2 pl-5">
+        <h2 className="text-shadow-wrap mt-2 mb-1 text-3xl font-bold">
           {username}
         </h2>
       </header>
@@ -38,14 +38,13 @@ const Chats = ({
       />
       <div className="relative mt-3 flex w-full justify-center">
         <button
-          className="blue-button relative px-6 py-1 font-medium text-lg"
+          className="blue-button relative px-6 py-1 text-lg font-medium"
           onClick={openNewChatModal}
         >
           New Conversation
-          
         </button>
       </div>
-      <section className="yellow-block mx-2 mt-3 pb-1 pt-2 sm:pb-2 md:pb-1">
+      <section className="yellow-block mx-2 mt-3 pt-2 pb-1 sm:pb-2 md:pb-1">
         <ChatsSectionTitle title="Public rooms" refreshBtn={refetchPublic} />
         <ChatsList
           chats={publicChats}
@@ -53,13 +52,16 @@ const Chats = ({
           loadingElements={1}
         />
       </section>
-      <section className="yellow-block mx-2 mb-3 mt-3 flex flex-1 flex-col overflow-y-hidden pb-1 pt-2 md:pb-2">
+      <section className="yellow-block mx-2 mt-3 mb-3 flex flex-1 flex-col overflow-y-hidden pt-2 pb-1 md:pb-2">
         <ChatsSectionTitle title="Conversations" refreshBtn={refetchChats} />
-        <main className="scrollbar-thin mt-2 flex-1 overflow-y-scroll scrollbar-track-yellow-50">
+        <main className="scrollbar-thin scrollbar-track-yellow-50 mt-2 flex-1 overflow-y-scroll">
           <ChatsList chats={filteredChats} isLoading={isLoading} />
         </main>
       </section>
-      <img className="drop-shadow-pink-outline absolute -bottom-[8px] -right-[16px] w-[96px]" src={kaniReading} />
+      <img
+        className="drop-shadow-pink-outline absolute -right-[16px] -bottom-[8px] w-[96px]"
+        src={kaniReading}
+      />
     </div>
   );
 };
