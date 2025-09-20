@@ -158,6 +158,8 @@ VITE_SERVER_URL
             -   title
             -   user cards
             -   on click -> goto userProfile(clickedUserId) (SAME URL)
+            -   filter out self
+            -   user search
         -   desktop view
     -   refactor to profiles route -> no longer need /users/:userId route 
     -   server: mayhaps return users in some order? not sure
