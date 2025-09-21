@@ -35,20 +35,27 @@
 }
 
 @theme {
+  /* Breakpoints */
   --breakpoint-xs: 30rem;
   --breakpoint-xxs: 26rem;
+
+  /* Fonts & Text */
   --font-default: 'sen', arial, sans-serif;
   --font-chiikawa: 'chiikawa', 'sen', arial, sans-serif;
   --text-shadow-wrap:
     0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
     0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white,
     0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white, 0 0 6px white;
+
+  /* Color */
+  --color-duckegg: #cce6e3;
 }
 
 @utility drop-shadow-pink-outline {
   filter: drop-shadow(2px 2px 0px #ef638766);
 }
 
+/* Backgrounds */
 @utility bg-dotted-sm {
   background-image: url('../assets/backgrounds/bg-dotted-sm.png');
 }
@@ -61,10 +68,7 @@
   background-image: url('../assets/backgrounds/bg-dotted-lg.png');
 }
 
-@utility block-shadow {
-  @apply shadow-[2px_2px_1px] inset-shadow-[2px_2px_3px] shadow-pink-200 inset-shadow-white;
-}
-
+/* Containers */
 @utility main-container {
   @apply bg-dotted-sm rounded-xl border-5 border-pink-200 bg-pink-100;
 }
@@ -73,22 +77,32 @@
   @apply bg-dotted-lg rounded-xl border-5 border-blue-200 bg-blue-100;
 }
 
+/* Blocks */
+@utility block-shadow {
+  @apply shadow-[2px_2px_1px] inset-shadow-[2px_2px_3px] shadow-pink-200 inset-shadow-white;
+}
+
+@utility block {
+  @apply block-shadow rounded-lg border-2;
+}
+
 @utility pink-dotted-block {
-  @apply bg-dotted-sm block-shadow rounded-lg border-2 border-pink-200 bg-pink-100;
+  @apply bg-dotted-sm block border-pink-200 bg-pink-100;
 }
 
 @utility yellow-block {
-  @apply block-shadow rounded-lg border-2 border-yellow-200 bg-linear-to-b from-orange-50 to-yellow-50;
+  @apply block border-yellow-200 bg-linear-to-b from-orange-50 to-yellow-50;
 }
 
-@utility blue-block {
-  @apply block-shadow rounded-lg border-2 border-emerald-200 bg-linear-to-b from-emerald-50 to-teal-100;
+@utility duckegg-block {
+  @apply block border-[#A2D0C488] bg-linear-to-b from-[#D9F1EB] to-[#cae8dc];
 }
 
 @utility pink-block {
-  @apply block-shadow rounded-lg border-2 border-pink-200 bg-linear-to-b from-red-50 to-pink-100;
+  @apply block border-pink-200 bg-linear-to-b from-red-50 to-pink-100;
 }
 
+/* Buttons */
 @utility button {
   @apply text-shadow-wrap block-shadow rounded-2xl border-2 disabled:border-gray-400 disabled:bg-gray-400 disabled:text-gray-50 disabled:shadow-none disabled:text-shadow-none;
 }

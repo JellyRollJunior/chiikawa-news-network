@@ -154,11 +154,22 @@ VITE_SERVER_URL
 
 -   client
 
-    -   restyle userProfile blank space. v ugly
     -   site restyling
+        -   create teal block
+        -   restyle block shadow
+        -   Order
+            -   NOTICE
+            -   Chats
+            -   Chat
+            -   UserProfile
+            -   Home
+            -   Users
+            -   Edit
+            -   Modals
         -   change all titles to style like simple title in home (without yellow block!)
-    -   extract homeHeader into header
-        -   user it in users & profile posts user page
+        -   restyle userProfile blank space. v ugly
+        -   extract homeHeader into header
+            -   user it in users & profile posts user page
 
 -   styling study
     -   mx larger
@@ -169,7 +180,7 @@ VITE_SERVER_URL
         -   use some 2:1 block layouts etc
     -   block shadow a bit too thick
     -   more subtle whiing on block styling (looks a bit too shiny)
-    -   blue-berry blue not matching the more teal color (make a new color for the teal tbh to be same as nyaa)
+    -   blue-berry blue not matching the more teal color (make a new color for the teal tbh to be same as nyaa)g
 
 -   server
 
