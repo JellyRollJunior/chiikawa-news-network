@@ -6,7 +6,7 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const UsersDisplay = ({ openViewProfile }) => {
   const { id } = useContext(CurrentContext);
-  const { users, isLoading } = useUsers();
+  const { users, isLoading, refetch } = useUsers();
   const [filter, setFilter] = useState('');
   const usersWithoutCurrent = users
     ? users.filter((user) => user.id != id)
@@ -43,6 +43,7 @@ const UsersDisplay = ({ openViewProfile }) => {
           users={filteredUsers}
           openViewProfile={openViewProfile}
           isLoading={isLoading}
+          refetchUsers={refetch}
         />
       </section>
     </div>

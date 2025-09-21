@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 import { UsersListItem } from './UsersListItem.jsx';
 import { useFollow } from '../hooks/useFollow.js';
 
-const UsersList = ({ users, openViewProfile, isLoading = false }) => {
+const UsersList = ({ users, openViewProfile, refetchUsers, isLoading = false }) => {
   const { followUser, isLoading: isLoadingFollow } = useFollow();
+
   return (
     <ul className="flex flex-col gap-2">
       {!isLoading
@@ -14,6 +15,7 @@ const UsersList = ({ users, openViewProfile, isLoading = false }) => {
                 openViewProfile={openViewProfile}
                 followUser={followUser}
                 isLoadingFollow={isLoadingFollow}
+                refetchUsers={refetchUsers}
               />
             </Fragment>
           ))

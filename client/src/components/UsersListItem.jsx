@@ -4,10 +4,16 @@ import { LoadingElement } from './LoadingElement.jsx';
 const UsersListItem = ({
   user,
   openViewProfile,
+  refetchUsers,
   followUser,
   isLoadingFollow = false,
   isLoading = false,
 }) => {
+  const handleFollowUser = async (userId) => {
+    await followUser(userId);
+    refetchUsers();
+  };
+
   return !isLoading ? (
     <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
       <div className="ml-2 flex justify-around md:text-lg">
@@ -33,7 +39,7 @@ const UsersListItem = ({
         {!user.isFollowing ? (
           <button
             className="blue-button flex-1 px-3 py-0.5 text-sm"
-            onClick={() => followUser(user.id)}
+            onClick={() => handleFollowUser(user.id)}
             disabled={isLoadingFollow}
           >
             Follow

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { fetchUsers } from '../services/userApi.js';
 import { useTokenErrorHandler } from './useTokenErrorHandler.js';
@@ -9,12 +9,11 @@ const useUsers = () => {
     const { handleTokenErrors } = useTokenErrorHandler();
     const { toast } = useContext(ToastContext);
 
-    useEffect(() => {
-        const abortController = new AbortController();
-        const getUsers = async () => {
+    const getUsers = useCallback(
+        async (signal) => {
             try {
                 setIsLoading(true);
-                const data = await fetchUsers(abortController.signal);
+                const data = await fetchUsers(signal);
                 setUsers(data.users);
             } catch (error) {
                 handleTokenErrors(error);
@@ -22,14 +21,23 @@ const useUsers = () => {
             } finally {
                 setIsLoading(false);
             }
-        };
+        },
+        [handleTokenErrors, toast]
+    );
 
-        getUsers();
+    const refetch = async () => {
+        getUsers(null);
+    }
+
+    useEffect(() => {
+        const abortController = new AbortController();
+        
+        getUsers(abortController.signal);
 
         return () => abortController.abort();
-    }, [handleTokenErrors, toast]);
+    }, [getUsers]);
 
-    return { users, isLoading };
+    return { users, isLoading, refetch };
 };
 
 export { useUsers };

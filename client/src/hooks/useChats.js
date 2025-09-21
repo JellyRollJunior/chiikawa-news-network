@@ -26,8 +26,7 @@ const useChats = () => {
     );
 
     const refetch = async () => {
-        const abortController = new AbortController();
-        getChats(abortController.signal);
+        getChats(null);
     };
 
     useEffect(() => {
