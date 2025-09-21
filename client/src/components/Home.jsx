@@ -4,9 +4,9 @@ import { Avatar } from './Avatar.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { PostList } from './PostsList.jsx';
 import { Scrollable } from './Scrollable.jsx';
-import { HomeHeader } from './HomeHeader.jsx';
 import { HomePostControlButtons } from './HomePostControlButtons.jsx';
 import { HomeNewPostModal } from './HomeNewPostModal.jsx';
+import { LogoTitle } from './LogoTitle.jsx';
 
 const Home = () => {
   const { avatar } = useContext(CurrentContext);
@@ -33,7 +33,7 @@ const Home = () => {
     <>
       <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
         <Scrollable onScrollToBottom={fetchNextPage}>
-          <HomeHeader className="mx-2 mt-3 justify-center" />
+          <LogoTitle className="mx-2 mt-3 justify-center" />
           <HomePostControlButtons
             className="mx-4 mt-2"
             isFeed={isFeed}
@@ -42,14 +42,14 @@ const Home = () => {
             isLoadingInit={isLoadingInit}
             refreshPosts={refreshPosts}
           />
-          <section className="mx-2 mt-3 flex gap-2 items-center">
+          <section className="mx-2 mt-3 flex items-center gap-2">
             <Avatar
               className="size-[32px] md:size-[42px]"
               avatar={avatar}
               secondaryStyling={true}
             />
             <button
-              className="block-shadow flex-1 rounded-lg bg-white h-9"
+              className="block-shadow h-9 flex-1 rounded-lg bg-white"
               onClick={openCreatePostModal}
             >
               What's on your mind?
