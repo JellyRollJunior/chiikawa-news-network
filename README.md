@@ -187,7 +187,6 @@ VITE_SERVER_URL
         -   user it in users & profile posts user page
     -   move main container logic to PAGE (for all pages)
     -   change all button color to #461901 amber-950
-    -   postslist -> NO POSTS MESSAGE (USER HAS NO POSTS)
     -   viewing a users followers/following
     -   home users bar on large screen
         -   users compact mode
