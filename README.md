@@ -155,8 +155,6 @@ VITE_SERVER_URL
 -   client
 
     -   site restyling
-        -   create teal block
-        -   restyle block shadow
         -   Order
             -   NOTICE
             -   Chats

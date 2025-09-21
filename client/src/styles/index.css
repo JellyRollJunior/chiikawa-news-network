@@ -79,7 +79,7 @@
 
 /* Blocks */
 @utility block-shadow {
-  @apply shadow-[2px_2px_1px] inset-shadow-[2px_2px_3px] shadow-pink-200 inset-shadow-white;
+  @apply shadow-[3px_3px_1px] inset-shadow-[2px_2px_3px] shadow-[#ef638722] inset-shadow-white;
 }
 
 @utility block {
