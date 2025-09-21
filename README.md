@@ -154,12 +154,9 @@ VITE_SERVER_URL
 
 -   client
     -   follows
-        -   client API
-        -   hook
+        -   refetch user data on follow
         -   profile
         -   user profile
-        -   users
-            -   following -> unfollow 
     -   server: mayhaps return users in some order? not sure
         -   most posts
         -   alphabetical (nah)
