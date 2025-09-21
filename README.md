@@ -151,15 +151,15 @@ VITE_SERVER_URL
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
+    -   client: searching chats causes chat container to shrink
 
 -   client
 
     -   site restyling
         -   Order
             -   Chats
-                -   USERNAME -> CHATS HEADER?
-                -   new block colors
-                -   list hover styling color is ugly. remove it or change it
+                -   list item hover styling color is ugly. remove it or change it
+                -   list item avatar (dotted white border like nyaa)
                 -   make entire contiander scroll isntead of just the block
             -   Chat
             -   UserProfile

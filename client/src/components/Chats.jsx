@@ -6,6 +6,7 @@ import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
 import { ChatsList } from './ChatsList.jsx';
 import { ChatsNewConversationModal } from './ChatsNewConversationModal.jsx';
 import kaniReading from '../assets/images/kani-reading.png';
+import editSquare from '../assets/svgs/edit-square.svg';
 
 const Chats = () => {
   const { username } = useContext(CurrentContext);
@@ -30,11 +31,21 @@ const Chats = () => {
 
   return (
     <>
-      <div className="main-container relative mx-4 mt-3 mb-2 flex flex-1 flex-col px-3 pt-3.5 pb-2.5">
-        <header className="yellow-block flex items-end justify-between pr-2 pl-5">
-          <h2 className="text-shadow-wrap mt-2 mb-1 text-3xl font-bold">
-            {username}
-          </h2>
+      <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col px-3 pt-3.5 pb-2.5">
+        <header className="flex gap-2">
+          <div className="yellow-block flex-1 pt-1 pb-0.5">
+            <h2 className="text-shadow-wrap font-chiikawa text-center text-lg">
+              {username}
+            </h2>
+          </div>
+          <div className='pink-block flex'>
+            <button
+              className="self-end h-full rounded-sm pl-1.5 pr-1 pt-1.5 pb-1 hover:bg-pink-200"
+              onClick={openNewConversationModal}
+            >
+              <img src={editSquare} alt="" />
+            </button>
+          </div>
         </header>
         <input
           className="block-shadow mt-2 h-9 rounded-lg bg-white pl-3"
@@ -43,14 +54,6 @@ const Chats = () => {
           onChange={(event) => setFilter(event.target.value)}
           placeholder="Search"
         />
-        <div className="relative mt-2 flex w-full justify-center">
-          <button
-            className="blue-button relative px-6 py-1 text-lg font-medium"
-            onClick={openNewConversationModal}
-          >
-            New Conversation
-          </button>
-        </div>
         <section className="duckegg-block mt-2 pt-2 pb-1 sm:pb-2 md:pb-1">
           <ChatsSectionTitle title="Public rooms" refreshBtn={refetchPublic} />
           <ChatsList
