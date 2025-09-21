@@ -154,14 +154,13 @@ VITE_SERVER_URL
 
 -   client
     -   follows
-        -   refetch user data on follow
-        -   profile
         -   user profile
+            -   follow
+            -   refetch user on follow
     -   server: mayhaps return users in some order? not sure
         -   most posts
         -   alphabetical (nah)
         -   most followers
-    -   client: mayhaps change UserInfo to be same as Users section (I think i like this layout more)
 
 -   server
 

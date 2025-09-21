@@ -10,19 +10,31 @@ const UserInfo = ({ userId }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6 md:w-md">
+      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6 md:w-sm">
         <header className="ml-2 flex md:text-lg">
           <Avatar
-            className="size-[80px] md:size-[90px]"
+            className="ml-4 size-[80px] md:size-[90px]"
             avatar={user && user.avatar}
           />
-          <div className="mt-2 flex w-full flex-col items-center justify-center">
-            <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 -mt-2 max-w-45 border-5 border-dashed border-pink-300 px-2 py-2 text-sm font-bold break-words md:text-base">
+          <div className="flex w-full flex-col items-center justify-center">
+            <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 mt-2 max-w-45 text-lg font-bold break-words">
               {user && user.username}
             </h2>
+            {user &&
+              (user.isFollowing ? (
+                <div className="text-center text-sm text-gray-500">
+                  — following —
+                </div>
+              ) : (
+                user.id != id && (
+                  <button className="pink-button mt-1 px-7 text-base">
+                    Follow
+                  </button>
+                )
+              ))}
           </div>
         </header>
-        <div className="mt-3 grid w-full grid-cols-3 text-center text-sm md:text-base">
+        <div className="mt-3 grid w-full grid-cols-3 px-5 text-center text-sm md:text-base">
           <div>
             {user && user.followingCount ? user.followingCount : 0} Following
           </div>
@@ -31,14 +43,7 @@ const UserInfo = ({ userId }) => {
             {user && user.followersCount ? user.followersCount : 0} Followers
           </div>
         </div>
-        {userId != id ? (
-          <button className="blue-button mt-3 w-full px-7 py-0.5">
-            Follow
-          </button>
-        ) : (
-          <hr className="mt-3 w-full border-1 border-yellow-300" />
-        )}
-        <p className="mt-3 text-center">{user && user.bio}</p>
+        <p className="mt-3 ml-2 text-start">{user && user.bio}</p>
       </section>
     </>
   ) : (
