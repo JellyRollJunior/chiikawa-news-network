@@ -56,6 +56,10 @@
 }
 
 /* Backgrounds */
+@utility bg-dotted-xs {
+  background-image: url('../assets/backgrounds/bg-dotted-xs.png');
+}
+
 @utility bg-dotted-sm {
   background-image: url('../assets/backgrounds/bg-dotted-sm.png');
 }
@@ -70,7 +74,7 @@
 
 /* Containers */
 @utility main-container {
-  @apply bg-dotted-sm rounded-xl border-5 border-[#f6b7c8] bg-pink-100;
+  @apply bg-dotted-xs rounded-xl border-5 border-[#f6b7c8] bg-pink-100;
 }
 
 @utility secondary-container {

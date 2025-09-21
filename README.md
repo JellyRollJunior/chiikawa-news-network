@@ -156,7 +156,6 @@ VITE_SERVER_URL
 
     -   site restyling
         -   Order
-            -   NOTICE
             -   Chats
             -   Chat
             -   UserProfile
@@ -170,7 +169,10 @@ VITE_SERVER_URL
             -   user it in users & profile posts user page
 
 -   styling study
-    -   mx larger
+    -   main container spacing
+        -   mx larger   
+        -   mt larger
+        -   mb small
     -   gap between blocks small
     -   Use different color blocks
         -   overuse of yellow blocks
