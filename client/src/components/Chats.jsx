@@ -4,7 +4,7 @@ import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { usePublicChats } from '../hooks/usePublicChats.js';
 import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
 import { ChatsList } from './ChatsList.jsx';
-import { ChatsNewConversationModal } from './ChatsCreateModal.jsx';
+import { ChatsNewConversationModal } from './ChatsNewConversationModal.jsx';
 import kaniReading from '../assets/images/kani-reading.png';
 
 const Chats = () => {

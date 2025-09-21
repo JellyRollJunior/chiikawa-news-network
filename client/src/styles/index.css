@@ -70,7 +70,7 @@
 
 /* Containers */
 @utility main-container {
-  @apply bg-dotted-sm rounded-xl border-5 border-pink-200 bg-pink-100;
+  @apply bg-dotted-sm rounded-xl border-5 border-[#f6b7c8] bg-pink-100;
 }
 
 @utility secondary-container {
@@ -87,11 +87,11 @@
 }
 
 @utility pink-dotted-block {
-  @apply bg-dotted-sm block border-pink-200 bg-pink-100;
+  @apply bg-dotted-sm block border-[#FFDCEA] bg-pink-100;
 }
 
 @utility yellow-block {
-  @apply block border-yellow-200 bg-linear-to-b from-orange-50 to-yellow-50;
+  @apply block border-[#FEF5D7] bg-linear-to-b from-[#FFFDED] to-[#FFFBDE];
 }
 
 @utility duckegg-block {
@@ -99,7 +99,7 @@
 }
 
 @utility pink-block {
-  @apply block border-pink-200 bg-linear-to-b from-red-50 to-pink-100;
+  @apply block border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
 }
 
 /* Buttons */
