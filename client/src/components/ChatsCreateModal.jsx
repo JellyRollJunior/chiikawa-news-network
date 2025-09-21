@@ -6,7 +6,7 @@ import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 
-const ChatsCreateModal = ({ closeFunction }) => {
+const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();
   const { refetchChats } = useContext(ChatsContext);
   const { users, isLoading } = useUsers();
@@ -120,4 +120,4 @@ const ChatsCreateModal = ({ closeFunction }) => {
   );
 };
 
-export { ChatsCreateModal };
+export { ChatsNewConversationModal };

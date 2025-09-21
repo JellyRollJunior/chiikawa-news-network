@@ -154,6 +154,23 @@ VITE_SERVER_URL
 
 -   client
 
+    -   restyle userProfile blank space. v ugly
+    -   site restyling
+        -   change all titles to style like simple title in home (without yellow block!)
+    -   extract homeHeader into header
+        -   user it in users & profile posts user page
+
+-   styling study
+    -   mx larger
+    -   gap between blocks small
+    -   Use different color blocks
+        -   overuse of yellow blocks
+    -   overly vertical layout
+        -   use some 2:1 block layouts etc
+    -   block shadow a bit too thick
+    -   more subtle whiing on block styling (looks a bit too shiny)
+    -   blue-berry blue not matching the more teal color (make a new color for the teal tbh to be same as nyaa)
+
 -   server
 
     -   github login
@@ -174,23 +191,16 @@ VITE_SERVER_URL
         -   when keyboard pops up, does everything go to shit? (probably...)
     -   POSTS
         -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
-    -   Pagination
-        -   users
-        -   messages
-    -   change all titles to style like simple title in home (without yellow block!)
     -   refactor scrolling just to scroll off entire page instead of off a block or smth
     -   like button liking animation
-    -   move modals (?) chats modals, chat modals etc
     -   useLogin
     -   mayhaps extract list? idk lol
-    -   extract homeHeader into header
-        -   user it in users & profile posts user page
     -   move main container logic to PAGE (for all pages)
     -   change all button color to #461901 amber-950
     -   viewing a users followers/following
     -   home users bar on large screen
         -   users compact mode
-    -   restyle userProfile blank space. v ugly
+    -   client unfollow
 
 ## DATA
 
