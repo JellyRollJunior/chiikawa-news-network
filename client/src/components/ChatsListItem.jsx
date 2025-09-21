@@ -24,7 +24,11 @@ const ChatsListItem = ({
     <li className="hover:bg-duckegg-dark px-2 py-2">
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
-        <Avatar className="size-[64px]" avatar={avatar} />
+        <Avatar
+          className="size-[68px]"
+          avatar={avatar}
+          background="yellow-50"
+        />
         <div className="-mt-0.5 ml-2 flex min-w-0 flex-col self-center leading-[1.2]">
           <h4 className="truncate text-lg font-medium">{chatName}</h4>
           <p className="-mt-1 truncate">{latestMessageContent}</p>

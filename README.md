@@ -156,6 +156,7 @@ VITE_SERVER_URL
 -   client
 
     -   site restyling
+        -   fix avatar restyling on all areas
         -   Order
             -   Chats
                 -   list item avatar (dotted white border like nyaa)
