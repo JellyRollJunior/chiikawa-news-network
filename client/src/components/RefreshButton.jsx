@@ -1,8 +1,8 @@
 import refreshIcon from '../assets/svgs/refresh.svg';
 // eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
+import { hover, motion } from 'motion/react';
 
-const RefreshButton = ({ onclick }) => {
+const RefreshButton = ({ onclick, hoverColor = 'pink-200' }) => {
   return (
     <motion.button
       initial={{ rotate: 0 }}
@@ -17,7 +17,7 @@ const RefreshButton = ({ onclick }) => {
           ease: 'easeInOut',
         },
       }}
-      className="rounded-2xl px-1 py-1 hover:bg-pink-200"
+      className={`rounded-2xl px-1 py-1 hover:bg-${hoverColor}`}
       onClick={onclick}
     >
       <img src={refreshIcon} alt="Refresh icon" />
