@@ -158,9 +158,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   Chats
-                -   list item avatar (dotted white border like nyaa)
-                -   make entire contiander scroll isntead of just the block
             -   Chat
             -   UserProfile
             -   Home
