@@ -152,7 +152,14 @@ VITE_SERVER_URL
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
 
--   client  
+-   client
+    -   follows
+        -   client API
+        -   hook
+        -   profile
+        -   user profile
+        -   users
+            -   following -> unfollow 
     -   server: mayhaps return users in some order? not sure
         -   most posts
         -   alphabetical (nah)
@@ -164,10 +171,7 @@ VITE_SERVER_URL
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
-
--   Task List
-
-    -   follows
+    -   implement unfollow
 
 -   low prio
 
@@ -192,6 +196,7 @@ VITE_SERVER_URL
     -   move main container logic to PAGE (for all pages)
     -   change all button color to #461901 amber-950
     -   postslist -> NO POSTS MESSAGE (USER HAS NO POSTS)
+    -   viewing a users followers/following
 
 ## DATA
 

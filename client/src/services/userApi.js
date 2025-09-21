@@ -50,4 +50,20 @@ const patchUserAvatar = async (fileFormData) => {
     return data;
 };
 
-export { fetchCurrent, fetchUsers, fetchUser, patchUserBio, patchUserAvatar };
+const postFollower = async (signal, userId) => {
+    const data = await request(`/users/${userId}/followers`, {
+        mode: 'cors',
+        method: 'POST',
+        signal,
+    });
+    return data;
+};
+
+export {
+    fetchCurrent,
+    fetchUsers,
+    fetchUser,
+    patchUserBio,
+    patchUserAvatar,
+    postFollower,
+};

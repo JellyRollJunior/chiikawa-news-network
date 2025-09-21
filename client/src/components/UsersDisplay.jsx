@@ -20,7 +20,7 @@ const UsersDisplay = ({ openViewProfile }) => {
     : [];
 
   return (
-    <div className="scrollbar-thin scrollbar-track-yellow-50 flex h-full max-w-sm flex-col overflow-y-scroll">
+    <div className="scrollbar-thin scrollbar-track-yellow-50 flex h-full flex-col overflow-y-scroll">
       <header className="mt-3 flex items-center justify-center gap-2">
         <img
           className="w-[43px]"

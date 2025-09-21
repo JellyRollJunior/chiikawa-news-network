@@ -21,7 +21,7 @@ const Users = () => {
       </UserProfile>
     </div>
   ) : (
-    <div className="main-container mx-4 mt-3 mb-2 flex w-full max-w-sm flex-1 flex-col">
+    <div className="main-container mx-4 mt-3 mb-2 flex w-full max-w-md flex-1 flex-col">
       <UsersDisplay openViewProfile={openViewProfile} />
     </div>
   );

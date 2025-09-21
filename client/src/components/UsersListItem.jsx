@@ -5,7 +5,7 @@ const UsersListItem = ({ user, openViewProfile, isLoading = false }) => {
   return !isLoading ? (
     <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
       <div className="ml-2 flex justify-around md:text-lg">
-        <Avatar className="size-[70px]" avatar={user.avatar} />
+        <Avatar className="size-[74px]" avatar={user.avatar} />
         <div className="mt-2 flex flex-col gap-2">
           <div className="font-chiikawa text-center">{user.username}</div>
           <div className="grid w-full grid-cols-2 text-sm md:text-base">
