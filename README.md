@@ -158,7 +158,6 @@ VITE_SERVER_URL
     -   site restyling
         -   Order
             -   Chats
-                -   list item hover styling color is ugly. remove it or change it
                 -   list item avatar (dotted white border like nyaa)
                 -   make entire contiander scroll isntead of just the block
             -   Chat

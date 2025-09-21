@@ -21,7 +21,7 @@ const ChatsListItem = ({
     ? format(new Date(latestMessage.sendTime), 'MMM do • h:mmaaa')
     : '';
   return !isLoading ? (
-    <li className="mx-3 rounded-xl px-2 py-2 hover:bg-emerald-100 md:mx-1">
+    <li className="hover:bg-duckegg-dark px-2 py-2">
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
         <Avatar className="size-[64px]" avatar={avatar} />
