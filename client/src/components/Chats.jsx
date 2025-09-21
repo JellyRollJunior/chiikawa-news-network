@@ -30,28 +30,28 @@ const Chats = () => {
 
   return (
     <>
-      <div className="main-container relative mx-4 mt-3 mb-2 flex flex-1 flex-col">
-        <header className="yellow-block mx-2 mt-3 flex items-end justify-between pr-2 pl-5">
+      <div className="main-container relative mx-4 mt-3 mb-2 flex flex-1 flex-col px-3 pt-3.5 pb-2.5">
+        <header className="yellow-block flex items-end justify-between pr-2 pl-5">
           <h2 className="text-shadow-wrap mt-2 mb-1 text-3xl font-bold">
             {username}
           </h2>
         </header>
         <input
-          className="block-shadow mx-2 mt-3 h-9 rounded-lg bg-white pl-3"
+          className="block-shadow mt-2 h-9 rounded-lg bg-white pl-3"
           type="text"
           value={filter}
           onChange={(event) => setFilter(event.target.value)}
           placeholder="Search"
         />
-        <div className="relative mt-3 flex w-full justify-center">
+        <div className="relative mt-2 flex w-full justify-center">
           <button
-            className="blue-button relative px-6 py-1 text-lg font-medium"
+            className="blue-button relative px-7 py-0.5 text-lg font-medium"
             onClick={openNewConversationModal}
           >
             New Conversation
           </button>
         </div>
-        <section className="yellow-block mx-2 mt-3 pt-2 pb-1 sm:pb-2 md:pb-1">
+        <section className="yellow-block mt-2 pt-2 pb-1 sm:pb-2 md:pb-1">
           <ChatsSectionTitle title="Public rooms" refreshBtn={refetchPublic} />
           <ChatsList
             chats={publicChats}
@@ -59,7 +59,7 @@ const Chats = () => {
             loadingElements={1}
           />
         </section>
-        <section className="yellow-block mx-2 mt-3 mb-3 flex flex-1 flex-col overflow-y-hidden pt-2 pb-1 md:pb-2">
+        <section className="yellow-block mt-2 flex flex-1 flex-col overflow-y-hidden pt-2 pb-1 md:pb-2">
           <ChatsSectionTitle title="Conversations" refreshBtn={refetchChats} />
           <main className="scrollbar-thin scrollbar-track-yellow-50 mt-2 flex-1 overflow-y-scroll">
             <ChatsList chats={filteredChats} isLoading={isLoading} />

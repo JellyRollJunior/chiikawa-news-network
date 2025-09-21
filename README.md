@@ -157,6 +157,8 @@ VITE_SERVER_URL
     -   site restyling
         -   Order
             -   Chats
+                -   USERNAME -> CHATS HEADER?
+                -   new block colors
             -   Chat
             -   UserProfile
             -   Home
