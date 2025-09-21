@@ -153,14 +153,6 @@ VITE_SERVER_URL
         -   check all loading and see if its working
 
 -   client
-    -   follows
-        -   user profile
-            -   follow
-            -   refetch user on follow
-    -   server: mayhaps return users in some order? not sure
-        -   most posts
-        -   alphabetical (nah)
-        -   most followers
 
 -   server
 
@@ -168,6 +160,10 @@ VITE_SERVER_URL
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
     -   implement unfollow
+    -   server: mayhaps return users in some order? not sure
+        -   most posts
+        -   alphabetical (nah)
+        -   most followers
 
 -   low prio
 
@@ -193,6 +189,9 @@ VITE_SERVER_URL
     -   change all button color to #461901 amber-950
     -   postslist -> NO POSTS MESSAGE (USER HAS NO POSTS)
     -   viewing a users followers/following
+    -   home users bar on large screen
+        -   users compact mode
+    -   restyle userProfile blank space. v ugly
 
 ## DATA
 

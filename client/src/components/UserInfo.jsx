@@ -4,9 +4,14 @@ import { useUser } from '../hooks/useUser.js';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 
-const UserInfo = ({ userId }) => {
+const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
   const { id } = useContext(CurrentContext);
-  const { user, isLoading } = useUser(userId);
+  const { user, isLoading, refetch } = useUser(userId);
+
+  const handleFollowUser = async (userId) => {
+    await followUser(userId);
+    refetch();
+  };
 
   return !isLoading ? (
     <>
@@ -27,7 +32,11 @@ const UserInfo = ({ userId }) => {
                 </div>
               ) : (
                 user.id != id && (
-                  <button className="pink-button mt-1 px-7 text-base">
+                  <button
+                    className="pink-button mt-1 px-7 text-base"
+                    onClick={() => handleFollowUser(user.id)}
+                    disabled={isLoadingFollow}
+                  >
                     Follow
                   </button>
                 )
