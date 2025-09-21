@@ -45,13 +45,13 @@ const Chats = () => {
         />
         <div className="relative mt-2 flex w-full justify-center">
           <button
-            className="blue-button relative px-7 py-0.5 text-lg font-medium"
+            className="blue-button relative px-6 py-1 text-lg font-medium"
             onClick={openNewConversationModal}
           >
             New Conversation
           </button>
         </div>
-        <section className="yellow-block mt-2 pt-2 pb-1 sm:pb-2 md:pb-1">
+        <section className="duckegg-block mt-2 pt-2 pb-1 sm:pb-2 md:pb-1">
           <ChatsSectionTitle title="Public rooms" refreshBtn={refetchPublic} />
           <ChatsList
             chats={publicChats}
@@ -59,9 +59,10 @@ const Chats = () => {
             loadingElements={1}
           />
         </section>
-        <section className="yellow-block mt-2 flex flex-1 flex-col overflow-y-hidden pt-2 pb-1 md:pb-2">
+        <div className="block-shadow mt-2 h-4 rounded-lg bg-pink-50"></div>
+        <section className="duckegg-block mt-2 flex flex-1 flex-col overflow-y-hidden pt-2 pb-1 md:pb-2">
           <ChatsSectionTitle title="Conversations" refreshBtn={refetchChats} />
-          <main className="scrollbar-thin scrollbar-track-yellow-50 mt-2 flex-1 overflow-y-scroll">
+          <main className="scrollbar-thin scrollbar-track-duckegg mt-2 flex-1 overflow-y-scroll">
             <ChatsList chats={filteredChats} isLoading={isLoading} />
           </main>
         </section>

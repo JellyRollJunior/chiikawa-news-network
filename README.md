@@ -159,6 +159,8 @@ VITE_SERVER_URL
             -   Chats
                 -   USERNAME -> CHATS HEADER?
                 -   new block colors
+                -   list hover styling color is ugly. remove it or change it
+                -   make entire contiander scroll isntead of just the block
             -   Chat
             -   UserProfile
             -   Home
