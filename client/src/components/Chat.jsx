@@ -11,6 +11,7 @@ import { ChatMessageInput } from './ChatMessageInput.jsx';
 import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
 import shisaBento from '../assets/images/shisa-bento.png';
+import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -76,26 +77,11 @@ const Chat = () => {
           </p>
         </div>
         {!isPublicChat && (
-          <DotsMenu>
-            {isTwoPersonChat && (
-              <DotsMenuItem
-                label="View profile"
-                onClick={() =>
-                  navigate(
-                    `/users/${chat.users.find((user) => user.id != id).id}`
-                  )
-                }
-              />
-            )}
-            <DotsMenuItem
-              label="Rename conversation"
-              onClick={openRenameModal}
-            />
-            <DotsMenuItem
-              label="Delete converstation"
-              onClick={openDeleteModal}
-            />
-          </DotsMenu>
+          <ChatHeaderMenu
+            users={chat && chat.users}
+            openRenameModal={openRenameModal}
+            openDeleteModal={openDeleteModal}
+          />
         )}
       </header>
       <main

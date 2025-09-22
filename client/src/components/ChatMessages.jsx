@@ -25,7 +25,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
   };
 
   return (
-    <ul className="flex flex-col bg-dotted-lg gap-3">
+    <ul className="flex flex-col min-h-full bg-dotted-lg gap-3">
       {!isLoading ? (
         <>
           {messages.length == 0 && (
