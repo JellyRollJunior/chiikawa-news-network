@@ -11,7 +11,7 @@ const ChatMessageInput = ({ sendMessage, isDisabled = false }) => {
 
   return (
     <form
-      className="block-shadow flex h-11 items-center gap-3 rounded-xl bg-white pl-3 pr-5"
+      className="block-shadow flex h-11 items-center gap-3 rounded-lg bg-white pr-5 pl-3"
       onSubmit={handleSendMessage}
     >
       <input
@@ -24,7 +24,7 @@ const ChatMessageInput = ({ sendMessage, isDisabled = false }) => {
         required
       />
       <button
-        className="text-shadow-wrap font-bold hover:text-amber-700 hover:underline disabled:text-gray-400"
+        className="text-shadow-wrap font-bold hover:text-pink-500 hover:underline disabled:text-gray-400"
         disabled={isDisabled}
       >
         Send
