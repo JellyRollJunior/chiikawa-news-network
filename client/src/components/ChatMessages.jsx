@@ -25,7 +25,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
   };
 
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="flex flex-col bg-dotted-lg gap-3">
       {!isLoading ? (
         <>
           {messages.length == 0 && (
@@ -42,19 +42,27 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
               )}
               <li
                 key={message.id}
-                className={`flex max-w-4/5 items-start gap-2 ${message.sender.id == id && 'flex-row-reverse self-end'}`}
+                className={`flex max-w-4/5 items-start gap-2 ${
+                  message.sender.id == id && 'flex-row-reverse self-end'
+                }`}
               >
                 <Avatar
-                  className='size-[40px] md:size-[46px]'
+                  className="size-[40px] md:size-[46px]"
                   avatar={message.sender.avatar}
                   secondaryStyling={true}
                 />
                 <div
-                  className={`w-fit min-w-26 rounded-3xl px-5 py-2 ${message.sender.id == id ? 'blue-block rounded-tr-sm' : 'pink-block rounded-tl-sm'}`}
+                  className={`w-fit min-w-26 rounded-3xl px-5 py-2 ${
+                    message.sender.id == id
+                      ? 'duckegg-block rounded-tr-sm'
+                      : 'pink-block rounded-tl-sm'
+                  }`}
                 >
                   <h3>{message.content}</h3>
                   <p
-                    className={`text-sm text-gray-500 ${message.sender.id == id && 'justify-self-end'}`}
+                    className={`text-sm text-gray-500 ${
+                      message.sender.id == id && 'justify-self-end'
+                    }`}
                   >
                     {!isPrivateChat && `${message.sender.username} — `}
                     {format(new Date(message.sendTime), 'h:mmaaa')}

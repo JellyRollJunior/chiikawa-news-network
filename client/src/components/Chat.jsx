@@ -61,9 +61,12 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container relative mx-4 mb-2 mt-3 flex w-full flex-1 flex-col md:ml-0">
-      <header className="yellow-block block-shadow mx-2 mt-3 flex gap-2 rounded-lg px-4 py-4">
-        <Avatar className='size-[48px] md:size-[56px]' avatar={chat && chat.avatar} />
+    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col px-3 pt-3.5 pb-2.5 md:ml-0">
+      <header className="yellow-block block-shadow flex gap-2 rounded-lg px-2 py-2">
+        <Avatar
+          className="size-[48px] md:size-[56px]"
+          avatar={chat && chat.avatar}
+        />
         <div className="flex flex-col justify-center">
           <h2 className="text-lg font-medium">
             {chat && chat.name ? chat.name : chatterNames}
@@ -97,7 +100,7 @@ const Chat = () => {
       </header>
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin mt-2 flex-1 overflow-y-scroll pl-3 pr-4 pt-3"
+        className="scrollbar-thin pink-block mt-2 flex-1 overflow-y-scroll pt-3 pr-4 pl-3"
       >
         <ChatMessages
           messages={messages}
@@ -105,7 +108,7 @@ const Chat = () => {
           isLoading={isLoading}
         />
       </main>
-      <div className="yellow-block mx-2 mt-2 h-7"></div>
+      <div className="duckegg-block mt-2 mb-2 h-4"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
       {isRenameModalOpen && (
         <ChatRenameModal
@@ -117,7 +120,10 @@ const Chat = () => {
       {isDeleteModalOpen && (
         <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
       )}
-      <img className="drop-shadow-pink-outline absolute -right-[20px] -top-[20px] w-[84px]" src={shisaBento} />
+      <img
+        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[84px]"
+        src={shisaBento}
+      />
     </div>
   );
 };

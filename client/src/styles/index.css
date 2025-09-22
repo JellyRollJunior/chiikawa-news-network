@@ -97,6 +97,10 @@
   @apply bg-dotted-sm block border-[#FFDCEA] bg-pink-100;
 }
 
+@utility pink-dotted-block-lg {
+  @apply bg-dotted-lg block border-[#FFDCEA] bg-pink-100;
+}
+
 @utility pink-block {
   @apply block border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
 }

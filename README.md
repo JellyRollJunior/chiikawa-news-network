@@ -151,19 +151,27 @@ VITE_SERVER_URL
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
-    -   client: searching chats causes chat container to shrink
 
 -   client
 
     -   site restyling
         -   fix avatar restyling on all areas
+            -   avatar border colors 
+                -   yellow block -> red
+                -   duckegg -> white
+                -   pink -> ?
         -   Order
             -   Chat
+                -   chat layout
+                -   messages
             -   UserProfile
             -   Home
             -   Users
             -   Edit
             -   Modals
+                -   new convo
+                -   chat delete
+                -   chat rename
             -   Toasts
         -   change all titles to style like simple title in home (without yellow block!)
         -   restyle userProfile blank space. v ugly
