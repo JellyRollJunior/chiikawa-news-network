@@ -161,7 +161,9 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   UserProfile
-                -   desktop layout
+                -   UserInfo desktop layout
+                -   postsList
+                -   fix scroll bar...
             -   Home
             -   Users
             -   Edit
