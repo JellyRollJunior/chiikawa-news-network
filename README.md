@@ -158,7 +158,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   chats loading restyle
             -   Chat
             -   UserProfile
             -   Home
