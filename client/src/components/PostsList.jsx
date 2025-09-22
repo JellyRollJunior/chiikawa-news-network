@@ -7,7 +7,7 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const PostListNotification = ({ src, children }) => {
   return (
-    <li className="blue-block flex flex-col px-3 py-2">
+    <li className="duckegg-block flex flex-col px-3 py-2">
       <div className="mt-2 flex items-center justify-center">
         <img className="w-1/4" src={src} alt="" />
       </div>
@@ -25,6 +25,8 @@ const PostList = ({
   isLoadingLike,
   refreshPosts,
 }) => {
+  const BLOCK_CLASSES = ['duckegg-block', 'yellow-block', 'pink-block'];
+  
   // Delete Post Modal
   const [postToBeDeletedId, setPostToBeDeletedId] = useState(null);
   const openDeleteModal = (postId) => setPostToBeDeletedId(postId);
@@ -34,9 +36,10 @@ const PostList = ({
     <>
       <ul className="flex flex-col gap-2">
         {!isLoadingInit
-          ? posts.map((post) => (
+          ? posts.map((post, index) => (
               <Fragment key={post.id}>
                 <PostsListItem
+                  className={BLOCK_CLASSES[index % BLOCK_CLASSES.length]}
                   post={post}
                   toggleLike={toggleLike}
                   isLoadingLike={isLoadingLike}

@@ -14,8 +14,8 @@ const UserPosts = ({
   return (
     <section className="flex flex-1 flex-col">
       <div className="flex gap-2">
-        <div className="yellow-block flex flex-1 items-center justify-start gap-4 py-2">
-          <LogoTitle className="ml-3 text-lg" text="Posts" />
+        <div className="yellow-block flex flex-1 items-center justify-start gap-4 pt-2 pb-1">
+          <LogoTitle className="ml-2 text-lg" text="Posts" />
         </div>
         <div className="pink-block flex items-center px-1">
           <RefreshButton onclick={refreshPosts} />
