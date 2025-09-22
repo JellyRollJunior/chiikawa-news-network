@@ -175,6 +175,7 @@ VITE_SERVER_URL
         -   restyle userProfile blank space. v ugly
         -   extract homeHeader into header
             -   user it in users & profile posts user page
+        -   LONG USERNAME PROBABLY BREAKS WIDTH
 
 -   styling study
     -   main container spacing

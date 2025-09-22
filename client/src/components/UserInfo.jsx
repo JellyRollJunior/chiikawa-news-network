@@ -15,45 +15,50 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mx-2 mt-3 flex-0 px-2 pt-3 pb-2 md:mx-auto md:mt-6 md:w-sm">
-        <header className="ml-2 flex md:text-lg">
-          <Avatar
-            className="ml-4 size-[80px] md:size-[90px]"
-            avatar={user && user.avatar}
-          />
-          <div className="flex w-full flex-col items-center justify-center">
-            <h2 className="font-chiikawa xxs:max-w-55 xs:max-w-64 mt-2 max-w-45 text-lg font-bold break-words">
-              {user && user.username}
-            </h2>
-            {user &&
-              (user.isFollowing ? (
-                <div className="text-center text-sm text-gray-500">
-                  — following —
-                </div>
-              ) : (
-                user.id != id && (
-                  <button
-                    className="pink-button mt-1 px-7 text-base"
-                    onClick={() => handleFollowUser(user.id)}
-                    disabled={isLoadingFollow}
-                  >
-                    Follow
-                  </button>
-                )
-              ))}
+      <header className="mx-4 mt-3 flex flex-col">
+        <div className="yellow-block flex-1 pt-1 pb-0.5">
+          <h2 className="text-shadow-wrap font-chiikawa text-center text-lg">
+            {user && user.username}
+          </h2>
+        </div>
+        <div className="mt-2 flex gap-2">
+          <div className="duckegg-block p-2">
+            <Avatar
+              className="size-[100px] border-4 border-dashed border-white p-0.5 md:size-[90px]"
+              avatar={user && user.avatar}
+              background="none"
+            />
           </div>
-        </header>
-        <div className="mt-3 grid w-full grid-cols-3 px-5 text-center text-sm md:text-base">
-          <div>
-            {user && user.followingCount ? user.followingCount : 0} Following
-          </div>
-          <div>{user && user.postCount ? user.postCount : 0} Posts</div>
-          <div>
-            {user && user.followersCount ? user.followersCount : 0} Followers
+          <div className="pink-block flex flex-1 flex-col items-center justify-around pt-1 text-sm md:text-base">
+            <div>
+              {user && user.followersCount ? user.followersCount : 0} Followers
+            </div>
+            <div>
+              {user && user.followingCount ? user.followingCount : 0} Following
+            </div>
+            <div>{user && user.postCount ? user.postCount : 0} Posts</div>
           </div>
         </div>
-        <p className="mt-3 ml-2 text-start">{user && user.bio}</p>
-      </section>
+        <div className="yellow-block mt-2 flex flex-col p-2 pb-1">
+          {user &&
+            (user.isFollowing ? (
+              <div className="text-center text-sm text-gray-500">
+                — following —
+              </div>
+            ) : (
+              user.id != id && (
+                <button
+                  className="pink-button w-full self-center text-base"
+                  onClick={() => handleFollowUser(user.id)}
+                  disabled={isLoadingFollow}
+                >
+                  Follow
+                </button>
+              )
+            ))}
+          <p className="mt-1 ml-2 text-start">{user && user.bio}</p>
+        </div>
+      </header>
     </>
   ) : (
     /* Loading Display */
