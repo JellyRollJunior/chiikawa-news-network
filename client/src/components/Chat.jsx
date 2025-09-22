@@ -4,14 +4,12 @@ import { useChat } from '../hooks/useChat.js';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useJoinRoom } from '../hooks/useJoinRoom.js';
 import { Avatar } from './Avatar.jsx';
-import { DotsMenu } from './DotsMenu.jsx';
-import { DotsMenuItem } from './DotsMenuItem.jsx';
 import { ChatMessages } from './ChatMessages.jsx';
 import { ChatMessageInput } from './ChatMessageInput.jsx';
 import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
-import shisaBento from '../assets/images/shisa-bento.png';
 import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
+import shisaBento from '../assets/images/shisa-bento.png';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -32,11 +30,11 @@ const Chat = () => {
     sendMessage,
     updateChatName,
   } = useChat(chatId);
-  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403)
-    navigate('/');
+  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) {
+    navigate('/chats');
+  }
   const isPublicChat = chat && chat.type == 'PUBLIC';
   const chatterNames = chat && getUsersString(id, chat.users);
-  const isTwoPersonChat = chat && chat.users.length == 2;
 
   // join room on mount
   useJoinRoom(chatId);
@@ -63,25 +61,29 @@ const Chat = () => {
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col px-3 pt-3.5 pb-2.5 md:ml-0">
-      <header className="yellow-block block-shadow flex gap-2 rounded-lg px-2 py-2">
-        <Avatar
-          className="size-[48px] md:size-[56px]"
-          avatar={chat && chat.avatar}
-        />
-        <div className="flex flex-col justify-center">
-          <h2 className="text-lg font-medium">
-            {chat && chat.name ? chat.name : chatterNames}
-          </h2>
-          <p className="text-align -mt-1 items-start justify-self-start text-sm">
-            {chatterNames}
-          </p>
+      <header className="flex gap-2">
+        <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
+          <Avatar
+            className="size-[48px] md:size-[56px]"
+            avatar={chat && chat.avatar}
+          />
+          <div className="flex flex-col justify-center">
+            <h2 className="text-lg font-medium">
+              {chat && chat.name ? chat.name : chatterNames}
+            </h2>
+            <p className="text-align -mt-1 items-start justify-self-start text-sm">
+              {chatterNames}
+            </p>
+          </div>
         </div>
         {!isPublicChat && (
-          <ChatHeaderMenu
-            users={chat && chat.users}
-            openRenameModal={openRenameModal}
-            openDeleteModal={openDeleteModal}
-          />
+          <div className="pink-block flex items-end px-1 pb-1.5 md:px-2 md:pb-2.5">
+            <ChatHeaderMenu
+              users={chat && chat.users}
+              openRenameModal={openRenameModal}
+              openDeleteModal={openDeleteModal}
+            />
+          </div>
         )}
       </header>
       <main
@@ -107,7 +109,7 @@ const Chat = () => {
         <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
       )}
       <img
-        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[84px]"
+        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]"
         src={shisaBento}
       />
     </div>

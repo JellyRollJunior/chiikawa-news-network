@@ -26,7 +26,7 @@ const DotsMenu = ({ children }) => {
   }, []);
 
   return (
-    <div className="relative ml-auto mt-1 self-center" ref={menuRef}>
+    <div className="relative ml-auto mt-1 " ref={menuRef}>
       <button
         className="rounded-lg py-1 hover:bg-pink-200"
         onClick={toggleMenu}

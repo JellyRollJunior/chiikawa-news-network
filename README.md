@@ -154,6 +154,9 @@ VITE_SERVER_URL
 
 -   client
 
+    -   REFACTOR
+        -   useChat returns chat, users, isPublicChat (separate them so its easier to access)
+        -   extract modals to chatContainer (chat has too much logic)
     -   site restyling
         -   fix avatar restyling on all areas
             -   avatar border colors 
@@ -163,6 +166,7 @@ VITE_SERVER_URL
         -   Order
             -   Chat
                 -   chat layout
+                -   header btn
                 -   messages
             -   UserProfile
             -   Home
