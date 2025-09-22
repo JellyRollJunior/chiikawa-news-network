@@ -25,7 +25,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
   };
 
   return (
-    <ul className="flex flex-col min-h-full gap-3">
+    <ul className="flex min-h-full flex-col gap-3">
       {!isLoading ? (
         <>
           {messages.length == 0 && (
@@ -42,20 +42,21 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
               )}
               <li
                 key={message.id}
-                className={`flex max-w-6/7 items-start gap-2 ${
+                className={`flex max-w-7/8 items-start gap-2 ${
                   message.sender.id == id && 'flex-row-reverse self-end'
                 }`}
               >
                 <Avatar
-                  className="size-[40px] md:size-[46px]"
+                  className="size-[46px]  md:size-[54px]"
+                  background="yellow-50"
                   avatar={message.sender.avatar}
                   secondaryStyling={true}
                 />
                 <div
-                  className={`w-fit min-w-26 rounded-3xl px-5 py-2 ${
+                  className={`w-fit min-w-26 rounded-2xl px-5 py-2 ${
                     message.sender.id == id
-                      ? 'yellow-block rounded-tr-sm'
-                      : 'duckegg-block rounded-tl-sm'
+                      ? 'yellow-block rounded-tr-xs'
+                      : 'duckegg-block rounded-tl-xs'
                   }`}
                 >
                   <h3>{message.content}</h3>

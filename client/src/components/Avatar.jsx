@@ -5,7 +5,7 @@ const Avatar = ({ className, avatar, background = 'pink-100' }) => {
 
   return (
     <div
-      className={`${className} shrink-0 overflow-clip rounded-full border-3 border-dashed  p-0.5`}
+      className={`${className} shrink-0 overflow-clip rounded-full`}
     >
       <div className={`size-full overflow-clip rounded-full bg-${background}`}>
         {!error && avatar && (

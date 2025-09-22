@@ -26,7 +26,7 @@ const ChatsListItem = ({
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
         <Avatar
-          className="size-[70px] border-white"
+          className="size-[70px] border-3 border-dashed border-white p-0.5"
           avatar={avatar}
           background="yellow-50"
         />
@@ -39,11 +39,8 @@ const ChatsListItem = ({
     </li>
   ) : (
     /* Loading Display */
-    <LoadingElement
-      className="flex gap-2 px-2 py-2"
-      delay={loadingDelay}
-    >
-      <div className="size-[60px] shrink-0 rounded-full bg-gray-300 ml-1"></div>
+    <LoadingElement className="flex gap-2 px-2 py-2" delay={loadingDelay}>
+      <div className="ml-1 size-[60px] shrink-0 rounded-full bg-gray-300"></div>
       <div className="flex flex-col justify-center">
         <h4 className="h-4 w-18 rounded-sm bg-gray-300"></h4>
         <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-gray-300"></p>

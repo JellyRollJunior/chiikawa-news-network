@@ -64,7 +64,7 @@ const Chat = () => {
       <header className="flex gap-2">
         <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
           <Avatar
-            className="size-[60px] md:size-[70px] border-pink-300"
+            className="size-[60px] border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
             avatar={chat && chat.avatar}
           />
           <div className="flex flex-col justify-center">
@@ -86,10 +86,10 @@ const Chat = () => {
           </div>
         )}
       </header>
-      <div className="duckegg-block mt-2 h-4"></div>
+      <div className="duckegg-block mt-1.5 h-4"></div>
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin pink-block mt-2 flex-1 overflow-y-scroll pt-3 pr-4 pl-3"
+        className="scrollbar-thin pink-block mt-1.5 flex-1 overflow-y-scroll pt-3 pr-4 pl-3"
       >
         <ChatMessages
           messages={messages}
@@ -97,7 +97,7 @@ const Chat = () => {
           isLoading={isLoading}
         />
       </main>
-      <div className="duckegg-block mt-2 mb-2 h-4"></div>
+      <div className="duckegg-block mt-1.5 mb-1.5 h-4"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
       {isRenameModalOpen && (
         <ChatRenameModal
