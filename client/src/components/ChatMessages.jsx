@@ -6,7 +6,7 @@ import { LoadingDots } from './LoadingDots.jsx';
 
 const SystemMessage = ({ children }) => {
   return (
-    <li className="block-shadow w-fit max-w-4/5 self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2">
+    <li className="block-shadow w-fit max-w-4/5 self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2 text-sm">
       {children}
     </li>
   );
@@ -37,7 +37,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
             <Fragment key={`${message.id}-wrapper`}>
               {shouldDisplayTimeMessage(message.sendTime, index) && (
                 <SystemMessage>
-                  {format(new Date(message.sendTime), 'EEEE LLLL do')}
+                  {format(new Date(message.sendTime), 'EEE, LLL do')}
                 </SystemMessage>
               )}
               <li
@@ -47,7 +47,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
                 }`}
               >
                 <Avatar
-                  className="size-[46px]  md:size-[54px]"
+                  className="size-[46px] border-1 border-yellow-500 md:size-[54px]"
                   background="yellow-50"
                   avatar={message.sender.avatar}
                   secondaryStyling={true}

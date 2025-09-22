@@ -159,12 +159,6 @@ VITE_SERVER_URL
         -   extract modals to chatContainer (chat has too much logic)
     -   site restyling
         -   fix avatar restyling on all areas
-            -   avatar border colors 
-                -   yellow block -> red
-                -   duckegg -> white
-                -   pink -> ?
-        -   maybe can set menu to items-center again? since avatar in menu expanded
-        -   set format time msg to fri not whole day
         -   Order
             -   Chat
                 -   avatar styling
@@ -179,6 +173,8 @@ VITE_SERVER_URL
                 -   chat delete
                 -   chat rename
             -   Toasts
+            -   nav
+                -   selected nav -> block stylign? test it out
         -   change all titles to style like simple title in home (without yellow block!)
         -   restyle userProfile blank space. v ugly
         -   extract homeHeader into header

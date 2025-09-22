@@ -77,7 +77,7 @@ const Chat = () => {
           </div>
         </div>
         {!isPublicChat && (
-          <div className="pink-block flex items-end px-1 pb-1.5 md:px-2 md:pb-2.5">
+          <div className="pink-block flex h-full items-center px-1 pt-3 md:px-2 md:pt-2">
             <ChatHeaderMenu
               users={chat && chat.users}
               openRenameModal={openRenameModal}
@@ -89,7 +89,7 @@ const Chat = () => {
       <div className="duckegg-block mt-1.5 h-4"></div>
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin pink-block mt-1.5 flex-1 overflow-y-scroll pt-3 pr-4 pl-3"
+        className="scrollbar-thin pink-block mt-1.5 flex-1 overflow-y-scroll pt-2 pr-4 pb-1 pl-3"
       >
         <ChatMessages
           messages={messages}
