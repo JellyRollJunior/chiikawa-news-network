@@ -25,7 +25,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
   };
 
   return (
-    <ul className="flex flex-col min-h-full bg-dotted-lg gap-3">
+    <ul className="flex flex-col min-h-full gap-3">
       {!isLoading ? (
         <>
           {messages.length == 0 && (
@@ -54,8 +54,8 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
                 <div
                   className={`w-fit min-w-26 rounded-3xl px-5 py-2 ${
                     message.sender.id == id
-                      ? 'duckegg-block rounded-tr-sm'
-                      : 'pink-block rounded-tl-sm'
+                      ? 'yellow-block rounded-tr-sm'
+                      : 'duckegg-block rounded-tl-sm'
                   }`}
                 >
                   <h3>{message.content}</h3>

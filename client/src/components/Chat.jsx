@@ -86,6 +86,7 @@ const Chat = () => {
           </div>
         )}
       </header>
+      <div className="duckegg-block mt-2 h-4"></div>
       <main
         ref={scrollContainerRef}
         className="scrollbar-thin pink-block mt-2 flex-1 overflow-y-scroll pt-3 pr-4 pl-3"
