@@ -26,7 +26,7 @@ const ChatsListItem = ({
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
         <Avatar
-          className="size-[70px]"
+          className="size-[70px] border-white"
           avatar={avatar}
           background="yellow-50"
         />

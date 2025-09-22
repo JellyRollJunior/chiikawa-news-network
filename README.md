@@ -163,10 +163,12 @@ VITE_SERVER_URL
                 -   yellow block -> red
                 -   duckegg -> white
                 -   pink -> ?
+        -   maybe can set menu to items-center again? since avatar in menu expanded
+        -   set format time msg to fri not whole day
         -   Order
             -   Chat
-                -   chat layout
-                -   header btn
+                -   avatar styling
+                -   header restyle
                 -   messages
             -   UserProfile
             -   Home

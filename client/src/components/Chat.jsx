@@ -64,7 +64,7 @@ const Chat = () => {
       <header className="flex gap-2">
         <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
           <Avatar
-            className="size-[48px] md:size-[56px]"
+            className="size-[60px] md:size-[70px] border-pink-300"
             avatar={chat && chat.avatar}
           />
           <div className="flex flex-col justify-center">

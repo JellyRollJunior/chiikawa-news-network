@@ -42,7 +42,7 @@ const ChatMessages = ({ messages = [], isPrivateChat, isLoading = false }) => {
               )}
               <li
                 key={message.id}
-                className={`flex max-w-4/5 items-start gap-2 ${
+                className={`flex max-w-6/7 items-start gap-2 ${
                   message.sender.id == id && 'flex-row-reverse self-end'
                 }`}
               >

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
-const Avatar = ({ className, avatar, background = 'pink-50' }) => {
+const Avatar = ({ className, avatar, background = 'pink-100' }) => {
   const [error, setError] = useState(false);
 
   return (
-    // ${secondaryStyling ? 'block-shadow border-yellow-500 bg-yellow-50' : ''}
     <div
-      className={`shrink-0 overflow-clip rounded-full border-3 border-dashed border-white p-0.5 ${className}`}
+      className={`${className} shrink-0 overflow-clip rounded-full border-3 border-dashed  p-0.5`}
     >
       <div className={`size-full overflow-clip rounded-full bg-${background}`}>
         {!error && avatar && (
