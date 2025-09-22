@@ -65,6 +65,7 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
           ))}
         <p className="mt-1 ml-2 text-start">{user && user.bio}</p>
       </div>
+      <div className="duckegg-block mt-2 h-4"></div>
     </header>
   ) : (
     /* Loading Display */
