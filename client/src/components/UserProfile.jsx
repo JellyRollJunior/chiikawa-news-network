@@ -18,8 +18,11 @@ const UserProfile = ({ userId, children }) => {
   const { followUser, isLoading: isLoadingFollow } = useFollow();
 
   return (
-    <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col md:max-w-xl">
-      <Scrollable onScrollToBottom={fetchNextPage}>
+    <div className="main-container mx-4 mt-3 mb-2 flex w-full flex-1 flex-col md:max-w-xl">
+      <Scrollable
+        className="px-3 pt-3 md:pt-3.5 pb-2.5 md:pr-1"
+        onScrollToBottom={fetchNextPage}
+      >
         {children}
         <UserInfo
           userId={userId}

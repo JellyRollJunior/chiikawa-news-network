@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Scrollable = ({ onScrollToBottom, children }) => {
+const Scrollable = ({ className='', onScrollToBottom, children }) => {
   const containerRef = useRef(null);
   const sentinelRef = useRef(null);
 
@@ -29,7 +29,7 @@ const Scrollable = ({ onScrollToBottom, children }) => {
 
   return (
     <div
-      className="scrollbar-thin h-full scrollbar-track-yellow-50 overflow-y-scroll"
+      className={`scrollbar-thin h-full overflow-y-scroll ${className}`}
       ref={containerRef}
     >
       {children}

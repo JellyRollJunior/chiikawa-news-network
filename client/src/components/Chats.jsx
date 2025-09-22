@@ -32,7 +32,7 @@ const Chats = () => {
   return (
     <>
       <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col">
-        <div className="scrollbar-thin scrollbar-track-yellow-50/0 flex flex-1 flex-col overflow-y-scroll px-3 pt-3.5 pb-2.5 md:pr-1">
+        <div className="scrollbar-thin flex flex-1 flex-col overflow-y-scroll px-3 pt-3 md:pt-3.5 pb-2.5 md:pr-1">
           <header className="flex gap-2">
             <div className="yellow-block flex-1 pt-1 pb-0.5">
               <h2 className="text-shadow-wrap font-chiikawa text-center text-lg">
