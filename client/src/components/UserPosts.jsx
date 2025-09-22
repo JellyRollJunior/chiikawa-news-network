@@ -1,6 +1,6 @@
-import { PostList } from './PostsList.jsx';
+import { LogoTitle } from './LogoTitle.jsx';
 import { RefreshButton } from './RefreshButton.jsx';
-import logo from '../assets/nav/chiikawa-glasses.png';
+import { PostList } from './PostsList.jsx';
 
 const UserPosts = ({
   posts,
@@ -13,16 +13,11 @@ const UserPosts = ({
 }) => {
   return (
     <section className="flex flex-1 flex-col">
-      <div className="mt-2 flex items-center justify-center gap-4">
-        <img
-          className="w-[43px]"
-          src={logo}
-          alt="Chiikawa with glasses (CNN Logo)"
-        />
-        <h2 className="font-chiikawa text-shadow-wrap text-center text-2xl font-bold">
-          Posts
-        </h2>
-        <div className="mt-2">
+      <div className="flex gap-2">
+        <div className="yellow-block flex flex-1 items-center justify-start gap-4 py-2">
+          <LogoTitle className="ml-3 text-lg" text="Posts" />
+        </div>
+        <div className="pink-block flex items-center px-1">
           <RefreshButton onclick={refreshPosts} />
         </div>
       </div>

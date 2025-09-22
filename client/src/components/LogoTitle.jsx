@@ -2,8 +2,9 @@ import logo from '../assets/nav/chiikawa-glasses.png';
 
 const LogoTitle = ({ className, text = 'Chiikawa News Network' }) => {
   return (
+    // refactor text size to be determined by user text-[15px]
     <header
-      className={`flex items-center gap-2 text-center text-[15px] ${className}`}
+      className={`flex items-center gap-2 text-center ${className}`}
     >
       <img
         className="w-[43px]"

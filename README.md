@@ -162,6 +162,9 @@ VITE_SERVER_URL
         -   Order
             -   UserProfile
                 -   postsList
+                    -   make post blocks yellow, pink, blue
+                    -   avatar
+                    -   timestamp
             -   Home
             -   Users
             -   Edit

@@ -34,6 +34,7 @@ const MediaFrame = ({ src }) => {
 };
 
 const PostsListItem = ({
+  className = 'yellow-block',
   post,
   toggleLike = { toggleLike },
   openDeleteModal,
@@ -47,7 +48,7 @@ const PostsListItem = ({
 
   if (!post) return;
   return !isLoading ? (
-    <li className="yellow-block flex flex-col px-3 py-2">
+    <li className={`${className} flex flex-col px-3 py-2`}>
       <header className="flex items-center gap-2">
         <Avatar
           className="size-[28px] md:size-[40px]"

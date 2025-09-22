@@ -29,6 +29,7 @@ const UserProfile = ({ userId, children }) => {
           followUser={followUser}
           isLoadingFollow={isLoadingFollow}
         />
+        <div className="duckegg-block my-3.5 h-4"></div>
         <UserPosts
           posts={posts}
           hasNextPage={hasNextPage}
