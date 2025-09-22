@@ -97,16 +97,16 @@
   @apply bg-dotted-sm block border-[#FFDCEA] bg-pink-100;
 }
 
+@utility pink-block {
+  @apply block border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
+}
+
 @utility yellow-block {
   @apply block border-[#FEF5D7] bg-linear-to-b from-[#FFFDED] to-[#FFFBDE];
 }
 
 @utility duckegg-block {
   @apply block border-[#A2D0C488] bg-linear-to-b from-[#D9F1EB] to-[#cae8dc];
-}
-
-@utility pink-block {
-  @apply block border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
 }
 
 /* Buttons */

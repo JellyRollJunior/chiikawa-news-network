@@ -158,12 +158,14 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
+            -   chats loading restyle
             -   Chat
             -   UserProfile
             -   Home
             -   Users
             -   Edit
             -   Modals
+            -   Toasts
         -   change all titles to style like simple title in home (without yellow block!)
         -   restyle userProfile blank space. v ugly
         -   extract homeHeader into header

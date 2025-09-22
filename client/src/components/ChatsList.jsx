@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { ChatsListItem } from './ChatsListItem.jsx';
 
-const ChatsList = ({ chats, isLoading, loadingElements = 4 }) => {
+const ChatsList = ({ chats, isLoading, loadingElements = 4, hoverColor = 'duckegg-dark' }) => {
   if (!chats) chats = [];
   return (
     <ul>
@@ -13,6 +13,7 @@ const ChatsList = ({ chats, isLoading, loadingElements = 4 }) => {
                 chatName={chat.name}
                 avatar={chat.avatar}
                 latestMessage={chat.latestMessage}
+                hoverColor={hoverColor}
               />
             </Fragment>
           ))

@@ -9,6 +9,7 @@ const ChatsListItem = ({
   chatName,
   avatar,
   latestMessage,
+  hoverColor = 'duckegg-dark',
   isLoading = false,
   loadingDelay = 0,
 }) => {
@@ -21,7 +22,7 @@ const ChatsListItem = ({
     ? format(new Date(latestMessage.sendTime), 'MMM do • h:mmaaa')
     : '';
   return !isLoading ? (
-    <li className="hover:bg-duckegg-dark px-2 py-2">
+    <li className={`hover:bg-${hoverColor} px-2 py-2`}>
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
         <Avatar
@@ -39,10 +40,10 @@ const ChatsListItem = ({
   ) : (
     /* Loading Display */
     <LoadingElement
-      className="mx-1 flex gap-2 rounded-md px-2 py-2"
+      className="flex gap-2 px-2 py-2"
       delay={loadingDelay}
     >
-      <div className="size-14 shrink-0 rounded-full bg-gray-300"></div>
+      <div className="size-[60px] shrink-0 rounded-full bg-gray-300 ml-1"></div>
       <div className="flex flex-col justify-center">
         <h4 className="h-4 w-18 rounded-sm bg-gray-300"></h4>
         <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-gray-300"></p>

@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 
 const LoadingElement = ({
   className,
-  initialColor = '#fff7ed',
-  transitionColor = '#ccfbf1',
+  initialColor = '#FFFDED',
+  transitionColor = '#cce6e3',
   delay = 0,
   children,
 }) => {

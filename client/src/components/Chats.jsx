@@ -64,6 +64,7 @@ const Chats = () => {
               chats={publicChats}
               isLoading={isPublicLoading}
               loadingElements={1}
+              hoverColor='pink-200'
             />
           </section>
           <div className="block-shadow mt-2 h-4 shrink-0 rounded-lg bg-yellow-50"></div>
