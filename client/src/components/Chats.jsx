@@ -55,9 +55,9 @@ const Chats = () => {
             onChange={(event) => setFilter(event.target.value)}
             placeholder="Search"
           />
-          <section className="duckegg-block mt-2 pt-2">
+          <section className="pink-block mt-2 pt-2">
             <ChatsSectionTitle
-              title="Public rooms"
+              title="Public Chats"
               refreshBtn={refetchPublic}
             />
             <ChatsList
@@ -66,7 +66,7 @@ const Chats = () => {
               loadingElements={1}
             />
           </section>
-          <div className="block-shadow mt-2 h-4 shrink-0 rounded-lg bg-pink-50"></div>
+          <div className="block-shadow mt-2 h-4 shrink-0 rounded-lg bg-yellow-50"></div>
           <section className="duckegg-block mt-2 flex flex-1 flex-col pt-2">
             <ChatsSectionTitle
               title="Conversations"
