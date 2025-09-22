@@ -161,6 +161,7 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   UserProfile
+                -   desktop layout
             -   Home
             -   Users
             -   Edit
@@ -175,7 +176,10 @@ VITE_SERVER_URL
         -   restyle userProfile blank space. v ugly
         -   extract homeHeader into header
             -   user it in users & profile posts user page
-        -   LONG USERNAME PROBABLY BREAKS WIDTH
+        -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
+            -   userInfo
+            -   chats
+            -   chat messages
 
 -   styling study
     -   main container spacing
