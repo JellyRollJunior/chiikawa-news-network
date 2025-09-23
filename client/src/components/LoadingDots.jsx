@@ -18,7 +18,7 @@ const LoadingDots = ({ dotTravelDistance = 12 }) => {
               ease: 'easeInOut',
             }}
           >
-            <div className="size-1 rounded-full bg-amber-900"></div>
+            <div className="size-1 rounded-full"></div>
           </motion.span>{' '}
         </Fragment>
       ))}

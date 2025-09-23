@@ -160,9 +160,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   UserProfile
-                -   comment list
-                    -   fix svg hori menu crop
             -   Home
             -   Users
             -   Edit
