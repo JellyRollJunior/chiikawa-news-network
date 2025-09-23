@@ -104,9 +104,10 @@ const PostsListItem = ({
         <div className="size-8 shrink-0 rounded-full bg-gray-300" />
         <h3 className="h-4 w-3/10 rounded-xs bg-gray-300" />
       </header>
-      <h2 className="mt-5 h-2 w-6/10 rounded-xs bg-gray-300" />
+      <h2 className="mt-3 h-2 w-6/10 rounded-xs bg-gray-300" />
       <p className="mt-2 h-2 w-8/10 rounded-xs bg-gray-300" />
       <p className="mt-2 h-2 w-3/10 rounded-xs bg-gray-300" />
+      <p className="mt-3 size-35 mb-1 mx-auto rounded-lg bg-gray-300" />
     </LoadingElement>
   );
 };
