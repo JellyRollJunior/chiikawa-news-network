@@ -52,7 +52,7 @@
   /* Color */
   --color-duckegg: #cce6e3;
   --color-duckegg-dark: #bfe0dc;
-  --color-brown: #773e39
+  --color-brown: #773e39;
 }
 
 @utility drop-shadow-pink-outline {
@@ -85,6 +85,19 @@
   @apply bg-dotted-lg rounded-xl border-5 border-blue-200 bg-blue-100;
 }
 
+/* Gradients */
+@utility pink-gradient {
+  @apply border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
+}
+
+@utility yellow-gradient {
+  @apply border-[#FEF5D7] bg-linear-to-b from-[#FFFDED] to-[#FFFBDE];
+}
+
+@utility duckegg-gradient {
+  @apply border-[#A2D0C488] bg-linear-to-b from-[#D9F1EB] to-[#cae8dc];
+}
+
 /* Blocks */
 @utility block-shadow {
   @apply shadow-[3px_3px_1px] inset-shadow-[2px_2px_3px] shadow-[#ef638722] inset-shadow-white;
@@ -103,15 +116,15 @@
 }
 
 @utility pink-block {
-  @apply block border-[#FFDCEA] bg-linear-to-b from-[#FFEDF5] to-[#FFDEED];
+  @apply pink-gradient block;
 }
 
 @utility yellow-block {
-  @apply block border-[#FEF5D7] bg-linear-to-b from-[#FFFDED] to-[#FFFBDE];
+  @apply yellow-gradient block;
 }
 
 @utility duckegg-block {
-  @apply block border-[#A2D0C488] bg-linear-to-b from-[#D9F1EB] to-[#cae8dc];
+  @apply duckegg-gradient block;
 }
 
 /* Buttons */
