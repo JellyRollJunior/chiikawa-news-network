@@ -15,13 +15,13 @@ const UserPosts = ({
     <section className="flex flex-1 flex-col">
       <div className="flex gap-2">
         <div className="yellow-block flex flex-1 items-center justify-start gap-4 pt-2 pb-1">
-          <LogoTitle className="ml-2 text-lg" text="Posts" />
+          <LogoTitle className="ml-2 text-lg md:text-2xl" text="Posts" />
         </div>
         <div className="pink-block flex items-center px-1">
           <RefreshButton onclick={refreshPosts} />
         </div>
       </div>
-      <div className="mt-1.5 flex-1">
+      <div className="mt-2 flex-1">
         <PostList
           posts={posts}
           hasNextPage={hasNextPage}

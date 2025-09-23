@@ -8,7 +8,7 @@ const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
 
 const PostListNotification = ({ src, children }) => {
   return (
-    <li className="duckegg-block flex flex-col px-3 py-2">
+    <li className="duckegg-block flex flex-col px-3 py-2 md:text-lg">
       <div className="mt-2 flex items-center justify-center">
         <img className="w-1/4" src={src} alt="" />
       </div>

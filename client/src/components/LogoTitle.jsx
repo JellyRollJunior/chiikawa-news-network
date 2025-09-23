@@ -11,7 +11,7 @@ const LogoTitle = ({ className, text = 'Chiikawa News Network' }) => {
         src={logo}
         alt="Chiikawa with glasses (CNN Logo)"
       />
-      <h1 className="text-shadow-wrap font-chiikawa md:my-2 md:text-lg">
+      <h1 className="text-shadow-wrap font-chiikawa md:my-2">
         {text}
       </h1>
     </header>

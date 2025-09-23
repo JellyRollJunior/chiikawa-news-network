@@ -19,7 +19,7 @@ const MediaFrame = ({ src }) => {
     <>
       <div className="relative flex items-center justify-center">
         <img
-          className={`rounded-xl border-1 border-amber-950 bg-pink-100 md:border-2 ${error && 'max-w-3xs'}`}
+          className={`rounded-xl border-1 border-amber-950 bg-pink-100 ${error && 'max-w-3xs'}`}
           src={!error ? src : errorImg}
           onError={() => setError(true)}
         />
@@ -48,7 +48,7 @@ const PostsListItem = ({
 
   if (!post) return;
   return !isLoading ? (
-    <li className={`${blockStyle} flex flex-col px-3 py-2`}>
+    <li className={`${blockStyle} flex flex-col px-3 py-2 md:px-4 md:py-4`}>
       <header className="flex items-center gap-2">
         <Avatar
           className="-mt-1 size-[26px] border-1 border-yellow-500 md:size-[36px]"
@@ -66,29 +66,28 @@ const PostsListItem = ({
           </DotsMenu>
         )}
       </header>
-      <h2 className="-mt-1 text-lg font-semibold md:text-xl">{post.title}</h2>
+      <h2 className="-mt-1 text-lg font-semibold md:text-xl md:mt-1">{post.title}</h2>
       <p className="text-sm md:text-base">{post.content}</p>
       {post.media && (
-        <div className="mt-2 flex items-center justify-center">
+        <div className="mt-2 flex items-center justify-center md:mt-3">
           <MediaFrame src={post.media} />
         </div>
       )}
-
-      <footer className="mt-3 flex gap-2.5">
+      <footer className="mt-3 md:mt-4 flex gap-2.5">
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5"
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5"
           src={comment}
           count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}
         />
-        <div className="mr-2 ml-auto self-center text-center text-sm text-gray-600">
+        <div className="mr-2 ml-auto self-center text-center text-sm md:text-base text-gray-600">
           {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')}
         </div>
       </footer>
@@ -107,7 +106,7 @@ const PostsListItem = ({
       <h2 className="mt-3 h-2 w-6/10 rounded-xs bg-gray-300" />
       <p className="mt-2 h-2 w-8/10 rounded-xs bg-gray-300" />
       <p className="mt-2 h-2 w-3/10 rounded-xs bg-gray-300" />
-      <p className="mt-3 size-35 mb-1 mx-auto rounded-lg bg-gray-300" />
+      <p className="mx-auto mt-3 mb-1 size-35 rounded-lg bg-gray-300" />
     </LoadingElement>
   );
 };
