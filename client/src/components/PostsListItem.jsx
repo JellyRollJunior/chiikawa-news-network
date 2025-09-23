@@ -19,7 +19,7 @@ const MediaFrame = ({ src }) => {
     <>
       <div className="relative flex items-center justify-center">
         <img
-          className={`rounded-xl border-1 border-white bg-pink-100 md:border-2 ${error && 'max-w-3xs'}`}
+          className={`rounded-xl border-1 border-amber-950 bg-pink-100 md:border-2 ${error && 'max-w-3xs'}`}
           src={!error ? src : errorImg}
           onError={() => setError(true)}
         />
@@ -76,14 +76,14 @@ const PostsListItem = ({
 
       <footer className="mt-3 flex gap-2.5">
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-white py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5 md:border-2"
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-white py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-amber-950 py-1 pr-4 pl-2.5 md:border-2"
           src={comment}
           count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}

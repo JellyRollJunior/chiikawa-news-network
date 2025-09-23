@@ -161,13 +161,7 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   UserProfile
-                -   postsList
-                    -   avatar
-                    -   text margins
-                    -   timestamp
-                    -   border colors
-                    -   style PostListItem to have all UI visible on ANY color post block
-                    -   comment list
+                -   comment list
             -   Home
             -   Users
             -   Edit
