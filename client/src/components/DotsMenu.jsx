@@ -7,8 +7,9 @@ import {
   useRef,
 } from 'react';
 import threeDots from '../assets/svgs/three-dots.svg';
+import threeDotsHori from '../assets/svgs/three-dots-hori.svg';
 
-const DotsMenu = ({ children }) => {
+const DotsMenu = ({ children, isVertical = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -31,7 +32,9 @@ const DotsMenu = ({ children }) => {
         className="rounded-lg py-1 hover:bg-pink-200"
         onClick={toggleMenu}
       >
-        <img src={threeDots} />
+        <img
+          src={isVertical ? threeDots : threeDotsHori}
+        />
       </button>
       {isOpen && (
         <ul className="absolute top-1/1 right-0 overflow-clip rounded-md border-3 border-pink-200 bg-pink-50">

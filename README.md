@@ -162,6 +162,7 @@ VITE_SERVER_URL
         -   Order
             -   UserProfile
                 -   comment list
+                    -   fix svg hori menu crop
             -   Home
             -   Users
             -   Edit

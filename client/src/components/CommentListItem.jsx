@@ -17,42 +17,46 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li>
+    <li className="pink-gradient rounded-lg border-3 px-1.5 pt-1.5 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
       <div className="flex">
-        <Avatar
-          className="size-[32px] md:size-[42px]"
-          avatar={comment.author && comment.author.avatar}
-        />
-        <div className="ml-2 flex-1">
-          <h4 className="text-base font-medium md:text-lg">
-            {comment.author && comment.author.username}
-          </h4>
-          <p className="text-sm md:text-base">{comment.content}</p>
-        </div>
-        {comment.author.id == id && (
-          <DotsMenu>
-            <DotsMenuItem
-              label="Delete comment"
-              onClick={() => openDeleteModal(comment.id)}
+        <div className="flex flex-col">
+          <div className="flex h-fit items-center">
+            <Avatar
+              className="size-[32px] border-1 border-yellow-500 md:size-[42px]"
+              avatar={comment.author && comment.author.avatar}
             />
-          </DotsMenu>
-        )}
+            <h4 className="ml-2 text-base font-medium md:text-lg">
+              {comment.author && comment.author.username}
+            </h4>
+          </div>
+          <p className="mt-1 ml-0.5 text-sm md:text-base">{comment.content}</p>
+        </div>
         <IncrementButton
-          className="mt-1 mr-0.5 ml-1 flex-col md:mt-2"
+          className="mt-3 mr-0.5 ml-auto flex-col"
           src={comment.hasLiked ? heartFilled : heart}
           count={comment.likeCount}
           onClick={() => toggleLike(comment.id, comment.hasLiked)}
           isDisabled={isLoadingLike}
         />
       </div>
-      <p className="text-center text-xs text-gray-500">
-        {' '}
-        —{' '}
-        {formatDistanceToNow(new Date(comment.createdAt), {
-          addSuffix: true,
-        })}{' '}
-        —{' '}
-      </p>
+      <div className="flex items-center justify-end gap-2">
+        {comment.author.id == id && (
+          <div className="translate-y-0.5">
+            <DotsMenu isVertical={false}>
+              <DotsMenuItem
+                label="Delete comment"
+                onClick={() => openDeleteModal(comment.id)}
+              />
+            </DotsMenu>
+          </div>
+        )}
+        <p className="text-end text-xs text-gray-600">
+          —{' '}
+          {formatDistanceToNow(new Date(comment.createdAt), {
+            addSuffix: true,
+          })}
+        </p>
+      </div>
     </li>
   );
 };

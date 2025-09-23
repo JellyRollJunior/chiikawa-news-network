@@ -35,10 +35,9 @@ const CommentList = ({ postId }) => {
 
   return (
     <>
-      <hr className="mt-3 h-1 w-full border-yellow-300" />
       {!isLoadingComments ? (
         comments.length > 0 && (
-          <ul className="mt-3 flex flex-col gap-4">
+          <ul className="mt-3 flex flex-col gap-2">
             {comments.map((comment) => (
               <Fragment key={comment.id}>
                 <CommentListItem
