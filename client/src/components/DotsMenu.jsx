@@ -26,7 +26,7 @@ const DotsMenu = ({ children }) => {
   }, []);
 
   return (
-    <div className="relative ml-auto mt-1 " ref={menuRef}>
+    <div className="relative ml-auto" ref={menuRef}>
       <button
         className="rounded-lg py-1 hover:bg-pink-200"
         onClick={toggleMenu}
@@ -34,7 +34,7 @@ const DotsMenu = ({ children }) => {
         <img src={threeDots} />
       </button>
       {isOpen && (
-        <ul className="top-1/1 border-3 rounded-md border-pink-200 bg-pink-50 absolute right-0 overflow-clip">
+        <ul className="absolute top-1/1 right-0 overflow-clip rounded-md border-3 border-pink-200 bg-pink-50">
           {/* Pass close menu prop to children */}
           {Children.map(children, (child) =>
             isValidElement(child) ? cloneElement(child, { closeMenu }) : child

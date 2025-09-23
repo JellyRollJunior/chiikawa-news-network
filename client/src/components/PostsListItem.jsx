@@ -19,7 +19,7 @@ const MediaFrame = ({ src }) => {
     <>
       <div className="relative flex items-center justify-center">
         <img
-          className={`rounded-xl border-1 border-pink-200 bg-pink-100 md:border-2 ${error && 'max-w-3xs'}`}
+          className={`rounded-xl border-1 border-white bg-pink-100 md:border-2 ${error && 'max-w-3xs'}`}
           src={!error ? src : errorImg}
           onError={() => setError(true)}
         />
@@ -34,7 +34,7 @@ const MediaFrame = ({ src }) => {
 };
 
 const PostsListItem = ({
-  className = 'yellow-block',
+  blockStyle = 'yellow-block',
   post,
   toggleLike = { toggleLike },
   openDeleteModal,
@@ -48,15 +48,15 @@ const PostsListItem = ({
 
   if (!post) return;
   return !isLoading ? (
-    <li className={`${className} flex flex-col px-3 py-2`}>
+    <li className={`${blockStyle} flex flex-col px-3 py-2`}>
       <header className="flex items-center gap-2">
         <Avatar
-          className="size-[28px] md:size-[40px]"
+          className="-mt-1 size-[26px] border-1 border-yellow-500 md:size-[36px]"
           avatar={author ? author.avatar : null}
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="text-lg font-medium md:text-xl">{author.username}</h3>
+        <h3 className="-mt-1 font-medium md:text-xl">{author.username}</h3>
         {author.id == id && (
           <DotsMenu>
             <DotsMenuItem
@@ -66,33 +66,31 @@ const PostsListItem = ({
           </DotsMenu>
         )}
       </header>
-      <h2 className="mt-2 text-lg font-semibold md:text-xl">{post.title}</h2>
-      <p className="mt-1 text-sm text-yellow-900 md:text-base">
-        {post.content}
-      </p>
+      <h2 className="-mt-1 text-lg font-semibold md:text-xl">{post.title}</h2>
+      <p className="text-sm md:text-base">{post.content}</p>
       {post.media && (
         <div className="mt-2 flex items-center justify-center">
           <MediaFrame src={post.media} />
         </div>
       )}
-      <div className="mt-1.5 text-center text-sm text-gray-500">
-        {' '}
-        — {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')} —{' '}
-      </div>
+
       <footer className="mt-3 flex gap-2.5">
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-white py-1 pr-4 pl-2.5 md:border-2"
           src={post.hasLiked ? heartFilled : heart}
           count={post.likeCount}
           onClick={() => toggleLike(post.id, post.hasLiked)}
           isDisabled={isLoadingLike}
         />
         <IncrementButton
-          className="gap-1 rounded-xl border-1 border-pink-200 py-1 pr-4 pl-2.5 md:border-2"
+          className="gap-1 rounded-xl border-1 border-white py-1 pr-4 pl-2.5 md:border-2"
           src={comment}
           count={post.commentCount}
           onClick={() => setIsShowingComments(!isShowingComments)}
         />
+        <div className="mr-2 ml-auto self-center text-center text-sm text-gray-600">
+          {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')}
+        </div>
       </footer>
       {isShowingComments && <CommentList postId={post.id} />}
     </li>

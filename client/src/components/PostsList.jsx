@@ -4,6 +4,7 @@ import { LoadingDots } from './LoadingDots.jsx';
 import { HomeDeletePostModal } from './HomeDeletePostModal.jsx';
 import kuriPeace from '../assets/images/kuri-beer.png';
 import logo from '../assets/nav/chiikawa-glasses.png';
+const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
 
 const PostListNotification = ({ src, children }) => {
   return (
@@ -25,7 +26,6 @@ const PostList = ({
   isLoadingLike,
   refreshPosts,
 }) => {
-  const BLOCK_CLASSES = ['duckegg-block', 'yellow-block', 'pink-block'];
   
   // Delete Post Modal
   const [postToBeDeletedId, setPostToBeDeletedId] = useState(null);
@@ -39,7 +39,7 @@ const PostList = ({
           ? posts.map((post, index) => (
               <Fragment key={post.id}>
                 <PostsListItem
-                  className={BLOCK_CLASSES[index % BLOCK_CLASSES.length]}
+                  blockStyle={BLOCKS[index % BLOCKS.length]}
                   post={post}
                   toggleLike={toggleLike}
                   isLoadingLike={isLoadingLike}

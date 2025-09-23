@@ -52,6 +52,7 @@
   /* Color */
   --color-duckegg: #cce6e3;
   --color-duckegg-dark: #bfe0dc;
+  --color-brown: #773e39
 }
 
 @utility drop-shadow-pink-outline {

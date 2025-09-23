@@ -163,7 +163,11 @@ VITE_SERVER_URL
             -   UserProfile
                 -   postsList
                     -   avatar
+                    -   text margins
                     -   timestamp
+                    -   border colors
+                    -   style PostListItem to have all UI visible on ANY color post block
+                    -   comment list
             -   Home
             -   Users
             -   Edit
