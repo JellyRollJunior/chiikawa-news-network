@@ -9,7 +9,7 @@ const HomePostControlButtons = ({
   refreshPosts,
 }) => {
   return (
-    <section className={`flex gap-3 ${className}`}>
+    <section className={`flex gap-2 ${className}`}>
       <button
         className={`button flex-1 px-5 py-1 ${
           isFeed
@@ -21,9 +21,7 @@ const HomePostControlButtons = ({
       >
         For You
       </button>
-      <div className='pink-block pt-1 pl-1 pr-0.5'>
-        <RefreshButton onclick={refreshPosts} />
-      </div>
+
       <button
         className={`button flex-1 px-5 py-1 ${
           !isFeed
@@ -35,6 +33,9 @@ const HomePostControlButtons = ({
       >
         All
       </button>
+      <div className="pink-block pt-1 pr-0.5 pl-1">
+        <RefreshButton onclick={refreshPosts} />
+      </div>
     </section>
   );
 };
