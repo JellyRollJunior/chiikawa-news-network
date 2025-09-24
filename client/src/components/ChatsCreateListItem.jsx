@@ -14,7 +14,7 @@ const ChatsCreateListItem = ({
   return !isLoading ? (
     <li key={userId}>
       <button
-        className="flex h-full w-full gap-2 rounded-xl px-2 pt-1.5 pb-1 hover:bg-emerald-100"
+        className="flex h-full w-full gap-2 px-2 pt-1.5 pb-1 hover:yellow-gradient"
         onClick={onClick}
         type="button"
       >
@@ -22,7 +22,7 @@ const ChatsCreateListItem = ({
           className="size-[40px] border-1 border-yellow-500 md:size-[46px]"
           avatar={avatar}
           secondaryStyling={true}
-          background='yellow-50'
+          background="yellow-50"
         />
         <div className="flex items-center">
           <h4 className="text-lg font-medium">{username}</h4>
@@ -37,7 +37,7 @@ const ChatsCreateListItem = ({
   ) : (
     /* Loading Display */
     <LoadingElement
-      className="flex gap-2 rounded-sm px-4 py-2"
+      className="flex gap-2 rounded-sm px-2 pt-1.5 pb-1"
       initialColor="#fef9c3"
       transitionColor="#fce7f3"
       delay={loadingDelay}

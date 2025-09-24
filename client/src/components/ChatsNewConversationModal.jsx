@@ -118,7 +118,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             Cancel
           </button>
           <button
-            className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold"
+            className="blue-button flex-1 px-6 py-1.5 text-lg font-bold"
             disabled={isCreatingChat}
           >
             Chat
