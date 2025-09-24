@@ -1,18 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useUploadAvatar } from '../hooks/useUploadAvatar.js';
 import { useEditBio } from '../hooks/useEditBio.js';
-import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
-import chiiPeace from '../assets/images/chii-peace.png';
-import hachiCamera from '../assets/images/hachi-camera-back.png';
 
 const SettingsUserInfo = () => {
-  const { bio, setBio, avatar, isLoading } = useContext(CurrentContext);
-  const { uploadAvatar, isLoading: isUploadingAvatar } = useUploadAvatar();
+  const { bio, setBio, isLoading } = useContext(CurrentContext);
   const { editBio, isLoading: isEditingBio } = useEditBio();
   const [bioTextarea, setBioTextarea] = useState('');
-  const fileInputRef = useRef(null);
 
   useEffect(() => {
     setBioTextarea(bio ? bio : '');
@@ -26,63 +20,8 @@ const SettingsUserInfo = () => {
     }
   };
 
-  const handleClickChangePhoto = () => {
-    if (fileInputRef) {
-      fileInputRef.current.click();
-    }
-  };
-
-  const [mediaError, setMediaError] = useState('');
-  const handleUploadAvatar = (event) => {
-    const file = event.target.files[0];
-    const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
-    if (file && file.size <= FILE_SIZE_LIMIT) {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      uploadAvatar(formData);
-    } else {
-      setMediaError('File too large');
-    }
-  };
-
   return !isLoading ? (
     <>
-      <section className="yellow-block mt-2 flex flex-col items-center pt-5 pb-3 md:grid md:grid-cols-2 md:justify-center md:py-5 ">
-        <div className="relative px-[16px] w-fit md:justify-self-center md:ml-12">
-          <Avatar className='size-[96px] md:size-[120px]' avatar={avatar ? avatar : null}  />
-          <img
-            className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
-            src={chiiPeace}
-          />
-          <img
-            className="drop-shadow-pink-outline absolute -bottom-[6px] -left-[24px] w-[52px]"
-            src={hachiCamera}
-          />
-        </div>
-        <div className='flex flex-col items-center'>
-          <h3 className="mt-2 font-medium md:text-lg">Profile Picture</h3>
-          <p className="text-xs md:text-sm">
-            (Max 250Kb)
-            <span className="text-red-400">
-              {mediaError && ` — ${mediaError}`}
-            </span>
-          </p>
-          <button
-            className="blue-button mt-1 md:mt-2 px-3 py-1"
-            onClick={handleClickChangePhoto}
-            disabled={isUploadingAvatar}
-          >
-            Upload Picture
-          </button>
-          <input
-            className="hidden"
-            type="file"
-            ref={fileInputRef}
-            onChange={handleUploadAvatar}
-            accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
-          />
-        </div>
-      </section>
       <section className="yellow-block mt-2 px-3 py-2">
         <form className="flex flex-col" onSubmit={handleEditBio}>
           <h3 className="mt-2 font-medium">Bio</h3>
@@ -109,22 +48,6 @@ const SettingsUserInfo = () => {
   ) : (
     /* Loading Display */
     <>
-      <section className="yellow-block mt-3 flex flex-col items-center py-2">
-        <div className="relative flex items-center px-[16px]">
-          <LoadingElement className="size-24 rounded-full" />
-          <img
-            className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
-            src={chiiPeace}
-          />
-          <img
-            className="drop-shadow-pink-outline absolute -bottom-[6px] -left-[24px] w-[52px]"
-            src={hachiCamera}
-          />
-        </div>
-        <button className="blue-button mt-3 px-3 py-1" disabled={true}>
-          Change Picture
-        </button>
-      </section>
       <section className="yellow-block mt-2 px-3 py-2">
         <form className="flex flex-col">
           <h3 className="mt-2 font-medium">Bio</h3>

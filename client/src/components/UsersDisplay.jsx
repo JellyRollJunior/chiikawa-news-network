@@ -24,7 +24,7 @@ const UsersDisplay = ({ openViewProfile }) => {
     <div className="scrollbar-thin flex h-full flex-col overflow-y-scroll px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1">
       <header className="flex items-center justify-center gap-2">
         <div className="yellow-block flex-1 pt-1 pb-0.5">
-          <LogoTitle className="ml-2 text-lg md:text-2xl" text="Users" />
+          <LogoTitle className="ml-5 text-lg md:text-2xl" text="Users" />
         </div>
         <div className="pink-block flex h-full items-center pt-1 pr-1.5 pl-2">
           <RefreshButton onclick={refetch} />
