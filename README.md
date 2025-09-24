@@ -162,7 +162,9 @@ VITE_SERVER_URL
         -   Order
             -   userInfo
                 -   follow button + followign styling kinda ugly. Restyle it
+                -   restyle desktop view. the random picture box and layout aint doin it. DO IT LIKE THE USERS thingy? I thikn thats good idea
             -   Users
+                -   view profile
             -   Edit
             -   Modals
                 -   new convo

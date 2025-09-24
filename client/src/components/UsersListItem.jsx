@@ -19,7 +19,10 @@ const UsersListItem = ({
     <li>
       <div className="flex gap-1">
         <div className={`flex flex-col ${blockStyle} items-center`}>
-          <Avatar className="mx-2 mt-2 size-[74px]" avatar={user.avatar} />
+          <Avatar
+            className="mx-2 mt-2 size-[74px] md:size-[86px]"
+            avatar={user.avatar}
+          />
           <div className="my-2">
             {!user.isFollowing ? (
               <button
@@ -58,12 +61,17 @@ const UsersListItem = ({
     </li>
   ) : (
     /* Loading Display */
-    <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
-      <div className="ml-2 flex justify-around">
-        <LoadingElement className="size-[70px] shrink-0 rounded-full" />
-        <div className="mt-2 flex flex-col gap-2">
-          <LoadingElement className="h-6 w-32 self-center rounded-lg" />
-          <div className="grid w-full grid-cols-2">
+    <li>
+      <div className="flex gap-1">
+        <div className={`flex flex-col ${blockStyle} items-center px-2 py-2`}>
+          <LoadingElement className="size-[70px] shrink-0 rounded-full" />
+          <LoadingElement className="mt-2 h-5 w-16 self-center rounded-lg" />
+        </div>
+        <div
+          className={`flex flex-1 flex-col justify-between ${blockStyle} px-2 py-2`}
+        >
+          <LoadingElement className="mt-2 h-6 w-32 self-center rounded-lg" />
+          <div className="flex justify-around">
             <div className="flex items-center gap-2">
               <LoadingElement className="h-4 w-7 rounded-full" /> Posts
             </div>
@@ -71,22 +79,11 @@ const UsersListItem = ({
               <LoadingElement className="h-4 w-7 rounded-full" /> Followers
             </div>
           </div>
+          <LoadingElement className="mt-2 h-5 w-32 self-center rounded-lg" />
         </div>
       </div>
-      <LoadingElement className="mt-2 ml-2 h-12 rounded-lg" />
-      <div className="mt-2 grid grid-cols-2 items-center gap-3">
-        <button
-          className="pink-button flex-1 px-3 py-0.5 text-sm"
-          disabled={true}
-        >
-          View profile
-        </button>
-        <button
-          className="blue-button flex-1 px-3 py-0.5 text-sm"
-          disabled={true}
-        >
-          Follow
-        </button>
+      <div className={`${blockStyle} mt-1 px-3 pt-2.5 pb-1.5`}>
+        <LoadingElement className="ml-1 h-12 rounded-lg" />
       </div>
     </li>
   );
