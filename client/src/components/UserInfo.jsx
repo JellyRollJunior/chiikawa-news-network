@@ -25,16 +25,16 @@ const FollowButton = ({
 
   return isFollowing ? (
     <div className="text-center text-sm text-gray-500">— following —</div>
+  ) : userId != id ? (
+    <button
+      className="pink-button self-center px-7 text-base"
+      onClick={() => handleFollowUser(userId)}
+      disabled={isLoadingFollow}
+    >
+      Follow
+    </button>
   ) : (
-    userId != id && (
-      <button
-        className="pink-button self-center px-7 text-base"
-        onClick={() => handleFollowUser(userId)}
-        disabled={isLoadingFollow}
-      >
-        Follow
-      </button>
-    )
+    <div className="text-center text-sm text-gray-500">Hey it's me!</div>
   );
 };
 

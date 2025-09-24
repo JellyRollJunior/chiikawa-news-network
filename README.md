@@ -93,6 +93,10 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 
 ### Retrospective aka yapping
 
+-   Frontend
+    -   Super proud of my styling
+    -   Super proud of the UserInfo grid styling (Desktop/Mobile same components but changing grid values)
+
 ## Start commands
 
 ```bash
@@ -160,9 +164,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   userInfo
-                -   follow button + followign styling kinda ugly. Restyle it
-                -   restyle desktop view. the random picture box and layout aint doin it. DO IT LIKE THE USERS thingy? I thikn thats good idea
             -   Edit
             -   Modals
                 -   new convo
@@ -181,8 +182,9 @@ VITE_SERVER_URL
             -   chat messages
 
 -   styling study
+
     -   main container spacing
-        -   mx larger   
+        -   mx larger
         -   mt larger
         -   mb small
     -   gap between blocks small
