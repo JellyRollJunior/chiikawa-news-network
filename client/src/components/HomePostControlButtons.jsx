@@ -21,7 +21,6 @@ const HomePostControlButtons = ({
       >
         For You
       </button>
-
       <button
         className={`button flex-1 px-5 py-1 ${
           !isFeed

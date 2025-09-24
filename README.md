@@ -160,7 +160,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   Home
             -   Users
             -   Edit
             -   Modals
@@ -223,6 +222,7 @@ VITE_SERVER_URL
     -   home users bar on large screen
         -   users compact mode
     -   client unfollow
+    -   clicking avatars + post names leads to user profile
 
 ## DATA
 
