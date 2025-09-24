@@ -165,6 +165,11 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   Edit
+                -   title
+                -   avatar edit
+                -   bio edit
+                -   logout btn
+                -   scrolling
             -   Modals
                 -   new convo
                 -   chat delete
@@ -172,14 +177,11 @@ VITE_SERVER_URL
             -   Toasts
             -   nav
                 -   selected nav -> block stylign? test it out
-        -   change all titles to style like simple title in home (without yellow block!)
-        -   restyle userProfile blank space. v ugly
-        -   extract homeHeader into header
-            -   user it in users & profile posts user page
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats
             -   chat messages
+        -   add stickers! fun!
 
 -   styling study
 

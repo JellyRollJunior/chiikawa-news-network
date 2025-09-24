@@ -54,7 +54,7 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
         </h2>
       </div>
       <div className="mt-2 flex gap-2">
-        <div className="grid w-full grid-cols-6 gap-2 md:grid-cols-8">
+        <div className="grid w-full grid-cols-6 gap-2 md:gap-1 md:grid-cols-8">
           <div className="duckegg-block col-span-3 flex items-center justify-center py-2 md:col-span-2 md:row-span-3">
             <Avatar
               className="size-[100px] border-4 border-dashed border-white p-0.5 md:size-[90px]"
