@@ -4,88 +4,41 @@ import { useUser } from '../hooks/useUser.js';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 
-const UserStatBlock = ({ count, label }) => {
+const UserStatBlock = ({ className, count, label }) => {
   return (
-    <div className="duckegg-block flex flex-col justify-end pt-2.5 pb-1 text-center">
+    <div
+      className={`duckegg-block flex flex-col justify-end pt-2 pb-1.5 text-center md:pt-3 md:pb-1.5 ${className}`}
+    >
       <span className="font-chiikawa text-xl">{count}</span>
       <br /> {label}
     </div>
   );
 };
 
-const UserStats = ({
+const FollowButton = ({
   userId,
-  followersCount,
-  followingCount,
-  postCount,
-  isFollowing = false,
+  isFollowing,
   handleFollowUser,
   isLoadingFollow,
 }) => {
   const { id } = useContext(CurrentContext);
 
-  return (
-    <>
-      <div className="hidden flex-1 flex-col md:flex">
-        <div className="grid grid-cols-3 gap-2">
-          <UserStatBlock count={followersCount} label="Followers" />
-          <UserStatBlock count={followingCount} label="Following" />
-          <UserStatBlock count={postCount} label="Posts" />
-        </div>
-        <div className="mt-2 flex gap-2">
-          <div className="pink-block flex flex-1 justify-center items-center pt-1.5 pb-1">
-            {isFollowing ? (
-              <div className="text-center text-sm text-gray-500">
-                — following —
-              </div>
-            ) : (
-              userId != id && (
-                <button
-                  className="pink-button self-center px-7 text-base"
-                  onClick={() => handleFollowUser(userId)}
-                  disabled={isLoadingFollow}
-                >
-                  Follow
-                </button>
-              )
-            )}
-          </div>
-          <div className="pink-block flex flex-1 justify-center pt-1.5 pb-1">
-            <button className="pink-button self-center px-7 text-base">
-              hi guys
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="pink-block flex flex-1 flex-col items-center justify-around pt-1 text-sm md:hidden">
-        <div>{followersCount} Followers</div>
-        <div>{followingCount} Following</div>
-        <div>{postCount} Posts</div>
-        <div className="mx-2 mb-1">
-          {isFollowing ? (
-            <div className="text-center text-sm text-gray-500">
-              — following —
-            </div>
-          ) : (
-            userId != id && (
-              <button
-                className="pink-button self-center px-7 text-base"
-                onClick={() => handleFollowUser(userId)}
-                disabled={isLoadingFollow}
-              >
-                Follow
-              </button>
-            )
-          )}
-        </div>
-      </div>
-    </>
+  return isFollowing ? (
+    <div className="text-center text-sm text-gray-500">— following —</div>
+  ) : (
+    userId != id && (
+      <button
+        className="pink-button self-center px-7 text-base"
+        onClick={() => handleFollowUser(userId)}
+        disabled={isLoadingFollow}
+      >
+        Follow
+      </button>
+    )
   );
 };
 
 const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
-  const { id } = useContext(CurrentContext);
   const { user, isLoading, refetch } = useUser(userId);
 
   const handleFollowUser = async (userId) => {
@@ -101,23 +54,54 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
         </h2>
       </div>
       <div className="mt-2 flex gap-2">
-        <div className="duckegg-block flex items-center p-2">
-          <Avatar
-            className="size-[100px] border-4 border-dashed border-white p-0.5 md:size-[90px]"
-            avatar={user.avatar}
-            background="none"
+        <div className="grid w-full grid-cols-6 gap-2 md:grid-cols-8">
+          <div className="duckegg-block col-span-3 flex items-center justify-center py-2 md:col-span-2 md:row-span-3">
+            <Avatar
+              className="size-[100px] border-4 border-dashed border-white p-0.5 md:size-[90px]"
+              avatar={user.avatar}
+              background="none"
+            />
+          </div>
+          <div className="pink-block col-span-3 flex flex-col items-center justify-center gap-2 md:hidden">
+            <FollowButton
+              userId={user.id}
+              isFollowing={user.isFollowing}
+              handleFollowUser={handleFollowUser}
+              isLoadingFollow={isLoadingFollow}
+            />
+            <button className="pink-button self-center px-6 text-base">
+              Message
+            </button>
+          </div>
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            count={user.followersCount}
+            label="Followers"
           />
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            count={user.followingCount}
+            label="Following"
+          />
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            count={user.postCount}
+            label="Posts"
+          />
+          <div className="pink-block hidden flex-1 items-center justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
+            <FollowButton
+              userId={user.id}
+              isFollowing={user.isFollowing}
+              handleFollowUser={handleFollowUser}
+              isLoadingFollow={isLoadingFollow}
+            />
+          </div>
+          <div className="pink-block hidden flex-1 justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
+            <button className="pink-button self-center px-6 text-base">
+              Send message
+            </button>
+          </div>
         </div>
-        {/* User stats */}
-        <UserStats
-          userId={user && user.id}
-          followersCount={user && user.followersCount ? user.followersCount : 0}
-          followingCount={user && user.followingCount ? user.followingCount : 0}
-          postCount={user && user.postCount ? user.postCount : 0}
-          isFollowing={user && user.isFollowing}
-          handleFollowUser={handleFollowUser}
-          isLoadingFollow={isLoadingFollow}
-        />
       </div>
       <div className="yellow-block mt-2 flex flex-col p-2 pb-1">
         <p className="mt-1 ml-2 text-start">{user && user.bio}</p>
