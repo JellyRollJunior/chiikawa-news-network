@@ -31,22 +31,22 @@ const SettingsEditAvatar = () => {
   };
 
   return !isLoading ? (
-    <section className="yellow-block flex flex-col items-center pt-5 pb-3 md:grid md:grid-cols-2 md:justify-center md:py-5">
-      <div className="relative w-fit px-[16px] md:ml-12 md:justify-self-center">
+    <div className="flex gap-2">
+      <div className="duckegg-block relative px-4 py-5">
         <Avatar
-          className="size-[96px] md:size-[120px]"
+          className="size-[100px] border-4 border-dashed border-white p-0.5 md:size-[120px]"
           avatar={avatar ? avatar : null}
         />
         <img
-          className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
+          className="drop-shadow-pink-outline absolute -top-[5px] -right-[10px] w-[52px]"
           src={chiiPeace}
         />
         <img
-          className="drop-shadow-pink-outline absolute -bottom-[6px] -left-[24px] w-[52px]"
+          className="drop-shadow-pink-outline absolute -bottom-[5px] -left-[12px] w-[52px]"
           src={hachiCamera}
         />
       </div>
-      <div className="flex flex-col items-center">
+      <div className="yellow-block flex flex-1 flex-col items-center">
         <h3 className="mt-2 font-medium md:text-lg">Profile Picture</h3>
         <p className="text-xs md:text-sm">
           (Max 250Kb)
@@ -69,7 +69,7 @@ const SettingsEditAvatar = () => {
           accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
         />
       </div>
-    </section>
+    </div>
   ) : (
     <section className="yellow-block mt-3 flex flex-col items-center py-2">
       <div className="relative flex items-center px-[16px]">
