@@ -11,13 +11,15 @@ const Users = () => {
   return profileUserId ? (
     <div className="flex w-full max-w-xl">
       <UserProfile userId={profileUserId}>
-        <button
-          className="font-chiikawa mt-3 ml-1 flex self-start px-5 py-0.5"
-          onClick={closeViewProfile}
-        >
-          <img className="w-[20px]" src={arrowBack} />
-          Return to Users
-        </button>
+        <div className="pink-block mb-2 pt-1.5 pb-0.5">
+          <button
+            className="font-chiikawa flex self-start px-5 py-0.5"
+            onClick={closeViewProfile}
+          >
+            <img className="w-[20px]" src={arrowBack} />
+            Return to Users
+          </button>
+        </div>
       </UserProfile>
     </div>
   ) : (
