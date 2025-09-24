@@ -165,8 +165,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   Edit
-                -   loading
             -   Modals
                 -   new convo
                 -   chat delete

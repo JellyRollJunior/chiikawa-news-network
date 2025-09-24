@@ -39,7 +39,7 @@ const SettingsEditBio = () => {
           className="blue-button mt-2 ml-auto px-3 py-1"
           disabled={isEditingBio}
         >
-          Confirm Edit
+          {isEditingBio ? 'Editing...' : 'Confirm Edit'}
         </button>
       </form>
     </div>

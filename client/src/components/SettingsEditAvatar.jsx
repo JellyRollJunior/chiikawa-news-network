@@ -65,7 +65,7 @@ const SettingsEditAvatar = () => {
           onClick={handleClickChangePhoto}
           disabled={isUploadingAvatar}
         >
-          Upload
+          {isUploadingAvatar ? 'Uploading...' : 'Upload'}
         </button>
         <input
           className="hidden"
