@@ -48,13 +48,13 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
 
   return (
     <ModalDialog closeFunction={closeFunction} title="New Conversation">
-      <form className="flex flex-col" onSubmit={handleCreateChat}>
-        <main className="flex flex-col px-2">
-          <label className="text-shadow-wrap ml-1 mt-4 font-medium">
+      <form className="mt-2 flex flex-col gap-2" onSubmit={handleCreateChat}>
+        <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
+          <label className="text-shadow-wrap ml-1">
             Users
             <span className="text-red-400">{userError}</span>
           </label>
-          <ul className="scrollbar-thin h-50 md:h-70 overflow-y-scroll">
+          <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">
             {!isLoading
               ? filteredUsers.map((user) => (
                   <Fragment key={user.id}>
@@ -65,6 +65,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
                       onClick={() => handleChatListItemClick(user.id)}
                       selected={selectedUsers.includes(user.id)}
                     />
+                    <hr className='border-pink-200 border-1' />
                   </Fragment>
                 ))
               : /* Loading Display */
@@ -76,29 +77,26 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
                 ))}
           </ul>
           <input
-            className="block-shadow mb-2 mt-2 h-10 rounded-lg bg-white pl-3"
+            className="block-shadow h-10 rounded-lg bg-white pl-3"
             type="text"
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
             placeholder="Search"
           />
-          <label
-            className="text-shadow-wrap ml-1 font-medium"
-            htmlFor="chatName"
-          >
-            Chat name (optional)
-          </label>
-          <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5"
-            type="text"
-            name="chatName"
-            id="Chat name (optional)"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            maxLength={32}
-            isRequired={false}
-          />
-        </main>
+        </div>
+        <label className="text-shadow-wrap ml-1 font-medium" htmlFor="chatName">
+          Chat name (optional)
+        </label>
+        <input
+          className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5"
+          type="text"
+          name="chatName"
+          id="Chat name (optional)"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={32}
+          isRequired={false}
+        />
         <footer className="mt-3 flex gap-3">
           <button
             type="button"

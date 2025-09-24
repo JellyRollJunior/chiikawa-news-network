@@ -14,14 +14,15 @@ const ChatsCreateListItem = ({
   return !isLoading ? (
     <li key={userId}>
       <button
-        className="flex h-full w-full gap-2 rounded-xl px-2 py-1 hover:bg-emerald-100"
+        className="flex h-full w-full gap-2 rounded-xl px-2 pt-1.5 pb-1 hover:bg-emerald-100"
         onClick={onClick}
         type="button"
       >
         <Avatar
-          className="size-[40px] md:size-[46px]"
+          className="size-[40px] border-1 border-yellow-500 md:size-[46px]"
           avatar={avatar}
           secondaryStyling={true}
+          background='yellow-50'
         />
         <div className="flex items-center">
           <h4 className="text-lg font-medium">{username}</h4>
