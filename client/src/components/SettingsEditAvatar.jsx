@@ -46,13 +46,18 @@ const SettingsEditAvatar = () => {
           src={hachiCamera}
         />
       </div>
-      <div className="pink-block flex flex-1 gap-1 flex-col items-center justify-center pt-4 text-center">
-        <h3 className="font-medium md:text-lg">Edit Picture</h3>
+      <div className="pink-block flex flex-1 flex-col items-center justify-center gap-1 pt-4 text-center">
+        <h3 className="text-shadow-wrap text-lg font-bold">Edit Picture</h3>
         <p className="text-xs md:text-sm">
           (Max 250Kb)
-          <br />
           <span className="font-bold text-red-400">
-            {mediaError && `${mediaError}`}
+            <br className="md:hidden" />
+            {mediaError && (
+              <>
+                {' '}
+                <span className="hidden md:inline-block">—</span> {mediaError}
+              </>
+            )}
           </span>
         </p>
         <button
