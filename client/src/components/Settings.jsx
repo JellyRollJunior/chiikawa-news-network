@@ -1,8 +1,8 @@
 import { useLogout } from '../hooks/useLogout.js';
-import { SettingsUserInfo } from './SettingsUserInfo.jsx';
-import trioScouting from '../assets/images/trio-scouting.png';
 import { LogoTitle } from './LogoTitle.jsx';
 import { SettingsEditAvatar } from './SettingsEditAvatar.jsx';
+import { SettingsEditBio } from './SettingsEditBio.jsx';
+import trioScouting from '../assets/images/trio-scouting.png';
 
 const Settings = () => {
   const { logout } = useLogout();
@@ -13,7 +13,7 @@ const Settings = () => {
         <LogoTitle className="text-lg md:text-2xl" text="Edit Settings" />
       </header>
       <SettingsEditAvatar />
-      <SettingsUserInfo />
+      <SettingsEditBio />
       <div className="yellow-block mt-2 ml-auto w-fit px-3 py-2">
         <button className="pink-button px-7 py-1" onClick={logout}>
           Logout

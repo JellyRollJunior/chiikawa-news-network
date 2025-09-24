@@ -3,7 +3,7 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useEditBio } from '../hooks/useEditBio.js';
 import { LoadingElement } from './LoadingElement.jsx';
 
-const SettingsUserInfo = () => {
+const SettingsEditBio = () => {
   const { bio, setBio, isLoading } = useContext(CurrentContext);
   const { editBio, isLoading: isEditingBio } = useEditBio();
   const [bioTextarea, setBioTextarea] = useState('');
@@ -64,4 +64,4 @@ const SettingsUserInfo = () => {
   );
 };
 
-export { SettingsUserInfo };
+export { SettingsEditBio };
