@@ -5,21 +5,25 @@ import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
+import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();
+  const { id } = useContext(CurrentContext);
   const { refetchChats } = useContext(ChatsContext);
   const { users, isLoading } = useUsers();
   const { createChat, isLoading: isCreatingChat } = useCreateChat();
   const [filter, setFilter] = useState('');
-  const [userError, setUserError] = useState('');
+  const [userError, setUserError] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [name, setName] = useState('');
 
-  // search filter
+  // search filter + filter out current user
   const filteredUsers = users
-    ? users.filter((user) =>
-        user.username.toLowerCase().includes(filter.trim().toLowerCase())
+    ? users.filter(
+        (user) =>
+          user.username.toLowerCase().includes(filter.trim().toLowerCase()) &&
+          user.id != id
       )
     : [];
 
@@ -39,7 +43,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
 
   const handleChatListItemClick = (userId) => {
     if (selectedUsers.length >= 4 && !selectedUsers.includes(userId))
-      return setUserError(' — Maximum 5 users allowed');
+      return setUserError(true);
     // if not in list, add user else remove user
     !selectedUsers.includes(userId)
       ? setSelectedUsers((prev) => [...prev, userId])
@@ -50,9 +54,11 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
     <ModalDialog closeFunction={closeFunction} title="New Conversation">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleCreateChat}>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
-          <label className="text-shadow-wrap ml-1">
-            Users
-            <span className="text-red-400">{userError}</span>
+          <label className="text-shadow-wrap ml-1 flex items-center gap-1 font-medium">
+            Users{' '}
+            <span className={`text-xs ${userError && 'text-red-400'}`}>
+              — (max 5 users per chat)
+            </span>
           </label>
           <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">
             {!isLoading
@@ -65,7 +71,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
                       onClick={() => handleChatListItemClick(user.id)}
                       selected={selectedUsers.includes(user.id)}
                     />
-                    <hr className='border-pink-200 border-1' />
+                    <hr className="border-1 border-pink-200" />
                   </Fragment>
                 ))
               : /* Loading Display */
@@ -84,20 +90,26 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             placeholder="Search"
           />
         </div>
-        <label className="text-shadow-wrap ml-1 font-medium" htmlFor="chatName">
-          Chat name (optional)
-        </label>
-        <input
-          className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5"
-          type="text"
-          name="chatName"
-          id="Chat name (optional)"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          maxLength={32}
-          isRequired={false}
-        />
-        <footer className="mt-3 flex gap-3">
+        <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
+          <label
+            className="text-shadow-wrap ml-1 font-medium"
+            htmlFor="chatName"
+          >
+            Chat name (optional)
+          </label>
+          <input
+            className="block-shadow h-10 w-full rounded-xl bg-white pl-3"
+            type="text"
+            name="chatName"
+            id="Chat name (optional)"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            maxLength={32}
+            isRequired={false}
+            placeholder="My amazing chat"
+          />
+        </div>
+        <footer className="flex gap-3">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
