@@ -17,7 +17,7 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li className="pink-gradient rounded-lg border-3 px-1.5 pt-1.5 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
+    <li className="pink-gradient rounded-lg border-3 px-1.5 pt-1.5 pb-1 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
       <div className="flex">
         <div className="flex flex-col">
           <div className="flex h-fit items-center">
@@ -41,7 +41,7 @@ const CommentListItem = ({
       </div>
       <div className="flex items-center justify-end gap-2">
         {comment.author.id == id && (
-          <div className="translate-y-0.5">
+          <div className="-translate-y-0.75">
             <DotsMenu isVertical={false}>
               <DotsMenuItem
                 label="Delete comment"

@@ -29,10 +29,11 @@ const DotsMenu = ({ children, isVertical = true }) => {
   return (
     <div className="relative ml-auto" ref={menuRef}>
       <button
-        className="rounded-lg py-1 hover:bg-pink-200"
+        className={`rounded-lg py-1 hover:bg-pink-200 ${!isVertical && 'px-2'}`}
         onClick={toggleMenu}
       >
         <img
+          className={`${!isVertical && 'h-1'}`}
           src={isVertical ? threeDots : threeDotsHori}
         />
       </button>

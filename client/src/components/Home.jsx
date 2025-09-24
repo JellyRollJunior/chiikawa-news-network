@@ -32,19 +32,22 @@ const Home = () => {
   return (
     <>
       <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
-        <Scrollable onScrollToBottom={fetchNextPage}>
-          <LogoTitle className="mx-2 mt-3 justify-center" />
+        <Scrollable
+          className="px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1"
+          onScrollToBottom={fetchNextPage}
+        >
+          <LogoTitle className="justify-center text-[15px]" />
           <HomePostControlButtons
-            className="mx-4 mt-2"
+            className="mt-2"
             isFeed={isFeed}
             setPostsToFeed={setPostsToFeed}
             setPostsToAll={setPostsToAll}
             isLoadingInit={isLoadingInit}
             refreshPosts={refreshPosts}
           />
-          <section className="mx-2 mt-3 flex items-center gap-2">
+          <section className="mt-3 flex items-center gap-2">
             <Avatar
-              className="size-[32px] md:size-[42px]"
+              className="size-[32px] border-1 border-yellow-500 md:size-[42px]"
               avatar={avatar}
               secondaryStyling={true}
             />
@@ -55,7 +58,7 @@ const Home = () => {
               What's on your mind?
             </button>
           </section>
-          <section className="mx-2 mt-3 mb-2">
+          <section className="mt-3 mb-2">
             <PostList
               posts={posts}
               hasNextPage={hasNextPage}
