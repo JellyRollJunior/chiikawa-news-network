@@ -20,7 +20,7 @@ const UsersListItem = ({
       <div className="flex gap-1">
         <div className={`flex flex-col ${blockStyle} items-center`}>
           <Avatar
-            className="mx-2 mt-2 size-[74px] md:size-[86px]"
+            className="mx-2 mt-2 border-1 border-yellow-500 size-[74px] md:size-[86px]"
             avatar={user.avatar}
           />
           <div className="my-2">
