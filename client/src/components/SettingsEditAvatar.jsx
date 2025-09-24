@@ -31,7 +31,7 @@ const SettingsEditAvatar = () => {
   };
 
   return !isLoading ? (
-    <section className="yellow-block mt-2 flex flex-col items-center pt-5 pb-3 md:grid md:grid-cols-2 md:justify-center md:py-5">
+    <section className="yellow-block flex flex-col items-center pt-5 pb-3 md:grid md:grid-cols-2 md:justify-center md:py-5">
       <div className="relative w-fit px-[16px] md:ml-12 md:justify-self-center">
         <Avatar
           className="size-[96px] md:size-[120px]"
