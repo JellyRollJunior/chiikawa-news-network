@@ -8,6 +8,7 @@ const UsersListItem = ({
   followUser,
   isLoadingFollow = false,
   isLoading = false,
+  blockStyle,
 }) => {
   const handleFollowUser = async (userId) => {
     await followUser(userId);
@@ -15,7 +16,7 @@ const UsersListItem = ({
   };
 
   return !isLoading ? (
-    <li className="yellow-block flex flex-col px-2 pt-3 pb-2">
+    <li className={` flex flex-col px-2 pt-3 pb-2 ${blockStyle}`}>
       <div className="ml-2 flex justify-around md:text-lg">
         <Avatar className="size-[74px]" avatar={user.avatar} />
         <div className="mt-2 flex flex-col gap-2">

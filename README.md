@@ -160,6 +160,8 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
+            -   userInfo
+                -   follow button + followign styling kinda ugly. Restyle it
             -   Users
             -   Edit
             -   Modals

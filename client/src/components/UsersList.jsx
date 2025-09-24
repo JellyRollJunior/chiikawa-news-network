@@ -1,14 +1,20 @@
 import { Fragment } from 'react';
 import { UsersListItem } from './UsersListItem.jsx';
 import { useFollow } from '../hooks/useFollow.js';
+const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
 
-const UsersList = ({ users, openViewProfile, refetchUsers, isLoading = false }) => {
+const UsersList = ({
+  users,
+  openViewProfile,
+  refetchUsers,
+  isLoading = false,
+}) => {
   const { followUser, isLoading: isLoadingFollow } = useFollow();
 
   return (
     <ul className="flex flex-col gap-2">
       {!isLoading
-        ? users.map((user) => (
+        ? users.map((user, index) => (
             <Fragment key={user.id}>
               <UsersListItem
                 user={user}
@@ -16,6 +22,7 @@ const UsersList = ({ users, openViewProfile, refetchUsers, isLoading = false }) 
                 followUser={followUser}
                 isLoadingFollow={isLoadingFollow}
                 refetchUsers={refetchUsers}
+                blockStyle={BLOCKS[index % BLOCKS.length]}
               />
             </Fragment>
           ))
