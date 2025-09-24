@@ -167,7 +167,8 @@ VITE_SERVER_URL
         -   Order
             -   Modals
                 -   new convo
-                -   chat delete
+                -   new post
+                -   delete modal
                 -   chat rename
             -   Toasts
             -   nav

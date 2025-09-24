@@ -9,18 +9,18 @@ const ModalDialog = ({ closeFunction, children, title }) => {
 
   return (
     <dialog
-      className="top-1/12 w-9/10 xs:w-sm secondary-container left-1/2 translate-x-[-50%] px-2 pb-2 pt-3 text-yellow-900"
+      className="xs:w-sm secondary-container top-1/12 left-1/2 w-9/10 translate-x-[-50%] px-3 pt-3 pb-2.5"
       ref={modalRef}
     >
       <div className="flex flex-col">
-        <header className="pink-dotted-block pb-1 relative flex flex-col">
+        <header className="pink-block relative pt-2 pb-1">
           <button
-            className="text-shadow-wrap absolute right-1.5 -top-1 h-fit text-2xl"
+            className="text-shadow-wrap absolute -top-1 right-2 h-fit text-2xl"
             onClick={closeFunction}
           >
             ×
           </button>
-          <h2 className="text-shadow-wrap mb-1 mt-3 w-full self-center text-center text-2xl font-bold">
+          <h2 className="text-shadow-wrap font-chiikawa text-center text-lg">
             {title}
           </h2>
         </header>
