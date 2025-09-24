@@ -16,8 +16,10 @@ const Settings = () => {
         <section className="mt-2">
           <SettingsEditAvatar />
         </section>
-        <SettingsEditBio />
-        <div className="yellow-block mt-2 ml-auto w-fit px-3 py-2">
+        <section className="mt-2">
+          <SettingsEditBio />
+        </section>
+        <div className="yellow-block mt-2 ml-auto w-fit px-3 py-3.5">
           <button className="pink-button px-7 py-1" onClick={logout}>
             Logout
           </button>

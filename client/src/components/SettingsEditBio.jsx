@@ -22,11 +22,13 @@ const SettingsEditBio = () => {
 
   return !isLoading ? (
     <>
-      <section className="yellow-block mt-2 px-3 py-2">
+      <div className="duckegg-block px-3 py-2">
         <form className="flex flex-col" onSubmit={handleEditBio}>
-          <h3 className="mt-2 font-medium">Bio</h3>
+          <h3 className="text-shadow-wrap mt-1 text-lg font-bold">
+            Edit Picture
+          </h3>
           <textarea
-            className="mt-2 min-h-26 w-full resize-none rounded-md border-3 border-pink-200 px-1 focus:outline-2 focus:outline-green-300"
+            className="mx-1 mt-2 min-h-26 resize-none rounded-lg border-2 border-pink-200 bg-white py-1 pl-2 disabled:bg-gray-200"
             autoFocus
             name="bio"
             id="bio"
@@ -43,7 +45,7 @@ const SettingsEditBio = () => {
             Confirm Edit
           </button>
         </form>
-      </section>
+      </div>
     </>
   ) : (
     /* Loading Display */

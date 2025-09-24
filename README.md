@@ -165,11 +165,7 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   Edit
-                -   title
-                -   avatar edit
-                -   bio edit
-                -   logout btn
-                -   scrolling
+                -   loading
             -   Modals
                 -   new convo
                 -   chat delete
