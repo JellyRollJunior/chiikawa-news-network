@@ -16,40 +16,44 @@ const UsersListItem = ({
   };
 
   return !isLoading ? (
-    <li className={` flex flex-col px-2 pt-3 pb-2 ${blockStyle}`}>
-      <div className="ml-2 flex justify-around md:text-lg">
-        <Avatar className="size-[74px]" avatar={user.avatar} />
-        <div className="mt-2 flex flex-col gap-2">
-          <div className="font-chiikawa text-center">{user.username}</div>
-          <div className="grid w-full grid-cols-2 text-sm md:text-base">
+    <li>
+      <div className="flex gap-1">
+        <div className={`flex flex-col ${blockStyle} items-center`}>
+          <Avatar className="mx-2 mt-2 size-[74px]" avatar={user.avatar} />
+          <div className="my-2">
+            {!user.isFollowing ? (
+              <button
+                className="pink-button w-full flex-1 px-4 py-0.5 text-sm"
+                onClick={() => handleFollowUser(user.id)}
+                disabled={isLoadingFollow}
+              >
+                Follow
+              </button>
+            ) : (
+              <div className="flex-1 text-center text-sm text-gray-500">
+                following
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={`flex flex-1 flex-col justify-between ${blockStyle} `}>
+          <div className="font-chiikawa mt-4 text-center">{user.username}</div>
+          <div className="flex justify-around text-sm md:text-base">
             <div>{user && user.postCount ? user.postCount : 0} Posts</div>
             <div>
               {user && user.followersCount ? user.followersCount : 0} Followers
             </div>
           </div>
+          <button
+            className="blue-button mb-2 w-fit self-center px-5 py-0.5 text-sm"
+            onClick={() => openViewProfile(user.id)}
+          >
+            View profile
+          </button>
         </div>
       </div>
-      <p className="mt-2 ml-2">{user.bio}</p>
-      <div className="mt-2 grid grid-cols-2 items-center gap-3">
-        <button
-          className="pink-button flex-1 px-3 py-0.5 text-sm"
-          onClick={() => openViewProfile(user.id)}
-        >
-          View profile
-        </button>
-        {!user.isFollowing ? (
-          <button
-            className="blue-button flex-1 px-3 py-0.5 text-sm"
-            onClick={() => handleFollowUser(user.id)}
-            disabled={isLoadingFollow}
-          >
-            Follow
-          </button>
-        ) : (
-          <div className="flex-1 text-center text-sm text-gray-500">
-            — following —
-          </div>
-        )}
+      <div className={`${blockStyle} mt-1 px-3 pt-2.5 pb-1.5`}>
+        <p className="ml-1">{user.bio}</p>
       </div>
     </li>
   ) : (
