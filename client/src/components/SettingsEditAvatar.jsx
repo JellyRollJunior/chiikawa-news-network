@@ -77,22 +77,26 @@ const SettingsEditAvatar = () => {
       </div>
     </div>
   ) : (
-    <section className="yellow-block mt-3 flex flex-col items-center py-2">
-      <div className="relative flex items-center px-[16px]">
-        <LoadingElement className="size-24 rounded-full" />
+    <div className="flex gap-2">
+      <div className="duckegg-block relative px-4 py-5">
+        <LoadingElement className="size-[100px] rounded-full md:size-[120px]" />
         <img
-          className="drop-shadow-pink-outline absolute -top-[10px] -right-[24px] w-[52px]"
+          className="drop-shadow-pink-outline absolute -top-[5px] -right-[10px] w-[52px]"
           src={chiiPeace}
         />
         <img
-          className="drop-shadow-pink-outline absolute -bottom-[6px] -left-[24px] w-[52px]"
+          className="drop-shadow-pink-outline absolute -bottom-[5px] -left-[12px] w-[52px]"
           src={hachiCamera}
         />
       </div>
-      <button className="blue-button mt-3 px-3 py-1" disabled={true}>
-        Change Picture
-      </button>
-    </section>
+      <div className="pink-block flex flex-1 flex-col items-center justify-center gap-1 pt-4">
+        <h3 className="text-shadow-wrap text-lg font-bold">Edit Picture</h3>
+        <p className="text-xs md:text-sm">(Max 250Kb)</p>
+        <button className="blue-button mt-1 px-5 py-0.5" disabled={true}>
+          Upload
+        </button>
+      </div>
+    </div>
   );
 };
 

@@ -20,7 +20,7 @@ const SettingsEditBio = () => {
     }
   };
 
-  return isLoading ? (
+  return !isLoading ? (
     <div className="duckegg-block px-3 py-3">
       <form className="flex flex-col" onSubmit={handleEditBio}>
         <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
@@ -47,7 +47,7 @@ const SettingsEditBio = () => {
     /* Loading Display */
     <>
       <div className="duckegg-block px-3 py-3">
-        <form className="flex flex-col" onSubmit={handleEditBio}>
+        <div className="flex flex-col">
           <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
           <LoadingElement className="mx-1 mt-2 h-26 rounded-sm" />
           <button
@@ -56,7 +56,7 @@ const SettingsEditBio = () => {
           >
             Confirm Edit
           </button>
-        </form>
+        </div>
       </div>
     </>
   );
