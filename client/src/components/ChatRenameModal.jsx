@@ -43,7 +43,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
             required={true}
           />
         </main>
-        <footer className="mt-2 flex gap-3">
+        <footer className="mt-2 flex gap-2">
           <button
             type="button"
             className="pink-button px-6 py-1 text-lg font-bold"

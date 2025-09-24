@@ -165,12 +165,10 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   Modals
-                -   delete modal
-                -   chat rename
             -   Toasts
             -   nav
                 -   selected nav -> block stylign? test it out
+            -   login / signup
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats

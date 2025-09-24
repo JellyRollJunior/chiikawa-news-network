@@ -109,7 +109,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             placeholder="My amazing chat"
           />
         </div>
-        <footer className="flex gap-3">
+        <footer className="flex gap-2">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"

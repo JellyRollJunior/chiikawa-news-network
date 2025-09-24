@@ -2,17 +2,19 @@ import warning from '../assets/svgs/warning.svg';
 
 const DeleteForm = ({ label, onSubmit, isLoading, closeFunction }) => {
   return (
-    <form className="flex flex-col" onSubmit={onSubmit}>
-      <img className="mt-6 w-12 self-center" src={warning} />
-      <h2 className="text-center">
-        {label} will be deleted <strong>forever</strong>.
-        <br />
-        <strong>This cannot be undone</strong>.
-        <br />
-        Are you sure?
-      </h2>
-      <footer className="mt-6 flex gap-3">
-        <button className="yellow-button px-5 py-1.5" disabled={isLoading}>
+    <form className="mt-2 flex flex-col gap-2" onSubmit={onSubmit}>
+      <div className="pink-block flex flex-col px-3 pt-5 pb-3">
+        <img className="w-18 self-center" src={warning} />
+        <h2 className="px-3 pt-2 pb-1.5 text-center">
+          {label} will be deleted <strong>forever</strong>.
+          <br />
+          <strong>This cannot be undone</strong>.
+          <br />
+          Are you sure?
+        </h2>
+      </div>
+      <footer className="flex gap-2">
+        <button className="blue-button px-5 py-1.5" disabled={isLoading}>
           Delete
         </button>
         <button
