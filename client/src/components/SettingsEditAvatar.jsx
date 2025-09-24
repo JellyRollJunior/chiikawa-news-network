@@ -46,20 +46,21 @@ const SettingsEditAvatar = () => {
           src={hachiCamera}
         />
       </div>
-      <div className="yellow-block flex flex-1 flex-col items-center">
-        <h3 className="mt-2 font-medium md:text-lg">Profile Picture</h3>
+      <div className="pink-block flex flex-1 gap-1 flex-col items-center justify-center pt-4 text-center">
+        <h3 className="font-medium md:text-lg">Edit Picture</h3>
         <p className="text-xs md:text-sm">
           (Max 250Kb)
-          <span className="text-red-400">
-            {mediaError && ` — ${mediaError}`}
+          <br />
+          <span className="font-bold text-red-400">
+            {mediaError && `${mediaError}`}
           </span>
         </p>
         <button
-          className="blue-button mt-1 px-3 py-1 md:mt-2"
+          className="blue-button mt-1 px-5 py-0.5"
           onClick={handleClickChangePhoto}
           disabled={isUploadingAvatar}
         >
-          Upload Picture
+          Upload
         </button>
         <input
           className="hidden"
