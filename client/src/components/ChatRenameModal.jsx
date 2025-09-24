@@ -25,7 +25,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
   return (
     <ModalDialog closeFunction={closeFunction} title="Rename Conversation">
       <form className="flex flex-col" onSubmit={handleRenameChat}>
-        <main className="mb-2 mt-4 px-2">
+        <main className="pink-dotted-block mt-2 px-3 pt-2 pb-2.5">
           <label
             className="text-shadow-wrap ml-1 font-medium text-amber-800"
             htmlFor="chatName"
@@ -33,7 +33,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
             New conversation name
           </label>
           <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-2 h-10 w-full rounded-lg bg-white pl-1.5 text-amber-800"
             type="text"
             name="chatName"
             id="chatName"
@@ -52,7 +52,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
             Cancel
           </button>
           <button
-            className="yellow-button flex-1 px-6 py-1 text-lg font-bold"
+            className="blue-button flex-1 px-6 py-1 text-lg font-bold"
             disabled={isLoading}
           >
             Rename
