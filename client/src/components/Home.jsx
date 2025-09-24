@@ -36,7 +36,9 @@ const Home = () => {
           className="px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1"
           onScrollToBottom={fetchNextPage}
         >
-          <LogoTitle className="justify-center text-[15px]" />
+          <div className='yellow-block'>
+            <LogoTitle className="justify-center text-[15px]" />
+          </div>
           <HomePostControlButtons
             className="mt-2"
             isFeed={isFeed}
