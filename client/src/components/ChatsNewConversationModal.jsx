@@ -28,7 +28,6 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
     if (!selectedUsers || selectedUsers == '') {
       return setUserError(' — Please select a chat partner');
     }
-    // currently only support selecting one user, so put selected user in an array
     const data = await createChat(name, selectedUsers);
     // reset form
     setSelectedUsers('');
@@ -51,7 +50,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
     <ModalDialog closeFunction={closeFunction} title="New Conversation">
       <form className="flex flex-col" onSubmit={handleCreateChat}>
         <main className="flex flex-col px-2">
-          <label className="text-shadow-wrap ml-1 mt-4 font-medium text-amber-800">
+          <label className="text-shadow-wrap ml-1 mt-4 font-medium">
             Users
             <span className="text-red-400">{userError}</span>
           </label>
@@ -84,13 +83,13 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             placeholder="Search"
           />
           <label
-            className="text-shadow-wrap ml-1 font-medium text-amber-800"
+            className="text-shadow-wrap ml-1 font-medium"
             htmlFor="chatName"
           >
             Chat name (optional)
           </label>
           <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5"
             type="text"
             name="chatName"
             id="Chat name (optional)"

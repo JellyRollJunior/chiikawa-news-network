@@ -71,9 +71,9 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
 
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
-      <form className="text-amber-800" onSubmit={handleSubmit}>
-        <main className="flex flex-col px-2">
-          <label className="text-shadow-wrap mt-4 ml-1" htmlFor="title">
+      <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
+        <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
+          <label className="text-shadow-wrap ml-1" htmlFor="title">
             Title
           </label>
           <input
@@ -105,7 +105,9 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
             {content.length} / 350
           </div>
-          <div className="mt-2 flex items-center gap-3">
+        </div>
+        <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
+          <div className="flex items-center gap-3">
             <div className="flex">
               <button
                 className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
@@ -123,18 +125,18 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
               </button>
             </div>
             <div
-              className={`text-shadow-wrap ${uploadError && 'font-bold text-red-400'}`}
+              className={`text-shadow-wrap text-sm ${uploadError && 'font-bold text-red-400'}`}
             >
               {isUploadMode && '(max 250Kb)'}
             </div>
           </div>
           <div
-            className={`text-shadow-wrap mt-2 ml-2 text-xs ${urlError && 'font-bold text-red-400'}`}
+            className={`text-shadow-wrap text-center text-xs ${urlError && 'font-bold text-red-400'}`}
           >
             URL must end with [.jpg, .jpeg, .png, .gif, .webp]
           </div>
           {isUploadMode ? (
-            <div className="mt-1 flex h-12 items-center">
+            <div className="flex h-12 items-center">
               <button
                 className="blue-button w-fit flex-none px-3 py-1"
                 type="button"
@@ -161,18 +163,17 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             </div>
           ) : (
             <input
-              className="block-shadow mt-2 h-10 rounded-lg bg-white pl-3"
+              className="block-shadow h-10 rounded-lg bg-white pl-3"
               id="mediaUrl"
               name="mediaUrl"
               type="url"
               value={media}
               onChange={(event) => setMedia(event.target.value)}
-              placeholder="www.my-media.com/media-url.png"
+              placeholder="https://www.media.com/url.png"
             />
           )}
-        </main>
-        <hr className="mt-4 h-1 rounded-xl border-blue-200 bg-blue-200" />
-        <footer className="mt-2.5 flex gap-3">
+        </div>
+        <footer className="flex gap-3">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
@@ -182,7 +183,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             Cancel
           </button>
           <button
-            className="yellow-button flex-1 px-6 py-1.5 text-lg font-bold"
+            className="blue-button flex-1 px-6 py-1.5 text-lg font-bold"
             disabled={isLoading}
           >
             Post
