@@ -8,20 +8,18 @@ import profile from '../assets/nav/chii-usagi-silly.png';
 import users from '../assets/nav/chii-kuri-drinks.png';
 import settings from '../assets/nav/usagi-business.png';
 
-const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
+const NavButton = ({ link, label, src, srcWidth, isSelected = false }) => {
   return (
     <Link
-      className={`hover:bg-dotted font-chiikawa flex h-full w-full items-end justify-center pb-1 text-xs hover:bg-pink-200 md:h-fit md:items-center md:pt-3 ${
-        selected
-          ? 'md:bg-dotted hover:bg-pink-300 md:rounded-md md:bg-pink-300'
-          : ''
+      className={`hover:bg-dotted font-chiikawa flex h-full w-full items-end justify-center pb-1 text-xs hover:bg-pink-200 md:h-fit md:items-center md:pt-3 md:pb-1.5 ${
+        isSelected ? 'md:bg-dotted hover:bg-pink-300 md:bg-pink-300' : ''
       }`}
       to={link}
     >
       <div
         className={`flex flex-col items-center justify-center ${
-          selected
-            ? 'scale-115 -translate-y-3 duration-300 ease-in-out md:translate-y-0 md:scale-100'
+          isSelected
+            ? '-translate-y-3 scale-115 duration-300 ease-in-out md:translate-y-0 md:scale-100'
             : ''
         }`}
       >
@@ -36,13 +34,13 @@ const NavButton = ({ link, label, src, srcWidth, selected = false }) => {
   );
 };
 
-const createNavButton = (link, label, src, srcWidth, selected) => {
+const createNavButton = (link, label, src, srcWidth, isSelected) => {
   return {
     link,
     label,
     src,
     srcWidth,
-    selected,
+    isSelected,
   };
 };
 
@@ -96,7 +94,7 @@ const NavigationPageWrapper = ({ children }) => {
   return (
     <>
       {/* mobile nav */}
-      <nav className="border-t-3 bg-dotted-sm md:border-y-3 fixed bottom-0 isolate z-10 grid h-20 w-full grid-cols-5 rounded-t-md border-b-2 border-pink-200 bg-pink-100 md:hidden">
+      <nav className="bg-dotted-sm fixed bottom-0 isolate z-10 grid h-20 w-full grid-cols-5 rounded-t-md border-t-3 border-b-2 border-pink-200 bg-pink-100 md:hidden md:border-y-3">
         {navButtonsMobile.map((button) => (
           <Fragment key={button.label}>
             <NavButton
@@ -104,14 +102,14 @@ const NavigationPageWrapper = ({ children }) => {
               label={button.label}
               src={button.src}
               srcWidth={button.srcWidth}
-              selected={button.selected}
+              isSelected={button.isSelected}
             />
           </Fragment>
         ))}
       </nav>
       {/* desktop nav */}
-      <nav className="border-r-3 bg-dotted-sm w-21 fixed bottom-0 top-0 isolate z-10 hidden h-full flex-col rounded-r-sm border-x-4 border-l-2 border-pink-200 bg-pink-100 md:flex">
-        <div className="mb-10 mt-5 w-full">
+      <nav className="bg-dotted-sm fixed top-0 bottom-0 isolate z-10 hidden h-full w-21 flex-col rounded-r-sm border-x-4 border-r-3 border-l-2 border-pink-200 bg-pink-100 md:flex">
+        <div className="mt-5 mb-10 w-full">
           <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
         </div>
         {navButtonsDesktop.map((button) => (
@@ -121,7 +119,7 @@ const NavigationPageWrapper = ({ children }) => {
               label={button.label}
               src={button.src}
               srcWidth={button.srcWidth}
-              selected={button.selected}
+              isSelected={button.isSelected}
             />
           </Fragment>
         ))}
@@ -131,11 +129,11 @@ const NavigationPageWrapper = ({ children }) => {
             label="edit"
             src={settings}
             srcWidth="35px"
-            selected={path == '/settings'}
+            isSelected={path == '/settings'}
           />
         </div>
       </nav>
-      <div className="md:pl-21 h-screen pb-20 md:pb-0">{children}</div>
+      <div className="h-screen pb-20 md:pb-0 md:pl-21">{children}</div>
     </>
   );
 };
