@@ -11,7 +11,7 @@ const Users = () => {
   return profileUserId ? (
     <div className="flex w-full max-w-xl">
       <UserProfile userId={profileUserId}>
-        <div className="pink-block mb-2 pt-1.5 pb-0.5">
+        <div className="pink-block mb-2 pt-1.5 pb-0.5 hover:border-pink-200 hover:bg-pink-200 hover:bg-none hover:inset-shadow-none">
           <button
             className="font-chiikawa flex self-start px-5 py-0.5"
             onClick={closeViewProfile}
