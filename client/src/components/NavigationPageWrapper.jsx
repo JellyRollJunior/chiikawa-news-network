@@ -8,40 +8,53 @@ import profile from '../assets/nav/chii-usagi-silly.png';
 import users from '../assets/nav/chii-kuri-drinks.png';
 import settings from '../assets/nav/usagi-business.png';
 
-const NavButton = ({ link, label, src, srcWidth, isSelected = false }) => {
+const NavButton = ({
+  className = '',
+  link,
+  label,
+  src,
+  srcWidth,
+  translateX = '0',
+  isSelected = false,
+}) => {
   return (
     <Link
-      className={`hover:bg-dotted font-chiikawa flex h-full w-full items-end justify-center pb-1 text-xs hover:bg-pink-200 md:h-fit md:items-center md:pt-3 md:pb-1.5 ${
-        isSelected ? 'md:bg-dotted hover:bg-pink-300 md:bg-pink-300' : ''
+      className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-1 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 md:pb-3 ${className} ${
+        isSelected && 'md:bg-dotted hover:bg-pink-300 md:bg-pink-300'
       }`}
       to={link}
     >
       <div
-        className={`flex flex-col items-center justify-center ${
+        className={`flex flex-col items-center justify-center opacity-90 ${
           isSelected
-            ? '-translate-y-3 scale-115 duration-300 ease-in-out md:translate-y-0 md:scale-100'
+            ? `-translate-y-3 scale-115 opacity-100 duration-300 ease-in-out md:translate-y-0 md:translate-x-${translateX} md:scale-110`
             : ''
         }`}
       >
-        <img
-          style={{ width: srcWidth }}
-          className="drop-shadow-pink-outline"
-          src={src}
-        />
-        <h3 className="text-shadow-wrap mt-1 text-center font-bold">{label}</h3>
+        <img className={`drop-shadow-pink-outline ${srcWidth}`} src={src} />
+        <h3
+          className={`text-shadow-wrap font-chiikawa mt-1 text-center text-xs ${isSelected && 'font-bold'}`}
+        >
+          {label}
+        </h3>
       </div>
     </Link>
   );
 };
 
-const createNavButton = (link, label, src, srcWidth, isSelected) => {
-  return {
-    link,
-    label,
-    src,
-    srcWidth,
-    isSelected,
-  };
+const RenderNavButtons = ({ buttonArray = [] }) => {
+  if (!Array.isArray(buttonArray)) return;
+  return buttonArray.map((button) => (
+    <Fragment key={button.label}>
+      <NavButton
+        link={button.link}
+        label={button.label}
+        src={button.src}
+        srcWidth={button.srcWidth}
+        isSelected={button.isSelected}
+      />
+    </Fragment>
+  ));
 };
 
 const NavigationPageWrapper = ({ children }) => {
@@ -49,35 +62,15 @@ const NavigationPageWrapper = ({ children }) => {
   const location = useLocation();
   const path = location.pathname;
 
-  const usersButton = createNavButton(
-    '/users',
-    'Users',
-    users,
-    '60px',
-    path.includes('users') && path != `/users/${id}`
-  );
-  const chatsButton = createNavButton(
-    '/chats',
-    'Chats',
-    messages,
-    '69px',
-    path.includes('chats')
-  );
-  const homeButton = createNavButton('/', 'Home', home, '43px', path == '/');
-  const profileButton = createNavButton(
-    `/users/${id}`,
-    'Profile',
-    profile,
-    '56px',
-    path == `/users/${id}`
-  );
-  const settingsButton = createNavButton(
-    '/settings',
-    'Edit',
-    settings,
-    '35px',
-    path == '/settings'
-  );
+  // Nav buttons
+  const cnnButton = { className: '', link: '/', label: 'CNN', src: logo, srcWidth: 'w-[43px]', translateX: '0', isSelected: false, }
+  const homeButton = { className: '', link: '/', label: 'Home', src: home, srcWidth: 'w-[43px]', translateX: '0', isSelected: path == '/', }
+  const chatsButton = { className: '', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', translateX: '0', isSelected: path.includes('chats'), }
+  const profileButton = { className: '', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', translateX: '0', isSelected: path == `/users/${id}`, }
+  const usersButton = { className: '', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', translateX: '0', isSelected: path.includes('users') && path != `/users/${id}`, }
+  const settingsButton = { className: '', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', translateX: '0', isSelected: path == '/settings', }
+
+  // Mobile + Desktop button display order
   const navButtonsMobile = [
     usersButton,
     chatsButton,
@@ -95,42 +88,16 @@ const NavigationPageWrapper = ({ children }) => {
     <>
       {/* mobile nav */}
       <nav className="bg-dotted-sm fixed bottom-0 isolate z-10 grid h-20 w-full grid-cols-5 rounded-t-md border-t-3 border-b-2 border-pink-200 bg-pink-100 md:hidden md:border-y-3">
-        {navButtonsMobile.map((button) => (
-          <Fragment key={button.label}>
-            <NavButton
-              link={button.link}
-              label={button.label}
-              src={button.src}
-              srcWidth={button.srcWidth}
-              isSelected={button.isSelected}
-            />
-          </Fragment>
-        ))}
+        <RenderNavButtons buttonArray={navButtonsMobile} />
       </nav>
       {/* desktop nav */}
       <nav className="bg-dotted-sm fixed top-0 bottom-0 isolate z-10 hidden h-full w-21 flex-col rounded-r-sm border-x-4 border-r-3 border-l-2 border-pink-200 bg-pink-100 md:flex">
         <div className="mt-5 mb-10 w-full">
-          <NavButton link="/" label="CNN" src={logo} srcWidth="43px" />
+          <RenderNavButtons buttonArray={[cnnButton]} />
         </div>
-        {navButtonsDesktop.map((button) => (
-          <Fragment key={button.label}>
-            <NavButton
-              link={button.link}
-              label={button.label}
-              src={button.src}
-              srcWidth={button.srcWidth}
-              isSelected={button.isSelected}
-            />
-          </Fragment>
-        ))}
+        <RenderNavButtons buttonArray={navButtonsDesktop} />
         <div className="md:mt-10 md:w-full">
-          <NavButton
-            link="/settings"
-            label="edit"
-            src={settings}
-            srcWidth="35px"
-            isSelected={path == '/settings'}
-          />
+          <RenderNavButtons buttonArray={[settingsButton]} />
         </div>
       </nav>
       <div className="h-screen pb-20 md:pb-0 md:pl-21">{children}</div>

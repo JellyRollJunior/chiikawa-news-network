@@ -156,6 +156,7 @@ VITE_SERVER_URL
     -   client: loading skeelton does not appear when loading
         -   check all loading and see if its working
     -   client: edit avatar/bio confirm toast
+    -   client: toasts overflow page. Make toast scroll
 
 -   client
 
