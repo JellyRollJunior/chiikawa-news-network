@@ -14,12 +14,11 @@ const NavButton = ({
   label,
   src,
   srcWidth,
-  translateX = '0',
   isSelected = false,
 }) => {
   return (
     <Link
-      className={`hover:bg-dotted flex h-full w-full items-end justify-center pb-1 hover:bg-pink-200 md:h-fit md:items-center md:pt-3 md:pb-3 ${className} ${
+      className={`hover:bg-dotted flex h-full w-full items-end justify-center hover:bg-pink-200 md:h-fit md:items-center ${className} ${
         isSelected && 'md:bg-dotted hover:bg-pink-300 md:bg-pink-300'
       }`}
       to={link}
@@ -27,7 +26,7 @@ const NavButton = ({
       <div
         className={`flex flex-col items-center justify-center opacity-90 ${
           isSelected
-            ? `-translate-y-3 scale-115 opacity-100 duration-300 ease-in-out md:translate-y-0 md:translate-x-${translateX} md:scale-110`
+            ? `-translate-y-3 scale-115 opacity-100 duration-300 ease-in-out md:translate-y-0 md:scale-110`
             : ''
         }`}
       >
@@ -47,6 +46,7 @@ const RenderNavButtons = ({ buttonArray = [] }) => {
   return buttonArray.map((button) => (
     <Fragment key={button.label}>
       <NavButton
+        className={button.className}
         link={button.link}
         label={button.label}
         src={button.src}
@@ -63,12 +63,12 @@ const NavigationPageWrapper = ({ children }) => {
   const path = location.pathname;
 
   // Nav buttons
-  const cnnButton = { className: '', link: '/', label: 'CNN', src: logo, srcWidth: 'w-[43px]', translateX: '0', isSelected: false, }
-  const homeButton = { className: '', link: '/', label: 'Home', src: home, srcWidth: 'w-[43px]', translateX: '0', isSelected: path == '/', }
-  const chatsButton = { className: '', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', translateX: '0', isSelected: path.includes('chats'), }
-  const profileButton = { className: '', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', translateX: '0', isSelected: path == `/users/${id}`, }
-  const usersButton = { className: '', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', translateX: '0', isSelected: path.includes('users') && path != `/users/${id}`, }
-  const settingsButton = { className: '', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', translateX: '0', isSelected: path == '/settings', }
+  const cnnButton = { className: 'pb-1 md:pt-1.5', link: '/', label: 'CNN', src: logo, srcWidth: 'w-[43px]', isSelected: false, }
+  const homeButton = { className: 'pb-1 md:pb-2.5 md:pt-2', link: '/', label: 'Home', src: home, srcWidth: 'w-[43px]', isSelected: path == '/', }
+  const chatsButton = { className: 'pb-1 md:pb-2.5 md:pt-2', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', isSelected: path.includes('chats'), }
+  const profileButton = { className: 'pb-1 md:pb-2.5 md:pt-1', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', isSelected: path == `/users/${id}`, }
+  const usersButton = { className: 'pb-1 md:pb-2.5 md:pt-1.5', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', isSelected: path.includes('users') && path != `/users/${id}`, }
+  const settingsButton = { className: 'pb-1 md:pb-2 md:pt-1.5', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', isSelected: path == '/settings', }
 
   // Mobile + Desktop button display order
   const navButtonsMobile = [
