@@ -175,6 +175,7 @@ VITE_SERVER_URL
             -   chats
             -   chat messages
         -   add stickers! fun!
+            -   add pink outsline to chii pa pa & other stickers
 
 -   styling study
 
