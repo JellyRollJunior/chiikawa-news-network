@@ -94,6 +94,10 @@
   @apply border-[#FEF5D7] bg-linear-to-b from-[#FFFDED] to-[#FFFBDE];
 }
 
+@utility yellow-gradient-dark {
+  @apply border-[#FEF5D7] bg-linear-to-b from-[#FFFEC9] to-[#FFFDA3];
+}
+
 @utility duckegg-gradient {
   @apply border-[#A2D0C488] bg-linear-to-b from-[#D9F1EB] to-[#cae8dc];
 }

@@ -70,7 +70,7 @@ const NavigationPageWrapper = ({ children }) => {
   const chatsButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-2', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', isSelected: path.includes('chats'), }
   const profileButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-1', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', isSelected: path == `/users/${id}`, }
   const usersButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-1.5', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', isSelected: path.includes('users') && path != `/users/${id}`, }
-  const settingsButton = { className: 'md:yellow-block pb-1 md:pb-2 md:pt-1.5', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', isSelected: path == '/settings', selectedStyling: '' }
+  const settingsButton = { className: 'md:yellow-block pb-1 md:pb-2 md:pt-1.5', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', isSelected: path == '/settings', selectedStyling: 'md:yellow-gradient-dark' }
 
   // Mobile + Desktop button display order
   const navButtonsMobile = [
@@ -95,11 +95,11 @@ const NavigationPageWrapper = ({ children }) => {
       {/* desktop nav */}
       <nav className="bg-dotted-sm fixed gap-2 top-0 bottom-0 isolate z-10 hidden h-full w-24 px-1.5 flex-col rounded-r-sm border-x-4 border-r-3 border-l-2 border-pink-200 bg-pink-100 md:flex">
         <div className='pink-block h-4 mt-2' />
-          <RenderNavButtons buttonArray={[cnnButton]} />
+        <RenderNavButtons buttonArray={[cnnButton]} />
         <div className='duckegg-block h-4 ' />
         <RenderNavButtons buttonArray={navButtonsDesktop} />
         <div className='yellow-block h-4 ' />
-          <RenderNavButtons buttonArray={[settingsButton]} />
+        <RenderNavButtons buttonArray={[settingsButton]} />
       </nav>
       <div className="h-screen pb-20 md:pb-0 md:pl-24">{children}</div>
     </>

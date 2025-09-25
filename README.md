@@ -167,7 +167,6 @@ VITE_SERVER_URL
         -   fix avatar restyling on all areas
         -   Order
             -   nav
-                -   selected nav -> block stylign? test it out
             -   login / signup
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
