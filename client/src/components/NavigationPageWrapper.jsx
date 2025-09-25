@@ -15,11 +15,12 @@ const NavButton = ({
   src,
   srcWidth,
   isSelected = false,
+  selectedStyling = 'md:bg-duckegg-dark md:bg-none'
 }) => {
   return (
     <Link
-      className={`hover:bg-dotted flex h-full w-full items-end justify-center hover:bg-pink-200 md:h-fit md:items-center ${className} ${
-        isSelected && 'md:bg-dotted hover:bg-pink-300 md:bg-pink-300'
+      className={`flex h-full w-full items-end justify-center md:h-fit md:items-center ${className} ${
+        isSelected && `underline underline-offset-3 decoration-dashed decoration-1.5 ${selectedStyling}`
       }`}
       to={link}
     >
@@ -52,6 +53,7 @@ const RenderNavButtons = ({ buttonArray = [] }) => {
         src={button.src}
         srcWidth={button.srcWidth}
         isSelected={button.isSelected}
+        selectedStyling={button.selectedStyling && button.selectedStyling}
       />
     </Fragment>
   ));
@@ -63,12 +65,12 @@ const NavigationPageWrapper = ({ children }) => {
   const path = location.pathname;
 
   // Nav buttons
-  const cnnButton = { className: 'pb-1 md:pt-1.5', link: '/', label: 'CNN', src: logo, srcWidth: 'w-[43px]', isSelected: false, }
-  const homeButton = { className: 'pb-1 md:pb-2.5 md:pt-2', link: '/', label: 'Home', src: home, srcWidth: 'w-[43px]', isSelected: path == '/', }
-  const chatsButton = { className: 'pb-1 md:pb-2.5 md:pt-2', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', isSelected: path.includes('chats'), }
-  const profileButton = { className: 'pb-1 md:pb-2.5 md:pt-1', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', isSelected: path == `/users/${id}`, }
-  const usersButton = { className: 'pb-1 md:pb-2.5 md:pt-1.5', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', isSelected: path.includes('users') && path != `/users/${id}`, }
-  const settingsButton = { className: 'pb-1 md:pb-2 md:pt-1.5', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', isSelected: path == '/settings', }
+  const cnnButton = { className: 'md:pink-block pb-1 md:pt-1.5', link: '/', label: 'CNN', src: logo, srcWidth: 'w-[43px]', isSelected: false, }
+  const homeButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-2', link: '/', label: 'Home', src: home, srcWidth: 'w-[43px]', isSelected: path == '/', }
+  const chatsButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-2', link: '/chats', label: 'Chats', src: messages, srcWidth: 'w-[69px]', isSelected: path.includes('chats'), }
+  const profileButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-1', link: `/users/${id}`, label: 'Profile', src: profile, srcWidth: 'w-[56px]', isSelected: path == `/users/${id}`, }
+  const usersButton = { className: 'md:duckegg-block pb-1 md:pb-2.5 md:pt-1.5', link: '/users', label: 'Users', src: users, srcWidth: 'w-[60px]', isSelected: path.includes('users') && path != `/users/${id}`, }
+  const settingsButton = { className: 'md:yellow-block pb-1 md:pb-2 md:pt-1.5', link: '/settings', label: 'Edit', src: settings, srcWidth: 'w-[35px]', isSelected: path == '/settings', selectedStyling: '' }
 
   // Mobile + Desktop button display order
   const navButtonsMobile = [
@@ -91,16 +93,15 @@ const NavigationPageWrapper = ({ children }) => {
         <RenderNavButtons buttonArray={navButtonsMobile} />
       </nav>
       {/* desktop nav */}
-      <nav className="bg-dotted-sm fixed top-0 bottom-0 isolate z-10 hidden h-full w-21 flex-col rounded-r-sm border-x-4 border-r-3 border-l-2 border-pink-200 bg-pink-100 md:flex">
-        <div className="mt-5 mb-10 w-full">
+      <nav className="bg-dotted-sm fixed gap-2 top-0 bottom-0 isolate z-10 hidden h-full w-24 px-1.5 flex-col rounded-r-sm border-x-4 border-r-3 border-l-2 border-pink-200 bg-pink-100 md:flex">
+        <div className='pink-block h-4 mt-2' />
           <RenderNavButtons buttonArray={[cnnButton]} />
-        </div>
+        <div className='duckegg-block h-4 ' />
         <RenderNavButtons buttonArray={navButtonsDesktop} />
-        <div className="md:mt-10 md:w-full">
+        <div className='yellow-block h-4 ' />
           <RenderNavButtons buttonArray={[settingsButton]} />
-        </div>
       </nav>
-      <div className="h-screen pb-20 md:pb-0 md:pl-21">{children}</div>
+      <div className="h-screen pb-20 md:pb-0 md:pl-24">{children}</div>
     </>
   );
 };
