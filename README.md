@@ -165,8 +165,6 @@ VITE_SERVER_URL
     -   site restyling
         -   fix avatar restyling on all areas
         -   Order
-            -   Toasts
-                -   make errors red
             -   nav
                 -   selected nav -> block stylign? test it out
             -   login / signup

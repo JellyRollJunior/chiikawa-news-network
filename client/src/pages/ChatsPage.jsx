@@ -7,7 +7,7 @@ const ChatsPage = () => {
       <aside className="flex-3 flex md:max-w-md">
         <Chats />
       </aside>
-      <div className="flex-4 mr-2 hidden items-center justify-center md:flex">
+      <div className="flex-4 mr-4 hidden items-center justify-center md:flex">
         <ChatsMessageNotice />
       </div>
     </div>

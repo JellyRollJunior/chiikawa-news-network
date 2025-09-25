@@ -21,7 +21,7 @@ const Notice = ({ title, src, alt, footer }) => {
         </p>
       </main>
       <img
-        className="absolute -right-[12px] -bottom-[32px] w-[100px]"
+        className="absolute -right-[10px] -bottom-[32px] w-[100px] drop-shadow-pink-outline"
         src={chiiLaying}
       />
     </div>
