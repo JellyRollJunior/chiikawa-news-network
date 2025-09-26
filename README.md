@@ -164,12 +164,15 @@ VITE_SERVER_URL
 
 -   client
 
+    -   combine slideshow thingy & notice
+        -   NoticeWrapper
+            -   children -> pink block
     -   site restyling
         -   Order
             -   login
                 -   desktop add pictures of UI n stuff
-            -   signup
-                -   desktop add pictures of UI n stuff
+                -   stickers
+                -   links
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats
