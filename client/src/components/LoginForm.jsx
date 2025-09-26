@@ -22,7 +22,7 @@ const LoginForm = () => {
 
   return (
     <form className="flex w-full flex-col gap-2" onSubmit={handleLogin}>
-      <div className="duckegg-block h-4 my-1" />
+      <div className="duckegg-block my-1 h-4" />
       <div className="pink-block px-3 pt-3 pb-2">
         <label className="text-shadow-wrap ml-1 font-medium" htmlFor={username}>
           Username
@@ -60,10 +60,8 @@ const LoginForm = () => {
           required={true}
         />
       </div>
-      <div className="duckegg-block h-4 my-1" />
-      <div className="">
-        <button className="blue-button w-full px-5 py-2">Log In</button>
-      </div>
+      <div className="duckegg-block my-1 h-4" />
+      <button className="blue-button w-full px-5 py-2">Log In</button>
     </form>
   );
 };

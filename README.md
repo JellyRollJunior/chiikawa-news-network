@@ -169,6 +169,7 @@ VITE_SERVER_URL
             -   login
                 -   desktop add pictures of UI n stuff
             -   signup
+                -   desktop add pictures of UI n stuff
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats
