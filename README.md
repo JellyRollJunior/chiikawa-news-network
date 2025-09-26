@@ -163,9 +163,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   combine slideshow thingy & notice
-        -   NoticeWrapper
-            -   children -> pink block
     -   site restyling
         -   Order
             -   login

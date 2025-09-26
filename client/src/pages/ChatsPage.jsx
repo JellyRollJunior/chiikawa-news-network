@@ -1,6 +1,7 @@
 import { Chats } from '../components/Chats.jsx';
 import { Notice } from '../components/Notice.jsx';
 import masks from '../assets/images/trio-masks.png';
+import chiiLaying from '../assets/images/chiikawa-laying.png';
 
 const ChatsPage = () => {
   return (
@@ -10,16 +11,27 @@ const ChatsPage = () => {
       </aside>
       <div className="mr-4 hidden flex-4 items-center justify-center md:flex">
         <Notice
+          className="relative max-w-lg"
           title="Your Messages"
-          src={masks}
-          alt="Hachiware, Usagi, and Chiikawa playing with japanese masks"
           footer={
-            <>
+            <p className="px-2 text-lg font-medium text-center text-shadow-wrap">
               <strong>Select</strong> or <strong>Create</strong> a chat to begin
               sending messages!
-            </>
+            </p>
           }
-        />
+        >
+          <div className="pink-block">
+            <img
+              className="drop-shadow-pink-outline m-auto"
+              src={masks}
+              alt="Hachiware, Usagi, and Chiikawa playing with japanese masks"
+            />
+          </div>
+          <img
+            className="drop-shadow-pink-outline absolute -right-[10px] -bottom-[38px] w-[100px]"
+            src={chiiLaying}
+          />
+        </Notice>
       </div>
     </div>
   );
