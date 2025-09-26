@@ -157,6 +157,7 @@ VITE_SERVER_URL
         -   check all loading and see if its working
     -   client: edit avatar/bio confirm toast
     -   client: toasts overflow page. Make toast scroll
+    -   client: send message btn
 
 -   client
 
@@ -164,31 +165,14 @@ VITE_SERVER_URL
         -   useChat returns chat, users, isPublicChat (separate them so its easier to access)
         -   extract modals to chatContainer (chat has too much logic)
     -   site restyling
-        -   fix avatar restyling on all areas
         -   Order
-            -   nav
-            -   login / signup
+            -   login
+                -   desktop add pictures of UI n stuff
+            -   signup
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats
             -   chat messages
-        -   add stickers! fun!
-            -   add pink outsline to chii pa pa & other stickers
-
--   styling study
-
-    -   main container spacing
-        -   mx larger
-        -   mt larger
-        -   mb small
-    -   gap between blocks small
-    -   Use different color blocks
-        -   overuse of yellow blocks
-    -   overly vertical layout
-        -   use some 2:1 block layouts etc
-    -   block shadow a bit too thick
-    -   more subtle whiing on block styling (looks a bit too shiny)
-    -   blue-berry blue not matching the more teal color (make a new color for the teal tbh to be same as nyaa)g
 
 -   server
 
