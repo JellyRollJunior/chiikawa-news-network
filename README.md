@@ -151,15 +151,11 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   client: Empty string passed to getElementById(). (login)
     -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
-    -   client: loading skeelton does not appear when loading
-        -   check all loading and see if its working
     -   client: edit avatar/bio confirm toast
     -   client: toasts overflow page. Make toast scroll
-    -   client: send message btn
-    -   client: useChat returns chat, users, isPublicChat (separate them so its easier to access)
-    -   client: extract modals to chatContainer (chat has too much logic)
+    -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
+    -   client: extract modals to chatCntainer (chat has too much logic)
 
 -   client
 
@@ -167,8 +163,6 @@ VITE_SERVER_URL
         -   Order
             -   login
                 -   desktop add pictures of UI n stuff
-                -   stickers
-                -   links
         -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
             -   userInfo
             -   chats
@@ -187,24 +181,17 @@ VITE_SERVER_URL
 
 -   low prio
 
-    -   update login/signup
-        -   add images and stuff idk just a form is kinda boring
-    -   test UI with long usernames
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
-    -   POSTS
-        -   PATCH /posts/:postId (IF I WANT TO IMPLEMENT EDITING - LOWPRIO TBH)
-    -   refactor scrolling just to scroll off entire page instead of off a block or smth
     -   like button liking animation
     -   useLogin
-    -   mayhaps extract list? idk lol
-    -   move main container logic to PAGE (for all pages)
-    -   change all button color to #461901 amber-950
     -   viewing a users followers/following
-    -   home users bar on large screen
-        -   users compact mode
+    -   home users bar on large screen (users compact mode)
     -   client unfollow
     -   clicking avatars + post names leads to user profile
+    -   client: send message btn
+    -   client: favicon
+    -   client: login UI slideshow
 
 ## DATA
 

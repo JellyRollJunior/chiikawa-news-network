@@ -10,11 +10,11 @@ const FullPageFormWrapper = ({ children }) => {
       </header>
       {children}
       <img
-        className="absolute -top-[40px] right-1/2 w-[200px] translate-x-1/2"
+        className="absolute -top-[40px] right-1/2 w-[200px] translate-x-1/2 drop-shadow-pink-outline "
         src={trioDrawing}
       />
       <img
-        className="absolute -right-[16px] -bottom-[24px] w-[100px]"
+        className="absolute -right-[16px] -bottom-[24px] w-[100px] drop-shadow-pink-outline "
         src={kaniReading}
       />
     </div>
