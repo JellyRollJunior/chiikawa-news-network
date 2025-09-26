@@ -7,9 +7,16 @@ const LoginPage = () => {
   return (
     <ToastProvider>
       <Toaster />
-      <FullPageFormWrapper>
-        <Login />
-      </FullPageFormWrapper>
+      <div className="flex h-screen">
+        <aside className="mr-4 hidden flex-5 items-center justify-center md:flex">
+          {/* slideshow of images + hero statement */}
+        </aside>
+        <div className="flex-4 self-center justify-center flex">
+          <FullPageFormWrapper>
+            <Login />
+          </FullPageFormWrapper>
+        </div>
+      </div>
     </ToastProvider>
   );
 };

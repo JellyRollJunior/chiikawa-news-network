@@ -7,9 +7,11 @@ const SignupPage = () => {
   return (
     <ToastProvider>
       <Toaster />
-      <FullPageFormWrapper>
-        <Signup />
-      </FullPageFormWrapper>
+      <div className="flex h-screen w-screen items-center justify-center">
+        <FullPageFormWrapper>
+          <Signup />
+        </FullPageFormWrapper>
+      </div>
     </ToastProvider>
   );
 };
