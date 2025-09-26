@@ -5,8 +5,8 @@ import { ChatPage } from './pages/ChatPage.jsx';
 import { UserPage } from './pages/UserPage.jsx';
 import { SettingsPage } from './pages/SettingsPage.jsx';
 import { ErrorPage } from './pages/ErrorPage.jsx';
-import { Login } from './pages/Login.jsx';
-import { Signup } from './pages/Signup.jsx';
+import { LoginPage } from './pages/LoginPage.jsx';
+import { SignupPage } from './pages/SignupPage.jsx';
 import { UsersPage } from './pages/UsersPage.jsx';
 
 const routes = [
@@ -25,11 +25,11 @@ const routes = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: '/signup',
-    element: <Signup />,
+    element: <SignupPage />,
   },
 ];
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
 import { SignupForm } from '../components/SignupForm.jsx';
 
-const Signup = () => {
+const SignupPage = () => {
   return (
     <FullPageFormWrapper>
       <SignupForm />
@@ -16,4 +16,4 @@ const Signup = () => {
   );
 };
 
-export { Signup };
+export { SignupPage };

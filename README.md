@@ -158,12 +158,11 @@ VITE_SERVER_URL
     -   client: edit avatar/bio confirm toast
     -   client: toasts overflow page. Make toast scroll
     -   client: send message btn
+    -   client: useChat returns chat, users, isPublicChat (separate them so its easier to access)
+    -   client: extract modals to chatContainer (chat has too much logic)
 
 -   client
 
-    -   REFACTOR
-        -   useChat returns chat, users, isPublicChat (separate them so its easier to access)
-        -   extract modals to chatContainer (chat has too much logic)
     -   site restyling
         -   Order
             -   login

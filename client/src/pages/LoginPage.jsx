@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
 import { LoginForm } from '../components/LoginForm.jsx';
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <FullPageFormWrapper>
       <LoginForm />
@@ -16,4 +16,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { LoginPage };
