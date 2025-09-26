@@ -160,7 +160,6 @@ VITE_SERVER_URL
     -   client: send message btn
     -   client: useChat returns chat, users, isPublicChat (separate them so its easier to access)
     -   client: extract modals to chatContainer (chat has too much logic)
-    -   client: settings -> about the author
 
 -   client
 
