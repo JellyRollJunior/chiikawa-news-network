@@ -3,6 +3,7 @@ import { ToastProvider } from '../contexts/ToastProvider.jsx';
 import { Notice } from '../components/Notice.jsx';
 import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
 import { Login } from '../components/Login.jsx';
+import { ImageCarousel } from '../components/ImageCarousel.jsx';
 import instagram from '../assets/icons/instagram-60.png';
 import github from '../assets/icons/github-60.png';
 import linkedin from '../assets/icons/linkedin-60.png';
@@ -11,13 +12,9 @@ import trioScouting from '../assets/images/trio-scouting.png';
 import rakko from '../assets/icons/rakko-icon.png';
 import momonga from '../assets/icons/momonga-icon.png';
 import scared from '../assets/images/chii-hachi-scared.png';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
-import { useState } from 'react';
 
 const LoginPage = () => {
-  const slideshowImages = [scared, shisaRamen, trioScouting, rakko, momonga];
-  const [imgIndex, setImageIndex] = useState(0);
+  const images = [scared, shisaRamen, trioScouting, rakko, momonga];
 
   return (
     <ToastProvider>
@@ -55,28 +52,12 @@ const LoginPage = () => {
             }
           >
             <div className="pink-block h-60 px-5 pt-6 pb-3 lg:h-90">
-              <div className="h-9/10 flex-1 rounded-lg border-3 overflow-clip border-pink-300 bg-pink-200">
-                <motion.div
-                  initial={{ translateX: 0 }}
-                  animate={{ translateX: `${imgIndex * -100}%` }}
-                  className="relative flex h-full"
-                >
-                  {slideshowImages.map((src, index) => (
-                    <img
-                      style={{ left: `${100 * index}%` }}
-                      key={index}
-                      className="absolute h-full w-full border-5 border-black object-contain"
-                      src={src}
-                    />
-                  ))}
-                </motion.div>
-              </div>
-              <div>Buttons!</div>
+              <ImageCarousel className="h-full w-full" imageArray={images} />
             </div>
-            <img className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]" src={momonga} />
+            {/* <img className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]" src={momonga} />
             <img className="drop-shadow-pink-outline absolute bottom-[64px] left-0 w-[100px]" src={trioScouting} />
             <img className="drop-shadow-pink-outline absolute -top-[20px] -left-[14px] w-[70px]" src={rakko} />
-            <img className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]" src={shisaRamen} />
+            <img className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]" src={shisaRamen} /> */}
           </Notice>
         </aside>
         <div className="flex flex-4 justify-center self-center">
