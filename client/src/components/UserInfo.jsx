@@ -3,6 +3,7 @@ import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useUser } from '../hooks/useUser.js';
 import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
+import { useFollow } from '../hooks/useFollow.js';
 
 const UserStatBlock = ({ className, count, label }) => {
   return (
@@ -19,12 +20,19 @@ const FollowButton = ({
   userId,
   isFollowing,
   handleFollowUser,
+  handleUnfollowUser,
   isLoadingFollow,
 }) => {
   const { id } = useContext(CurrentContext);
 
   return isFollowing ? (
-    <div className="text-center text-sm text-gray-500">— following —</div>
+    <button
+      className="pink-button self-center px-7 text-base"
+      onClick={() => handleUnfollowUser(userId)}
+      disabled={isLoadingFollow}
+    >
+      Unfollow
+    </button>
   ) : userId != id ? (
     <button
       className="pink-button self-center px-7 text-base"
@@ -38,11 +46,17 @@ const FollowButton = ({
   );
 };
 
-const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
+const UserInfo = ({ userId }) => {
   const { user, isLoading, refetch } = useUser(userId);
+  const { followUser, unfollowUser, isLoading: isLoadingFollow } = useFollow();
 
   const handleFollowUser = async (userId) => {
     await followUser(userId);
+    refetch();
+  };
+
+  const handleUnfollowUser = async (userId) => {
+    await unfollowUser(userId);
     refetch();
   };
 
@@ -67,6 +81,7 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
               userId={user.id}
               isFollowing={user.isFollowing}
               handleFollowUser={handleFollowUser}
+              handleUnfollowUser={handleUnfollowUser}
               isLoadingFollow={isLoadingFollow}
             />
             <button className="pink-button self-center px-6 text-base">
@@ -93,6 +108,7 @@ const UserInfo = ({ userId, followUser, isLoadingFollow }) => {
               userId={user.id}
               isFollowing={user.isFollowing}
               handleFollowUser={handleFollowUser}
+              handleUnfollowUser={handleUnfollowUser}
               isLoadingFollow={isLoadingFollow}
             />
           </div>
