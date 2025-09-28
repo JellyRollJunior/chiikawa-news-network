@@ -9,7 +9,7 @@ const UsersList = ({
   refetchUsers,
   isLoading = false,
 }) => {
-  const { followUser, isLoading: isLoadingFollow } = useFollow();
+  const { followUser, unfollowUser, isLoading: isLoadingFollow } = useFollow();
 
   return (
     <ul className="flex flex-col gap-2">
@@ -20,6 +20,7 @@ const UsersList = ({
                 user={user}
                 openViewProfile={openViewProfile}
                 followUser={followUser}
+                unfollowUser={unfollowUser}
                 isLoadingFollow={isLoadingFollow}
                 refetchUsers={refetchUsers}
                 blockStyle={BLOCKS[index % BLOCKS.length]}

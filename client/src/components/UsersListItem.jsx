@@ -6,6 +6,7 @@ const UsersListItem = ({
   openViewProfile,
   refetchUsers,
   followUser,
+  unfollowUser,
   isLoadingFollow = false,
   isLoading = false,
   blockStyle,
@@ -15,12 +16,17 @@ const UsersListItem = ({
     refetchUsers();
   };
 
+  const handleUnfollowUser = async (userId) => {
+    await unfollowUser(userId);
+    refetchUsers();
+  };
+
   return !isLoading ? (
     <li>
       <div className="flex gap-1">
         <div className={`flex flex-col ${blockStyle} items-center`}>
           <Avatar
-            className="mx-2 mt-2 border-1 border-yellow-500 size-[74px] md:size-[86px]"
+            className="mx-2 mt-2 size-[74px] border-1 border-yellow-500 md:size-[86px]"
             avatar={user.avatar}
           />
           <div className="my-2">
@@ -33,9 +39,13 @@ const UsersListItem = ({
                 Follow
               </button>
             ) : (
-              <div className="flex-1 text-center text-sm text-gray-500">
-                following
-              </div>
+              <button
+                className="yellow-button w-full flex-1 px-4 py-0.5 text-sm"
+                onClick={() => handleUnfollowUser(user.id)}
+                disabled={isLoadingFollow}
+              >
+                unfollow
+              </button>
             )}
           </div>
         </div>
