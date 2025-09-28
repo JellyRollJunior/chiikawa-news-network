@@ -51,13 +51,13 @@ const LoginPage = () => {
               </div>
             }
           >
-            <div className="pink-block h-60 px-5 pt-6 pb-3 lg:h-90">
+            <div className="pink-block h-60 px-5 pt-6 pb-5 lg:h-90">
               <ImageCarousel className="h-full w-full" imageArray={images} />
             </div>
-            {/* <img className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]" src={momonga} />
+            <img className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]" src={momonga} />
             <img className="drop-shadow-pink-outline absolute bottom-[64px] left-0 w-[100px]" src={trioScouting} />
             <img className="drop-shadow-pink-outline absolute -top-[20px] -left-[14px] w-[70px]" src={rakko} />
-            <img className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]" src={shisaRamen} /> */}
+            <img className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]" src={shisaRamen} />
           </Notice>
         </aside>
         <div className="flex flex-4 justify-center self-center">

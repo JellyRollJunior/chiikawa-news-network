@@ -31,12 +31,30 @@ const ImageCarousel = ({ className, imageArray }) => {
           ))}
         </motion.div>
       </div>
-      <div className="flex">
-        <button onClick={() => showPrevImage(imageArray.length)}>Prev</button>
-        <button onClick={() => showNextImage(imageArray.length)}>Next</button>
+      <div className="mt-3 flex items-center justify-center gap-8">
+        <button
+          className="yellow-button px-5"
+          onClick={() => showPrevImage(imageArray.length)}
+        >
+          Prev
+        </button>
+        <div className="flex items-center gap-3">
+          {imageArray.map((src, index) => (
+            <button
+              className={`size-4 rounded-full ${imageIndex == index ? 'yellow-gradient' : 'duckegg-gradient'}`}
+              onClick={() => setImageIndex(index)}
+            ></button>
+          ))}
+        </div>
+        <button
+          className="yellow-button px-5"
+          onClick={() => showNextImage(imageArray.length)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
 };
 
-export { ImageCarousel}
+export { ImageCarousel };
