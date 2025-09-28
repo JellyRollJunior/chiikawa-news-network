@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useTokenErrorHandler } from "./useTokenErrorHandler.js";
 import { ToastContext } from "../contexts/ToastProvider.jsx";
-import { postFollower } from "../services/userApi.js";
+import { postFollowing } from "../services/userApi.js";
 
 const useFollow = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,7 @@ const useFollow = () => {
         abortController = new AbortController();
         try {
             setIsLoading(true);
-            await postFollower(
+            await postFollowing(
                 abortController.signal,
                 userId
             );

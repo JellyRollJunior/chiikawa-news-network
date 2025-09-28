@@ -50,8 +50,8 @@ const patchUserAvatar = async (fileFormData) => {
     return data;
 };
 
-const postFollower = async (signal, userId) => {
-    const data = await request(`/users/${userId}/followers`, {
+const postFollowing = async (signal, userId) => {
+    const data = await request(`/users/${userId}/following`, {
         mode: 'cors',
         method: 'POST',
         signal,
@@ -65,5 +65,5 @@ export {
     fetchUser,
     patchUserBio,
     patchUserAvatar,
-    postFollower,
+    postFollowing,
 };
