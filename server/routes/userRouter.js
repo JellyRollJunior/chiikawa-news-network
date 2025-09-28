@@ -16,23 +16,23 @@ userRouter.get(
     userIdValidations,
     userController.getFollowers
 );
-userRouter.post(
-    '/:userId/followers',
-    authenticateToken,
-    userIdValidations,
-    userController.followUser
-);
-userRouter.delete(
-    '/:userId/followers',
-    authenticateToken,
-    userIdValidations,
-    userController.unfollowUser
-);
 userRouter.get(
     '/:userId/following',
     authenticateToken,
     userIdValidations,
     userController.getFollowing
+);
+userRouter.post(
+    '/:userId/following',
+    authenticateToken,
+    userIdValidations,
+    userController.followUser
+);
+userRouter.delete(
+    '/:userId/following',
+    authenticateToken,
+    userIdValidations,
+    userController.unfollowUser
 );
 
 /* Posts */

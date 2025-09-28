@@ -19,8 +19,8 @@
 | GET    | /users/:userId             | Retrieve user data          | Y     |                                     |                                     |
 | GET    | /users/:userId/posts       | Retrieve posts by user      | Y     |                                     | query: limit, cursor                |
 | GET    | /users/:userId/followers   | Retrieve followers by user  | Y     |                                     |                                     |
-| POST   | /users/:userId/followers   | Follow :userId              | Y     |                                     |                                     |
-| DELETE | /users/:userId/followers   | Unfollow :userId            | Y     |                                     |                                     |
+| POST   | /users/:userId/following   | Follow :userId              | Y     |                                     |                                     |
+| DELETE | /users/:userId/following   | Unfollow :userId            | Y     |                                     |                                     |
 | GET    | /users/:userId/following   | Retrieve following by user  | Y     |                                     |                                     |
 | GET    | /chats-public              | Retrieve public chats       | Y     |                                     |                                     |
 | GET    | /chats                     | Retrieve chats              | Y     |                                     |                                     |
@@ -159,9 +159,10 @@ VITE_SERVER_URL
 
 -   client
 
+    -   client unfollow
+
 -   server
 
-    -   implement unfollow
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
@@ -175,7 +176,6 @@ VITE_SERVER_URL
     -   useLogin
     -   viewing a users followers/following
     -   home users bar on large screen (users compact mode)
-    -   client unfollow
     -   clicking avatars + post names leads to user profile
     -   client: send message btn
     -   client: check what breaks when using long username
