@@ -111,6 +111,19 @@ const followUser = async (req, res, next) => {
     }
 };
 
+const unfollowUser = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const requesterId = req.user.id;
+        const { userId: followingId } = req.params;
+        const user = await userQueries.unfollowUser(requesterId, followingId);
+        const formattedUser = formatUser(user);
+        res.json(formattedUser);
+    } catch (error) {
+        next(error);
+    }
+};
+
 export {
     getCurrentUser,
     getUser,
@@ -120,4 +133,5 @@ export {
     getFollowers,
     getFollowing,
     followUser,
+    unfollowUser,
 };

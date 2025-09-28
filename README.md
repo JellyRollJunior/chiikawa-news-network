@@ -20,6 +20,7 @@
 | GET    | /users/:userId/posts       | Retrieve posts by user      | Y     |                                     | query: limit, cursor                |
 | GET    | /users/:userId/followers   | Retrieve followers by user  | Y     |                                     |                                     |
 | POST   | /users/:userId/followers   | Follow :userId              | Y     |                                     |                                     |
+| DELETE | /users/:userId/followers   | Unfollow :userId            | Y     |                                     |                                     |
 | GET    | /users/:userId/following   | Retrieve following by user  | Y     |                                     |                                     |
 | GET    | /chats-public              | Retrieve public chats       | Y     |                                     |                                     |
 | GET    | /chats                     | Retrieve chats              | Y     |                                     |                                     |
@@ -160,10 +161,10 @@ VITE_SERVER_URL
 
 -   server
 
+    -   implement unfollow
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
-    -   implement unfollow
     -   server: mayhaps return users by most followers
 
 -   low prio

@@ -161,6 +161,27 @@ const followUser = async (requesterId, followingId) => {
     }
 };
 
+const unfollowUser = async (requesterId, followingId) => {
+    try {
+        const user = await prisma.user.update({
+            data: {
+                following: {
+                    disconnect: {
+                        id: followingId,
+                    },
+                },
+            },
+            where: {
+                id: requesterId,
+            },
+            select: userSelect(requesterId),
+        });
+        return user;
+    } catch (error) {
+        throw new DatabaseError('Unable to update following');
+    }
+};
+
 export {
     getUserByUsername,
     getUserById,
@@ -171,4 +192,5 @@ export {
     getFollowers,
     getFollowing,
     followUser,
+    unfollowUser,
 };

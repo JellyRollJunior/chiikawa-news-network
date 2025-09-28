@@ -22,6 +22,12 @@ userRouter.post(
     userIdValidations,
     userController.followUser
 );
+userRouter.delete(
+    '/:userId/followers',
+    authenticateToken,
+    userIdValidations,
+    userController.unfollowUser
+);
 userRouter.get(
     '/:userId/following',
     authenticateToken,
