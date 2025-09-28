@@ -59,6 +59,15 @@ const postFollowing = async (signal, userId) => {
     return data;
 };
 
+const deleteFollowing = async (signal, userId) => {
+    const data = await request(`/users/${userId}/following`, {
+        mode: 'cors',
+        method: 'DELETE',
+        signal,
+    });
+    return data;
+};
+
 export {
     fetchCurrent,
     fetchUsers,
@@ -66,4 +75,5 @@ export {
     patchUserBio,
     patchUserAvatar,
     postFollowing,
+    deleteFollowing
 };
