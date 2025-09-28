@@ -151,7 +151,6 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   client: Cookie “\_\_cf_bm” has been rejected for invalid domain. (avatar error - find root cause)
     -   client: edit avatar/bio confirm toast
     -   client: toasts overflow page. Make toast scroll
     -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
@@ -159,14 +158,8 @@ VITE_SERVER_URL
 
 -   client
 
-    -   site restyling
-        -   Order
-            -   login
-                -   desktop add pictures of UI n stuff
-        -   LONG USERNAME PROBABLY BREAKS WIDTH (check the following)
-            -   userInfo
-            -   chats
-            -   chat messages
+    -   client: login UI slideshow
+        -   move login form to left side?
 
 -   server
 
@@ -174,10 +167,7 @@ VITE_SERVER_URL
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
     -   implement unfollow
-    -   server: mayhaps return users in some order? not sure
-        -   most posts
-        -   alphabetical (nah)
-        -   most followers
+    -   server: mayhaps return users by most followers
 
 -   low prio
 
@@ -191,7 +181,7 @@ VITE_SERVER_URL
     -   clicking avatars + post names leads to user profile
     -   client: send message btn
     -   client: favicon
-    -   client: login UI slideshow
+    -   client: check what breaks when using long username
 
 ## DATA
 
