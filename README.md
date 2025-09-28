@@ -158,9 +158,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   client: login UI slideshow
-        -   timer to change image every 8s
-
 -   server
 
     -   github login
@@ -180,7 +177,6 @@ VITE_SERVER_URL
     -   client unfollow
     -   clicking avatars + post names leads to user profile
     -   client: send message btn
-    -   client: favicon
     -   client: check what breaks when using long username
 
 ## DATA

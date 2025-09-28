@@ -1,16 +1,26 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
 const ImageCarousel = ({ className, imageArray }) => {
+  // Setting image index
   const [imageIndex, setImageIndex] = useState(0);
-  const showNextImage = (length = 1) => {
+  const showNextImage = useCallback((length = 1) => {
     setImageIndex((prev) => (prev + 1) % length);
-  };
+  }, []);
   const showPrevImage = (length = 1) => {
     // This is (prev - 1) % length
     setImageIndex((prev) => (((prev - 1) % length) + length) % length);
   };
+
+  // Advance image every 8 seconds
+  useEffect(() => {
+    const imgNextInterval = setInterval(() => {
+      showNextImage(imageArray.length);
+    }, 8000);
+
+    return () => clearInterval(imgNextInterval);
+  }, [imageArray, showNextImage]);
 
   if (!imageArray || !Array.isArray(imageArray)) return;
   return (
@@ -46,6 +56,7 @@ const ImageCarousel = ({ className, imageArray }) => {
         <div className="flex items-center gap-3">
           {imageArray.map((src, index) => (
             <button
+              key={`${src}:${index}`}
               className={`block-shadow size-4 rounded-full ${imageIndex == index ? 'yellow-gradient' : 'duckegg-gradient'}`}
               onClick={() => setImageIndex(index)}
             ></button>
