@@ -14,12 +14,17 @@ import momonga from '../assets/icons/momonga-icon.png';
 import scared from '../assets/images/chii-hachi-scared.png';
 
 const LoginPage = () => {
-  const images = [scared, shisaRamen, trioScouting, rakko, momonga];
+  const slideshowImages = [scared, shisaRamen, trioScouting, rakko, momonga];
 
   return (
     <ToastProvider>
       <Toaster />
       <div className="flex h-screen">
+        <div className="flex flex-4 justify-center self-center">
+          <FullPageFormWrapper>
+            <Login />
+          </FullPageFormWrapper>
+        </div>
         <aside className="mr-4 hidden flex-5 items-center justify-end md:flex">
           <Notice
             className="relative max-w-2xl"
@@ -52,19 +57,29 @@ const LoginPage = () => {
             }
           >
             <div className="pink-block h-60 px-5 pt-6 pb-5 lg:h-90">
-              <ImageCarousel className="h-full w-full" imageArray={images} />
+              <ImageCarousel
+                className="h-full w-full"
+                imageArray={slideshowImages}
+              />
             </div>
-            <img className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]" src={momonga} />
-            <img className="drop-shadow-pink-outline absolute bottom-[64px] left-0 w-[100px]" src={trioScouting} />
-            <img className="drop-shadow-pink-outline absolute -top-[20px] -left-[14px] w-[70px]" src={rakko} />
-            <img className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]" src={shisaRamen} />
+            <img
+              className="drop-shadow-pink-outline absolute -top-[23px] -right-[17px] w-[70px]"
+              src={momonga}
+            />
+            <img
+              className="drop-shadow-pink-outline absolute bottom-[64px] left-0 w-[100px]"
+              src={trioScouting}
+            />
+            <img
+              className="drop-shadow-pink-outline absolute -top-[20px] -left-[14px] w-[70px]"
+              src={rakko}
+            />
+            <img
+              className="drop-shadow-pink-outline absolute -right-[17px] -bottom-[20px] w-[110px]"
+              src={shisaRamen}
+            />
           </Notice>
         </aside>
-        <div className="flex flex-4 justify-center self-center">
-          <FullPageFormWrapper>
-            <Login />
-          </FullPageFormWrapper>
-        </div>
       </div>
     </ToastProvider>
   );

@@ -8,24 +8,29 @@ const ImageCarousel = ({ className, imageArray }) => {
     setImageIndex((prev) => (prev + 1) % length);
   };
   const showPrevImage = (length = 1) => {
-    setImageIndex((prev) => (prev - 1) % length);
+    // This is (prev - 1) % length
+    setImageIndex((prev) => (((prev - 1) % length) + length) % length);
   };
 
   if (!imageArray || !Array.isArray(imageArray)) return;
   return (
     <div className={`${className}`}>
-      <div className="h-9/10 flex-1 overflow-clip rounded-lg border-3 border-pink-300 bg-pink-200">
+      <div className="block-shadow h-9/10 flex-1 overflow-clip rounded-lg border-3 border-pink-300 bg-pink-200">
         <motion.div
           initial={{ translateX: 0 }}
           animate={{ translateX: `${imageIndex * -100}%` }}
-          transition={{}}
+          transition={{
+            type: 'spring',
+            visualDuration: 0.35,
+            bounce: 0.3,
+          }}
           className="relative flex h-full"
         >
           {imageArray.map((src, index) => (
             <img
               style={{ left: `${100 * index}%` }}
               key={index}
-              className="absolute h-full w-full border-5 border-black object-contain"
+              className="absolute h-full w-full object-contain"
               src={src}
             />
           ))}
@@ -41,7 +46,7 @@ const ImageCarousel = ({ className, imageArray }) => {
         <div className="flex items-center gap-3">
           {imageArray.map((src, index) => (
             <button
-              className={`size-4 rounded-full ${imageIndex == index ? 'yellow-gradient' : 'duckegg-gradient'}`}
+              className={`block-shadow size-4 rounded-full ${imageIndex == index ? 'yellow-gradient' : 'duckegg-gradient'}`}
               onClick={() => setImageIndex(index)}
             ></button>
           ))}

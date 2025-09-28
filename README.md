@@ -159,7 +159,7 @@ VITE_SERVER_URL
 -   client
 
     -   client: login UI slideshow
-        -   move login form to left side?
+        -   timer to change image every 8s
 
 -   server
 
