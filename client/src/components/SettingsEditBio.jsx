@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useEditBio } from '../hooks/useEditBio.js';
 import { LoadingElement } from './LoadingElement.jsx';
+import { ToastContext } from '../contexts/ToastProvider.jsx';
 
 const SettingsEditBio = () => {
+  const { toastTemp } = useContext(ToastContext);
   const { bio, setBio, isLoading } = useContext(CurrentContext);
   const { editBio, isLoading: isEditingBio } = useEditBio();
   const [bioTextarea, setBioTextarea] = useState('');
@@ -17,6 +19,7 @@ const SettingsEditBio = () => {
     const data = await editBio(bioTextarea);
     if (data && data.bio) {
       setBio(data.bio);
+      toastTemp('Bio edited successfully');
     }
   };
 

@@ -153,10 +153,11 @@ VITE_SERVER_URL
 -   bugs
 
     -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
+    -   client: 
+        -   home: Please follow users to view posts for YOu (or something)
+        -   userProfile: User has not posted yet message
 
 -   client
-    -   client: extract modals to chatCntainer (chat has too much logic)
-    -   client: edit avatar/bio confirm toast
 
 -   server
 
