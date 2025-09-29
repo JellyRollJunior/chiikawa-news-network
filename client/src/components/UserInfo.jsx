@@ -3,6 +3,7 @@ import { useFollow } from '../hooks/useFollow.js';
 import { Avatar } from './Avatar.jsx';
 import { FollowButton } from './UsersFollowButton.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
+import { Link } from 'react-router';
 
 const UserStatBlock = ({ className, count, label }) => {
   return (
@@ -54,7 +55,9 @@ const UserInfo = ({ userId }) => {
               handleUnfollowUser={() => handleUnfollowUser(user.id)}
               isLoadingFollow={isLoadingFollow}
             />
-            <button className="pink-button self-center px-6">Message</button>
+            <Link className="pink-button self-center px-6" to="/chats">
+              Message
+            </Link>
           </div>
           <UserStatBlock
             className="col-span-2 md:row-span-2"
@@ -82,9 +85,9 @@ const UserInfo = ({ userId }) => {
             />
           </div>
           <div className="pink-block hidden flex-1 justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
-            <button className="pink-button self-center px-6">
+            <Link className="pink-button self-center px-6" to="/chats">
               Send message
-            </button>
+            </Link>
           </div>
         </div>
       </div>

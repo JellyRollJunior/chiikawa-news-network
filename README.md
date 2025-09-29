@@ -158,7 +158,6 @@ VITE_SERVER_URL
     -   client: extract modals to chatCntainer (chat has too much logic)
 
 -   client
-    -   client: send message btn
 
 -   server
 
