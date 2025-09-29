@@ -152,12 +152,12 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   client: edit avatar/bio confirm toast
-    -   client: toasts overflow page. Make toast scroll
     -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
-    -   client: extract modals to chatCntainer (chat has too much logic)
 
 -   client
+    -   client: toasts overflow page. Make toast scroll
+    -   client: extract modals to chatCntainer (chat has too much logic)
+    -   client: edit avatar/bio confirm toast
 
 -   server
 
