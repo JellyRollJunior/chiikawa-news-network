@@ -25,8 +25,8 @@ const PostList = ({
   toggleLike,
   isLoadingLike,
   refreshPosts,
+  noPostsMessage = 'User has not posted yet',
 }) => {
-  
   // Delete Post Modal
   const [postToBeDeletedId, setPostToBeDeletedId] = useState(null);
   const openDeleteModal = (postId) => setPostToBeDeletedId(postId);
@@ -69,7 +69,7 @@ const PostList = ({
         {/* User has no posts */}
         {!isLoadingInit && posts.length == 0 && (
           <PostListNotification src={logo}>
-            User has not posted yet
+            {noPostsMessage}
           </PostListNotification>
         )}
       </ul>

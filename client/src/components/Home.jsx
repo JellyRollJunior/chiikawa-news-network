@@ -61,6 +61,7 @@ const Home = () => {
               toggleLike={toggleLike}
               isLoadingLike={isLoadingLike}
               refreshPosts={refreshPosts}
+              noPostsMessage='Follow users to view their posts here or create your own posts!'
             />
           </section>
         </Scrollable>
