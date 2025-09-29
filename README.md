@@ -166,9 +166,7 @@ VITE_SERVER_URL
 
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
-    -   like button liking animation
     -   useLogin
-    -   viewing a users followers/following
     -   home users bar on large screen (users compact mode)
     -   clicking avatars + post names leads to user profile
     -   client: check what breaks when using long username
