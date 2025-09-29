@@ -41,9 +41,18 @@ const getUserById = async (requesterId, userId) => {
 const getAllUsers = async (requesterId) => {
     try {
         const users = await prisma.user.findMany({
-            orderBy: {
-                username: 'asc',
-            },
+            orderBy: [
+                {
+                    followers: {
+                        _count: 'desc',
+                    },
+                },
+                {
+                    posts: {
+                        _count: 'desc',
+                    },
+                },
+            ],
             select: userSelect(requesterId),
         });
         return users;

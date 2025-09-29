@@ -164,7 +164,6 @@ VITE_SERVER_URL
     -   github login
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
-    -   server: mayhaps return users by most followers
 
 -   low prio
 
