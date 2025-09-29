@@ -155,7 +155,6 @@ VITE_SERVER_URL
     -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
 
 -   client
-    -   client: toasts overflow page. Make toast scroll
     -   client: extract modals to chatCntainer (chat has too much logic)
     -   client: edit avatar/bio confirm toast
 
