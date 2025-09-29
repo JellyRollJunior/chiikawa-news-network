@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useUser } from '../hooks/useUser.js';
-import { Avatar } from './Avatar.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
 import { useFollow } from '../hooks/useFollow.js';
+import { Avatar } from './Avatar.jsx';
+import { FollowButton } from './UsersFollowButton.jsx';
+import { LoadingElement } from './LoadingElement.jsx';
 
 const UserStatBlock = ({ className, count, label }) => {
   return (
@@ -13,36 +12,6 @@ const UserStatBlock = ({ className, count, label }) => {
       <span className="font-chiikawa text-xl">{count}</span>
       <br /> {label}
     </div>
-  );
-};
-
-const FollowButton = ({
-  userId,
-  isFollowing,
-  handleFollowUser,
-  handleUnfollowUser,
-  isLoadingFollow,
-}) => {
-  const { id } = useContext(CurrentContext);
-
-  return isFollowing ? (
-    <button
-      className="pink-button self-center px-7 text-base"
-      onClick={() => handleUnfollowUser(userId)}
-      disabled={isLoadingFollow}
-    >
-      Unfollow
-    </button>
-  ) : userId != id ? (
-    <button
-      className="pink-button self-center px-7 text-base"
-      onClick={() => handleFollowUser(userId)}
-      disabled={isLoadingFollow}
-    >
-      Follow
-    </button>
-  ) : (
-    <div className="text-center text-sm text-gray-500">Hey it's me!</div>
   );
 };
 
@@ -78,15 +47,14 @@ const UserInfo = ({ userId }) => {
           </div>
           <div className="pink-block col-span-3 flex flex-col items-center justify-center gap-2 md:hidden">
             <FollowButton
+              className="px-6"
               userId={user.id}
               isFollowing={user.isFollowing}
               handleFollowUser={handleFollowUser}
               handleUnfollowUser={handleUnfollowUser}
               isLoadingFollow={isLoadingFollow}
             />
-            <button className="pink-button self-center px-6 text-base">
-              Message
-            </button>
+            <button className="pink-button self-center px-6">Message</button>
           </div>
           <UserStatBlock
             className="col-span-2 md:row-span-2"
@@ -105,6 +73,7 @@ const UserInfo = ({ userId }) => {
           />
           <div className="pink-block hidden flex-1 items-center justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
             <FollowButton
+              className="px-6"
               userId={user.id}
               isFollowing={user.isFollowing}
               handleFollowUser={handleFollowUser}
@@ -113,7 +82,7 @@ const UserInfo = ({ userId }) => {
             />
           </div>
           <div className="pink-block hidden flex-1 justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
-            <button className="pink-button self-center px-6 text-base">
+            <button className="pink-button self-center px-6">
               Send message
             </button>
           </div>

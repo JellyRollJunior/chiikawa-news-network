@@ -160,6 +160,7 @@ VITE_SERVER_URL
 -   client
 
     -   client unfollow
+        -   extract follow button
 
 -   server
 

@@ -1,4 +1,5 @@
 import { Avatar } from './Avatar.jsx';
+import { FollowButton } from './UsersFollowButton.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 
 const UsersListItem = ({
@@ -24,29 +25,20 @@ const UsersListItem = ({
   return !isLoading ? (
     <li>
       <div className="flex gap-1">
-        <div className={`flex flex-col ${blockStyle} items-center`}>
+        <div className={`flex flex-col ${blockStyle} items-center px-1 py-2`}>
           <Avatar
-            className="mx-2 mt-2 size-[74px] border-1 border-yellow-500 md:size-[86px]"
+            className="mx-2 size-[74px] border-1 border-yellow-500 md:size-[86px]"
             avatar={user.avatar}
           />
-          <div className="my-2">
-            {!user.isFollowing ? (
-              <button
-                className="pink-button w-full flex-1 px-4 py-0.5 text-sm"
-                onClick={() => handleFollowUser(user.id)}
-                disabled={isLoadingFollow}
-              >
-                Follow
-              </button>
-            ) : (
-              <button
-                className="yellow-button w-full flex-1 px-4 py-0.5 text-sm"
-                onClick={() => handleUnfollowUser(user.id)}
-                disabled={isLoadingFollow}
-              >
-                unfollow
-              </button>
-            )}
+          <div className="mt-2">
+            <FollowButton
+              className="mx-1 px-2 text-sm"
+              userId={user.id}
+              isFollowing={user.isFollowing}
+              handleFollowUser={handleFollowUser}
+              handleUnfollowUser={handleUnfollowUser}
+              isLoadingFollow={isLoadingFollow}
+            />
           </div>
         </div>
         <div className={`flex flex-1 flex-col justify-between ${blockStyle} `}>
