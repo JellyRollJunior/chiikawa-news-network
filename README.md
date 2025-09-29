@@ -158,9 +158,7 @@ VITE_SERVER_URL
     -   client: extract modals to chatCntainer (chat has too much logic)
 
 -   client
-
-    -   client unfollow
-        -   extract follow button
+    -   client: send message btn
 
 -   server
 
@@ -178,7 +176,6 @@ VITE_SERVER_URL
     -   viewing a users followers/following
     -   home users bar on large screen (users compact mode)
     -   clicking avatars + post names leads to user profile
-    -   client: send message btn
     -   client: check what breaks when using long username
 
 ## DATA

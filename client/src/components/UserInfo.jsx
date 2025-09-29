@@ -50,8 +50,8 @@ const UserInfo = ({ userId }) => {
               className="px-6"
               userId={user.id}
               isFollowing={user.isFollowing}
-              handleFollowUser={handleFollowUser}
-              handleUnfollowUser={handleUnfollowUser}
+              handleFollowUser={() => handleFollowUser(user.id)}
+              handleUnfollowUser={() => handleUnfollowUser(user.id)}
               isLoadingFollow={isLoadingFollow}
             />
             <button className="pink-button self-center px-6">Message</button>
@@ -76,8 +76,8 @@ const UserInfo = ({ userId }) => {
               className="px-6"
               userId={user.id}
               isFollowing={user.isFollowing}
-              handleFollowUser={handleFollowUser}
-              handleUnfollowUser={handleUnfollowUser}
+              handleFollowUser={() => handleFollowUser(user.id)}
+              handleUnfollowUser={() => handleUnfollowUser(user.id)}
               isLoadingFollow={isLoadingFollow}
             />
           </div>

@@ -35,8 +35,8 @@ const UsersListItem = ({
               className="mx-1 px-2 text-sm"
               userId={user.id}
               isFollowing={user.isFollowing}
-              handleFollowUser={handleFollowUser}
-              handleUnfollowUser={handleUnfollowUser}
+              handleFollowUser={() => handleFollowUser(user.id)}
+              handleUnfollowUser={() => handleUnfollowUser(user.id)}
               isLoadingFollow={isLoadingFollow}
             />
           </div>

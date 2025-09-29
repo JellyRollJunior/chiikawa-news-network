@@ -13,8 +13,8 @@ const FollowButton = ({
 
   return isFollowing ? (
     <button
-      className={`pink-button self-center ${className}`}
-      onClick={() => handleUnfollowUser(userId)}
+      className={`yellow-button self-center ${className}`}
+      onClick={handleUnfollowUser}
       disabled={isLoadingFollow}
     >
       Unfollow
@@ -22,7 +22,7 @@ const FollowButton = ({
   ) : userId != id ? (
     <button
       className={`pink-button self-center ${className}`}
-      onClick={() => handleFollowUser(userId)}
+      onClick={handleFollowUser}
       disabled={isLoadingFollow}
     >
       Follow
