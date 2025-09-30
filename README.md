@@ -157,10 +157,11 @@ VITE_SERVER_URL
         -   mouse -> looks fine
         -   mobile -> looks fine
         -   MD + Touchpad -> right side no padding
+    -   client: extract blocks
 
 -   client
     -   home users bar on large scereen (users compact mode)
-        -   click name goto profile
+        -   loading animation
     -   postlistitem user click -> user profile
 
 -   server
