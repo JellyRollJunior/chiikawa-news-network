@@ -153,8 +153,13 @@ VITE_SERVER_URL
 -   bugs
 
     -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
+    -   client: scroll gutters
+        -   mouse -> looks fine
+        -   mobile -> looks fine
+        -   MD + Touchpad -> right side no padding
 
 -   client
+    -   home users bar on large scereen (users compact mode)
 
 -   server
 
@@ -162,13 +167,12 @@ VITE_SERVER_URL
     -   guest account login route
     -   pagination: ensure limit and cursor query are UUID
 
--   low prio
+-    low prio
 
+    -   slideshow images
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
     -   useLogin
-    -   home users bar on large screen (users compact mode)
-    -   clicking avatars + post names leads to user profile
     -   client: check what breaks when using long username
 
 ## DATA

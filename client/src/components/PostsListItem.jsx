@@ -66,7 +66,7 @@ const PostsListItem = ({
           </DotsMenu>
         )}
       </header>
-      <h2 className="-mt-1 text-lg font-semibold md:mt-1 md:text-xl">
+      <h2 className="mt-0.5 text-lg font-semibold md:mt-1 md:text-xl">
         {post.title}
       </h2>
       <p className="text-sm md:text-base">{post.content}</p>

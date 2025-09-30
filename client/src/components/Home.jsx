@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="main-container mx-4 mt-3 mb-2 flex flex-1 flex-col">
+      <div className="main-container max-w-xl mx-4 mt-3 mb-2 flex flex-1 flex-col">
         <Scrollable
           className="px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1"
           onScrollToBottom={fetchNextPage}
