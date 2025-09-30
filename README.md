@@ -160,6 +160,7 @@ VITE_SERVER_URL
 
 -   client
     -   home users bar on large scereen (users compact mode)
+        -   click name goto profile
     -   postlistitem user click -> user profile
 
 -   server
