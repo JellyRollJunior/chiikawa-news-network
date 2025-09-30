@@ -2,9 +2,9 @@ import { Fragment, useState } from 'react';
 import { PostsListItem } from './PostsListItem.jsx';
 import { LoadingDots } from './LoadingDots.jsx';
 import { HomeDeletePostModal } from './HomeDeletePostModal.jsx';
+import { BLOCKS } from '../styles/blocks.js';
 import kuriPeace from '../assets/images/kuri-beer.png';
 import logo from '../assets/nav/chiikawa-glasses.png';
-const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
 
 const PostListNotification = ({ src, children }) => {
   return (

@@ -157,7 +157,6 @@ VITE_SERVER_URL
         -   mouse -> looks fine
         -   mobile -> looks fine
         -   MD + Touchpad -> right side no padding
-    -   client: extract blocks
 
 -   client
 

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { UsersListItem } from './UsersListItem.jsx';
 import { useFollow } from '../hooks/useFollow.js';
-const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
+import { BLOCKS } from '../styles/blocks.js';
 
 const UsersList = ({
   users,

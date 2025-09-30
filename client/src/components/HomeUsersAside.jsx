@@ -1,8 +1,8 @@
-import { useUsers } from '../hooks/useUsers.js';
 import { Fragment, useContext } from 'react';
+import { useUsers } from '../hooks/useUsers.js';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { HomeUsersAsideListItem } from './HomeUsersAsideListItem.jsx';
-const BLOCKS = ['duckegg-block', 'yellow-block', 'pink-block'];
+import { BLOCKS } from '../styles/blocks.js';
 
 const HomeUsersAside = () => {
   const { id } = useContext(CurrentContext);
