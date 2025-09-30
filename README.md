@@ -160,8 +160,6 @@ VITE_SERVER_URL
     -   client: extract blocks
 
 -   client
-    -   home users bar on large scereen (users compact mode)
-        -   loading animation
     -   postlistitem user click -> user profile
 
 -   server
