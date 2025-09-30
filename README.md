@@ -160,7 +160,6 @@ VITE_SERVER_URL
     -   client: extract blocks
 
 -   client
-    -   postlistitem user click -> user profile
 
 -   server
 

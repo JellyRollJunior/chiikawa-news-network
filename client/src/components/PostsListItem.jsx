@@ -11,6 +11,7 @@ import errorImg from '../assets/images/chii-hachi-scared.png';
 import heart from '../assets/svgs/heart.svg';
 import heartFilled from '../assets/svgs/heart-filled.svg';
 import comment from '../assets/svgs/comment.svg';
+import { Link } from 'react-router';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);
@@ -56,7 +57,11 @@ const PostsListItem = ({
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="-mt-1 font-medium md:text-xl">{author.username}</h3>
+        <h3 className="-mt-1 font-medium md:text-xl">
+          <Link className="hover:text-amber-900" to={`/users/${author.id}`}>
+            {author.username}
+          </Link>
+        </h3>
         {author.id == id && (
           <DotsMenu>
             <DotsMenuItem
