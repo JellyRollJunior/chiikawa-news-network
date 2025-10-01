@@ -37,7 +37,7 @@ const MediaFrame = ({ src }) => {
 const PostsListItem = ({
   blockStyle = 'yellow-block',
   post,
-  toggleLike = { toggleLike },
+  toggleLike,
   openDeleteModal,
   isLoading = false,
   isLoadingLike = false,

@@ -151,9 +151,7 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
-
-    -   client: scroll gutters
-        -   remove md:pr-1 from all containers
+    -   refactor site scrolling
 
 -   client
 
