@@ -28,9 +28,9 @@ const Home = () => {
 
   return (
     <>
-      <div className="main-container max-w-xl mx-4 mt-3 mb-2 flex flex-1 flex-col">
+      <div className="main-container mx-4 mt-3 mb-2 flex max-w-xl flex-1 flex-col">
         <Scrollable
-          className="px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1"
+          className="px-3 pt-3 pb-2.5 md:pt-3.5"
           onScrollToBottom={fetchNextPage}
         >
           <div className="yellow-block pt-2 pb-1">
@@ -61,7 +61,7 @@ const Home = () => {
               toggleLike={toggleLike}
               isLoadingLike={isLoadingLike}
               refreshPosts={refreshPosts}
-              noPostsMessage='Follow users to view their posts here or create your own posts!'
+              noPostsMessage="Follow users to view their posts here or create your own posts!"
             />
           </section>
         </Scrollable>

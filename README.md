@@ -153,16 +153,14 @@ VITE_SERVER_URL
 -   bugs
 
     -   client: scroll gutters
-        -   mouse -> looks fine
-        -   mobile -> looks fine
-        -   MD + Touchpad -> right side no padding
+        -   remove md:pr-1 from all containers
 
 -   client
 
 -   server
 
     -   github login
-    -   guest account login route
+    -   guest account login route  
     -   pagination: ensure limit and cursor query are UUID
 
 -    low prio
@@ -170,6 +168,7 @@ VITE_SERVER_URL
     -   slideshow images
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
+        -   deploy first then fix this bug tbh... Hard to emulate this on our side
     -   client: check what breaks when using long username
     -   refactor hooks for DRY
 

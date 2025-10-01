@@ -9,7 +9,7 @@ const Settings = () => {
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 w-full max-w-lg">
-      <div className="scrollbar-thin overflow-y-scroll px-3 pt-3 pb-2.5 md:pt-3.5 md:pr-1">
+      <div className="scrollbar-thin overflow-y-scroll px-3 pt-3 pb-2.5 md:pt-3.5">
         <header className="yellow-block flex justify-center">
           <LogoTitle className="text-lg md:text-2xl" text="Edit Settings" />
         </header>
