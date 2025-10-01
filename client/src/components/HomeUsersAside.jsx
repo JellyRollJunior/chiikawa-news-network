@@ -12,7 +12,7 @@ const HomeUsersAside = () => {
     : [];
 
   return (
-    <aside className="main-container scrollbar-thin mx-4 mt-3 mr-10 mb-2 hidden w-xs flex-col gap-2 overflow-y-scroll px-3 pt-3.5 pb-2.5 md:flex">
+    <aside className="main-container scrollbar-thin mx-4 mt-3 mb-2 hidden w-xs flex-col gap-2 overflow-y-scroll px-3 pt-3.5 pb-2.5 md:flex">
       <header className="flex shrink-0 items-center justify-center gap-2">
         <div className="yellow-block flex-1 pt-1 pb-0.5">
           <h2 className="font-chiikawa text-shadow-wrap px-2 pt-2 pb-1 text-center">

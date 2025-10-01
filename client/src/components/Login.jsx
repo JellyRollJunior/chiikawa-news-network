@@ -1,22 +1,19 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { login } from '../services/authApi.js';
+import { useLogin } from '../hooks/useLogin.js';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login, isLoading } = useLogin();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { toast } = useContext(ToastContext);
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    try {
-      const data = await login(username, password);
+    const data = await login(username, password);
+    if (data) {
       localStorage.setItem('token', data.token);
       navigate('/');
-    } catch (error) {
-      toast(error.message);
     }
   };
 
@@ -65,7 +62,9 @@ const Login = () => {
           />
         </div>
         <div className="duckegg-block my-1 h-4" />
-        <button className="blue-button w-full px-5 py-2">Log In</button>
+        <button className="blue-button w-full px-5 py-2" disabled={isLoading}>
+          Log In
+        </button>
       </form>
       <footer className="text-shadow-wrap mt-1 self-start pl-4 md:self-center md:pl-0">
         Dont have an account?{' '}

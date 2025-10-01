@@ -152,11 +152,11 @@ VITE_SERVER_URL
 
 -   bugs
 
-    -   client: useChat returns chat, uosers, isPublicChat (separate them so its easier to access)
     -   client: scroll gutters
         -   mouse -> looks fine
         -   mobile -> looks fine
         -   MD + Touchpad -> right side no padding
+    -   client: disabled butttons hover -> does not show disabled styling
 
 -   client
 
@@ -171,8 +171,8 @@ VITE_SERVER_URL
     -   slideshow images
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
-    -   useLogin
     -   client: check what breaks when using long username
+    -   refactor hooks for DRY
 
 ## DATA
 
