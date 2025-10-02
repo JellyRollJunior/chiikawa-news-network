@@ -153,8 +153,6 @@ VITE_SERVER_URL
 -   bugs
 
 -   client
-    -   slideshow images
-        -   reset interval on click buttons
 
 -   server
 

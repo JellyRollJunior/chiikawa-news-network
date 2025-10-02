@@ -20,7 +20,7 @@ const ImageCarousel = ({ className, imageArray }) => {
     }, 8000);
 
     return () => clearInterval(imgNextInterval);
-  }, [imageArray, showNextImage]);
+  }, [imageArray, showNextImage, imageIndex]);
 
   if (!imageArray || !Array.isArray(imageArray)) return;
   return (
@@ -40,7 +40,7 @@ const ImageCarousel = ({ className, imageArray }) => {
             <img
               style={{ left: `${100 * index}%` }}
               key={index}
-              className="absolute aspect-auto h-full w-full object-contain"
+              className="absolute `aspect-auto` h-full w-full object-contain"
               src={src}
             />
           ))}
