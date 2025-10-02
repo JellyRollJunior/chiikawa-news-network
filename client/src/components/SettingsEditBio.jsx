@@ -28,7 +28,7 @@ const SettingsEditBio = () => {
       <form className="flex flex-col" onSubmit={handleEditBio}>
         <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
         <textarea
-          className="mx-1 mt-2 min-h-26 resize-none rounded-lg border-2 border-pink-200 bg-white py-1 pl-2 disabled:bg-gray-200"
+          className="mx-1 mt-2 min-h-26 resize-none rounded-lg border-2 border-pink-200 bg-white py-1 px-2 disabled:bg-gray-200"
           autoFocus
           name="bio"
           id="bio"

@@ -11,7 +11,7 @@ const UserStatBlock = ({ className, count, label }) => {
       className={`duckegg-block flex flex-col justify-end pt-2 pb-1.5 text-center md:pt-3 md:pb-1.5 ${className}`}
     >
       <span className="font-chiikawa text-xl">{count}</span>
-      <br /> {label}
+      {label}
     </div>
   );
 };

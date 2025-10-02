@@ -151,9 +151,10 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
-    -   refactor site scrolling
 
 -   client
+    -   filter out following users in usersaside
+    -   slideshow images
 
 -   server
 
@@ -163,7 +164,6 @@ VITE_SERVER_URL
 
 -    low prio
 
-    -   slideshow images
     -   landscape orientation mobile (message please use portrait / block use in landscape)
         -   when keyboard pops up, does everything go to shit? (probably...)
         -   deploy first then fix this bug tbh... Hard to emulate this on our side
