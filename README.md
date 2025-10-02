@@ -155,8 +155,6 @@ VITE_SERVER_URL
 -   client
     -   slideshow images
         -   reset interval on click buttons
-        -   new images
-        -   make slideshow fit image width
 
 -   server
 

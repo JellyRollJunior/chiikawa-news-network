@@ -59,9 +59,9 @@ const LoginPage = () => {
               </div>
             }
           >
-            <div className="pink-block h-60 px-5 pt-6 pb-5 lg:h-90">
+            <div className="pink-block px-5 pt-6 pb-5">
               <ImageCarousel
-                className="h-full w-full"
+                className="w-full md:h-60 lg:h-90"
                 imageArray={slideshowImages}
               />
             </div>
