@@ -11,10 +11,13 @@ import shisaRamen from '../assets/images/shisa-ramen.png';
 import trioScouting from '../assets/images/trio-scouting.png';
 import rakko from '../assets/icons/rakko-icon.png';
 import momonga from '../assets/icons/momonga-icon.png';
-import scared from '../assets/images/chii-hachi-scared.png';
+import chat from '../assets/carousel-images/chat.webp';
+import home from '../assets/carousel-images/home.webp';
+import mobile from '../assets/carousel-images/mobile.webp';
+import profile from '../assets/carousel-images/profile.webp';
 
 const LoginPage = () => {
-  const slideshowImages = [scared, shisaRamen, trioScouting, rakko, momonga];
+  const slideshowImages = [chat, home, mobile, profile];
 
   return (
     <ToastProvider>

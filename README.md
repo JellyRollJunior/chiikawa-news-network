@@ -153,8 +153,10 @@ VITE_SERVER_URL
 -   bugs
 
 -   client
-    -   filter out following users in usersaside
     -   slideshow images
+        -   reset interval on click buttons
+        -   new images
+        -   make slideshow fit image width
 
 -   server
 
