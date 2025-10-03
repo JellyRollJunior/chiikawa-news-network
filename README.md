@@ -81,6 +81,8 @@ server/            # Backend (Express, Prisma, Passport, etc.)
 
 -   Interaction
 
+    -   Testing on an actual mobile device! (broadcasting server & client through my WiFi signal)
+
 -   Backend
 
     -   Pagination: Implement cursor based pagination for retrieving posts
@@ -158,7 +160,6 @@ VITE_SERVER_URL
 
     -   github login
     -   guest account login route  
-    -   pagination: ensure limit and cursor query are UUID
 
 -    low prio
 

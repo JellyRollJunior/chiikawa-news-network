@@ -33,7 +33,7 @@ instrument(io, {
 attachSocketListeners(io);
 
 const PORT = 3000;
-server.listen(PORT, async () => {
+server.listen(PORT, "0.0.0.0", async () => {
     console.log(`Listening on port: ${PORT}`);
     try {
         await seedPublicChats();
