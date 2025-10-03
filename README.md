@@ -167,6 +167,7 @@ VITE_SERVER_URL
         -   deploy first then fix this bug tbh... Hard to emulate this on our side
     -   client: check what breaks when using long username
     -   refactor hooks for DRY
+    -   refactor scrolling
 
 ## DATA
 

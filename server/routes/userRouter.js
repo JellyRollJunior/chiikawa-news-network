@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { authenticateToken } from '../middleware/handleVerifyToken.js';
-import { userIdValidations } from '../middleware/validations.js';
+import { postQueryValidationsOptional, userIdValidations } from '../middleware/validations.js';
 import * as userController from '../controllers/userController.js';
 import * as postController from '../controllers/postController.js';
 
@@ -40,6 +40,7 @@ userRouter.get(
     '/:userId/posts',
     authenticateToken,
     userIdValidations,
+    postQueryValidationsOptional,
     postController.getPosts
 );
 

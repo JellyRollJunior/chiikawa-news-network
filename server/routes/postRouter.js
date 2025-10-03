@@ -3,6 +3,7 @@ import { authenticateToken } from '../middleware/handleVerifyToken.js';
 import {
     commentValidations,
     postIdValidations,
+    postQueryValidationsOptional,
     postValidations,
     userIdValidationsOptional,
 } from '../middleware/validations.js';
@@ -16,6 +17,7 @@ postRouter.get(
     '/',
     authenticateToken,
     userIdValidationsOptional,
+    postQueryValidationsOptional,
     postController.getPosts
 );
 postRouter.post(
@@ -35,6 +37,7 @@ postRouter.get(
     '/feed',
     authenticateToken,
     userIdValidationsOptional,
+    postQueryValidationsOptional,
     postController.getFollowingPosts
 );
 

@@ -9,6 +9,7 @@ const ARRAY_ERROR = 'must be an array of user ids.';
 const UUID_ERROR = 'must be a user id.';
 const USER_ID_LENGTH_ERROR = 'must be between 1 and 4 ids long';
 const URL_ERROR = 'must a valid URL';
+const LIMIT_QUERY_ERROR = 'must be an integer between 1 and 50'
 const lengthError = (min, max) => `must be between ${min} and ${max} characters`;
 const extensionError = () => {
     const allowedExtensions = allowedMimeTypes.map((mimeType) => mimeType.split('/')[1]).join(', ')
@@ -88,6 +89,15 @@ const postValidations = [
         }).withMessage(`media source URL ${extensionError()}`),
 ];
 
+const postQueryValidationsOptional = [
+    check('limit').optional()
+        .isInt({min: 1, max: 50}).withMessage(`limit ${LIMIT_QUERY_ERROR}`),
+    check('cursor').optional()
+        .isUUID().withMessage(`cursor ${UUID_ERROR}`),
+    check('userId').optional()
+        .isUUID().withMessage(`cursor ${UUID_ERROR}`),
+]
+
 const postIdValidations = [
     check('postId')
         .isUUID().withMessage(`post id ${UUID_ERROR}`),
@@ -120,6 +130,7 @@ export {
     chatNameValidations,
     bioValidations,
     postValidations,
+    postQueryValidationsOptional,
     postIdValidations,
     commentValidations,
     commentIdValidations,
