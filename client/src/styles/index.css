@@ -147,3 +147,10 @@
 @utility blue-button {
   @apply button border-emerald-200 bg-emerald-50 hover:bg-emerald-100;
 }
+
+/* vertical scroll thumb */
+.simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+  width: 6px;
+  background-color: #ec4899;
+  border-radius: 9999px;
+}
