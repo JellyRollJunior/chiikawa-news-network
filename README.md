@@ -156,6 +156,11 @@ VITE_SERVER_URL
 
 -   client
 
+    -   Integrate simplebar to fix scroll gutter layout spacing issues
+    -   Mobile testing
+        -   disable auto cap first letter on mobile input (login)
+        -   toasts not showing on mobile
+
 -   server
 
     -   github login
@@ -163,12 +168,8 @@ VITE_SERVER_URL
 
 -    low prio
 
-    -   landscape orientation mobile (message please use portrait / block use in landscape)
-        -   when keyboard pops up, does everything go to shit? (probably...)
-        -   deploy first then fix this bug tbh... Hard to emulate this on our side
     -   client: check what breaks when using long username
     -   refactor hooks for DRY
-    -   refactor scrolling
 
 ## DATA
 

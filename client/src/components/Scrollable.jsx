@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Scrollable = ({ className='', onScrollToBottom, children }) => {
+const Scrollable = ({ className = '', onScrollToBottom, children }) => {
   const containerRef = useRef(null);
   const sentinelRef = useRef(null);
 

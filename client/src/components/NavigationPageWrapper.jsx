@@ -101,7 +101,7 @@ const NavigationPageWrapper = ({ children }) => {
         <div className='yellow-block h-4 ' />
         <RenderNavButtons buttonArray={[settingsButton]} />
       </nav>
-      <div className="h-screen pb-20 md:pb-0 md:pl-24">{children}</div>
+      <div className="h-[100svh] pb-20 md:pb-0 md:pl-24">{children}</div>
     </>
   );
 };
