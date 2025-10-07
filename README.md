@@ -156,8 +156,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   Integrate simplebar to fix scroll gutter layout spacing issues
-        -   BUG: Simplebar makes containers no long responsive horizontally...
     -   Mobile testing
         -   disable auto cap first letter on mobile input (login)
         -   toasts not showing on mobile
