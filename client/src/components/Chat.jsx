@@ -10,6 +10,7 @@ import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
 import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
 import shisaBento from '../assets/images/shisa-bento.png';
+import SimpleBar from 'simplebar-react';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -60,7 +61,7 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col px-3 pt-3.5 pb-2.5 md:ml-0">
+    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 md:ml-0">
       <header className="flex gap-2">
         <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
           <Avatar
@@ -86,10 +87,10 @@ const Chat = () => {
           </div>
         )}
       </header>
-      <div className="duckegg-block mt-1.5 h-4"></div>
+      <div className="duckegg-block h-4 shrink-0" />
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin pink-block mt-1.5 flex-1 overflow-y-scroll pt-2 pr-4 pb-1 pl-3"
+        className="scrollbar-thin pink-block flex-1 overflow-y-scroll pt-2 px-3 pb-1"
       >
         <ChatMessages
           messages={messages}
@@ -97,7 +98,7 @@ const Chat = () => {
           isLoading={isLoading}
         />
       </main>
-      <div className="duckegg-block mt-1.5 mb-1.5 h-4"></div>
+      <div className="duckegg-block h-4 shrink-0"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
       {isRenameModalOpen && (
         <ChatRenameModal

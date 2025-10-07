@@ -154,3 +154,10 @@
   background-color: #ec4899;
   border-radius: 9999px;
 }
+
+.simplebar-content-wrapper,
+.simplebar-content {
+  width: 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box;
+}

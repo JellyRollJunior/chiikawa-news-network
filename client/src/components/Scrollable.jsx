@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import SimpleBar from 'simplebar-react';
 
 const Scrollable = ({ className = '', onScrollToBottom, children }) => {
   const containerRef = useRef(null);
@@ -28,13 +29,12 @@ const Scrollable = ({ className = '', onScrollToBottom, children }) => {
   }, [onScrollToBottom]);
 
   return (
-    <div
-      className={`scrollbar-thin h-full overflow-y-scroll ${className}`}
-      ref={containerRef}
-    >
-      {children}
-      <div className="h-1" ref={sentinelRef}></div>
-    </div>
+    <SimpleBar className={`h-full ${className}`}>
+      <div className='h-full' ref={containerRef}>
+        {children}
+        <div className="h-1" ref={sentinelRef}></div>
+      </div>
+    </SimpleBar>
   );
 };
 
