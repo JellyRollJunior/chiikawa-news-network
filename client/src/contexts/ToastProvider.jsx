@@ -1,4 +1,5 @@
 import { createContext, useCallback, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const ToastContext = createContext({
   toasts: [],
@@ -11,8 +12,9 @@ const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToastToList = useCallback((message, isError, isTemp = false) => {
+    const id = `${uuidv4()}${Date.now()}`;
     const toastObject = {
-      id: crypto.randomUUID(),
+      id,
       message,
       isError,
       isTemp,

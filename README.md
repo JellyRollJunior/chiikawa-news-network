@@ -156,8 +156,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   Mobile testing
-        -   toasts not showing on mobile
     -   mobile back button in chat page
 
 -   server
