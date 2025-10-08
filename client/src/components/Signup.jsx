@@ -46,6 +46,9 @@ const Signup = () => {
             minLength={6}
             maxLength={24}
             placeholder="Enter username"
+            autoCapitalize="off"
+            autoCorrect="off"
+            autoComplete="off"
             required={true}
           />
         </div>

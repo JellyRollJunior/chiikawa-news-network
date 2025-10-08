@@ -157,7 +157,6 @@ VITE_SERVER_URL
 -   client
 
     -   Mobile testing
-        -   disable auto cap first letter on mobile input (login)
         -   toasts not showing on mobile
     -   mobile back button in chat page
 

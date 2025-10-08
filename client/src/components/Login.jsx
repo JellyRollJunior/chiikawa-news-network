@@ -38,6 +38,9 @@ const Login = () => {
             minLength={1}
             maxLength={36}
             placeholder="Enter username"
+            autoCapitalize="off"
+            autoCorrect="off"
+            autoComplete="off"
             required={true}
           />
         </div>
