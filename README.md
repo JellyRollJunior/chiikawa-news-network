@@ -153,10 +153,12 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
+    -   react is requred new chat error
+    -   chat convo refresh hover
 
 -   client
 
-    -   mobile back button in chat page
+    -   gif bar
 
 -   server
 

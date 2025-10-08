@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams, Link } from 'react-router';
 import { useChat } from '../hooks/useChat.js';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useJoinRoom } from '../hooks/useJoinRoom.js';
@@ -9,8 +9,8 @@ import { ChatMessageInput } from './ChatMessageInput.jsx';
 import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
 import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
+import arrowBack from '../assets/svgs/arrow-back.svg';
 import shisaBento from '../assets/images/shisa-bento.png';
-import SimpleBar from 'simplebar-react';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -63,6 +63,11 @@ const Chat = () => {
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 md:ml-0">
       <header className="flex gap-2">
+        <div className="pink-block pt-2 pl-2 md:hidden">
+          <Link className="flex h-full items-center" to="/chats">
+            <img className="w-[20px]" src={arrowBack} />
+          </Link>
+        </div>
         <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
           <Avatar
             className="size-[60px] border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
@@ -78,7 +83,7 @@ const Chat = () => {
           </div>
         </div>
         {!isPublicChat && (
-          <div className="pink-block flex h-full items-center px-1 pt-3 md:px-2 md:pt-2">
+          <div className="pink-block flex items-center px-1 pt-3 md:px-2 md:pt-2">
             <ChatHeaderMenu
               users={chat && chat.users}
               openRenameModal={openRenameModal}
@@ -90,7 +95,7 @@ const Chat = () => {
       <div className="duckegg-block h-4 shrink-0" />
       <main
         ref={scrollContainerRef}
-        className="scrollbar-thin pink-block flex-1 overflow-y-scroll pt-2 px-3 pb-1"
+        className="scrollbar-thin pink-block flex-1 overflow-y-scroll px-3 pt-2 pb-1"
       >
         <ChatMessages
           messages={messages}
