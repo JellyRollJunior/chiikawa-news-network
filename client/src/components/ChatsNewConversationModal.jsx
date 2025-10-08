@@ -105,7 +105,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             value={name}
             onChange={(event) => setName(event.target.value)}
             maxLength={32}
-            isRequired={false}
+            required={false}
             placeholder="My amazing chat"
           />
         </div>
