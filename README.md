@@ -12,6 +12,7 @@
 | ------ | -------------------------- | --------------------------- | ----- | ----------------------------------- | ----------------------------------- |
 | POST   | /signup                    | Create user                 | N     | { username, password}               |                                     |
 | POST   | /login                     | Login user                  | N     | { username, password}               |                                     |
+| POST   | /login/guest               | Login guest user            | N     |                                     |                                     |
 | GET    | /current                   | Retrieve current user       | Y     |                                     |                                     |
 | PATCH  | /current/bio               | Update bio                  | Y     | { bio }                             |                                     |
 | PATCH  | /current/avatar            | Update avatar               | Y     | { avatar }                          | max 250kb upload                    |
@@ -161,12 +162,18 @@ VITE_SERVER_URL
 -   server
 
     -   github login
-    -   guest account login route  
+    -   guest account login route
+        -   shared guest account
+        -   seed on startup
+            -   db query
+            -   
+        -   Guest template data
+        -   Guest login route
 
--    low prio
+-   low prio
 
-    -   client: check what breaks when using long username
-    -   refactor hooks for DRY
+-   client: check what breaks when using long username
+-   refactor hooks for DRY
 
 ## DATA
 
