@@ -12,7 +12,7 @@
 | ------ | -------------------------- | --------------------------- | ----- | ----------------------------------- | ----------------------------------- |
 | POST   | /signup                    | Create user                 | N     | { username, password}               |                                     |
 | POST   | /login                     | Login user                  | N     | { username, password}               |                                     |
-| POST   | /login/guest               | Login guest user            | N     |                                     |                                     |
+| POST   | /guest-login               | Login guest user            | N     |                                     |                                     |
 | GET    | /current                   | Retrieve current user       | Y     |                                     |                                     |
 | PATCH  | /current/bio               | Update bio                  | Y     | { bio }                             |                                     |
 | PATCH  | /current/avatar            | Update avatar               | Y     | { avatar }                          | max 250kb upload                    |
@@ -154,17 +154,15 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
-    -   trycatch in seedPublicChat / seedSupabaseBuckets
 
 -   client
 
     -   gif bar
+    -   guest login button
 
 -   server
 
     -   github login
-    -   guest account login route
-        -   Guest login route
 
 -   low prio
 

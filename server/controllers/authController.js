@@ -43,11 +43,38 @@ const login = async (req, res, next) => {
         res.json({
             id: user.id,
             username: user.username,
-            token 
+            token,
         });
     } catch (error) {
         next(error);
     }
 };
 
-export { signup, login };
+const loginGuest = async (req, res, next) => {
+    try {
+        const guest = await userQueries.getUserByUsername(
+            process.env.GUEST_USERNAME
+        );
+        if (!guest) throw new Error();
+        const options = { expiresIn: 60 * 60 * 24 }; // 24 hours
+        const token = jwt.sign(
+            { id: guest.id, username: guest.username },
+            process.env.TOKEN_SECRET,
+            options
+        );
+        res.json({
+            id: guest.id,
+            username: guest.username,
+            token,
+        });
+    } catch (error) {
+        const guestError = new Error(
+            'Unable to login guest. Please create an account'
+        );
+        guestError.name = 'Guest Error';
+        guestError.status = 500;
+        next(guestError);
+    }
+};
+
+export { signup, login, loginGuest };

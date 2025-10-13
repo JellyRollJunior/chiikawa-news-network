@@ -6,5 +6,6 @@ const authRouter = Router();
 
 authRouter.post('/signup', userValidation, authController.signup)
 authRouter.post('/login', authController.login);
+authRouter.post('/guest-login', authController.loginGuest);
 
 export { authRouter };
