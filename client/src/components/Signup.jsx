@@ -22,7 +22,7 @@ const Signup = () => {
       await signup(username, password);
       navigate('/login');
     } catch (error) {
-      toastTemp(error.message);
+      toastTemp(error.message, true);
     }
   };
 
