@@ -19,6 +19,18 @@ const login = async (username, password) => {
     return data;
 };
 
+const guestLogin = async () => {
+    const data = await request(
+        '/guest-login',
+        {
+            mode: 'cors',
+            method: 'POST',
+        },
+        false
+    );
+    return data;
+};
+
 const signup = async (username, password) => {
     const data = await request(
         '/signup',
@@ -38,4 +50,4 @@ const signup = async (username, password) => {
     return data;
 };
 
-export { login, signup };
+export { login, guestLogin, signup };
