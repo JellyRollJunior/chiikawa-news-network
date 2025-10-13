@@ -18,11 +18,11 @@ const seedSupabaseBuckets = async () => {
                         public: true,
                     }
                 );
-                console.log(`Seeded ${bucket} bucket on Supabase`);
+                console.log(`Seeding ${bucket} bucket on Supabase`);
             }
         });
     } catch (error) {
-        next(error);
+        console.log('Unable to seed Supbase buckets');
     }
 };
 

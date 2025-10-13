@@ -154,6 +154,7 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
+    -   trycatch in seedPublicChat / seedSupabaseBuckets
 
 -   client
 
@@ -163,11 +164,6 @@ VITE_SERVER_URL
 
     -   github login
     -   guest account login route
-        -   shared guest account
-        -   seed on startup
-            -   db query
-            -   
-        -   Guest template data
         -   Guest login route
 
 -   low prio

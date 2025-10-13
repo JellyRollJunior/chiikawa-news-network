@@ -34,13 +34,10 @@ instrument(io, {
 attachSocketListeners(io);
 
 const PORT = 3000;
-server.listen(PORT, "0.0.0.0", async () => {
+server.listen(PORT, '0.0.0.0', async () => {
     console.log(`Listening on port: ${PORT}`);
-    try {
-        await seedPublicChats();
-        await seedSupabaseBuckets();
-    } catch (error) {
-        console.log('Error seeding public chats');
-    }
+    // Server setup scripts
+    await seedPublicChats();
+    await seedSupabaseBuckets();
     await seedGuestAccount();
 });
