@@ -157,8 +157,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   toastTemp styling
-    -   refactor login error msg
     -   gif bar
 
 -   server

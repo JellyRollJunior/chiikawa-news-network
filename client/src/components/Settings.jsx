@@ -12,7 +12,7 @@ const Settings = () => {
     <div className="main-container mx-4 mt-3 mb-2 w-full max-w-lg">
       <SimpleBar className="h-full">
         <div className="relative px-3 pt-3 pb-2.5 md:pt-3.5">
-          <header className="yellow-block flex justify-center">
+          <header className="yellow-block flex justify-center pt-1 pb-0.5">
             <LogoTitle className="text-lg md:text-2xl" text="Edit Settings" />
           </header>
           <section className="mt-2">

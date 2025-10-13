@@ -15,7 +15,7 @@ const Toaster = () => {
               className={`flex items-center justify-center text-nowrap ${
                 toast.isError
                   ? `button border-red-300 bg-linear-to-b from-[#F6B7C8] to-[#FFADB3] hover:bg-[#FF94A0] hover:bg-none`
-                  : `pink-button`
+                  : `blue-button`
               } rounded-lg shadow-pink-50/0`}
               key={toast.id}
               initial={{ opacity: 0 }}
