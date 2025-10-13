@@ -157,10 +157,17 @@ VITE_SERVER_URL
 
 -   client
 
+    -   obscenity filter
+        -   messages
+        -   posts + titles
+        -   bio
+        -   username
+        -   chat title
     -   gif bar
 
 -   server
 
+    -   obscenity filter
     -   github login
 
 -   low prio
