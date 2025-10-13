@@ -158,7 +158,6 @@ VITE_SERVER_URL
 -   client
 
     -   gif bar
-    -   guest login button
 
 -   server
 

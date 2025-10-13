@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLogin } from '../hooks/useLogin.js';
+import { useGuestLogin } from '../hooks/useGuestLogin.js';
 
 const Login = () => {
   const navigate = useNavigate();
   const { login, isLoading } = useLogin();
+  const { loginGuest, isLoading: isLoadingGuest } = useGuestLogin();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
     const data = await login(username, password);
+    if (data) {
+      localStorage.setItem('token', data.token);
+      navigate('/');
+    }
+  };
+
+  const handleGuestLogin = async () => {
+    const data = await loginGuest();
     if (data) {
       localStorage.setItem('token', data.token);
       navigate('/');
@@ -65,11 +75,22 @@ const Login = () => {
           />
         </div>
         <div className="duckegg-block my-1 h-4" />
-        <button className="blue-button w-full px-5 py-2" disabled={isLoading}>
-          Log In
+        <button
+          className="blue-button w-full px-5 py-2"
+          disabled={isLoading || isLoadingGuest}
+        >
+          Log in
         </button>
       </form>
-      <footer className="text-shadow-wrap mt-1 self-start pl-4 md:self-center md:pl-0">
+      <button
+        className="pink-button w-full px-5 py-2"
+        type="button"
+        onClick={handleGuestLogin}
+        disabled={isLoading || isLoadingGuest}
+      >
+        Just passing by? Log in as Guest
+      </button>
+      <footer className="text-shadow-wrap self-start pl-4 md:self-center md:pl-0">
         Dont have an account?{' '}
         <Link to="/signup" className="text-blue-400 hover:underline">
           Sign up.

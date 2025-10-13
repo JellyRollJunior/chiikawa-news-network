@@ -8,7 +8,7 @@ const useGuestLogin = () => {
     const { toast } = useContext(ToastContext);
     const { handleTokenErrors } = useTokenErrorHandler();
 
-    const guestLogin = async () => {
+    const loginGuest = async () => {
         setIsLoading(true);
         try {
             const data = await requestGuestLogin();
@@ -21,7 +21,7 @@ const useGuestLogin = () => {
         }
     };
 
-    return { guestLogin, isLoading };
+    return { loginGuest, isLoading };
 };
 
 export { useGuestLogin };
