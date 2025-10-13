@@ -28,7 +28,7 @@ const LoginPage = () => {
             <Login />
           </FullPageFormWrapper>
         </div>
-        <aside className="mr-4 hidden flex-5 items-center justify-end md:flex">
+        <aside className="mr-4 hidden flex-5 items-center justify-end lg:flex">
           <Notice
             className="relative max-w-2xl"
             title="Connect through Chiikawa!"

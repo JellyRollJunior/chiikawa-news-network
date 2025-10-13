@@ -157,12 +157,7 @@ VITE_SERVER_URL
 
 -   client
 
-    -   obscenity filter
-        -   messages
-        -   posts + titles
-        -   bio
-        -   username
-        -   chat title
+    -   refactor login error msg
     -   gif bar
 
 -   server

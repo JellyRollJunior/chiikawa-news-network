@@ -16,7 +16,6 @@ const ChatMessageInput = ({ sendMessage, isDisabled = false }) => {
     >
       <input
         className="h-7 w-full pl-1"
-        id="text"
         type="text"
         value={text}
         onChange={(event) => setText(event.target.value)}

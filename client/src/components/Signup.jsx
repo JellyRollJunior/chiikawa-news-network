@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { signup } from '../services/authApi.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { profanityMatcher } from '../services/textCensor.js';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ const Signup = () => {
     if (password != confirmPassword)
       return toastTemp('Passwords must match', true);
     try {
+      if (profanityMatcher.hasMatch(username)) {
+        return toastTemp('Username must not contain profanity', true);
+      }
       await signup(username, password);
       navigate('/login');
     } catch (error) {
