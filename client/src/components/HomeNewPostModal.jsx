@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
+import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import trash from '../assets/svgs/trash.svg';
 
 const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
@@ -73,9 +74,12 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     <ModalDialog title="New Post" closeFunction={closeFunction}>
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
-          <label className="text-shadow-wrap ml-1" htmlFor="title">
-            Title
-          </label>
+          <div className="flex justify-between">
+            <label className="text-shadow-wrap ml-1" htmlFor="title">
+              Title
+            </label>
+            <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
+          </div>
           <input
             className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3"
             id="title"
@@ -86,14 +90,14 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             maxLength={75}
             required
           />
-          <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
-            {title.length} / 75
+          <div className="flex justify-between mt-3">
+            <label className="text-shadow-wrap ml-1" htmlFor="content">
+              Content
+            </label>
+            <div className="text-shadow-wrap mr-2">{content.length} / 350</div>
           </div>
-          <label className="text-shadow-wrap ml-1" htmlFor="content">
-            Content
-          </label>
           <textarea
-            className="block-shadow mt-1 h-32 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
+            className="block-shadow mt-1 h-24 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
             id="content"
             name="content"
             value={content}
@@ -102,8 +106,11 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             maxLength={350}
             required
           />
-          <div className="text-shadow-wrap mt-1 mr-2 ml-auto">
-            {content.length} / 350
+          <div className="block-shadow mt-2 h-16 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+            {textCensor.applyTo(
+              content,
+              profanityMatcher.getAllMatches(content)
+            )}
           </div>
         </div>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">

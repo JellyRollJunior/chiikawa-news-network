@@ -158,6 +158,11 @@ VITE_SERVER_URL
 -   client
 
     -   gif bar
+    -   obscentiy filter
+        -   new post
+            -   display censored text
+            -   modal max height
+                -   modal scroll (simplebar)
 
 -   server
 
