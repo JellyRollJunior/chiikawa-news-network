@@ -157,12 +157,8 @@ VITE_SERVER_URL
 
 -   client
 
+    -   adjust content ratios for desktop on tablet (increase size of important content)
     -   gif bar
-    -   obscentiy filter
-        -   new post
-            -   display censored text
-            -   modal max height
-                -   modal scroll (simplebar)
 
 -   server
 
