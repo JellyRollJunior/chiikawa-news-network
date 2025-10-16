@@ -166,7 +166,6 @@ VITE_SERVER_URL
         -   post title + content
         -   chat title + messages
         -   bio
-    -   username maxlen 12
     -   github login
 
 -   low prio

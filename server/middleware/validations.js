@@ -19,7 +19,7 @@ const extensionError = () => {
 const userValidation = [
     check('username').trim()
         .notEmpty().withMessage(`Username ${EMPTY_ERROR}`)
-        .isLength({ min: 6, max: 24 }).withMessage(`Username ${lengthError(6, 24)}`),
+        .isLength({ min: 6, max: 12 }).withMessage(`Username ${lengthError(6, 12)}`),
     check('password').trim()
         .notEmpty().withMessage(`Password ${EMPTY_ERROR}`)
         .isLength({ min: 6, max: 24 }).withMessage(`Password ${lengthError(6, 24)}`),
