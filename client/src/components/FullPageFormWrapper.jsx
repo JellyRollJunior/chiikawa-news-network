@@ -14,7 +14,7 @@ const FullPageFormWrapper = ({ children }) => {
         src={trioDrawing}
       />
       <img
-        className="absolute -right-[16px] -bottom-[24px] w-[100px] drop-shadow-pink-outline "
+        className="absolute -right-[16px] -bottom-[24px] w-[85px] drop-shadow-pink-outline "
         src={kaniReading}
       />
     </div>

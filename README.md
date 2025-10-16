@@ -158,7 +158,6 @@ VITE_SERVER_URL
 -   client
 
     -   gif bar
-    -   username maxlen 12
 
 -   server
 
