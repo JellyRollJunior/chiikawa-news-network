@@ -158,10 +158,16 @@ VITE_SERVER_URL
 -   client
 
     -   gif bar
+    -   username maxlen 12
 
 -   server
 
     -   obscenity filter
+        -   username
+        -   post title + content
+        -   chat title + messages
+        -   bio
+    -   username maxlen 12
     -   github login
 
 -   low prio

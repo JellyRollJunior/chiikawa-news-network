@@ -9,16 +9,18 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [profanityError, setProfanityError] = useState(false);
   const { toastTemp } = useContext(ToastContext);
 
   const handleSignup = async (event) => {
     event.preventDefault();
-    if (password != confirmPassword)
+    if (password != confirmPassword) {
       return toastTemp('Passwords must match', true);
+    }
+    if (profanityError) {
+      return toastTemp('Username must not contain profanity', true);
+    }
     try {
-      if (profanityMatcher.hasMatch(username)) {
-        return toastTemp('Username must not contain profanity', true);
-      }
       await signup(username, password);
       navigate('/login');
     } catch (error) {
@@ -34,21 +36,32 @@ const Signup = () => {
           Sign up to connect with fellow chiikawa enjoyers
         </h2>
         <div className="pink-block px-3 pt-3 pb-2">
-          <label
-            className="text-shadow-wrap mt-2 ml-1 font-medium text-amber-800"
-            htmlFor={username}
-          >
-            Username
-          </label>
+          <div className="flex gap-2">
+            <label
+              className="text-shadow-wrap ml-1 font-medium text-amber-800"
+              htmlFor={username}
+            >
+              Username
+            </label>
+            {profanityError && (
+              <div className="text-red-400">(no profanity allowed)</div>
+            )}
+          </div>
           <input
             className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
             type="text"
             id="username"
             name="username"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => {
+              const input = event.target.value;
+              setUsername(input);
+              profanityMatcher.hasMatch(input)
+                ? setProfanityError(true)
+                : setProfanityError(false);
+            }}
             minLength={6}
-            maxLength={24}
+            maxLength={12}
             placeholder="Enter username"
             autoCapitalize="off"
             autoCorrect="off"
@@ -58,7 +71,7 @@ const Signup = () => {
         </div>
         <div className="pink-block px-3 pt-3 pb-2">
           <label
-            className="text-shadow-wrap mt-2 ml-1 font-medium text-amber-800"
+            className="text-shadow-wrap ml-1 font-medium text-amber-800"
             htmlFor={password}
           >
             Password
@@ -79,7 +92,7 @@ const Signup = () => {
 
         <div className="pink-block px-3 pt-3 pb-2">
           <label
-            className="text-shadow-wrap mt-2 ml-1 font-medium text-amber-800"
+            className="text-shadow-wrap ml-1 font-medium text-amber-800"
             htmlFor={confirmPassword}
           >
             Confirm Password
