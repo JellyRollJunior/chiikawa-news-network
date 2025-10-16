@@ -158,6 +158,8 @@ VITE_SERVER_URL
 -   client
 
     -   gif bar
+    -   client
+        -   chat name obscenity warning
 
 -   server
 
@@ -165,7 +167,6 @@ VITE_SERVER_URL
         -   username
         -   post title + content
         -   chat title + messages
-        -   bio
     -   github login
 
 -   low prio

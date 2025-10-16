@@ -2,6 +2,7 @@ import { validateInput } from '../middleware/validations.js';
 import { AuthenticationError } from '../errors/AuthenticationError.js';
 import { uploadAvatar } from '../adapters/supabase.client.js';
 import { formatUser } from '../services/user.services.js';
+import { textCensor, profanityMatcher } from '../services/textCensor.js';
 import * as userQueries from '../db/user.queries.js';
 
 const getCurrentUser = async (req, res, next) => {
@@ -43,7 +44,8 @@ const patchBio = async (req, res, next) => {
         validateInput(req);
         const userId = req.user.id;
         const bio = req.body.bio;
-        const user = await userQueries.updateBio(userId, bio);
+        const censoredBio = textCensor.applyTo(bio, profanityMatcher.getAllMatches(bio));
+        const user = await userQueries.updateBio(userId, censoredBio);
         const formattedUser = formatUser(user);
         res.json(formattedUser);
     } catch (error) {
