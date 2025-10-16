@@ -9,7 +9,7 @@ const ChatsPage = () => {
       <aside className="flex flex-3 md:max-w-md">
         <Chats />
       </aside>
-      <div className="mr-4 hidden flex-4 items-center justify-center md:flex">
+      <div className="mr-4 hidden flex-2 items-center justify-center md:flex">
         <Notice
           className="relative max-w-lg"
           title="Your Messages"
@@ -21,16 +21,9 @@ const ChatsPage = () => {
           }
         >
           <div className="pink-block">
-            <img
-              className="drop-shadow-pink-outline m-auto"
-              src={masks}
-              alt="Hachiware, Usagi, and Chiikawa playing with japanese masks"
-            />
+            <img className="drop-shadow-pink-outline m-auto" src={masks} alt="Hachiware, Usagi, and Chiikawa playing with japanese masks" />
           </div>
-          <img
-            className="drop-shadow-pink-outline absolute -right-[10px] -bottom-[38px] w-[100px]"
-            src={chiiLaying}
-          />
+          <img className="drop-shadow-pink-outline absolute -right-[10px] -bottom-[38px] w-[100px]" src={chiiLaying} />
         </Notice>
       </div>
     </div>

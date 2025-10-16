@@ -4,10 +4,10 @@ import { Chat } from '../components/Chat.jsx';
 const ChatPage = () => {
   return (
     <div className="flex h-full">
-      <aside className="flex-2 hidden max-w-md md:flex">
+      <aside className="hidden max-w-md flex-2 lg:flex">
         <Chats />
       </aside>
-      <div className="flex-3 flex">
+      <div className="flex flex-3">
         <Chat />
       </div>
     </div>

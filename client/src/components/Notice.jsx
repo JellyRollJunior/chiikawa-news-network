@@ -1,7 +1,7 @@
 const Notice = ({ className, title, footer, children }) => {
   return (
     <div
-      className={`main-container mx-6 flex w-full max-w-2xl gap-2 px-3 pt-3 pb-2.5 md:pt-3.5 ${className}`}
+      className={`main-container flex w-full max-w-2xl gap-2 px-3 pt-3 pb-2.5 md:pt-3.5 ${className}`}
     >
       <div className="duckegg-block w-3.5 self-stretch" />
       <div className="flex flex-1 flex-col gap-2">

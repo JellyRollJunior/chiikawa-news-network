@@ -157,7 +157,6 @@ VITE_SERVER_URL
 
 -   client
 
-    -   adjust content ratios for desktop on tablet (increase size of important content)
     -   gif bar
 
 -   server

@@ -61,7 +61,7 @@ const Chat = () => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   return (
-    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 md:ml-0">
+    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
       <header className="flex gap-2">
         <div className="pink-block pt-2 pl-2 md:hidden">
           <Link className="flex h-full items-center" to="/chats">
@@ -115,10 +115,7 @@ const Chat = () => {
       {isDeleteModalOpen && (
         <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
       )}
-      <img
-        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]"
-        src={shisaBento}
-      />
+      <img className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]" src={shisaBento} />
     </div>
   );
 };
