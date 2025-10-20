@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { fetchChat } from '../services/chatApi.js';
+import { textCensor, profanityMatcher } from '../services/textCensor.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { SocketContext } from '../contexts/SocketProvider.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
@@ -87,7 +88,8 @@ const useChat = (chatId) => {
         });
 
         // display message on client
-        const message = createMessage(text, id, username, avatar);
+        const censoredText = textCensor.applyTo(text, profanityMatcher.getAllMatches(text));
+        const message = createMessage(censoredText, id, username, avatar);
         setMessages((prev) => [...prev, message]);
     };
 

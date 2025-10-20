@@ -161,7 +161,6 @@ VITE_SERVER_URL
     -   client
         -   chat name obscenity warning
         -   post title + content
-        -   messages
 
 -   server
 
