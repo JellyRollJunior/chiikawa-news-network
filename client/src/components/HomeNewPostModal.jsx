@@ -90,7 +90,10 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             maxLength={75}
             required
           />
-          <div className="flex justify-between mt-3">
+          <div className="block-shadow mt-2 h-8 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+            {textCensor.applyTo(title, profanityMatcher.getAllMatches(title))}
+          </div>
+          <div className="mt-3 flex justify-between">
             <label className="text-shadow-wrap ml-1" htmlFor="content">
               Content
             </label>

@@ -154,19 +154,15 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
-    -   new convo modal: no user selected error does not appear 
+    -   startup scripts: failure seeding msg does not play?
 
 -   client
 
     -   gif bar
-    -   client
-        -   post title + content
-        -   allow self chats (?)
+    -   allow self chats (?)
 
 -   server
 
-    -   startup scripts
-        -   failure seeding msg does not play?
     -   github login
 
 -   low prio
