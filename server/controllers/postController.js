@@ -8,6 +8,7 @@ import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
 import * as postQueries from '../db/post.queries.js';
 import * as userQueries from '../db/user.queries.js';
+import { profanityMatcher, textCensor } from '../services/textCensor.js';
 
 const getPosts = async (req, res, next) => {
     try {
@@ -63,8 +64,11 @@ const createPost = async (req, res, next) => {
         const userId = req.user.id;
         const title = req.body.title;
         const content = req.body.content;
+        // censor title & content
+        const censoredTitle = textCensor.applyTo(title, profanityMatcher.getAllMatches(title));
+        const censoredContent = textCensor.applyTo(content, profanityMatcher.getAllMatches(content));
         let url = req.body.media;
-        let post = await postQueries.createPost(userId, title, content, url);
+        let post = await postQueries.createPost(userId, censoredTitle, censoredContent, url);
         // if file exists & was not sent as URL, upload to supabase
         if (!url && req.file) {
             url = await uploadPostMedia(userId, post.id, req.file);

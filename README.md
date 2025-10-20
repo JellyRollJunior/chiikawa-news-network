@@ -160,13 +160,13 @@ VITE_SERVER_URL
     -   gif bar
     -   client
         -   chat name obscenity warning
+        -   post title + content
 
 -   server
 
     -   startup scripts
         -   failure seeding msg does not play?
     -   obscenity filter
-        -   post title + content
         -   messages
     -   github login
 
