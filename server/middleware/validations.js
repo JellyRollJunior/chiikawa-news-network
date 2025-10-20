@@ -2,7 +2,9 @@ import { check } from "express-validator";
 import { validationResult } from 'express-validator';
 import { ValidationError } from '../errors/ValidationError.js';
 import { allowedMimeTypes } from "./multer.js";
+import { profanityMatcher } from "../services/textCensor.js";
 
+/* Error messages */
 const EMPTY_ERROR = 'must not be empty.';
 const CHAT_NAME_LENGTH_ERROR = 'must be a maximum of 32 characters';
 const ARRAY_ERROR = 'must be an array of user ids.';
@@ -10,16 +12,22 @@ const UUID_ERROR = 'must be a user id.';
 const USER_ID_LENGTH_ERROR = 'must be between 1 and 4 ids long';
 const URL_ERROR = 'must a valid URL';
 const LIMIT_QUERY_ERROR = 'must be an integer between 1 and 50'
+const PROFANITY_ERROR = 'must not contain profanity';
 const lengthError = (min, max) => `must be between ${min} and ${max} characters`;
 const extensionError = () => {
     const allowedExtensions = allowedMimeTypes.map((mimeType) => mimeType.split('/')[1]).join(', ')
     return `must use one of these extension: ${allowedExtensions}`;
 }
 
+/* Custom validators */
+const profanityValidation = (value) => profanityMatcher.hasMatch(value) ? false : true;
+
+/* Validations */
 const userValidation = [
     check('username').trim()
         .notEmpty().withMessage(`Username ${EMPTY_ERROR}`)
-        .isLength({ min: 6, max: 12 }).withMessage(`Username ${lengthError(6, 12)}`),
+        .isLength({ min: 6, max: 12 }).withMessage(`Username ${lengthError(6, 12)}`)
+        .custom((value) => profanityValidation(value)).withMessage(`Username ${PROFANITY_ERROR}`),
     check('password').trim()
         .notEmpty().withMessage(`Password ${EMPTY_ERROR}`)
         .isLength({ min: 6, max: 24 }).withMessage(`Password ${lengthError(6, 24)}`),
@@ -38,24 +46,20 @@ const userIdValidationsOptional = [
 const chatValidations = [
     check('userIds')
         .isArray().withMessage(`userIds ${ARRAY_ERROR}`)
-        .custom((value) => {
-            if (value.length < 1 || value.length > 4) {
-                throw new Error(`userIds ${USER_ID_LENGTH_ERROR}`)
-            }
-            return true;
-        }),
+        .custom((value) => (value.length < 1 || value.length > 4) ? false : true).withMessage(`userIds ${USER_ID_LENGTH_ERROR}`),
     check('userIds.*')
         .isUUID().withMessage(`userIds array contents ${UUID_ERROR}`),
 ]
 
 const chatIdValidations = [
     check('chatId')
-        .isUUID().withMessage(`chat id ${UUID_ERROR}`),
+        .isUUID().withMessage(`chatId ${UUID_ERROR}`),
 ];
 
 const chatNameValidations = [
     check('name').optional().trim()
-        .isLength({ min: 0, max: 32 }).withMessage(`Chat name ${CHAT_NAME_LENGTH_ERROR}`),
+        .isLength({ min: 0, max: 32 }).withMessage(`Chat name ${CHAT_NAME_LENGTH_ERROR}`)
+        .custom((value) => profanityValidation(value)).withMessage(`Chat name ${PROFANITY_ERROR}`),
 ];
 
 const bioValidations = [

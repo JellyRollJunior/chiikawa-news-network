@@ -163,10 +163,11 @@ VITE_SERVER_URL
 
 -   server
 
+    -   startup scripts
+        -   failure seeding msg does not play?
     -   obscenity filter
-        -   username
         -   post title + content
-        -   chat title + messages
+        -   messages
     -   github login
 
 -   low prio
