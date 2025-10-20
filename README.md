@@ -161,13 +161,12 @@ VITE_SERVER_URL
     -   client
         -   chat name obscenity warning
         -   post title + content
+        -   messages
 
 -   server
 
     -   startup scripts
         -   failure seeding msg does not play?
-    -   obscenity filter
-        -   messages
     -   github login
 
 -   low prio

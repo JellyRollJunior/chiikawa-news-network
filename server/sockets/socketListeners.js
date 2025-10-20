@@ -1,4 +1,5 @@
 import { isUserAuthorizedForChat } from '../services/chat.services.js';
+import { textCensor, profanityMatcher} from '../services/textCensor.js';
 import { createSocketError } from '../errors/SocketError.js';
 import { AuthorizationError } from '../errors/AuthorizationError.js';
 import { DatabaseError } from '../errors/DatabaseError.js';
@@ -35,10 +36,11 @@ const handleSendMessage = async (socket, chatId, content, callback) => {
             throw new AuthorizationError('Unable to create message');
         }
         // create message and emit
+        const censoredContent = textCensor.applyTo(content.trim(), profanityMatcher.getAllMatches(content.trim()));
         const message = await messageQueries.createMessage(
             chatId,
             socket.data.user.id,
-            content.trim()
+            censoredContent
         );
         socket.rooms.forEach((room) => {
             socket.to(room).emit('receive_message', message);
