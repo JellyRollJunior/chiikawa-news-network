@@ -6,6 +6,7 @@ import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { profanityMatcher } from '../services/textCensor.js';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();
@@ -14,9 +15,10 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
   const { users, isLoading } = useUsers();
   const { createChat, isLoading: isCreatingChat } = useCreateChat();
   const [filter, setFilter] = useState('');
-  const [userError, setUserError] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [name, setName] = useState('');
+  const [userError, setUserError] = useState(false);
+  const [profanityError, setProfanityError] = useState(false);
 
   // search filter + filter out current user
   const filteredUsers = users
@@ -29,9 +31,22 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
 
   const handleCreateChat = async (event) => {
     event.preventDefault();
+    // form error handling
+    let invalidForm = false;
     if (!selectedUsers || selectedUsers == '') {
-      return setUserError(' — Please select a chat partner');
+      setUserError(true);
+      invalidForm = true;
+    } else {
+      setUserError(false);
     }
+    if (profanityMatcher.hasMatch(name)) {
+      setProfanityError(true);
+      invalidForm = true;
+    } else {
+      setProfanityError(false);
+    }
+    if (invalidForm) return;
+    // no errors -> create chat
     const data = await createChat(name, selectedUsers);
     // reset form
     setSelectedUsers('');
@@ -56,8 +71,10 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
           <label className="text-shadow-wrap ml-1 flex items-center gap-1 font-medium">
             Users{' '}
-            <span className={`text-xs ${userError && 'text-red-400'}`}>
-              — (max 5 users per chat)
+            <span className={`${userError && 'text-red-400'}`}>
+              {!userError
+                ? ' — (max 5 users per chat)'
+                : ' — select at least 1 user (max 5)'}
             </span>
           </label>
           <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">
@@ -91,12 +108,19 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
           />
         </div>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
-          <label
-            className="text-shadow-wrap ml-1 font-medium"
-            htmlFor="chatName"
-          >
-            Chat name (optional)
-          </label>
+          <div className="flex gap-2">
+            <label
+              className="text-shadow-wrap ml-1 font-medium"
+              htmlFor="chatName"
+            >
+              Chat name (optional)
+            </label>
+            {profanityError && (
+              <div className="text-shadow-wrap text-red-400">
+                (no profanity)
+              </div>
+            )}
+          </div>
           <input
             className="block-shadow h-10 w-full rounded-xl bg-white pl-3"
             type="text"

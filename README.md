@@ -154,13 +154,14 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
+    -   new convo modal: no user selected error does not appear 
 
 -   client
 
     -   gif bar
     -   client
-        -   chat name obscenity warning
         -   post title + content
+        -   allow self chats (?)
 
 -   server
 
