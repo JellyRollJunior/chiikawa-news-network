@@ -155,6 +155,7 @@ VITE_SERVER_URL
 
 -   bugs
     -   startup scripts: failure seeding msg does not play?
+        -   CHECK FOR BUCKET DOES NOT EXIST ERROR TO SEED BUCKET
 
 -   client
 
