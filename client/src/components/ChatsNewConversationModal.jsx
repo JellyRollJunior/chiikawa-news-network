@@ -5,12 +5,10 @@ import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
 import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { profanityMatcher } from '../services/textCensor.js';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();
-  const { id } = useContext(CurrentContext);
   const { refetchChats } = useContext(ChatsContext);
   const { users, isLoading } = useUsers();
   const { createChat, isLoading: isCreatingChat } = useCreateChat();
@@ -20,12 +18,10 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
   const [userError, setUserError] = useState(false);
   const [profanityError, setProfanityError] = useState(false);
 
-  // search filter + filter out current user
+  // search filter
   const filteredUsers = users
-    ? users.filter(
-        (user) =>
-          user.username.toLowerCase().includes(filter.trim().toLowerCase()) &&
-          user.id != id
+    ? users.filter((user) =>
+        user.username.toLowerCase().includes(filter.trim().toLowerCase())
       )
     : [];
 
