@@ -4,7 +4,7 @@ import { useCreatePost } from '../hooks/useCreatePost.js';
 import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import trash from '../assets/svgs/trash.svg';
 
-const NewPostFormTextContent = ({ title, setTitle, content, setContent }) => {
+const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
   return (
     <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
       <div className="flex justify-between">
@@ -49,11 +49,17 @@ const NewPostFormTextContent = ({ title, setTitle, content, setContent }) => {
   );
 };
 
+const MEDIA_INPUT_MODE = Object.freeze({
+  UPLOAD: 'UPLOAD',
+  URL: 'URL',
+  GIPHY: 'GIPHY',
+});
+
 const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const { createPost, isLoading } = useCreatePost();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [isUploadMode, setIsUploadMode] = useState(true);
+  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.UPLOAD);
   const [media, setMedia] = useState(null);
   const [uploadError, setUploadError] = useState('');
   const [urlError, setUrlError] = useState(false);
@@ -63,12 +69,12 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
 
   const useUploadMode = () => {
     setMedia(null);
-    setIsUploadMode(true);
+    setMediaInputMode(MEDIA_INPUT_MODE.UPLOAD);
   };
 
   const useUrlMode = () => {
     setMedia('');
-    setIsUploadMode(false);
+    setMediaInputMode(MEDIA_INPUT_MODE.URL);
   };
 
   const handleClickUpload = () => {
@@ -103,7 +109,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // validate URL if URL mode + user entered URL
-    if (!isUploadMode && media && !isMediaUrlValid(media)) {
+    if (mediaInputMode == MEDIA_INPUT_MODE.URL && media && !isMediaUrlValid(media)) {
       return setUrlError(true);
     }
     if (media) {
@@ -118,35 +124,36 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
-        <NewPostFormTextContent
+        <NewPostFormTextSection
           title={title}
           setTitle={setTitle}
           content={content}
           setContent={setContent}
         />
+
         {/* media */}
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
           <div className="flex items-center gap-3">
             <div className="flex">
               <button
-                className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
+                className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && `border-pink-400 bg-pink-100 font-bold`}`}
                 type="button"
                 onClick={useUploadMode}
               >
                 Upload
               </button>
               <button
-                className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${!isUploadMode && `border-pink-400 bg-pink-100 font-bold`}`}
+                className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && `border-pink-400 bg-pink-100 font-bold`}`}
                 type="button"
                 onClick={useUrlMode}
               >
-                Link
+                URL
               </button>
             </div>
             <div
               className={`text-shadow-wrap text-sm ${uploadError && 'font-bold text-red-400'}`}
             >
-              {isUploadMode && '(max 250Kb)'}
+              {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && '(max 250Kb)'}
             </div>
           </div>
           <div
@@ -154,7 +161,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
           >
             URL must end with [.jpg, .jpeg, .png, .gif, .webp]
           </div>
-          {isUploadMode ? (
+          {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ? (
             <div className="flex h-12 items-center">
               <button
                 className="blue-button w-fit flex-none px-3 py-1"
@@ -192,6 +199,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             />
           )}
         </div>
+
         <footer className="flex gap-2">
           <button
             type="button"
