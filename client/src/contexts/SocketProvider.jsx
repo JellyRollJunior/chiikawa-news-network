@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 import { createContext, useEffect, useState } from 'react';
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URI;
 
 const SocketContext = createContext({
   socket: null,

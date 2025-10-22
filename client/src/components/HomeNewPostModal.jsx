@@ -116,6 +116,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
             )}
           </div>
         </div>
+        {/* media */}
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
           <div className="flex items-center gap-3">
             <div className="flex">

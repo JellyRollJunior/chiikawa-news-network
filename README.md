@@ -140,7 +140,7 @@ SOCKET_ADMIN_USERNAME
 SOCKET_ADMIN_PASSWORD
 
 # ./client/.env
-VITE_SERVER_URL
+VITE_SERVER_URI
 ```
 
 ## Acknowledgements
@@ -157,7 +157,12 @@ VITE_SERVER_URL
 
 -   client
 
+    -   shrink new post form (its too large`)
     -   gif bar
+        -   serach input with search button (minimize api calls)
+        -   create our own custom grid
+            -   set number of GIF (no extra loading)
+            -   on click gif, sets the media link
 
 -   server
 
@@ -165,8 +170,8 @@ VITE_SERVER_URL
 
 -   low prio
 
--   client: check what breaks when using long username
--   refactor hooks for DRY
+    -   client: check what breaks when using long username
+    -   refactor hooks for DRY
 
 ## DATA
 

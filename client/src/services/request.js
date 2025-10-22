@@ -1,5 +1,5 @@
-import { TokenError } from '../errors/TokenError.js'
-const SERVER_BASE_URL = import.meta.env.VITE_SERVER_URL;
+import { TokenError } from '../errors/TokenError.js';
+const SERVER_BASE_URL = import.meta.env.VITE_SERVER_URI;
 
 const request = async (endpoint, options, requiresToken = true) => {
     if (requiresToken) {
@@ -10,8 +10,8 @@ const request = async (endpoint, options, requiresToken = true) => {
             options.headers.Authorization = bearerToken;
         } else {
             options.headers = {
-                'Authorization': bearerToken,
-            }
+                Authorization: bearerToken,
+            };
         }
     }
     const response = await fetch(`${SERVER_BASE_URL}${endpoint}`, options);
