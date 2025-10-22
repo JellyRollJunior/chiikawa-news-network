@@ -157,9 +157,6 @@ VITE_SERVER_URI
 
 -   client
 
-    -   shrink new post form (its too large`)
-        -   extract media link section
-            -   refactor error handling
     -   gif bar
         -   serach input with search button (minimize api calls)
         -   create our own custom grid

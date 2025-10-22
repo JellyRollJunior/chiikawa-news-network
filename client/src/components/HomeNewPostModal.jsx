@@ -93,7 +93,17 @@ const NewPostFormMediaSection = ({
       <div className="flex items-center gap-3">
         <div className="flex">
           <button
-            className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && selectedMediaModeStyling}`}
+            className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.GIPHY && selectedMediaModeStyling}`}
+            type="button"
+            onClick={() => {
+              setMedia(null);
+              setMediaInputMode(MEDIA_INPUT_MODE.GIPHY);
+            }}
+          >
+            Gif
+          </button>
+          <button
+            className={`border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && selectedMediaModeStyling}`}
             type="button"
             onClick={() => {
               setMedia(null);
@@ -103,7 +113,7 @@ const NewPostFormMediaSection = ({
             Upload
           </button>
           <button
-            className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && selectedMediaModeStyling}`}
+            className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && selectedMediaModeStyling}`}
             type="button"
             onClick={() => {
               setMedia('');
@@ -199,7 +209,11 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // URL mode && user entered URL -> validate URL
-    if (mediaInputMode == MEDIA_INPUT_MODE.URL && media && !isMediaUrlValid(media)) {
+    if (
+      mediaInputMode == MEDIA_INPUT_MODE.URL &&
+      media &&
+      !isMediaUrlValid(media)
+    ) {
       return setUrlError(true);
     }
     // create post
