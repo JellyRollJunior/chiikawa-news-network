@@ -55,17 +55,17 @@ const MEDIA_INPUT_MODE = Object.freeze({
   GIPHY: 'GIPHY',
 });
 
-const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
-  const { createPost, isLoading } = useCreatePost();
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.UPLOAD);
-  const [media, setMedia] = useState(null);
-  const [uploadError, setUploadError] = useState('');
-  const [urlError, setUrlError] = useState(false);
+const NewPostFormMediaSection = ({
+  mediaInputMode,
+  setMediaInputMode,
+  media,
+  setMedia,
+  acceptedMimeTypes,
+  urlError,
+  isLoading,
+}) => {
   const fileInputRef = useRef(null);
-  const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
-  const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+  const [uploadError, setUploadError] = useState('');
 
   const useUploadMode = () => {
     setMedia(null);
@@ -96,6 +96,88 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     }
   };
 
+  return (
+    <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
+      <div className="flex items-center gap-3">
+        <div className="flex">
+          <button
+            className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && `border-pink-400 bg-pink-100 font-bold`}`}
+            type="button"
+            onClick={useUploadMode}
+          >
+            Upload
+          </button>
+          <button
+            className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && `border-pink-400 bg-pink-100 font-bold`}`}
+            type="button"
+            onClick={useUrlMode}
+          >
+            URL
+          </button>
+        </div>
+        <div
+          className={`text-shadow-wrap text-sm ${uploadError && 'font-bold text-red-400'}`}
+        >
+          {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && '(max 250Kb)'}
+        </div>
+      </div>
+      <div
+        className={`text-shadow-wrap text-center text-xs ${urlError && 'font-bold text-red-400'}`}
+      >
+        URL must end with [.jpg, .jpeg, .png, .gif, .webp]
+      </div>
+      {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ? (
+        <div className="flex h-12 items-center">
+          <button
+            className="blue-button w-fit flex-none px-3 py-1"
+            type="button"
+            onClick={handleClickUpload}
+            disabled={isLoading}
+          >
+            Upload Media
+          </button>
+          <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
+            {media && media.name}
+          </div>
+          {media && (
+            <button onClick={() => setMedia(null)}>
+              <img src={trash} alt="Delete media button" />
+            </button>
+          )}
+          <input
+            className="hidden"
+            type="file"
+            ref={fileInputRef}
+            accept={acceptedMimeTypes}
+            onChange={handleUploadMedia}
+          />
+        </div>
+      ) : (
+        <input
+          className="block-shadow h-10 rounded-lg bg-white pl-3"
+          id="mediaUrl"
+          name="mediaUrl"
+          type="url"
+          value={media}
+          onChange={(event) => setMedia(event.target.value)}
+          placeholder="https://www.media.com/url.png"
+        />
+      )}
+    </div>
+  );
+};
+
+const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
+  const { createPost, isLoading } = useCreatePost();
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.UPLOAD);
+
+  const [media, setMedia] = useState(null);
+  const [urlError, setUrlError] = useState(false);
+  const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
+  const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
   const isMediaUrlValid = (value) => {
     if (typeof value == 'string' || value instanceof String) {
       return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
@@ -109,7 +191,11 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // validate URL if URL mode + user entered URL
-    if (mediaInputMode == MEDIA_INPUT_MODE.URL && media && !isMediaUrlValid(media)) {
+    if (
+      mediaInputMode == MEDIA_INPUT_MODE.URL &&
+      media &&
+      !isMediaUrlValid(media)
+    ) {
       return setUrlError(true);
     }
     if (media) {
@@ -132,73 +218,15 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
         />
 
         {/* media */}
-        <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
-          <div className="flex items-center gap-3">
-            <div className="flex">
-              <button
-                className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && `border-pink-400 bg-pink-100 font-bold`}`}
-                type="button"
-                onClick={useUploadMode}
-              >
-                Upload
-              </button>
-              <button
-                className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-5 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && `border-pink-400 bg-pink-100 font-bold`}`}
-                type="button"
-                onClick={useUrlMode}
-              >
-                URL
-              </button>
-            </div>
-            <div
-              className={`text-shadow-wrap text-sm ${uploadError && 'font-bold text-red-400'}`}
-            >
-              {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && '(max 250Kb)'}
-            </div>
-          </div>
-          <div
-            className={`text-shadow-wrap text-center text-xs ${urlError && 'font-bold text-red-400'}`}
-          >
-            URL must end with [.jpg, .jpeg, .png, .gif, .webp]
-          </div>
-          {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ? (
-            <div className="flex h-12 items-center">
-              <button
-                className="blue-button w-fit flex-none px-3 py-1"
-                type="button"
-                onClick={handleClickUpload}
-                disabled={isLoading}
-              >
-                Upload Media
-              </button>
-              <div className="ml-3 max-h-12 flex-1 overflow-hidden overflow-ellipsis">
-                {media && media.name}
-              </div>
-              {media && (
-                <button onClick={() => setMedia(null)}>
-                  <img src={trash} alt="Delete media button" />
-                </button>
-              )}
-              <input
-                className="hidden"
-                type="file"
-                ref={fileInputRef}
-                accept={MIMETYPES}
-                onChange={handleUploadMedia}
-              />
-            </div>
-          ) : (
-            <input
-              className="block-shadow h-10 rounded-lg bg-white pl-3"
-              id="mediaUrl"
-              name="mediaUrl"
-              type="url"
-              value={media}
-              onChange={(event) => setMedia(event.target.value)}
-              placeholder="https://www.media.com/url.png"
-            />
-          )}
-        </div>
+        <NewPostFormMediaSection
+          mediaInputMode={mediaInputMode}
+          setMediaInputMode={setMediaInputMode}
+          media={media}
+          setMedia={setMedia}
+          acceptedMimeTypes={MIMETYPES}
+          urlError={urlError}
+          isLoading={isLoading}
+        />
 
         <footer className="flex gap-2">
           <button

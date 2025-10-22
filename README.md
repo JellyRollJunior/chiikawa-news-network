@@ -158,9 +158,8 @@ VITE_SERVER_URI
 -   client
 
     -   shrink new post form (its too large`)
-        -   extract text content section
         -   extract media link section
-        -   
+        -   SET UPLOAD FILE TYPE MESSAGE (DONT REUSE URL )
     -   gif bar
         -   serach input with search button (minimize api calls)
         -   create our own custom grid
