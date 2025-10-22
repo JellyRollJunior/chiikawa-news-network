@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
 import { profanityMatcher, textCensor } from '../services/textCensor.js';
+import SimpleBar from 'simplebar-react';
 import trash from '../assets/svgs/trash.svg';
 
 const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
@@ -67,6 +68,7 @@ const NewPostFormMediaSection = ({
 }) => {
   const fileInputRef = useRef(null);
   const [uploadError, setUploadError] = useState('');
+  const [gifSearch, setGifSearch] = useState('');
 
   const handleClickUpload = () => {
     if (fileInputRef) {
@@ -123,20 +125,20 @@ const NewPostFormMediaSection = ({
             URL
           </button>
         </div>
-        {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
-          <div
-            className={`text-shadow-wrap text-sm ${uploadError && 'text-red-400'}`}
-          >
-            (max 250Kb)
-          </div>
-        )}
       </div>
       {(mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ||
         mediaInputMode == MEDIA_INPUT_MODE.URL) && (
         <div
-          className={`text-shadow-wrap text-center text-xs ${urlError && 'text-red-400'}`}
+          className={`text-shadow-wrap text-xs ${urlError && 'text-red-400'}`}
         >
           Accepted formats: {acceptedExtensions.join(', ')}
+        </div>
+      )}
+      {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
+        <div
+          className={`text-shadow-wrap text-xs ${uploadError && 'text-red-400'}`}
+        >
+          (max 250Kb)
         </div>
       )}
       {/* UPLOAD MODE */}
@@ -180,6 +182,24 @@ const NewPostFormMediaSection = ({
           onChange={(event) => setMedia(event.target.value)}
           placeholder="https://www.media.com/url.png"
         />
+      )}
+      {/* GIPHY */}
+      {mediaInputMode == MEDIA_INPUT_MODE.GIPHY && (
+        <>
+          <div className="flex gap-1.5">
+            <input
+              className="block-shadow h-10 min-w-0 rounded-lg bg-white pl-3"
+              type="text"
+              value={gifSearch}
+              onChange={(event) => setGifSearch(event.target.value)}
+              placeholder="Search Giphy..."
+            />
+            <button className="yellow-button px-2">Search</button>
+          </div>
+          <div className="block-shadow h-40 resize-none rounded-lg bg-pink-50 px-1 py-1">
+            <SimpleBar className="h-full w-full"></SimpleBar>
+          </div>
+        </>
       )}
     </div>
   );

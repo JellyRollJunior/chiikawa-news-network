@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { GiphyFetch } from '@giphy/js-fetch-api';
 const GIPHY_API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
 const GIF_LIMIT = 12;
@@ -26,10 +26,6 @@ const useGiphy = () => {
             setIsLoading(false);
         }
     }, []);
-
-    useEffect(() => {
-        fetchGifs();
-    }, [fetchGifs]);
 
     return { gifs, isLoading, error, fetchGifs };
 };
