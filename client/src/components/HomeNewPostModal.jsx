@@ -4,6 +4,51 @@ import { useCreatePost } from '../hooks/useCreatePost.js';
 import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import trash from '../assets/svgs/trash.svg';
 
+const NewPostFormTextContent = ({ title, setTitle, content, setContent }) => {
+  return (
+    <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
+      <div className="flex justify-between">
+        <label className="text-shadow-wrap ml-1" htmlFor="title">
+          Title
+        </label>
+        <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
+      </div>
+      <input
+        className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3"
+        id="title"
+        name="title"
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+        minLength={1}
+        maxLength={75}
+        required
+      />
+      <div className="block-shadow mt-2 h-8 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+        {textCensor.applyTo(title, profanityMatcher.getAllMatches(title))}
+      </div>
+      <div className="mt-3 flex justify-between">
+        <label className="text-shadow-wrap ml-1" htmlFor="content">
+          Content
+        </label>
+        <div className="text-shadow-wrap mr-2">{content.length} / 350</div>
+      </div>
+      <textarea
+        className="block-shadow mt-1 h-24 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
+        id="content"
+        name="content"
+        value={content}
+        onChange={(event) => setContent(event.target.value)}
+        minLength={1}
+        maxLength={350}
+        required
+      />
+      <div className="block-shadow mt-2 h-16 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+        {textCensor.applyTo(content, profanityMatcher.getAllMatches(content))}
+      </div>
+    </div>
+  );
+};
+
 const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const { createPost, isLoading } = useCreatePost();
   const [title, setTitle] = useState('');
@@ -73,49 +118,12 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   return (
     <ModalDialog title="New Post" closeFunction={closeFunction}>
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
-        <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
-          <div className="flex justify-between">
-            <label className="text-shadow-wrap ml-1" htmlFor="title">
-              Title
-            </label>
-            <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
-          </div>
-          <input
-            className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3"
-            id="title"
-            name="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            minLength={1}
-            maxLength={75}
-            required
-          />
-          <div className="block-shadow mt-2 h-8 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
-            {textCensor.applyTo(title, profanityMatcher.getAllMatches(title))}
-          </div>
-          <div className="mt-3 flex justify-between">
-            <label className="text-shadow-wrap ml-1" htmlFor="content">
-              Content
-            </label>
-            <div className="text-shadow-wrap mr-2">{content.length} / 350</div>
-          </div>
-          <textarea
-            className="block-shadow mt-1 h-24 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
-            id="content"
-            name="content"
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
-            minLength={1}
-            maxLength={350}
-            required
-          />
-          <div className="block-shadow mt-2 h-16 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
-            {textCensor.applyTo(
-              content,
-              profanityMatcher.getAllMatches(content)
-            )}
-          </div>
-        </div>
+        <NewPostFormTextContent
+          title={title}
+          setTitle={setTitle}
+          content={content}
+          setContent={setContent}
+        />
         {/* media */}
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
           <div className="flex items-center gap-3">
