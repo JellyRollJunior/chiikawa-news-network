@@ -13,10 +13,10 @@ const seedSupabaseBuckets = async () => {
             const { error } = await supabase.storage.getBucket(bucket);
             // if network error -> log unable to reach supabase
             // if actual error from server saying no bucket exists -> seed bucket
-            if (error.message == 'fetch failed') {
+            if (error && error.message == 'fetch failed') {
                 console.log(`Unable to verify supabase ${bucket} bucket status due to network error`);
-            } else if (error) {
-                const { data, error } = await supabase.storage.createBucket(bucket, { public: true });
+            } else if (error && error.statusCode == '404') {
+                const { error } = await supabase.storage.createBucket(bucket, { public: true });
                 error
                     ? console.log(`Unable to seed ${bucket} bucket due to network error`)
                     : console.log(`Seeding ${bucket} bucket on Supabase`);

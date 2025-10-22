@@ -154,13 +154,10 @@ VITE_SERVER_URL
 ## TODO
 
 -   bugs
-    -   startup scripts: failure seeding msg does not play?
-        -   CHECK FOR BUCKET DOES NOT EXIST ERROR TO SEED BUCKET
 
 -   client
 
     -   gif bar
-    -   allow self chats (?)
 
 -   server
 
