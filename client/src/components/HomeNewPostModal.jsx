@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ModalDialog } from './ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
 import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import SimpleBar from 'simplebar-react';
 import trash from '../assets/svgs/trash.svg';
+import { useGiphy } from '../hooks/useGiphy.js';
 
 const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
   return (
@@ -66,9 +67,15 @@ const NewPostFormMediaSection = ({
   urlError,
   isLoading,
 }) => {
-  const fileInputRef = useRef(null);
+  const { gifs, isLoading: isLoadingGif, error, fetchGifs } = useGiphy();
   const [uploadError, setUploadError] = useState('');
   const [gifSearch, setGifSearch] = useState('');
+  const fileInputRef = useRef(null);
+
+  // initialize gifs
+  useEffect(() => {
+    fetchGifs();
+  }, [fetchGifs]);
 
   const handleClickUpload = () => {
     if (fileInputRef) {
@@ -197,7 +204,15 @@ const NewPostFormMediaSection = ({
             <button className="yellow-button px-2">Search</button>
           </div>
           <div className="block-shadow h-40 resize-none rounded-lg bg-pink-50 px-1 py-1">
-            <SimpleBar className="h-full w-full"></SimpleBar>
+            <SimpleBar className="h-full w-full">
+              <div className="flex flex-wrap">
+                {gifs.map((gif) => (
+                  <div key={gif.url}>
+                    <img src={gif.url} alt={gif.altText} />
+                  </div>
+                ))}
+              </div>
+            </SimpleBar>
           </div>
         </>
       )}

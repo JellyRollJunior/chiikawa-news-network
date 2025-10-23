@@ -161,7 +161,9 @@ VITE_SERVER_URI
         -   serach input with search button (minimize api calls)
         -   create our own custom grid
             -   set number of GIF (no extra loading)
+            -   2 col layout flex wrap
             -   on click gif, sets the media link
+            -   loading
 
 -   server
 

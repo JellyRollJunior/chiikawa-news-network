@@ -12,15 +12,25 @@ const useGiphy = () => {
         try {
             setIsLoading(true);
             const giphyFetch = new GiphyFetch(GIPHY_API_KEY);
-            const response = await giphyFetch.search(search, { limit: GIF_LIMIT });
+            const response = await giphyFetch.search(search, {
+                limit: GIF_LIMIT,
+            });
             // if response ok, set gif data
             if (response && response.meta && response.meta.status == '200') {
-                setGifs(response.data);
+                const formattedData = response.data.map((gif) => {
+                    return {
+                        url: gif.images.original.url,
+                        altText: gif.alt_text,
+                    };
+                });
+                setGifs(formattedData);
             } else if (response && response.meta && response.meta.msg) {
                 throw Error(response.meta.msg);
             }
         } catch (error) {
-            error.message ? setError(error.message) : setError('Unable to fetch gifs');
+            error.message
+                ? setError(error.message)
+                : setError('Unable to fetch gifs');
             setGifs([]);
         } finally {
             setIsLoading(false);
