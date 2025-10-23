@@ -79,6 +79,7 @@ const postValidations = [
         .notEmpty().withMessage(`content ${EMPTY_ERROR}`)
         .isURL().withMessage(`media source URL ${URL_ERROR}`)
         .custom((value) => {
+            // media link must end in extension or be from giphy.com
             // compile array of allowed file types
             const extensions = allowedMimeTypes.map(
                 (type) => type.split('/')[1]
@@ -89,7 +90,7 @@ const postValidations = [
                 },
                 false
             );
-            return verifyValueHasAllowedExtension
+            return verifyValueHasAllowedExtension || value.includes('giphy.com');
         }).withMessage(`media source URL ${extensionError()}`),
 ];
 

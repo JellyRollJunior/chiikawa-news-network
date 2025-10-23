@@ -162,6 +162,7 @@ VITE_SERVER_URI
         -   create our own custom grid
             -   set number of GIF (no extra loading)
             -   2 col layout flex wrap
+            -   search
             -   on click gif, sets the media link
             -   loading
 

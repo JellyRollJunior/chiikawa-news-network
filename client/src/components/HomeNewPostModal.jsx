@@ -190,7 +190,7 @@ const NewPostFormMediaSection = ({
           placeholder="https://www.media.com/url.png"
         />
       )}
-      {/* GIPHY */}
+      {/* GIPHY MODE */}
       {mediaInputMode == MEDIA_INPUT_MODE.GIPHY && (
         <>
           <div className="flex gap-1.5">
@@ -203,15 +203,28 @@ const NewPostFormMediaSection = ({
             />
             <button className="yellow-button px-2">Search</button>
           </div>
-          <div className="block-shadow h-40 resize-none rounded-lg bg-pink-50 px-1 py-1">
+          <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 px-1 py-1">
             <SimpleBar className="h-full w-full">
-              <div className="flex flex-wrap">
+              <ul className="grid grid-cols-2 gap-1">
                 {gifs.map((gif) => (
-                  <div key={gif.url}>
-                    <img src={gif.url} alt={gif.altText} />
-                  </div>
+                  <li
+                    className={`h-26 overflow-clip rounded-lg border-2 border-pink-200 ${media == gif.url && `border-pink-400`}`}
+                    key={gif.url}
+                  >
+                    <button
+                      className="h-full w-full"
+                      type="button"
+                      onClick={() => setMedia(gif.url)}
+                    >
+                      <img
+                        className="h-full w-full object-cover"
+                        src={gif.url}
+                        alt={gif.altText}
+                      />
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </SimpleBar>
           </div>
         </>
@@ -226,7 +239,7 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   // Media section
-  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.UPLOAD);
+  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.GIPHY);
   const [media, setMedia] = useState(null);
   const [urlError, setUrlError] = useState(false);
   const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
