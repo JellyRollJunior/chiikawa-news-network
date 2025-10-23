@@ -69,7 +69,7 @@ const NewPostFormMediaSection = ({
 }) => {
   const { gifs, isLoading: isLoadingGif, error, fetchGifs } = useGiphy();
   const [uploadError, setUploadError] = useState('');
-  const [gifSearch, setGifSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const fileInputRef = useRef(null);
 
   // initialize gifs
@@ -197,11 +197,17 @@ const NewPostFormMediaSection = ({
             <input
               className="block-shadow h-10 min-w-0 rounded-lg bg-white pl-3"
               type="text"
-              value={gifSearch}
-              onChange={(event) => setGifSearch(event.target.value)}
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Search Giphy..."
             />
-            <button className="yellow-button px-2">Search</button>
+            <button
+              className="yellow-button px-2"
+              disabled={isLoadingGif}
+              onClick={() => fetchGifs(searchTerm)}
+            >
+              Search
+            </button>
           </div>
           <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 px-1 py-1">
             <SimpleBar className="h-full w-full">
