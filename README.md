@@ -157,11 +157,6 @@ VITE_SERVER_URI
 
 -   client
 
-    -   gif bar
-        -   serach input with search button (minimize api calls)
-        -   create our own custom grid
-            -   loading
-
 -   server
 
     -   github login

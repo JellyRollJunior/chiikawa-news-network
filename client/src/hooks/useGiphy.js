@@ -24,6 +24,7 @@ const useGiphy = () => {
                     };
                 });
                 setGifs(formattedData);
+                setError(null);
             } else if (response && response.meta && response.meta.msg) {
                 throw Error(response.meta.msg);
             }

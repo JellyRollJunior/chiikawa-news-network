@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
-const LoadingDots = ({ dotTravelDistance = 12 }) => {
+const LoadingDots = ({ dotTravelDistance = 12, color = 'bg-amber-950' }) => {
   return (
     <>
       {[...Array(3)].map((item, index) => (
@@ -18,7 +18,7 @@ const LoadingDots = ({ dotTravelDistance = 12 }) => {
               ease: 'easeInOut',
             }}
           >
-            <div className="size-1 rounded-full"></div>
+            <div className={`size-1 rounded-full ${color}`}></div>
           </motion.span>{' '}
         </Fragment>
       ))}

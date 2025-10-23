@@ -5,6 +5,7 @@ import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import SimpleBar from 'simplebar-react';
 import trash from '../assets/svgs/trash.svg';
 import { useGiphy } from '../hooks/useGiphy.js';
+import { LoadingDots } from '../components/LoadingDots.jsx';
 
 const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
   return (
@@ -67,7 +68,7 @@ const NewPostFormMediaSection = ({
   urlError,
   isLoading,
 }) => {
-  const { gifs, isLoading: isLoadingGif, error, fetchGifs } = useGiphy();
+  const { gifs, isLoading: isLoadingGifs, error, fetchGifs } = useGiphy();
   const [uploadError, setUploadError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const fileInputRef = useRef(null);
@@ -94,6 +95,52 @@ const NewPostFormMediaSection = ({
       setMedia(null);
       setUploadError('File too large');
     }
+  };
+
+  const renderGifs = () => {
+    if (isLoadingGifs) {
+      return (
+        <div className="text-center">
+          Loading gifs{' '}
+          <LoadingDots dotTravelDistance={8} color="bg-amber-900" />
+        </div>
+      );
+    }
+
+    if (error) {
+      return (
+        <div className="flex h-full items-center justify-center text-center">
+          Unable to fetch gifs. <br /> Try again later :(
+        </div>
+      );
+    }
+
+    return (
+      <SimpleBar className="h-full w-full">
+        <ul className="grid grid-cols-2 gap-1">
+          {gifs.map((gif) => (
+            <li
+              key={gif.url}
+              className={`h-26 overflow-clip rounded-lg border-2 border-pink-200 ${
+                media === gif.url ? 'border-pink-400' : ''
+              }`}
+            >
+              <button
+                className="h-full w-full"
+                type="button"
+                onClick={() => setMedia(gif.url)}
+              >
+                <img
+                  className="h-full w-full object-cover"
+                  src={gif.url}
+                  alt={gif.altText}
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </SimpleBar>
+    );
   };
 
   const selectedMediaModeStyling = 'border-pink-400 bg-pink-100 font-bold';
@@ -203,35 +250,14 @@ const NewPostFormMediaSection = ({
             />
             <button
               className="yellow-button px-2"
-              disabled={isLoadingGif}
+              disabled={isLoadingGifs}
               onClick={() => fetchGifs(searchTerm)}
             >
               Search
             </button>
           </div>
-          <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 px-1 py-1">
-            <SimpleBar className="h-full w-full">
-              <ul className="grid grid-cols-2 gap-1">
-                {gifs.map((gif) => (
-                  <li
-                    className={`h-26 overflow-clip rounded-lg border-2 border-pink-200 ${media == gif.url && `border-pink-400`}`}
-                    key={gif.url}
-                  >
-                    <button
-                      className="h-full w-full"
-                      type="button"
-                      onClick={() => setMedia(gif.url)}
-                    >
-                      <img
-                        className="h-full w-full object-cover"
-                        src={gif.url}
-                        alt={gif.altText}
-                      />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </SimpleBar>
+          <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 p-2">
+            {renderGifs()}
           </div>
         </>
       )}
