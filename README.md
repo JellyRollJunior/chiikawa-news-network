@@ -159,8 +159,6 @@ VITE_SERVER_URI
 
 -   server
 
-    -   github login
-
 -   low prio
 
     -   client: check what breaks when using long username
