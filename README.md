@@ -162,15 +162,3 @@ VITE_SERVER_URI
 -   low prio
 
     -   client: check what breaks when using long username
-    -   refactor hooks for DRY
-
-## DATA
-
--   ad5d9cc2-bf80-4ab2-90c0-e60619883660 | kurimanju
--   21cb2aab-61ee-498a-b438-f0524f342441 | momonga
--   9c49b34e-3ce1-46ab-b80d-73ac3e6654f5 | hachiware
--   b5f53d61-373e-4777-804a-5d6cd4330d02 | chiikawa
--   55e1d476-6430-4b52-936c-a84d2fed8d82 | shisaa
--   1736b7af-8c60-4c2b-9254-6c08662fb2e4 | usagii
-
-File { name: "6-kurimanju.png", lastModified: 1742602447722, webkitRelativePath: "", size: 31418, type: "image/png" }
