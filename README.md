@@ -158,8 +158,6 @@ VITE_SERVER_URI
 -   client
     -   chats loading colors
     -   client comment name to redirect to profile
-    -   comment input r padding
-        -   comment box increase padding 
 
 -   server
 
