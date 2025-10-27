@@ -39,13 +39,22 @@ const ChatsListItem = ({
     </li>
   ) : (
     /* Loading Display */
-    <LoadingElement className="flex gap-2 px-2 py-2" delay={loadingDelay}>
-      <div className="ml-1 size-[60px] shrink-0 rounded-full bg-gray-300"></div>
-      <div className="flex flex-col justify-center">
-        <h4 className="h-4 w-18 rounded-sm bg-gray-300"></h4>
-        <p className="mt-1 h-4 w-30 items-start justify-self-start rounded-sm bg-gray-300"></p>
+    <div className="flex gap-2 px-2 py-2">
+      <LoadingElement
+        className="ml-1 size-[60px] shrink-0 rounded-full bg-gray-300"
+        delay={loadingDelay}
+      />
+      <div className="flex w-full flex-col justify-center">
+        <LoadingElement
+          className="h-4 w-5/10 rounded-sm bg-gray-300"
+          delay={loadingDelay}
+        />
+        <LoadingElement
+          className="mt-1 h-4 w-7/10 items-start justify-self-start rounded-sm bg-gray-300"
+          delay={loadingDelay}
+        />
       </div>
-    </LoadingElement>
+    </div>
   );
 };
 

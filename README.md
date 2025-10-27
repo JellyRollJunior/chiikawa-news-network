@@ -156,7 +156,7 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-    -   chats loading colors
+    -   update profile loading animation
 
 -   server
 
