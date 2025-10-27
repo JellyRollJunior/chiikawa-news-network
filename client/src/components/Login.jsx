@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLogin } from '../hooks/useLogin.js';
-import { useGuestLogin } from '../hooks/useGuestLogin.js';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login, isLoading } = useLogin();
-  const { loginGuest, isLoading: isLoadingGuest } = useGuestLogin();
+  const { login, loginGuest, isLoading } = useLogin();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -75,10 +73,7 @@ const Login = () => {
           />
         </div>
         <div className="duckegg-block my-1 h-4" />
-        <button
-          className="blue-button w-full px-5 py-2"
-          disabled={isLoading || isLoadingGuest}
-        >
+        <button className="blue-button w-full px-5 py-2" disabled={isLoading}>
           Log in
         </button>
       </form>
@@ -86,7 +81,7 @@ const Login = () => {
         className="pink-button w-full px-5 py-2"
         type="button"
         onClick={handleGuestLogin}
-        disabled={isLoading || isLoadingGuest}
+        disabled={isLoading}
       >
         Just passing by? Log in as Guest
       </button>

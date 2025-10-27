@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { login as requestLogin } from '../services/authApi.js';
+import { guestLogin as requestGuestLogin } from '../services/authApi.js';
 
 const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,19 @@ const useLogin = () => {
         }
     };
 
-    return { login, isLoading };
+    const loginGuest = async () => {
+        setIsLoading(true);
+        try {
+            const data = await requestGuestLogin();
+            return data;
+        } catch (error) {
+            toast(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return { login, loginGuest, isLoading };
 };
 
 export { useLogin };

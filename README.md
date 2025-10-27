@@ -159,8 +159,6 @@ VITE_SERVER_URI
     -   chats loading colors
     -   profile -> reduce bio top padding
     -   client comment name to redirect to profile
-    -   merge useGuestLogin and useLogin
-    -   separate giphy hook and API layer
     -   comment input r padding
         -   comment box increase padding 
     -   center chat header back btn
