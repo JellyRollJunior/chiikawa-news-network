@@ -92,7 +92,7 @@ const UserInfo = ({ userId }) => {
         </div>
       </div>
       <div className="yellow-block mt-2 flex flex-col p-2 pb-1">
-        <p className="mt-1 ml-2 text-start">{user && user.bio}</p>
+        <p className="ml-2 text-start">{user && user.bio}</p>
       </div>
     </header>
   ) : (

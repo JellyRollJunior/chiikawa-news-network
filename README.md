@@ -157,7 +157,6 @@ VITE_SERVER_URI
 
 -   client
     -   chats loading colors
-    -   profile -> reduce bio top padding
     -   client comment name to redirect to profile
     -   comment input r padding
         -   comment box increase padding 
