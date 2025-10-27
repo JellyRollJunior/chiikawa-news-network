@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { Avatar } from './Avatar.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
@@ -26,7 +27,12 @@ const CommentListItem = ({
               avatar={comment.author && comment.author.avatar}
             />
             <h4 className="ml-2 text-base font-medium md:text-lg">
-              {comment.author && comment.author.username}
+              <Link
+                className="hover:text-amber-900"
+                to={`/users/${comment.author.id}`}
+              >
+                {comment.author && comment.author.username}
+              </Link>
             </h4>
           </div>
           <p className="mt-1 ml-0.5 text-sm md:text-base">{comment.content}</p>
@@ -50,7 +56,7 @@ const CommentListItem = ({
             </DotsMenu>
           </div>
         )}
-        <p className="text-end text-xs mt-1 text-gray-600">
+        <p className="mt-1 text-end text-xs text-gray-600">
           —{' '}
           {formatDistanceToNow(new Date(comment.createdAt), {
             addSuffix: true,

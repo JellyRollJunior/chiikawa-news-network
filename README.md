@@ -157,7 +157,6 @@ VITE_SERVER_URI
 
 -   client
     -   chats loading colors
-    -   client comment name to redirect to profile
 
 -   server
 
