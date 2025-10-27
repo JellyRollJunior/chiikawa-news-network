@@ -160,7 +160,6 @@ VITE_SERVER_URI
     -   client comment name to redirect to profile
     -   comment input r padding
         -   comment box increase padding 
-    -   center chat header back btn
 
 -   server
 

@@ -62,8 +62,8 @@ const Chat = () => {
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
-      <header className="flex gap-2">
-        <div className="pink-block pt-2 pl-2 md:hidden">
+      <header className="flex gap-1.5">
+        <div className="pink-block pt-2 pl-3 md:hidden">
           <Link className="flex h-full items-center" to="/chats">
             <img className="w-[20px]" src={arrowBack} />
           </Link>
