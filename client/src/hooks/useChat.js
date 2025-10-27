@@ -6,7 +6,7 @@ import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { SocketContext } from '../contexts/SocketProvider.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
+import { useApiHandler } from './useApiHandler.js';
 
 const createMessage = (content, id, username, avatar) => {
     const now = new Date().toISOString();
@@ -30,9 +30,8 @@ const useChat = (chatId) => {
     const { id, username, avatar } = useContext(CurrentContext);
     const [chat, setChat] = useState(null);
     const [messages, setMessages] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
     const [errorStatus, setErrorStatus] = useState(null);
-    const { handleTokenErrors } = useTokenErrorHandler();
+    const { handleApiCall, isLoading } = useApiHandler();
 
     // retrieve initial chat
     useEffect(() => {
@@ -40,25 +39,25 @@ const useChat = (chatId) => {
         const getChat = async () => {
             if (!chatId) return;
             try {
-                setIsLoading(true);
-                const chat = await fetchChat(chatId, abortController.signal);
+                const chat = await handleApiCall(
+                    'Unable to fetch chat',
+                    fetchChat,
+                    chatId,
+                    abortController.signal
+                );
                 const { messages, ...chatData } = chat;
                 setChat(chatData);
                 setMessages(messages);
                 setErrorStatus(null);
             } catch (error) {
-                handleTokenErrors(error);
                 setErrorStatus(error.status);
-                toast('Unable to fetch chat');
-            } finally {
-                setIsLoading(false);
             }
         };
 
         getChat();
 
         return () => abortController.abort();
-    }, [chatId, handleTokenErrors, toast]);
+    }, [handleApiCall, chatId]);
 
     // configure socket on receive_message
     useEffect(() => {
@@ -73,7 +72,7 @@ const useChat = (chatId) => {
     const sendMessageErrors = {
         403: 'Chat is unavailable',
         404: 'Chat is unavailable and may have been deleted',
-    }
+    };
     const sendMessage = (text) => {
         if (!socket) return;
         // emit message to server
@@ -83,12 +82,17 @@ const useChat = (chatId) => {
                 refetchChats();
                 navigate('/');
             } else {
-                toast('Unable to send message. Please refresh and try again later');
+                toast(
+                    'Unable to send message. Please refresh and try again later'
+                );
             }
         });
 
         // display message on client
-        const censoredText = textCensor.applyTo(text, profanityMatcher.getAllMatches(text));
+        const censoredText = textCensor.applyTo(
+            text,
+            profanityMatcher.getAllMatches(text)
+        );
         const message = createMessage(censoredText, id, username, avatar);
         setMessages((prev) => [...prev, message]);
     };

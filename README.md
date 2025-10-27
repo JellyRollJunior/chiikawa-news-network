@@ -161,13 +161,9 @@ VITE_SERVER_URI
     -   client comment name to redirect to profile
     -   merge useGuestLogin and useLogin
     -   separate giphy hook and API layer
-    -   DRY
-        -   post
-        -   GIPHY
-        -   chat
-        -   comments
     -   comment input r padding
         -   comment box increase padding 
+    -   center chat header back btn
 
 -   server
 
