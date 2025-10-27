@@ -52,12 +52,12 @@ const PostsListItem = ({
     <li className={`${blockStyle} flex flex-col px-3 py-2 md:px-4 md:py-4`}>
       <header className="flex items-center gap-2">
         <Avatar
-          className="-mt-1 size-[26px] border-1 border-yellow-500 md:size-[36px]"
+          className="size-[34px] self-start border-1 border-yellow-500 md:size-[36px]"
           avatar={author ? author.avatar : null}
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="-mt-1 font-medium md:text-xl">
+        <h3 className="font-medium md:text-xl">
           <Link className="hover:text-amber-900" to={`/users/${author.id}`}>
             {author.username}
           </Link>

@@ -17,12 +17,12 @@ const CommentListItem = ({
   const { id } = useContext(CurrentContext);
 
   return (
-    <li className="pink-gradient rounded-lg border-3 px-1.5 pt-1.5 pb-1 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
+    <li className="pink-gradient rounded-lg border-3 px-2 pt-2 pb-1 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
       <div className="flex">
         <div className="flex flex-col">
           <div className="flex h-fit items-center">
             <Avatar
-              className="size-[32px] border-1 border-yellow-500 md:size-[42px]"
+              className="size-[26px] border-1 border-yellow-500 md:size-[42px]"
               avatar={comment.author && comment.author.avatar}
             />
             <h4 className="ml-2 text-base font-medium md:text-lg">
@@ -50,7 +50,7 @@ const CommentListItem = ({
             </DotsMenu>
           </div>
         )}
-        <p className="text-end text-xs text-gray-600">
+        <p className="text-end text-xs mt-1 text-gray-600">
           —{' '}
           {formatDistanceToNow(new Date(comment.createdAt), {
             addSuffix: true,
