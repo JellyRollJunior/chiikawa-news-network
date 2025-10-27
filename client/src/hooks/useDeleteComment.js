@@ -1,29 +1,20 @@
-import { useContext, useState } from 'react';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
 import { deleteComment as requestDeleteComment } from '../services/postApi.js';
+import { useApiHandler } from './useApiHandler.js';
 
 const useDeleteComment = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
 
     let abortController = new AbortController();
     const deleteComment = async (commentId) => {
         if (abortController) abortController.abort();
         abortController = new AbortController();
-        try {
-            setIsLoading(true);
-            await requestDeleteComment(
-                abortController.signal,
-                commentId
-            );
-        } catch (error) {
-            handleTokenErrors(error);
-            toast('Unable to delete comment');
-        } finally {
-            setIsLoading(false);
-        }
+        const data = await handleApiCall(
+            'Unable to delete comment',
+            requestDeleteComment,
+            abortController.signal,
+            commentId
+        );
+        return data;
     };
 
     return { deleteComment, isLoading };

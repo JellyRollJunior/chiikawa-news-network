@@ -1,24 +1,20 @@
-import { useContext, useState } from 'react';
 import { deleteChat as requestDeleteChat } from '../services/chatApi.js';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useApiHandler } from './useApiHandler.js';
 
 const useDeleteChat = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
 
+    let abortController = new AbortController();
     const deleteChat = async (chatId) => {
-        setIsLoading(true);
-        try {
-            const data = await requestDeleteChat(chatId);
-            return data;
-        } catch (error) {
-            handleTokenErrors(error);
-            toast('Unable to delete chat');
-        } finally {
-            setIsLoading(false);
-        }
+        if (abortController) abortController.abort();
+        abortController = new AbortController();
+        const data = await handleApiCall(
+            'Unable to delete chat',
+            requestDeleteChat,
+            abortController.signal,
+            chatId
+        );
+        return data;
     };
 
     return { deleteChat, isLoading };

@@ -1,24 +1,17 @@
-import { useContext, useState } from 'react';
 import { patchChat } from '../services/chatApi.js';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useApiHandler } from './useApiHandler.js';
 
 const useRenameChat = (chatId) => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
 
     const renameChat = async (name) => {
-        setIsLoading(true);
-        try {
-            const data = await patchChat(chatId, name);
-            return data;
-        } catch (error) {
-            handleTokenErrors(error);
-            toast('Unable to rename chat');
-        } finally {
-            setIsLoading(false);
-        }
+        const data = await handleApiCall(
+            'Unable to rename chat',
+            patchChat,
+            chatId,
+            name
+        );
+        return data;
     };
 
     return { renameChat, isLoading };

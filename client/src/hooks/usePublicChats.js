@@ -1,34 +1,24 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchPublicChats } from '../services/chatApi.js';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useApiHandler } from './useApiHandler.js';
 
 const usePublicChats = () => {
     const [publicChats, setPublicChats] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
 
     const getPublicChats = useCallback(
         async (signal) => {
-            setIsLoading(true);
-            try {
-                const chats = await fetchPublicChats(signal);
-                setPublicChats(chats);
-            } catch (error) {
-                handleTokenErrors(error);
-                toast('Unable to fetch public chats');
-            } finally {
-                setIsLoading(false);
-            }
+            const chats = await handleApiCall(
+                'Unable to fetch public chats',
+                fetchPublicChats,
+                signal
+            );
+            setPublicChats(chats);
         },
-        [handleTokenErrors, toast]
+        [handleApiCall]
     );
 
-    const refetch = () => {
-        const abortController = new AbortController();
-        getPublicChats(abortController.signal);
-    };
+    const refetch = () => getPublicChats(null);
 
     useEffect(() => {
         const abortController = new AbortController();

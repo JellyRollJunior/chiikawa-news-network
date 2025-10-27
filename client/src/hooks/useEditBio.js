@@ -1,24 +1,16 @@
-import { useContext, useState } from 'react';
 import { patchUserBio } from '../services/userApi.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
+import { useApiHandler } from './useApiHandler.js';
 
 const useEditBio = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { toast } = useContext(ToastContext);
-    const { handleTokenErrors } = useTokenErrorHandler();
+    const { handleApiCall, isLoading } = useApiHandler();
 
     const editBio = async (bio) => {
-        setIsLoading(true);
-        try {
-            const data = await patchUserBio(bio);
-            return data;
-        } catch (error) {
-            handleTokenErrors(error);
-            toast('Unable to edit bio');
-        } finally {
-            setIsLoading(false);
-        }
+        const data = await handleApiCall(
+            'Unable to edit bio',
+            patchUserBio,
+            bio
+        );
+        return data;
     };
 
     return { editBio, isLoading };

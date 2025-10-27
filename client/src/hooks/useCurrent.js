@@ -1,39 +1,33 @@
-import { useContext, useEffect, useState } from 'react';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useEffect, useState } from 'react';
 import { fetchCurrent } from '../services/userApi.js';
+import { useApiHandler } from './useApiHandler.js';
 
 const useCurrent = () => {
     const [id, setId] = useState(null);
     const [username, setUsername] = useState(null);
     const [bio, setBio] = useState(null);
     const [avatar, setAvatar] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
 
     useEffect(() => {
         const abortController = new AbortController();
+
         const getCurrent = async () => {
-            setIsLoading(true);
-            try {
-                const current = await fetchCurrent(abortController.signal);
-                setId(current.id);
-                setUsername(current.username);
-                setBio(current.bio);
-                setAvatar(current.avatar);
-            } catch (error) {
-                handleTokenErrors(error);
-                toast('unable to fetch user data');
-            } finally {
-                setIsLoading(false);
-            }
+            const current = await handleApiCall(
+                'Unable to fetch user data',
+                fetchCurrent,
+                abortController.signal
+            );
+            setId(current.id);
+            setUsername(current.username);
+            setBio(current.bio);
+            setAvatar(current.avatar);
         };
 
         getCurrent();
 
         return () => abortController.abort();
-    }, [handleTokenErrors, toast]);
+    }, [handleApiCall]);
 
     return { id, username, bio, avatar, isLoading, setBio, setAvatar };
 };

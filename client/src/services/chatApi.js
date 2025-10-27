@@ -56,10 +56,11 @@ const patchChat = async (chatId, name) => {
     return data;
 };
 
-const deleteChat = async (chatId) => {
+const deleteChat = async (signal, chatId) => {
     const data = await request(`/chats/${chatId}`, {
         mode: 'cors',
         method: 'DELETE',
+        signal,
     });
     return data;
 };
