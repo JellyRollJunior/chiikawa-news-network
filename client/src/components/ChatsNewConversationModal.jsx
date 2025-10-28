@@ -70,7 +70,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             <span className={`${userError && 'text-red-400'}`}>
               {!userError
                 ? ' — (max 5 users per chat)'
-                : ' — select at least 1 user (max 5)'}
+                : ' — select between 1 and 5 user(s)'}
             </span>
           </label>
           <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">

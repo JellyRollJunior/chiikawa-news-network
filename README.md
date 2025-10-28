@@ -156,7 +156,6 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-    -   max user error 
     -   show chat name on hover
     -   show chat users on hover
 
