@@ -33,7 +33,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
             New conversation name
           </label>
           <input
-            className="block-shadow mt-2 h-10 w-full rounded-lg bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-2 h-10 w-full rounded-lg bg-white pr-1 pl-1.5 text-amber-800"
             type="text"
             name="chatName"
             id="chatName"

@@ -36,7 +36,7 @@ const UsersDisplay = ({ openViewProfile }) => {
           </div>
         </header>
         <input
-          className="block-shadow mt-2 h-11 shrink-0 rounded-lg bg-white pl-3"
+          className="block-shadow mt-2 h-11 shrink-0 rounded-lg bg-white pl-3 pr-2"
           type="text"
           value={filter}
           onChange={(event) => setFilter(event.target.value)}

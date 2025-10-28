@@ -51,7 +51,7 @@ const Chats = () => {
               </div>
             </header>
             <input
-              className="block-shadow mt-2 h-9 shrink-0 rounded-lg bg-white pl-3"
+              className="block-shadow mt-2 h-9 shrink-0 rounded-lg bg-white pl-3 pr-2"
               type="text"
               value={filter}
               onChange={(event) => setFilter(event.target.value)}
@@ -82,10 +82,7 @@ const Chats = () => {
             </section>
           </div>
         </SimpleBar>
-        <img
-          className="drop-shadow-pink-outline absolute -right-[16px] -bottom-[8px] w-[80px]"
-          src={kaniReading}
-        />
+        <img className="drop-shadow-pink-outline absolute -right-[16px] -bottom-[8px] w-[80px]" src={kaniReading} />
       </div>
       {isModalOpen && (
         <ChatsNewConversationModal closeFunction={closeNewConversationModal} />

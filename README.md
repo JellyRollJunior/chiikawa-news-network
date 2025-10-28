@@ -156,9 +156,6 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-    -   input R padding
-        -   modals
-        -   bios
     -   chats new conversation list item
 
 -   server

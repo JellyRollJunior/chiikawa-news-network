@@ -17,7 +17,7 @@ const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
         <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
       </div>
       <input
-        className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3"
+        className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3 pr-2"
         id="title"
         name="title"
         value={title}
@@ -228,7 +228,7 @@ const NewPostFormMediaSection = ({
       {/* URL MODE */}
       {mediaInputMode == MEDIA_INPUT_MODE.URL && (
         <input
-          className="block-shadow h-10 rounded-lg bg-white pl-3"
+          className="block-shadow h-10 rounded-lg bg-white pl-3 pr-2"
           id="mediaUrl"
           name="mediaUrl"
           type="url"
@@ -242,7 +242,7 @@ const NewPostFormMediaSection = ({
         <>
           <div className="flex gap-1.5">
             <input
-              className="block-shadow h-10 min-w-0 rounded-lg bg-white pl-3"
+              className="block-shadow h-10 min-w-0 rounded-lg bg-white pl-3 pr-2"
               type="text"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}

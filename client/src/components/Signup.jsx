@@ -48,7 +48,7 @@ const Signup = () => {
             )}
           </div>
           <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 pr-1 text-amber-800"
             type="text"
             id="username"
             name="username"
@@ -77,7 +77,7 @@ const Signup = () => {
             Password
           </label>
           <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 pr-1 text-amber-800"
             type="password"
             id="password"
             name="password"
@@ -98,7 +98,7 @@ const Signup = () => {
             Confirm Password
           </label>
           <input
-            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 text-amber-800"
+            className="block-shadow mt-1 h-10 w-full rounded-xl bg-white pl-1.5 pr-1 text-amber-800"
             type="password"
             id="confirmPassword"
             name="confirmPassword"

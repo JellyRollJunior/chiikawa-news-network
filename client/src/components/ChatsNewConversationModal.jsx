@@ -96,7 +96,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
                 ))}
           </ul>
           <input
-            className="block-shadow h-10 rounded-lg bg-white pl-3"
+            className="block-shadow h-10 rounded-lg bg-white pl-3 pr-2"
             type="text"
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
@@ -118,7 +118,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             )}
           </div>
           <input
-            className="block-shadow h-10 w-full rounded-xl bg-white pl-3"
+            className="block-shadow h-10 w-full rounded-xl bg-white pl-3 pr-2"
             type="text"
             name="chatName"
             id="Chat name (optional)"
