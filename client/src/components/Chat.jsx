@@ -68,19 +68,17 @@ const Chat = () => {
             <img className="w-[20px]" src={arrowBack} />
           </Link>
         </div>
-        <div className="yellow-block flex flex-1 gap-2 rounded-lg px-2 py-2">
+        <div className="yellow-block grid flex-1 grid-cols-[60px_1fr] grid-rows-5 gap-x-2 rounded-lg px-2 py-2">
           <Avatar
-            className="size-[60px] border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
+            className="row-span-5 size-[60px] self-center border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
             avatar={chat && chat.avatar}
           />
-          <div className="flex flex-col justify-center">
-            <h2 className="text-lg font-medium">
-              {chat && chat.name ? chat.name : chatterNames}
-            </h2>
-            <p className="text-align -mt-1 items-start justify-self-start text-sm">
-              {chatterNames}
-            </p>
-          </div>
+          <h2 className="row-span-3 self-end truncate font-medium lg:text-lg">
+            {chat && chat.name}
+          </h2>
+          {chat && chat.name && (
+            <p className="row-span-2 truncate text-sm">{chatterNames}</p>
+          )}
         </div>
         {!isPublicChat && (
           <div className="pink-block flex items-center px-1 pt-3 md:px-2 md:pt-2">
@@ -115,7 +113,10 @@ const Chat = () => {
       {isDeleteModalOpen && (
         <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
       )}
-      <img className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]" src={shisaBento} />
+      <img
+        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]"
+        src={shisaBento}
+      />
     </div>
   );
 };
