@@ -156,7 +156,6 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-    -   chats new conversation list item
 
 -   server
 

@@ -2,7 +2,7 @@ import { Avatar } from './Avatar.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import usagiIcon from '../assets/icons/usagi-icon.png';
 
-const ChatsCreateListItem = ({
+const ChatsNewConversationModalListItem = ({
   userId,
   avatar,
   username,
@@ -55,4 +55,4 @@ const ChatsCreateListItem = ({
   );
 };
 
-export { ChatsCreateListItem };
+export { ChatsNewConversationModalListItem };

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { useUsers } from '../hooks/useUsers.js';
 import { useCreateChat } from '../hooks/useCreateChat.js';
 import { ModalDialog } from './ModalDialog.jsx';
-import { ChatsCreateListItem } from './ChatsCreateListItem.jsx';
+import { ChatsNewConversationModalListItem } from './ChatsNewConversationModalListItem.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { profanityMatcher } from '../services/textCensor.js';
 
@@ -77,7 +77,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             {!isLoading
               ? filteredUsers.map((user) => (
                   <Fragment key={user.id}>
-                    <ChatsCreateListItem
+                    <ChatsNewConversationModalListItem
                       userId={user.id}
                       avatar={user.avatar}
                       username={user.username}
@@ -90,8 +90,8 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
               : /* Loading Display */
                 [...Array(4)].map((item, index) => (
                   <Fragment key={index}>
-                    <ChatsCreateListItem isLoading={true} />
-                    <ChatsCreateListItem isLoading={true} loadingDelay={0.8} />
+                    <ChatsNewConversationModalListItem isLoading={true} />
+                    <ChatsNewConversationModalListItem isLoading={true} loadingDelay={0.8} />
                   </Fragment>
                 ))}
           </ul>
