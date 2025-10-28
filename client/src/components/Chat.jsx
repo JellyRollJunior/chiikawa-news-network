@@ -8,6 +8,7 @@ import { ChatRenameModal } from './ChatRenameModal.jsx';
 import { ChatDeleteModal } from './ChatDeleteModal.jsx';
 import { ChatHeader } from './ChatHeader.jsx';
 import shisaBento from '../assets/images/shisa-bento.png';
+import { ChatInfoModal } from './ChatInfoModal.jsx';
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -37,6 +38,11 @@ const Chat = () => {
     }
   }, [messages]);
 
+  // chat info modal
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const openInfoModal = () => setIsInfoModalOpen(true);
+  const closeInfoModal = () => setIsInfoModalOpen(false);
+
   // rename chat modal
   const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
   const openRenameModal = () => setIsRenameModalOpen(true);
@@ -53,6 +59,7 @@ const Chat = () => {
       <ChatHeader
         chat={chat}
         isPublicChat={isPublicChat}
+        openInfoModal={openInfoModal}
         openRenameModal={openRenameModal}
         openDeleteModal={openDeleteModal}
       />
@@ -68,6 +75,9 @@ const Chat = () => {
         />
       </main>
       <div className="duckegg-block h-4 shrink-0"></div>
+      {isInfoModalOpen && (
+        <ChatInfoModal closeFunction={closeInfoModal} chat={chat} />
+      )}
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
       {isRenameModalOpen && (
         <ChatRenameModal

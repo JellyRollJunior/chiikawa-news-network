@@ -1,11 +1,10 @@
 import { useContext } from 'react';
-import arrowBack from '../assets/svgs/arrow-back.svg';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
 import { Link, useNavigate } from 'react-router';
 import { Avatar } from './Avatar.jsx';
 import { DotsMenu } from './DotsMenu.jsx';
 import { DotsMenuItem } from './DotsMenuItem.jsx';
+import arrowBack from '../assets/svgs/arrow-back.svg';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -17,6 +16,7 @@ const getUsersString = (userId, users) => {
 const ChatHeader = ({
   chat,
   isPublicChat,
+  openInfoModal,
   openRenameModal,
   openDeleteModal,
 }) => {
@@ -38,24 +38,20 @@ const ChatHeader = ({
           className="row-span-5 size-[60px] self-center border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
           avatar={chat && chat.avatar}
         />
-        <h2 className="row-span-3 self-end truncate font-medium lg:text-lg">
-          {chat && chat.name}
-        </h2>
-        {chat && chat.name && (
-          <p className="row-span-2 truncate text-sm">{chatterNames}</p>
+        {chat && (
+          <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg">
+            {chat.name}
+          </h2>
+        )}
+        {chatterNames && (
+          <p className="relative row-span-2 truncate text-sm">{chatterNames}</p>
         )}
       </div>
       {!isPublicChat && (
         <div className="pink-block flex items-center px-1 pt-3 md:px-2 md:pt-2">
           <DotsMenu>
-            {isTwoPersonChat && (
-              <DotsMenuItem
-                label="View profile"
-                onClick={() =>
-                  navigate(`/users/${users.find((user) => user.id != id).id}`)
-                }
-              />
-            )}
+            {isTwoPersonChat && <DotsMenuItem label="View profile" onClick={() => navigate(`/users/${users.find((user) => user.id != id).id}`)} />}
+            <DotsMenuItem label="Conversation info" onClick={openInfoModal} />
             <DotsMenuItem label="Rename conversation" onClick={openRenameModal} />
             <DotsMenuItem label="Delete converstation" onClick={openDeleteModal} />
           </DotsMenu>
