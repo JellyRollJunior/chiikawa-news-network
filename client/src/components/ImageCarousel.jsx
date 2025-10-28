@@ -53,11 +53,11 @@ const ImageCarousel = ({ className, imageArray }) => {
         >
           Prev
         </button>
-        <div className="flex items-center gap-3">
+        <div className="grid grid-cols-4 items-center gap-3">
           {imageArray.map((src, index) => (
             <button
               key={`${src}:${index}`}
-              className={`block-shadow size-4 rounded-full ${imageIndex == index ? 'yellow-gradient' : 'duckegg-gradient'}`}
+              className={`block-shadow size-4 rounded-full justify-self-center ${imageIndex == index ? 'yellow-gradient w-7' : 'duckegg-gradient'}`}
               onClick={() => setImageIndex(index)}
             ></button>
           ))}
