@@ -5,12 +5,16 @@ import { FollowButton } from './UsersFollowButton.jsx';
 import { LoadingElement } from './LoadingElement.jsx';
 import { Link } from 'react-router';
 
-const UserStatBlock = ({ className, count, label }) => {
+const UserStatBlock = ({ className, count, label, isLoading = false }) => {
   return (
     <div
       className={`duckegg-block flex flex-col justify-end pt-2 pb-1.5 text-center md:pt-3 md:pb-1.5 ${className}`}
     >
-      <span className="font-chiikawa text-xl">{count}</span>
+      {!isLoading ? (
+        <span className="font-chiikawa text-xl">{count}</span>
+      ) : (
+        <LoadingElement className="h-6 w-1/2 rounded-md self-center" />
+      )}
       {label}
     </div>
   );
@@ -97,31 +101,44 @@ const UserInfo = ({ userId }) => {
     </header>
   ) : (
     /* Loading Display */
-    <header className="mx-4 mt-3 flex flex-col">
-      <div className="yellow-block flex-1 pt-2 pb-1">
-        <LoadingElement className="mx-auto h-7 w-46 rounded-full" />
+    <header className="flex flex-col">
+      <div className="yellow-block flex-1 pt-1 pb-0.5 md:pt-2">
+        <LoadingElement className="mx-auto h-7 w-46 rounded-md" />
       </div>
       <div className="mt-2 flex gap-2">
-        <div className="duckegg-block p-2">
-          <LoadingElement className="size-[90px] shrink-0 rounded-full" />
-        </div>
-        <div className="pink-block flex flex-1 flex-col items-center justify-around pt-1 text-sm md:text-base">
-          <div className="flex items-center gap-2">
-            <LoadingElement className="h-4 w-7 rounded-full" /> Followers
+        <div className="grid w-full grid-cols-6 gap-2 md:grid-cols-8 md:gap-1">
+          <div className="duckegg-block col-span-3 flex items-center justify-center py-2 md:col-span-2 md:row-span-3">
+            <LoadingElement className="size-[90px] shrink-0 rounded-full" />
           </div>
-          <div className="flex items-center gap-2">
-            <LoadingElement className="h-4 w-7 rounded-full" /> Following
+          <div className="pink-block col-span-3 flex flex-col items-center justify-center gap-2 md:hidden">
+            <LoadingElement className="h-6 w-3/5 rounded-md" />
+            <LoadingElement className="h-6 w-3/5 rounded-md" />
           </div>
-          <div className="flex items-center gap-2">
-            <LoadingElement className="h-4 w-7 rounded-full" /> Posts
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            label="Followers"
+            isLoading={true}
+          />
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            label="Following"
+            isLoading={true}
+          />
+          <UserStatBlock
+            className="col-span-2 md:row-span-2"
+            label="Posts"
+            isLoading={true}
+          />
+          <div className="pink-block hidden flex-1 items-center justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
+            <LoadingElement className="h-4 w-7 rounded-full" />
           </div>
-        </div>
-        <div className="duckegg-block hidden p-2 md:block">
-          <LoadingElement className="size-[90px] shrink-0 rounded-full" />
+          <div className="pink-block hidden flex-1 justify-center pt-1.5 pb-1 md:col-span-3 md:flex">
+            <LoadingElement className="h-4 w-7 rounded-full" />
+          </div>
         </div>
       </div>
       <div className="yellow-block mt-2 flex flex-col p-2 pb-1">
-        <LoadingElement className="h-12 w-full rounded-sm" />
+        <LoadingElement className="h-12 w-full rounded-md" />
       </div>
     </header>
   );

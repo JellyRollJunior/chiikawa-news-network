@@ -156,7 +156,6 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-    -   update profile loading animation
 
 -   server
 
