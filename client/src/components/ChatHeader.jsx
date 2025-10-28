@@ -2,8 +2,10 @@ import { useContext } from 'react';
 import arrowBack from '../assets/svgs/arrow-back.svg';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { ChatHeaderMenu } from './ChatHeaderMenu.jsx';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Avatar } from './Avatar.jsx';
+import { DotsMenu } from './DotsMenu.jsx';
+import { DotsMenuItem } from './DotsMenuItem.jsx';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;
@@ -18,9 +20,11 @@ const ChatHeader = ({
   openRenameModal,
   openDeleteModal,
 }) => {
+  const navigate = useNavigate();
   const { id } = useContext(CurrentContext);
-
   const chatterNames = chat && getUsersString(id, chat.users);
+  const users = chat && chat.users;
+  const isTwoPersonChat = users && chat.users.length == 2;
 
   return (
     <header className="flex gap-1.5">
@@ -43,11 +47,18 @@ const ChatHeader = ({
       </div>
       {!isPublicChat && (
         <div className="pink-block flex items-center px-1 pt-3 md:px-2 md:pt-2">
-          <ChatHeaderMenu
-            users={chat && chat.users}
-            openRenameModal={openRenameModal}
-            openDeleteModal={openDeleteModal}
-          />
+          <DotsMenu>
+            {isTwoPersonChat && (
+              <DotsMenuItem
+                label="View profile"
+                onClick={() =>
+                  navigate(`/users/${users.find((user) => user.id != id).id}`)
+                }
+              />
+            )}
+            <DotsMenuItem label="Rename conversation" onClick={openRenameModal} />
+            <DotsMenuItem label="Delete converstation" onClick={openDeleteModal} />
+          </DotsMenu>
         </div>
       )}
     </header>
