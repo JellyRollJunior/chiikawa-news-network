@@ -156,7 +156,10 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
-
+    -   max user error 
+    -   cut off chat name + chat users
+    -   show chat name on hover
+    -   show chat users on hover
 -   server
 
 -   low prio

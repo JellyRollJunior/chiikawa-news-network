@@ -6,7 +6,7 @@ import { LoadingDots } from './LoadingDots.jsx';
 
 const SystemMessage = ({ children }) => {
   return (
-    <li className="block-shadow w-fit max-w-4/5 self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2 text-sm">
+    <li className="block-shadow w-fit max-w-4/5 text-center self-center rounded-3xl border-2 border-pink-100 bg-white px-5 py-2 text-sm">
       {children}
     </li>
   );
