@@ -17,21 +17,25 @@ const CommentListItem = ({
 }) => {
   const { id } = useContext(CurrentContext);
 
+  if (!comment || !comment.author) return;
+  const author = comment.author;
   return (
     <li className="pink-gradient rounded-lg border-1 px-2 pt-2 pb-1 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
-      <div className="flex">
-        <div className="flex flex-col">
+      {/* Avatar, Username, Content, & Like btn */}
+      <div className="flex gap-2">
+        <div className="flex flex-col truncate">
           <div className="flex h-fit items-center">
             <Avatar
               className="size-[26px] border-1 border-yellow-500 md:size-[42px]"
-              avatar={comment.author && comment.author.avatar}
+              avatar={author.avatar}
             />
-            <h4 className="ml-2 text-base font-medium md:text-lg">
+            <h4 className="ml-2 flex-1 truncate font-medium md:text-lg">
               <Link
                 className="hover:text-amber-900"
-                to={`/users/${comment.author.id}`}
+                to={`/users/${author.id}`}
+                title={author.username}
               >
-                {comment.author && comment.author.username}
+                {author.username}
               </Link>
             </h4>
           </div>
@@ -45,6 +49,7 @@ const CommentListItem = ({
           isDisabled={isLoadingLike}
         />
       </div>
+      {/* Menu & Timestamp */}
       <div className="flex items-center justify-end gap-2">
         {comment.author.id == id && (
           <div className="-translate-y-0.75">

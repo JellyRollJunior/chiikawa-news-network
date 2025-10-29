@@ -10,7 +10,7 @@ const IncrementButton = ({
 }) => {
   return (
     <button
-      className={`flex h-fit items-center disabled:bg-gray-100 ${className}`}
+      className={`flex h-fit items-center shrink-0 disabled:bg-gray-100 ${className}`}
       onClick={onClick}
       disabled={isDisabled}
     >

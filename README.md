@@ -159,8 +159,6 @@ VITE_SERVER_URI
     -   titles
         -   chats
     -   Long username overflow
-        -   like comment button -> shrink-0
-            -   long comment username pushes against btn
         -   new convo user select icon -> shrink-0
 
 -   server
