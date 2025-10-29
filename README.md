@@ -156,9 +156,14 @@ VITE_SERVER_URI
 -   bugs
 
 -   client
+    -   Long username overflow
+        -   user aside
+        -   post username
+        -   like comment button -> shrink-0
+            -   long comment username pushes against btn
+        -   new convo user select icon -> shrink-0
 
 -   server
 
 -   low prio
 
-    -   client: check what breaks when using long username

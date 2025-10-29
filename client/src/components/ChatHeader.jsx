@@ -39,12 +39,12 @@ const ChatHeader = ({
           avatar={chat && chat.avatar}
         />
         {chat && (
-          <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg">
+          <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg" title={chat.name}>
             {chat.name}
           </h2>
         )}
         {chatterNames && (
-          <p className="relative row-span-2 truncate text-sm">{chatterNames}</p>
+          <p className="relative row-span-2 truncate text-sm" title={chatterNames}>{chatterNames}</p>
         )}
       </div>
       {!isPublicChat && (
