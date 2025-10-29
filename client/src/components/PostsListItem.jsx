@@ -57,18 +57,20 @@ const PostsListItem = ({
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="font-medium md:text-xl">
-          <Link className="hover:text-amber-900" to={`/users/${author.id}`}>
+        <h3 className="flex-1 font-medium md:text-xl truncate">
+          <Link className="hover:text-amber-900" to={`/users/${author.id}`} title={author.username}>
             {author.username}
           </Link>
         </h3>
         {author.id == id && (
-          <DotsMenu>
-            <DotsMenuItem
-              label="Delete post"
-              onClick={() => openDeleteModal(post.id)}
-            />
-          </DotsMenu>
+          <div className='self-start'>
+            <DotsMenu>
+              <DotsMenuItem
+                label="Delete post"
+                onClick={() => openDeleteModal(post.id)}
+              />
+            </DotsMenu>
+          </div>
         )}
       </header>
       <h2 className="mt-0.5 text-lg font-semibold md:mt-1 md:text-xl">
