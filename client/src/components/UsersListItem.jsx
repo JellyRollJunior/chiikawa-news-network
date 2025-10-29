@@ -41,9 +41,16 @@ const UsersListItem = ({
             />
           </div>
         </div>
-        <div className={`flex flex-1 flex-col justify-between ${blockStyle}`}>
-          <div className="font-chiikawa mt-4 text-center break-all" title={user.username}>
-            {user.username}
+        <div
+          className={`flex flex-1 flex-col justify-between truncate px-3 ${blockStyle}`}
+        >
+          <div className="mt-4">
+            <h3
+              className="font-chiikawa truncate text-center"
+              title={user.username}
+            >
+              {user.username}
+            </h3>
           </div>
           <div className="flex justify-around text-sm md:text-base">
             <div>{user && user.postCount ? user.postCount : 0} Posts</div>
