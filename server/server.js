@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import { app } from './app.js';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import { origin } from './middleware/corsOriginList.js';
 import { attachSocketListeners } from './sockets/attachSocketListeners.js';
 import { instrument } from '@socket.io/admin-ui';
 import { seedPublicChats } from './scripts/seedPublicChats.js';
@@ -13,11 +14,7 @@ dotenv.config();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: [
-            process.env.SERVER_URI,
-            process.env.CLIENT_URI,
-            'https://admin.socket.io',
-        ],
+        origin: [...origin, 'https://admin.socket.io'],
         credentials: true,
     },
 });
