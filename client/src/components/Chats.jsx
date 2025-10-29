@@ -77,7 +77,7 @@ const Chats = () => {
                 refreshBtn={refetchChats}
               />
               <main className="mt-2 flex-1">
-                <ChatsList chats={filteredChats} isLoading={isLoading} />
+                <ChatsList chats={filteredChats} isLoading={isLoading} isNoChatsPromptShown={true} />
               </main>
             </section>
           </div>
