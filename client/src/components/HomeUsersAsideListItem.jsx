@@ -14,12 +14,13 @@ const HomeUsersAsideListItem = ({ blockStyle, user, isLoading = false }) => {
         />
       </div>
       <div
-        className={`flex flex-1 items-center px-2 py-2 ${blockStyle} justify-center lg:justify-start`}
+        className={`flex flex-1 truncate items-center px-2 py-2 ${blockStyle} justify-center lg:justify-start`}
       >
-        <h3 className="font-semibold lg:ml-2">
+        <h3 className="font-semibold truncate lg:ml-2">
           <Link
             className="hover:text-amber-900 hover:underline"
             to={`/users/${user.id}`}
+            title={user.username}
           >
             {user.username}
           </Link>
