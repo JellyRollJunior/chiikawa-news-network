@@ -153,14 +153,5 @@ VITE_SERVER_URI
 
 ## TODO
 
--   bugs
-
--   client
-    -   titles
-        -   chats
-    -   Long username overflow
-    -   chat header loading animation
--   server
-
--   low prio
+-   deployment
 

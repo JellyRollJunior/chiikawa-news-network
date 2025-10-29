@@ -31,7 +31,7 @@ const ChatsListItem = ({
           background="yellow-50"
         />
         <div className="-mt-0.5 ml-2 flex min-w-0 flex-col self-center leading-[1.2]">
-          <h4 className="truncate text-lg font-medium">{chatName}</h4>
+          <h4 className="truncate text-lg font-medium" title={chatName}>{chatName}</h4>
           <p className="-mt-1 truncate">{latestMessageContent}</p>
           <p className="text-sm">{formattedDate}</p>
         </div>
