@@ -26,9 +26,11 @@ const ChatHeader = ({
   const users = chat && chat.users;
   const isTwoPersonChat = users && chat.users.length == 2;
 
+  if (!chat) return;
   return (
     <header className="flex gap-1.5">
-      <div className="pink-block pt-2 pl-3 md:hidden">
+      {/* Mobile: Back button */}
+      <div className="pink-block pt-2 pl-3 shrink-0 md:hidden">
         <Link className="flex h-full items-center" to="/chats">
           <img className="w-[20px]" src={arrowBack} />
         </Link>
@@ -38,15 +40,18 @@ const ChatHeader = ({
           className="row-span-5 size-[60px] self-center border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
           avatar={chat && chat.avatar}
         />
-        {chat && (
-          <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg" title={chat.name}>
-            {chat.name}
-          </h2>
-        )}
-        {chatterNames && (
-          <p className="relative row-span-2 truncate text-sm" title={chatterNames}>{chatterNames}</p>
+        {chat && chatterNames && (
+          <>
+            <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg" title={chat.name}>
+              {chat.name}
+            </h2>
+            <p className="relative row-span-2 truncate text-sm" title={chatterNames}>
+              {chatterNames}
+            </p>
+          </>
         )}
       </div>
+      {/* Header menu */}
       {!isPublicChat && (
         <div className="pink-block flex shrink-0 items-center px-1 pt-3 md:px-2 md:pt-2">
           <DotsMenu>

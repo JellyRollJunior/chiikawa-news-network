@@ -159,7 +159,7 @@ VITE_SERVER_URI
     -   titles
         -   chats
     -   Long username overflow
-
+    -   chat header loading animation
 -   server
 
 -   low prio
