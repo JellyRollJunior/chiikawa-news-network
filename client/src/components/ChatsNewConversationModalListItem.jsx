@@ -14,7 +14,7 @@ const ChatsNewConversationModalListItem = ({
   return !isLoading ? (
     <li key={userId}>
       <button
-        className="flex h-full w-full gap-2 px-2 pt-1.5 pb-1 hover:yellow-gradient"
+        className="hover:yellow-gradient flex h-full w-full gap-2 px-2 pt-1.5 pb-1"
         onClick={onClick}
         type="button"
       >
@@ -24,11 +24,13 @@ const ChatsNewConversationModalListItem = ({
           secondaryStyling={true}
           background="yellow-50"
         />
-        <div className="flex items-center">
-          <h4 className="text-lg font-medium">{username}</h4>
+        <div className="flex items-center overflow-hidden">
+          <h4 className="truncate text-lg font-medium" title={username}>
+            {username}
+          </h4>
         </div>
         {selected && (
-          <div className="mr-2 ml-auto flex items-center text-2xl">
+          <div className="mr-2 ml-auto flex shrink-0 items-center text-2xl">
             <img className="w-8" src={usagiIcon} alt="Selected" />
           </div>
         )}

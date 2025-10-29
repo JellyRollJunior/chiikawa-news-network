@@ -159,7 +159,6 @@ VITE_SERVER_URI
     -   titles
         -   chats
     -   Long username overflow
-        -   new convo user select icon -> shrink-0
 
 -   server
 

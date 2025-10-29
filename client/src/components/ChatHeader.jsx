@@ -33,7 +33,7 @@ const ChatHeader = ({
           <img className="w-[20px]" src={arrowBack} />
         </Link>
       </div>
-      <div className="yellow-block grid flex-1 grid-cols-[60px_1fr] grid-rows-5 gap-x-2 rounded-lg px-2 py-2">
+      <div className="yellow-block grid flex-1 grid-cols-[60px_1fr] md:grid-cols-[70px_1fr] grid-rows-5 gap-x-2 rounded-lg px-2 py-2">
         <Avatar
           className="row-span-5 size-[60px] self-center border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
           avatar={chat && chat.avatar}
@@ -48,7 +48,7 @@ const ChatHeader = ({
         )}
       </div>
       {!isPublicChat && (
-        <div className="pink-block flex items-center px-1 pt-3 md:px-2 md:pt-2">
+        <div className="pink-block flex shrink-0 items-center px-1 pt-3 md:px-2 md:pt-2">
           <DotsMenu>
             {isTwoPersonChat && <DotsMenuItem label="View profile" onClick={() => navigate(`/users/${users.find((user) => user.id != id).id}`)} />}
             <DotsMenuItem label="Conversation info" onClick={openInfoModal} />
