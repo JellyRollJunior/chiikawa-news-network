@@ -40,14 +40,16 @@ const ChatHeader = ({
           className="row-span-5 size-[60px] self-center border-3 border-dashed border-pink-300 p-0.5 md:size-[70px]"
           avatar={chat && chat.avatar}
         />
-        {chat && chatterNames && (
+        {chat && (
           <>
             <h2 className="relative row-span-3 self-end truncate font-medium lg:text-lg" title={chat.name}>
               {chat.name}
             </h2>
-            <p className="relative row-span-2 truncate text-sm" title={chatterNames}>
-              {chatterNames}
-            </p>
+            {chatterNames && (
+              <p className="relative row-span-2 truncate text-sm" title={chatterNames}>
+                {chatterNames}
+              </p>
+            )}
           </>
         )}
       </div>

@@ -153,4 +153,9 @@ VITE_SERVER_URI
 
 ## TODO
 
+-   client
+    -   account created successfully toast
+    -   chats
+        -   lg back button
+
 -   deployment
