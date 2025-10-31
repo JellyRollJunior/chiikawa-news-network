@@ -30,7 +30,7 @@ const ChatHeader = ({
   return (
     <header className="flex gap-1.5">
       {/* Mobile: Back button */}
-      <div className="pink-block pt-2 pl-3 shrink-0 md:hidden">
+      <div className="pink-block pt-2 pl-3 shrink-0 lg:hidden">
         <Link className="flex h-full items-center" to="/chats">
           <img className="w-[20px]" src={arrowBack} />
         </Link>
