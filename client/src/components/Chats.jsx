@@ -51,7 +51,7 @@ const Chats = () => {
               </div>
             </header>
             <input
-              className="block-shadow mt-2 h-9 shrink-0 rounded-lg bg-white pl-3 pr-2"
+              className="block-shadow mt-2 h-9 shrink-0 rounded-lg bg-white pr-2 pl-3"
               type="text"
               value={filter}
               onChange={(event) => setFilter(event.target.value)}
@@ -75,9 +75,15 @@ const Chats = () => {
               <ChatsSectionTitle
                 title="Conversations"
                 refreshBtn={refetchChats}
+                hoverColor="duckegg-dark"
               />
               <main className="mt-2 flex-1">
-                <ChatsList chats={filteredChats} isLoading={isLoading} isNoChatsPromptShown={true} />
+                <ChatsList
+                  chats={filteredChats}
+                  isLoading={isLoading}
+                  isNoChatsPromptShown={true}
+                  hoverColor="duckegg-dark"
+                />
               </main>
             </section>
           </div>

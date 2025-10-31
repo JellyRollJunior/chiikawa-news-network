@@ -157,5 +157,6 @@ VITE_SERVER_URI
     -   account created successfully toast
     -   chats
         -   lg back button
+        -   personal chats hover color
 
 -   deployment
