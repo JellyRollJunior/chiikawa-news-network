@@ -153,7 +153,4 @@ VITE_SERVER_URI
 
 ## TODO
 
--   client
-    -   account created successfully toast
-
 -   deployment

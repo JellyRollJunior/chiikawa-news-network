@@ -22,6 +22,7 @@ const Signup = () => {
     }
     try {
       await signup(username, password);
+      toastTemp('Account created successfully');
       navigate('/login');
     } catch (error) {
       toastTemp(error.message, true);
