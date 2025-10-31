@@ -154,6 +154,5 @@ VITE_SERVER_URI
 ## TODO
 
 -   client
-    -   update likes and comments on loading comments?
 
 -   deployment

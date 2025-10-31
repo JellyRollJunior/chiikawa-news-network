@@ -10,13 +10,12 @@ const IncrementButton = ({
 }) => {
   return (
     <button
-      className={`flex h-fit items-center shrink-0 disabled:bg-gray-100 ${className}`}
+      className={`flex h-fit shrink-0 items-center ${className}`}
       onClick={onClick}
-      disabled={isDisabled}
     >
       <motion.img
         key={src}
-        className="w-4.5 md:w-6"
+        className="w-4.5 disabled:bg-gray-100 md:w-6"
         src={src}
         whileTap={{ scale: 0.7 }}
         transition={{
@@ -25,6 +24,7 @@ const IncrementButton = ({
           damping: 17,
           duration: 0.1,
         }}
+        disabled={isDisabled}
       />{' '}
       <div className="text-sm">{count}</div>
     </button>
