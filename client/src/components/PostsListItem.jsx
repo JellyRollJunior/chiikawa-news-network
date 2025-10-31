@@ -49,7 +49,7 @@ const PostsListItem = ({
 
   if (!post) return;
   return !isLoading ? (
-    <li className={`${blockStyle} flex flex-col px-3 py-2 md:px-4 md:py-4`}>
+    <li className={`${blockStyle} flex flex-col px-3 pt-2 pb-1.5 md:px-4 md:pt-4 md:pb-3`}>
       <header className="flex items-center gap-2">
         <Avatar
           className="size-[34px] self-start border-1 border-yellow-500 md:size-[36px]"

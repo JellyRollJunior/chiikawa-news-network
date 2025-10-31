@@ -55,7 +55,7 @@ const CommentList = ({ postId }) => {
           Loading <LoadingDots dotTravelDistance={8} />
         </div>
       )}
-      <form className="mt-2 flex" onSubmit={handlePostComment}>
+      <form className="mt-3 flex" onSubmit={handlePostComment}>
         <Avatar
           className="size-[32px] border-1 border-yellow-500 md:size-[42px]"
           avatar={avatar}

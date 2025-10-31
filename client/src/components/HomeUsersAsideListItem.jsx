@@ -4,7 +4,7 @@ import { LoadingElement } from './LoadingElement.jsx';
 
 const HomeUsersAsideListItem = ({ blockStyle, user, isLoading = false }) => {
   return !isLoading ? (
-    <li className="flex gap-2 md:flex-col lg:flex-row">
+    <li className="flex gap-1 lg:gap-2 md:flex-col lg:flex-row">
       <div className={`px-2 pt-2 pb-1.5 ${blockStyle}`}>
         <Avatar
           className="mx-auto size-[52px] border-1 border-yellow-500"
