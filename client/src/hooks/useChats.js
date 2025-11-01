@@ -18,7 +18,7 @@ const useChats = () => {
         [handleApiCall]
     );
 
-    const refetch = () => getChats(null);
+    const refetch = useCallback(() => getChats(null), [getChats]);
 
     useEffect(() => {
         const abortController = new AbortController();

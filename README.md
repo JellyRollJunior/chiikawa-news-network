@@ -155,9 +155,7 @@ VITE_SERVER_URI
 
 -   client
     -   chats 
-        -   public chats init loading skeleton doesnot show
-        -   chats init loading skeelton doe snot show
-        -   chats refetch loading skeleton does not show
+        -   hover color buttons
     -   HomeUsersAside + PostsList only load when strict mode is turned off. Why?
 
 -   deployment

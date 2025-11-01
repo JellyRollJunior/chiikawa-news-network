@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { usePublicChats } from '../hooks/usePublicChats.js';
@@ -29,6 +29,10 @@ const Chats = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openNewConversationModal = () => setIsModalOpen(true);
   const closeNewConversationModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    refetchChats();
+  }, [refetchChats])
 
   return (
     <>
@@ -75,14 +79,12 @@ const Chats = () => {
               <ChatsSectionTitle
                 title="Conversations"
                 refreshBtn={refetchChats}
-                hoverColor="duckegg-dark"
               />
               <main className="mt-2 flex-1">
                 <ChatsList
                   chats={filteredChats}
                   isLoading={isLoading}
                   isNoChatsPromptShown={true}
-                  hoverColor="duckegg-dark"
                 />
               </main>
             </section>
