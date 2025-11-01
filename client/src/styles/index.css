@@ -133,7 +133,7 @@
 
 /* Buttons */
 @utility button {
-  @apply text-shadow-wrap block-shadow rounded-xl border-2 disabled:border-gray-400 disabled:bg-gray-400 disabled:text-gray-50 disabled:shadow-none disabled:text-shadow-none hover:disabled:bg-gray-400;
+  @apply text-shadow-wrap block-shadow rounded-xl border-2 disabled:border-gray-300 disabled:bg-gray-200 disabled:text-neutral-500 disabled:shadow-none disabled:text-shadow-none disabled:hover:bg-gray-200;
 }
 
 @utility pink-button {

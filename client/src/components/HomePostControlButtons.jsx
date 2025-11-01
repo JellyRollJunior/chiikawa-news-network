@@ -33,7 +33,7 @@ const HomePostControlButtons = ({
         All
       </button>
       <div className="pink-block pt-1 pr-0.5 pl-1">
-        <RefreshButton onclick={refreshPosts} />
+        <RefreshButton onclick={refreshPosts} isDisabled={isLoadingInit} />
       </div>
     </section>
   );
