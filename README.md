@@ -154,5 +154,9 @@ VITE_SERVER_URI
 ## TODO
 
 -   client
+    -   post loading skeleton doest work
+        -   update loading animation
+    -   convo loading skeleton doesnt show
+    -   users loading fix
 
 -   deployment

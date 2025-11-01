@@ -47,7 +47,7 @@ const PostsListItem = ({
   const [isShowingComments, setIsShowingComments] = useState(false);
   const author = post && post.author;
 
-  if (!post) return;
+  if (!post && !isLoading) return;
   return !isLoading ? (
     <li className={`${blockStyle} flex flex-col px-3 pt-2 pb-1.5 md:px-4 md:pt-4 md:pb-3`}>
       <header className="flex items-center gap-2">
