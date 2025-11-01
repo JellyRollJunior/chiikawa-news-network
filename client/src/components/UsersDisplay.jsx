@@ -24,19 +24,19 @@ const UsersDisplay = ({ openViewProfile }) => {
   return (
     <SimpleBar className="h-full">
       <div className="flex flex-col px-3 pt-3 pb-2.5 md:pt-3.5">
-        <header className="flex items-center justify-center gap-2">
+        <header className="flex gap-2">
           <div className="yellow-block flex-1 pt-1 pb-0.5">
             <LogoTitle
               className="justify-center text-lg md:text-2xl"
               text="Users"
             />
           </div>
-          <div className="pink-block flex h-full items-center pt-1 pr-1.5 pl-2">
+          <div className="pink-block flex items-center justify-center self-stretch pt-1 pr-1.5 pl-2">
             <RefreshButton onclick={refetch} />
           </div>
         </header>
         <input
-          className="block-shadow mt-2 h-11 shrink-0 rounded-lg bg-white pl-3 pr-2"
+          className="block-shadow mt-2 h-11 shrink-0 rounded-lg bg-white pr-2 pl-3"
           type="text"
           value={filter}
           onChange={(event) => setFilter(event.target.value)}

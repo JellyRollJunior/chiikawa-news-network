@@ -29,7 +29,10 @@ const UsersList = ({
           ))
         : [...Array(5)].map((item, index) => (
             <Fragment key={index}>
-              <UsersListItem isLoading={true} />
+              <UsersListItem
+                isLoading={true}
+                blockStyle={BLOCKS[index % BLOCKS.length]}
+              />
             </Fragment>
           ))}
     </ul>
