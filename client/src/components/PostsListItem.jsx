@@ -41,7 +41,6 @@ const PostsListItem = ({
   openDeleteModal,
   isLoading = false,
   isLoadingLike = false,
-  loadingDelay = 0,
 }) => {
   const { id } = useContext(CurrentContext);
   const [isShowingComments, setIsShowingComments] = useState(false);
@@ -49,7 +48,9 @@ const PostsListItem = ({
 
   if (!post && !isLoading) return;
   return !isLoading ? (
-    <li className={`${blockStyle} flex flex-col px-3 pt-2 pb-1.5 md:px-4 md:pt-4 md:pb-3`}>
+    <li
+      className={`${blockStyle} flex flex-col px-3 pt-2 pb-1.5 md:px-4 md:pt-4 md:pb-3`}
+    >
       <header className="flex items-center gap-2">
         <Avatar
           className="size-[34px] self-start border-1 border-yellow-500 md:size-[36px]"
@@ -57,13 +58,17 @@ const PostsListItem = ({
           size={1.75}
           secondaryStyling={true}
         />
-        <h3 className="flex-1 font-medium md:text-xl truncate">
-          <Link className="hover:text-amber-900" to={`/users/${author.id}`} title={author.username}>
+        <h3 className="flex-1 truncate font-medium md:text-xl">
+          <Link
+            className="hover:text-amber-900"
+            to={`/users/${author.id}`}
+            title={author.username}
+          >
             {author.username}
           </Link>
         </h3>
         {author.id == id && (
-          <div className='self-start'>
+          <div className="self-start">
             <DotsMenu>
               <DotsMenuItem
                 label="Delete post"
@@ -104,19 +109,17 @@ const PostsListItem = ({
     </li>
   ) : (
     /* Loading display */
-    <LoadingElement
-      className="rounded-lg border-1 border-yellow-200 px-3 py-2"
-      delay={loadingDelay}
+    <li
+      className={`${blockStyle} flex flex-col px-3 pt-2 pb-1.5 md:px-4 md:pt-4 md:pb-3`}
     >
-      <header className="flex items-center gap-2">
-        <div className="size-8 shrink-0 rounded-full bg-gray-300" />
-        <h3 className="h-4 w-3/10 rounded-xs bg-gray-300" />
+      <header className="flex items-center gap-3">
+        <LoadingElement className="size-8 shrink-0 rounded-full bg-gray-300" />
+        <LoadingElement className="h-5 w-3/10 rounded-md bg-gray-300" />
       </header>
-      <h2 className="mt-3 h-2 w-6/10 rounded-xs bg-gray-300" />
-      <p className="mt-2 h-2 w-8/10 rounded-xs bg-gray-300" />
-      <p className="mt-2 h-2 w-3/10 rounded-xs bg-gray-300" />
-      <p className="mx-auto mt-3 mb-1 size-35 rounded-lg bg-gray-300" />
-    </LoadingElement>
+      <LoadingElement className="mt-3 h-5 w-6/10 rounded-md bg-gray-300" />
+      <LoadingElement className="mt-2 h-4 w-8/10 rounded-md bg-gray-300" />
+      <LoadingElement className="mx-auto mt-4 mb-1 h-40 w-9/10 rounded-lg bg-gray-300" />
+    </li>
   );
 };
 

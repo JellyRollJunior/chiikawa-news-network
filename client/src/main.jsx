@@ -7,7 +7,7 @@ import 'simplebar-react/dist/simplebar.min.css';
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <StrictMode> 
     <RouterProvider router={router} />
   </StrictMode>,
 )

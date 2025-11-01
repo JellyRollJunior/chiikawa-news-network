@@ -154,9 +154,15 @@ VITE_SERVER_URI
 ## TODO
 
 -   client
-    -   post loading skeleton doest work
-        -   update loading animation
-    -   convo loading skeleton doesnt show
+    -   Post List
+        -   initial load displays no posts message instead of loading skeleton
+            -   isLoadingInit will only fire on switching feeds for some reason
+    -   chats 
+        -   public chats init loading skeleton doesnot show
+        -   chats init loading skeelton doe snot show
+        -   chats refetch loading skeleton does not show
     -   users loading fix
+    -   users refresh button
+    -   home users aside loading does not show
 
 -   deployment

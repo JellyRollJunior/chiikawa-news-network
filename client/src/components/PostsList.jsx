@@ -48,10 +48,12 @@ const PostList = ({
               </Fragment>
             ))
           : /* Init skeleton animation */
-            [...Array(3)].map((item, index) => (
+            [...Array(6)].map((item, index) => (
               <Fragment key={index}>
-                <PostsListItem isLoading={true} />
-                <PostsListItem isLoading={true} loadingDelay={0.8} />
+                <PostsListItem
+                  isLoading={true}
+                  blockStyle={BLOCKS[index % BLOCKS.length]}
+                />
               </Fragment>
             ))}
         {/* Loading posts animation */}

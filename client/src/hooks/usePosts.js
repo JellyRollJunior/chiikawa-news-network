@@ -51,7 +51,7 @@ const usePosts = (limit = 20, userId = null) => {
     useEffect(() => {
         const abortController = new AbortController();
 
-        initPosts(abortController.signal);
+        initPosts(abortController.signal, null);
 
         return () => abortController.abort();
     }, [initPosts]);

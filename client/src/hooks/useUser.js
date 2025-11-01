@@ -9,7 +9,7 @@ const useUser = (userId) => {
     const getUser = useCallback(
         async (signal) => {
             const data = await handleApiCall(
-                'Unabled to fetch user',
+                'Unable to fetch user',
                 fetchUser,
                 signal,
                 userId
