@@ -5,11 +5,11 @@ import { LoadingElement } from './LoadingElement.jsx';
 import selected from '../assets/svgs/arrow-forward.svg';
 
 const ChatsListItem = ({
+  className = 'hover:bg-duckegg-dark',
   chatId,
   chatName,
   avatar,
   latestMessage,
-  hoverColor = 'duckegg-dark',
   isLoading = false,
   loadingDelay = 0,
 }) => {
@@ -22,7 +22,7 @@ const ChatsListItem = ({
     ? format(new Date(latestMessage.sendTime), 'MMM do • h:mmaaa')
     : '';
   return !isLoading ? (
-    <li className={`hover:bg-${hoverColor} px-2 py-2`}>
+    <li className={`${className} px-2 py-2`}>
       <Link className="flex" to={`/chats/${chatId}`}>
         {chatId == browserChatId && <img src={selected} />}
         <Avatar

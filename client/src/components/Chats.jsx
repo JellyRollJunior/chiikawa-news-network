@@ -79,12 +79,14 @@ const Chats = () => {
               <ChatsSectionTitle
                 title="Conversations"
                 refreshBtn={refetchChats}
+                hoverColor='duckegg-dark'
               />
               <main className="mt-2 flex-1">
                 <ChatsList
                   chats={filteredChats}
                   isLoading={isLoading}
                   isNoChatsPromptShown={true}
+                  hoverColor='duckegg-dark'
                 />
               </main>
             </section>

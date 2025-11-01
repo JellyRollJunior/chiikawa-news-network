@@ -154,8 +154,6 @@ VITE_SERVER_URI
 ## TODO
 
 -   client
-    -   chats 
-        -   hover color buttons
     -   HomeUsersAside + PostsList only load when strict mode is turned off. Why?
 
 -   deployment

@@ -16,11 +16,11 @@ const ChatsList = ({
         ? chats.map((chat) => (
             <Fragment key={chat.id}>
               <ChatsListItem
+                className={`hover:bg-${hoverColor}`}
                 chatId={chat.id}
                 chatName={chat.name}
                 avatar={chat.avatar}
                 latestMessage={chat.latestMessage}
-                hoverColor={hoverColor}
               />
             </Fragment>
           ))
