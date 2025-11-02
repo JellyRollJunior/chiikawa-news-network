@@ -119,20 +119,24 @@ NOTE: PLEASE ALLOW SERVER ~50s TO START WHEN VISITING SITE. RENDER (SERVER HOSTI
 
 -   Backend
 
+    -   Open connections with sockets for realtime messaging
     -   Pagination: Implement cursor based pagination for retrieving posts
     -   Prisma CASE Statement: Prisma doesn't support CASE statement so I jerry rigged one to implement a hasLiked field for posts
+    -   Storing files (post media, profile pictures) remotely on supabase
+    -   Running scripts on server startup (seeding public chats, guest account)
+    -   CORS limiting which clients can make server requests
 
 -   Frontend
 
     -   Executing code on scrolling to bottom on component
     -   Learning sentinel pattern with IntersectionObserver API for infinite scrolling
     -   Revisiting how stacking contexts work
+    -   Implementing API handler to handle boilerplate isLoading and error catching on API request
+    -   Implementing elegant responsive designs (layouts that shift on screen breakpoints vs mobile -> render this, desktop -> render that)
 
 ### Retrospective aka yapping
 
--   Frontend
-    -   Super proud of my styling
-    -   Super proud of the UserInfo grid styling (Desktop/Mobile same components but changing grid values)
+This project solidifies my decision to become a web developer. This site design went through 5+ iterations before I settled on a theme. This was truly a labor of love. I am really really proud of my site styling and of the UserInfo grid styling (Desktop/Mobile same components but changing grid values). On the server, I'm really glad I got real-time messaging and pagination to work as well. I hope fellow chiikawa enjoyers can appreciate it as well.
 
 ## Start commands
 
@@ -198,3 +202,4 @@ VITE_GIPHY_API_KEY
 | Images | Chiikawa - Nagano                                                               |
 | Icons  | Google material icons                                                           |
 | Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
+| Styling Inspiration | https://nyaa.neocities.org/shrines/chiikawa |
