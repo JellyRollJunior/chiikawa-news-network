@@ -1,10 +1,37 @@
 <h1 align="center">Chiikawa News Network</h1>
-<h3 align="center"></h3>
+<h3 align="center">A social network by and for Chiikawa enjoyers! <br/> Click <a href='https://chiikawa-news-network.netlify.app' target="_blank">here</a> to start connecting today</h3>
 <p align="center">
-    <img align="center" width="700px" src="" >
+    <img align="center" width="700px" src="./readme/home.png" >
+</p>
+<p align="center">
+NOTE: PLEASE ALLOW SERVER ~50s TO START WHEN VISITING SITE. RENDER (SERVER HOSTING SITE) SHUTS DOWN SERVER AFTER 15min INACTIVITY
 </p>
 
 ### Features
+
+-   Realtime messaging with sockets (messages stored on server)
+-   Create / delete / like / unlike posts (title, content, media)
+    -   Post media types: Giphy links, upload files (stored on Supabase), & external media links
+    -   Create / delete / like / unlike post comments
+-   Private, Group, & Public chats
+-   Create, rename, delete private & group chats
+-   User signup / login / following / unfollowing / create & edit bio / create & edit profile picture (stored on Supabase)
+-   Desktop, Tablet, & mobile design
+-   Text obscenity filter (for da kids)
+
+## App Showcase
+
+| Chat                                         |
+| -------------------------------------------- |
+| <img width="700px" src="./readme/chat.png" > |
+
+| Profile                                         |
+| ----------------------------------------------- |
+| <img width="700px" src="./readme/profile.png" > |
+
+| Mobile                                         |
+| ---------------------------------------------- |
+| <img width="700px" src="./readme/mobile.png" > |
 
 ## Endpoints & Socket Events
 
@@ -50,33 +77,39 @@
 | 'disconnecting'   |                | leave rooms before disconnect    |
 | 'disconnect'      |                | log id has disconnected          |
 
-## Stack
+### Frontend Stack
 
-```
-client/            # Frontend (React, Vite, Tailwind, etc.)
-server/            # Backend (Express, Prisma, Passport, etc.)
-```
+| Technology                                                 | Use                                                                      |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------ |
+| React + Vite                                               |                                                                          |
+| Tailwind                                                   | CSS                                                                      |
+| React Router                                               | Routing                                                                  |
+| Giphy                                                      | Fetching gif links                                                       |
+| Motion                                                     | Animations                                                               |
+| Simplebar                                                  | Consistent scrolling between input types (mobile, touchpad, mouse & key) |
+| Socket.io Client                                           | Real-time communication                                                  |
+| uuid                                                       | creating uuids                                                           |
+| obscenity                                                  | Text censoring                                                           |
+| date-fns                                                   | date formatting                                                          |
+| <a href='https://netlify.com/' target="_blank">Netlify</a> | Client hosting                                                           |
 
-### Frontend
+### Backend Stack
 
--   React (with Vite)
--   React Router
--   Tailwind CSS
--   Socket.io for real-time communication
--   Motion for smooth animations
--   Date-fns for date formatting
-
-### Backend
-
--   Node.js with Express for REST API
--   Prisma ORM w/ PostgreSQL database
--   Socket.io
--   Supabase Storage for saving user uploaded profile pictures
--   Multer and Sharp for file upload and image processing
--   Express validator for endpoint input validation
--   Jsonwebtoken & bcryptjs from authentication / authorization
-
-## App Showcase
+| Technology                                               | Use                            |
+| -------------------------------------------------------- | ------------------------------ |
+| Node + Express                                           | Rest API                       |
+| Prisma ORM + PostgreSQL                                  | database                       |
+| Socket.io                                                | Realtime messaging             |
+| Supabase                                                 | Storing avatars & post images  |
+| Multer                                                   | File upload                    |
+| Sharp                                                    | Image compressing / processing |
+| Express Validator                                        | Endpoint input validation      |
+| JSON webtoken + bcryptjs                                 | authentication + authorization |
+| <a href='https://render.com/' target="_blank">Render</a> | Server hosting                 |
+| <a href='https://neon.com/' target="_blank">Neon</a>     | Database hosting               |
+| obscenity                                                | Text censoring                 |
+| cors                                                     | server origin enforcement      |
+| dotenv                                                   | environment variables          |
 
 ## Learning Outcomes
 
@@ -125,35 +158,43 @@ npm run preview
 
 ### Environment variables
 
+#### ./server/.env
+
 ```bash
-# ./backend/.env
 PORT
 SERVER_URI
 CLIENT_URI
+
+# Database
 DATABASE_URL
 TOKEN_SECRET
+
+# Socket Debug
+SOCKET_ADMIN_USERNAME
+SOCKET_ADMIN_PASSWORD
+
+# Supabase
 SUPABASE_URL
 SUPABASE_KEY
 SUPABASE_DEFAULT_CHAT_AVATAR
 SUPABASE_DEFAULT_GROUP_CHAT_AVATAR
-SOCKET_ADMIN_USERNAME
-SOCKET_ADMIN_PASSWORD
 
-# ./client/.env
+# Guest Credentials
+GUEST_USERNAME
+GUEST_PASSWORD
+```
+
+#### ./client/.env
+
+```bash
 VITE_SERVER_URI
+VITE_GIPHY_API_KEY
 ```
 
 ## Acknowledgements
 
 | Usage  | Source                                                                          |
 | ------ | ------------------------------------------------------------------------------- |
-| Images | Chiikawa                                                                        |
+| Images | Chiikawa - Nagano                                                               |
 | Icons  | Google material icons                                                           |
 | Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
-
-## TODO
-
--   client
-    -   HomeUsersAside + PostsList only load when strict mode is turned off. Why?
-
--   deployment
