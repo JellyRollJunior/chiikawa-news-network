@@ -3,9 +3,6 @@
 <p align="center">
     <img align="center" width="700px" src="./readme/home.png" >
 </p>
-<p align="center">
-NOTE: PLEASE ALLOW SERVER ~50s TO START WHEN VISITING SITE. RENDER (SERVER HOSTING SITE) SHUTS DOWN SERVER AFTER 15min INACTIVITY
-</p>
 
 ### Features
 
@@ -95,21 +92,21 @@ NOTE: PLEASE ALLOW SERVER ~50s TO START WHEN VISITING SITE. RENDER (SERVER HOSTI
 
 ### Backend Stack
 
-| Technology                                               | Use                            |
-| -------------------------------------------------------- | ------------------------------ |
-| Node + Express                                           | Rest API                       |
-| Prisma ORM + PostgreSQL                                  | database                       |
-| Socket.io                                                | Realtime messaging             |
-| Supabase                                                 | Storing avatars & post images  |
-| Multer                                                   | File upload                    |
-| Sharp                                                    | Image compressing / processing |
-| Express Validator                                        | Endpoint input validation      |
-| JSON webtoken + bcryptjs                                 | authentication + authorization |
-| <a href='https://render.com/' target="_blank">Render</a> | Server hosting                 |
-| <a href='https://neon.com/' target="_blank">Neon</a>     | Database hosting               |
-| obscenity                                                | Text censoring                 |
-| cors                                                     | server origin enforcement      |
-| dotenv                                                   | environment variables          |
+| Technology                                                 | Use                            |
+| ---------------------------------------------------------- | ------------------------------ |
+| Node + Express                                             | Rest API                       |
+| Prisma ORM + PostgreSQL                                    | database                       |
+| Socket.io                                                  | Realtime messaging             |
+| Supabase                                                   | Storing avatars & post images  |
+| Multer                                                     | File upload                    |
+| Sharp                                                      | Image compressing / processing |
+| Express Validator                                          | Endpoint input validation      |
+| JSON webtoken + bcryptjs                                   | authentication + authorization |
+| <a href='https://app.koyeb.com/' target="_blank">Koyeb</a> | Server hosting                 |
+| <a href='https://neon.com/' target="_blank">Neon</a>       | Database hosting               |
+| obscenity                                                  | Text censoring                 |
+| cors                                                       | server origin enforcement      |
+| dotenv                                                     | environment variables          |
 
 ## Learning Outcomes
 
@@ -197,9 +194,9 @@ VITE_GIPHY_API_KEY
 
 ## Acknowledgements
 
-| Usage  | Source                                                                          |
-| ------ | ------------------------------------------------------------------------------- |
-| Images | Chiikawa - Nagano                                                               |
-| Icons  | Google material icons                                                           |
-| Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
-| Styling Inspiration | https://nyaa.neocities.org/shrines/chiikawa |
+| Usage               | Source                                                                          |
+| ------------------- | ------------------------------------------------------------------------------- |
+| Images              | Chiikawa - Nagano                                                               |
+| Icons               | Google material icons                                                           |
+| Specs               | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
+| Styling Inspiration | https://nyaa.neocities.org/shrines/chiikawa                                     |
