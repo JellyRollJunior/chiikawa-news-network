@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLogin } from '../hooks/useLogin.js';
+import { LoadingDots } from './LoadingDots.jsx';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Login = () => {
             Username
           </label>
           <input
-            className="block-shadow mt-2 h-10 w-full rounded-lg bg-white pl-1.5 pr-1 text-amber-800"
+            className="block-shadow mt-2 h-10 w-full rounded-lg bg-white pr-1 pl-1.5 text-amber-800"
             type="text"
             id="username"
             name="username"
@@ -60,7 +61,7 @@ const Login = () => {
             Password
           </label>
           <input
-            className="block-shadow mt-2 h-10 w-full rounded-xl bg-white pl-1.5 pr-1 text-amber-800"
+            className="block-shadow mt-2 h-10 w-full rounded-xl bg-white pr-1 pl-1.5 text-amber-800"
             type="password"
             id="password"
             name="password"
@@ -74,7 +75,13 @@ const Login = () => {
         </div>
         <div className="duckegg-block my-1 h-4" />
         <button className="blue-button w-full px-5 py-2" disabled={isLoading}>
-          Log in
+          {!isLoading ? (
+            'Log in'
+          ) : (
+            <>
+              Logging in <LoadingDots dotTravelDistance={6} />
+            </>
+          )}
         </button>
       </form>
       <button
@@ -83,7 +90,13 @@ const Login = () => {
         onClick={handleGuestLogin}
         disabled={isLoading}
       >
-        Just passing by? Log in as Guest
+        {!isLoading ? (
+          'Just passing by? Log in as Guest'
+        ) : (
+          <>
+            Logging in <LoadingDots />
+          </>
+        )}
       </button>
       <footer className="text-shadow-wrap self-start pl-4 md:self-center md:pl-0">
         Dont have an account?{' '}
