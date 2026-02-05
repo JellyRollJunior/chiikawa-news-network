@@ -6,15 +6,15 @@
 
 ### Features
 
--   Realtime messaging with sockets (messages stored on server)
--   Create / delete / like / unlike posts (title, content, media)
-    -   Post media types: Giphy links, upload files (stored on Supabase), & external media links
-    -   Create / delete / like / unlike post comments
--   Private, Group, & Public chats
--   Create, rename, delete private & group chats
--   User signup / login / following / unfollowing / create & edit bio / create & edit profile picture (stored on Supabase)
--   Desktop, Tablet, & mobile design
--   Text obscenity filter (for da kids)
+- Realtime messaging with sockets (messages stored on server)
+- Create / delete / like / unlike posts (title, content, media)
+    - Post media types: Giphy links, upload files (stored on Supabase), & external media links
+    - Create / delete / like / unlike post comments
+- Private, Group, & Public chats
+- Create, rename, delete private & group chats
+- User signup / login / following / unfollowing / create & edit bio / create & edit profile picture (stored on Supabase)
+- Desktop, Tablet, & mobile design
+- Text obscenity filter (for da kids)
 
 ## App Showcase
 
@@ -110,26 +110,23 @@
 
 ## Learning Outcomes
 
--   Interaction
+- Interaction
+    - Testing on an actual mobile device! (broadcasting server & client through my WiFi signal)
 
-    -   Testing on an actual mobile device! (broadcasting server & client through my WiFi signal)
+- Backend
+    - Open connections with sockets for realtime messaging
+    - Pagination: Implement cursor based pagination for retrieving posts
+    - Prisma CASE Statement: Prisma doesn't support CASE statement so I jerry rigged one to implement a hasLiked field for posts
+    - Storing files (post media, profile pictures) remotely on supabase
+    - Running scripts on server startup (seeding public chats, guest account)
+    - CORS limiting which clients can make server requests
 
--   Backend
-
-    -   Open connections with sockets for realtime messaging
-    -   Pagination: Implement cursor based pagination for retrieving posts
-    -   Prisma CASE Statement: Prisma doesn't support CASE statement so I jerry rigged one to implement a hasLiked field for posts
-    -   Storing files (post media, profile pictures) remotely on supabase
-    -   Running scripts on server startup (seeding public chats, guest account)
-    -   CORS limiting which clients can make server requests
-
--   Frontend
-
-    -   Executing code on scrolling to bottom on component
-    -   Learning sentinel pattern with IntersectionObserver API for infinite scrolling
-    -   Revisiting how stacking contexts work
-    -   Implementing API handler to handle boilerplate isLoading and error catching on API request
-    -   Implementing elegant responsive designs (layouts that shift on screen breakpoints vs mobile -> render this, desktop -> render that)
+- Frontend
+    - Executing code on scrolling to bottom on component
+    - Learning sentinel pattern with IntersectionObserver API for infinite scrolling
+    - Revisiting how stacking contexts work
+    - Implementing API handler to handle boilerplate isLoading and error catching on API request
+    - Implementing elegant responsive designs (layouts that shift on screen breakpoints vs mobile -> render this, desktop -> render that)
 
 ### Retrospective aka yapping
 
@@ -201,6 +198,25 @@ VITE_GIPHY_API_KEY
 | Specs               | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
 | Styling Inspiration | https://nyaa.neocities.org/shrines/chiikawa                                     |
 
+## Added extras
+
+- client
+    - path aliasing
+
 ## Known Issues
 
 - Post retrieval sometimes returns posts in incorrect order (I suspect an issue with the pagination implementation)
+- Fetching posts infinitely on prod... Something wrong with implementation of fetching posts
+    - possibly refetching while loading
+
+## Potential Improvements
+
+- make loading not gray (its ugly)
+
+## NOTES
+
+- feature folder architecture
+    - app -> for composition
+    - features -> logic
+    - shared -> primitives
+    - features can depend on other features
