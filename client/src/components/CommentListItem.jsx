@@ -22,8 +22,8 @@ const CommentListItem = ({
   return (
     <li className="pink-gradient rounded-lg border-1 px-2 pt-2 pb-1 md:pt-2 md:pr-3 md:pb-1 md:pl-2">
       {/* Avatar, Username, Content, & Like btn */}
-      <div className="flex gap-2">
-        <div className="flex flex-col truncate">
+      <div className="flex gap-2 justify-between ">
+        <div className="flex min-w-0 flex-col">
           <div className="flex h-fit items-center">
             <Avatar
               className="size-[26px] border-1 border-yellow-500 md:size-[42px]"
@@ -39,10 +39,10 @@ const CommentListItem = ({
               </Link>
             </h4>
           </div>
-          <p className="mt-1 ml-0.5 text-sm md:text-base">{comment.content}</p>
+          <p className="mt-1 ml-0.5 text-sm break-words overflow-hidden md:text-base">{comment.content}</p>
         </div>
         <IncrementButton
-          className="mt-3 mr-0.5 ml-auto flex-col"
+          className="mt-3 mr-0.5 flex-col shrink-0"
           src={comment.hasLiked ? heartFilled : heart}
           count={comment.likeCount}
           onClick={() => toggleLike(comment.id, comment.hasLiked)}

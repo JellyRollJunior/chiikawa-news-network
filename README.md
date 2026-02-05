@@ -157,7 +157,7 @@ npm run build
 npm run preview
 ```
 
-### Environment variables
+## Environment variables
 
 #### ./server/.env
 
