@@ -200,3 +200,7 @@ VITE_GIPHY_API_KEY
 | Icons               | Google material icons                                                           |
 | Specs               | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-messaging-app) |
 | Styling Inspiration | https://nyaa.neocities.org/shrines/chiikawa                                     |
+
+## Known Issues
+
+- Post retrieval sometimes returns posts in incorrect order (I suspect an issue with the pagination implementation)
