@@ -1,22 +1,22 @@
 import { Toaster } from '@/shared/components/Toaster.jsx';
-import { ToastProvider } from '../contexts/ToastProvider.jsx';
+import { ToastProvider } from '@/contexts/ToastProvider.jsx';
 import { Notice } from '@/shared/components/Notice.jsx';
 import { AuthFormWrapper } from '@/features/auth/components/AuthFormWrapper.jsx';
 import { Login } from '@/features/auth/components/Login.jsx';
 import { LoginImageCarousel } from '@/features/auth/components/LoginImageCarousel.jsx';
 
 // assets
-import instagram from '../assets/icons/instagram-60.png';
-import github from '../assets/icons/github-60.png';
-import linkedin from '../assets/icons/linkedin-60.png';
-import shisaRamen from '../assets/images/shisa-ramen.png';
-import trioScouting from '../assets/images/trio-scouting.png';
-import rakko from '../assets/icons/rakko-icon.png';
-import momonga from '../assets/icons/momonga-icon.png';
-import chat from '../assets/carousel-images/chat.webp';
-import home from '../assets/carousel-images/home.webp';
-import mobile from '../assets/carousel-images/mobile.webp';
-import profile from '../assets/carousel-images/profile.webp';
+import instagram from '@/assets/icons/instagram-60.png';
+import github from '@/assets/icons/github-60.png';
+import linkedin from '@/assets/icons/linkedin-60.png';
+import shisaRamen from '@/assets/images/shisa-ramen.png';
+import trioScouting from '@/assets/images/trio-scouting.png';
+import rakko from '@/assets/icons/rakko-icon.png';
+import momonga from '@/assets/icons/momonga-icon.png';
+import chat from '@/assets/carousel-images/chat.webp';
+import home from '@/assets/carousel-images/home.webp';
+import mobile from '@/assets/carousel-images/mobile.webp';
+import profile from '@/assets/carousel-images/profile.webp';
 
 const LoginPage = () => {
   const slideshowImages = [chat, home, mobile, profile];

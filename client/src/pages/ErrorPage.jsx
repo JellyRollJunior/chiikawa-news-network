@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router';
 import { Notice } from '@/shared/components/Notice.jsx';
-import scared from '../assets/images/chii-hachi-scared.png';
-import chiiLaying from '../assets/images/chiikawa-laying.png';
+
+import scared from '@/assets/images/chii-hachi-scared.png';
+import chiiLaying from '@/assets/images/chiikawa-laying.png';
 
 const ErrorPage = () => {
   const navigate = useNavigate();
