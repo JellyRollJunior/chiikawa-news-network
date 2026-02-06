@@ -1,5 +1,5 @@
-import { createComment } from '../services/postApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { createComment } from '@/features/posts/api/posts.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useCreateComment = () => {
     const { handleApiCall, isLoading } = useApiHandler();

@@ -1,5 +1,5 @@
-import { deletePost as requestDeletePost } from '../services/postApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { deletePost as requestDeletePost } from '@/features/posts/api/posts.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useDeletePost = () => {
     const { handleApiCall, isLoading } = useApiHandler();

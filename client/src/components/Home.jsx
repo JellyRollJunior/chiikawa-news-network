@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePosts } from '../hooks/usePosts.js';
+import { usePosts } from '@/features/posts/hooks/usePosts.js';
 import { PostList } from '@/features/posts/components/PostsList.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { HomePostControlButtons } from '@/features/posts/components/HomePostControlButtons.jsx';

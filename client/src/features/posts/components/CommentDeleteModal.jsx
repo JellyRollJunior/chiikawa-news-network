@@ -1,4 +1,4 @@
-import { useDeleteComment } from '../../../hooks/useDeleteComment.js';
+import { useDeleteComment } from '@/features/posts/hooks/useDeleteComment.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 

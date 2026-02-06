@@ -1,9 +1,9 @@
 import SimpleBar from 'simplebar-react';
 import { useEffect, useRef, useState } from 'react';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
-import { useCreatePost } from '../../../hooks/useCreatePost.js';
-import { profanityMatcher, textCensor } from '../../../services/textCensor.js';
-import { useGiphy } from '../../../hooks/useGiphy.js';
+import { useCreatePost } from '@/features/posts/hooks/useCreatePost.js';
+import { profanityMatcher, textCensor } from '@/services/textCensor.js';
+import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 
 import trash from '@/assets/svgs/trash.svg';

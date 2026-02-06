@@ -1,4 +1,4 @@
-import { request } from './request.js';
+import { request } from '@/services/request.js';
 
 const fetchPosts = async (signal, cursor, limit = 20, userId = null) => {
     const params = new URLSearchParams();

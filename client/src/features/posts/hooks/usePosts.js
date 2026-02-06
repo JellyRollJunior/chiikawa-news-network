@@ -1,12 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useTokenErrorHandler } from '@/hooks/useTokenErrorHandler.js';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
 import {
     fetchPostFeed,
     fetchPosts,
     createPostLike,
     deletePostLike,
-} from '../services/postApi.js';
+} from '@/features/posts/api/posts.api.js';
 
 const usePosts = (limit = 20, userId = null) => {
     const [isFeed, setIsFeed] = useState(true);

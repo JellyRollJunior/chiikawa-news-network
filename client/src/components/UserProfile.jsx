@@ -1,4 +1,4 @@
-import { usePosts } from '../hooks/usePosts.js';
+import { usePosts } from '@/features/posts/hooks/usePosts.js';
 import { UserInfo } from './UserInfo.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { UserPosts } from './UserPosts.jsx';

@@ -1,11 +1,11 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { useTokenErrorHandler } from './useTokenErrorHandler.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { useTokenErrorHandler } from '@/hooks/useTokenErrorHandler.js';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
 import {
     createCommentLike,
     deleteCommentLike,
     fetchComments,
-} from '../services/postApi.js';
+} from '@/features/posts/api/posts.api.js';
 
 const useComments = (postId) => {
     const [comments, setComments] = useState([]);
@@ -77,7 +77,7 @@ const useComments = (postId) => {
         if (refetchAbortController) refetchAbortController.abort();
         refetchAbortController = new AbortController();
         getComments(refetchAbortController.signal, postId);
-    }
+    };
 
     return { comments, isLoading, toggleLike, isLoadingLike, refetch };
 };

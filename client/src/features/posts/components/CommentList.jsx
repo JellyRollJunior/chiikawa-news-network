@@ -1,7 +1,7 @@
 import { useContext, useState, Fragment } from 'react';
-import { CurrentContext } from '../../../contexts/CurrentProvider.jsx';
-import { useComments } from '../../../hooks/useComments.js';
-import { useCreateComment } from '../../../hooks/useCreateComment.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { useComments } from '@/features/posts/hooks/useComments.js';
+import { useCreateComment } from '@/features/posts/hooks/useCreateComment.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { CommentListItem } from '@/features/posts/components/CommentListItem.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
