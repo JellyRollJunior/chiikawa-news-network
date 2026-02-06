@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { signup } from '@/features/auth/api/auth.api.js';
 import { ToastContext } from '@/contexts/ToastProvider.jsx';
-import { profanityMatcher } from '@/services/textCensor.js';
+import { profanityMatcher } from '@/shared/services/textCensor.js';
 
 const Signup = () => {
   const navigate = useNavigate();

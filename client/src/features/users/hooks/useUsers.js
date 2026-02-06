@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { fetchUsers } from '@/features/users/api/user.api.js';
-import { useApiHandler } from '@/hooks/useApiHandler.js';
+import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useUsers = () => {
     const [users, setUsers] = useState([]);

@@ -1,10 +1,10 @@
 import SimpleBar from 'simplebar-react';
 import { useEffect, useRef, useState } from 'react';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { useCreatePost } from '@/features/posts/hooks/useCreatePost.js';
-import { profanityMatcher, textCensor } from '@/services/textCensor.js';
 import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
+import { profanityMatcher, textCensor } from '@/shared/services/textCensor.js';
 
 import trash from '@/assets/svgs/trash.svg';
 

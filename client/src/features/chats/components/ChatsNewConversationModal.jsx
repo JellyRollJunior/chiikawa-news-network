@@ -5,7 +5,7 @@ import { useCreateChat } from '@/features/chats/hooks/useCreateChat.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
 import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
-import { profanityMatcher } from '@/services/textCensor.js';
+import { profanityMatcher } from '@/shared/services/textCensor.js';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();

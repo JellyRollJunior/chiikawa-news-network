@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { useTokenErrorHandler } from '@/hooks/useTokenErrorHandler.js';
+import { useTokenErrorHandler } from '@/shared/hooks/useTokenErrorHandler.js';
 import { ToastContext } from '@/contexts/ToastProvider.jsx';
 import {
     createCommentLike,

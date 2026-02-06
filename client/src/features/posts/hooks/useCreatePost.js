@@ -1,5 +1,5 @@
 import { createPost as requestCreatePost } from '@/features/posts/api/posts.api.js';
-import { useApiHandler } from '@/hooks/useApiHandler.js';
+import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useCreatePost = () => {
     const { handleApiCall, isLoading } = useApiHandler();
