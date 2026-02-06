@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useEditBio } from '../hooks/useEditBio.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { useEditBio } from '@/features/users/hooks/useEditBio.js';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
 
 const SettingsEditBio = () => {
   const { toastTemp } = useContext(ToastContext);

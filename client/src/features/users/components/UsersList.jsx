@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import { UsersListItem } from './UsersListItem.jsx';
-import { useFollow } from '../hooks/useFollow.js';
-import { BLOCKS } from '../styles/blocks.js';
+import { UsersListItem } from '@/features/users/components/UsersListItem.jsx';
+import { useFollow } from '@/features/users/hooks/useFollow.js';
+import { BLOCKS } from '@/styles/blocks.js';
 
 const UsersList = ({
   users,

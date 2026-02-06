@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useChat } from '@/features/chats/hooks/useChat.js';
-import { useJoinRoom } from '@/hooks/useJoinRoom.js';
+import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
 import { ChatRenameModal } from '@/features/chats/components/ChatRenameModal.jsx';

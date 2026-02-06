@@ -1,5 +1,5 @@
-import { patchUserBio } from '../services/userApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { patchUserBio } from '@/features/users/api/user.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useEditBio = () => {
     const { handleApiCall, isLoading } = useApiHandler();

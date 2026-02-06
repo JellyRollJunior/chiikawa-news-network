@@ -1,10 +1,11 @@
 import { useContext, useRef, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useUploadAvatar } from '../hooks/useUploadAvatar.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { useUploadAvatar } from '@/features/users/hooks/useUploadAvatar.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
-import chiiPeace from '../assets/images/chii-peace.png';
-import hachiCamera from '../assets/images/hachi-camera-back.png';
+
+import chiiPeace from '@/assets/images/chii-peace.png';
+import hachiCamera from '@/assets/images/hachi-camera-back.png';
 
 const SettingsEditAvatar = () => {
   const fileInputRef = useRef(null);

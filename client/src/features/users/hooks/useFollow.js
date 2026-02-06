@@ -1,5 +1,5 @@
-import { deleteFollowing, postFollowing } from '../services/userApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { deleteFollowing, postFollowing } from '@/features/users/api/user.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useFollow = () => {
     const { handleApiCall, isLoading } = useApiHandler();

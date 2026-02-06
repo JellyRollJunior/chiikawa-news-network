@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { patchUserAvatar } from '../services/userApi.js';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useApiHandler } from './useApiHandler.js';
+import { patchUserAvatar } from '@/features/users/api/user.api.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useUploadAvatar = () => {
     const { setAvatar } = useContext(CurrentContext);

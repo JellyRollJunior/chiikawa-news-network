@@ -1,4 +1,4 @@
-import { Settings } from '../components/Settings.jsx';
+import { Settings } from '../features/users/components/Settings.jsx';
 
 const SettingsPage = () => {
   return (

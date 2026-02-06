@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fetchUser } from '../services/userApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { fetchUser } from '@/features/users/api/user.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useUser = (userId) => {
     const [user, setUser] = useState(null);

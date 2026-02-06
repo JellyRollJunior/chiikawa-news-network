@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useUsers } from '@/hooks/useUsers.js';
+import { useUsers } from '@/features/users/hooks/useUsers.js';
 import { useCreateChat } from '@/features/chats/hooks/useCreateChat.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';

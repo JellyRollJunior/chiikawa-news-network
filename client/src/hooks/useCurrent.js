@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchCurrent } from '../services/userApi.js';
+import { fetchCurrent } from '../features/users/api/user.api.js';
 import { useApiHandler } from './useApiHandler.js';
 
 const useCurrent = () => {

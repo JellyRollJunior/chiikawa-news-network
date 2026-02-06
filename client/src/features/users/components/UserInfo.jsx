@@ -1,9 +1,9 @@
-import { useUser } from '../hooks/useUser.js';
-import { useFollow } from '../hooks/useFollow.js';
-import { Avatar } from '@/shared/components/Avatar.jsx';
-import { FollowButton } from './UsersFollowButton.jsx';
-import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { Link } from 'react-router';
+import { useUser } from '@/features/users/hooks/useUser.js';
+import { useFollow } from '@/features/users/hooks/useFollow.js';
+import { FollowButton } from '@/features/users/components/UsersFollowButton.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
 const UserStatBlock = ({ className, count, label, isLoading = false }) => {
   return (

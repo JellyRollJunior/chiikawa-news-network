@@ -1,5 +1,5 @@
 import { Home } from '../components/Home.jsx';
-import { HomeUsersAside } from '../components/HomeUsersAside.jsx';
+import { HomeUsersAside } from '../features/users/components/HomeUsersAside.jsx';
 
 const HomePage = () => {
   return (

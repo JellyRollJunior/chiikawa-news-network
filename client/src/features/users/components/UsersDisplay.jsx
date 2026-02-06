@@ -1,10 +1,10 @@
 import SimpleBar from 'simplebar-react';
 import { useContext, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useUsers } from '../hooks/useUsers.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { useUsers } from '@/features/users/hooks/useUsers.js';
+import { UsersList } from '@/features/users/components/UsersList.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
-import { UsersList } from './UsersList.jsx';
 
 const UsersDisplay = ({ openViewProfile }) => {
   const { id } = useContext(CurrentContext);

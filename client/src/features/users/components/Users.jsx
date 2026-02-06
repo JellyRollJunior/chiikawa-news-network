@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { UsersDisplay } from './UsersDisplay.jsx';
-import { UserProfile } from './UserProfile.jsx';
-import arrowBack from '../assets/svgs/arrow-back.svg';
+import { UsersDisplay } from '@/features/users/components/UsersDisplay.jsx';
+import { UserProfile } from '@/features/users/components/UserProfile.jsx';
+
+import arrowBack from '@/assets/svgs/arrow-back.svg';
 
 const Users = () => {
   const [profileUserId, setProfileUserId] = useState(null);

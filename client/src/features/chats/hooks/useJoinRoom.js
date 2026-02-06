@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { SocketContext } from '../contexts/SocketProvider.jsx';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { SocketContext } from '@/contexts/SocketProvider.jsx';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
 
 const useJoinRoom = (chatId) => {
     const socket = useContext(SocketContext);

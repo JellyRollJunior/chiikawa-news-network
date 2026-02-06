@@ -1,9 +1,9 @@
-import { Fragment, useContext } from 'react';
-import { useUsers } from '../hooks/useUsers.js';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { HomeUsersAsideListItem } from './HomeUsersAsideListItem.jsx';
-import { BLOCKS } from '../styles/blocks.js';
 import SimpleBar from 'simplebar-react';
+import { Fragment, useContext } from 'react';
+import { useUsers } from '@/features/users/hooks/useUsers.js';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { HomeUsersAsideListItem } from '@/features/users/components/HomeUsersAsideListItem.jsx';
+import { BLOCKS } from '@/styles/blocks.js';
 
 const HomeUsersAside = () => {
   const { id } = useContext(CurrentContext);

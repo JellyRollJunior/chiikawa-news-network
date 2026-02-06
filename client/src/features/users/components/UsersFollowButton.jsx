@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
 
 const FollowButton = ({
   className,

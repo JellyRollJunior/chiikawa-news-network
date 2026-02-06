@@ -1,7 +1,7 @@
 import { usePosts } from '@/features/posts/hooks/usePosts.js';
-import { UserInfo } from './UserInfo.jsx';
+import { UserInfo } from '@/features/users/components/UserInfo.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
-import { UserPosts } from './UserPosts.jsx';
+import { UserPosts } from '@/features/users/components/UserPosts.jsx';
 
 const UserProfile = ({ userId, children }) => {
   const {
