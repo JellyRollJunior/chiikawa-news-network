@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useChats } from '../hooks/useChats.js';
+import { useChats } from '@/features/chats/hooks/useChats.js';
 
 const ChatsContext = createContext({
   chats: [],

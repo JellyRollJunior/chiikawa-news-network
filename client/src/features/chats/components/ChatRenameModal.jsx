@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
-import { useRenameChat } from '../hooks/useRenameChat.js';
 import { useParams } from 'react-router';
-import { ChatsContext } from '../contexts/ChatsProvider.jsx';
+import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { useRenameChat } from '@/features/chats/hooks/useRenameChat.js';
 
 const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
   const { chatId } = useParams();

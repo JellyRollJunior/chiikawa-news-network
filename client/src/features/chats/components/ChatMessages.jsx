@@ -1,6 +1,6 @@
-import { format } from 'date-fns';
 import { Fragment, useContext } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { format } from 'date-fns';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 

@@ -1,11 +1,11 @@
 import { Fragment, useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useUsers } from '../hooks/useUsers.js';
-import { useCreateChat } from '../hooks/useCreateChat.js';
+import { useUsers } from '@/hooks/useUsers.js';
+import { useCreateChat } from '@/features/chats/hooks/useCreateChat.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
-import { ChatsNewConversationModalListItem } from './ChatsNewConversationModalListItem.jsx';
-import { ChatsContext } from '../contexts/ChatsProvider.jsx';
-import { profanityMatcher } from '../services/textCensor.js';
+import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
+import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { profanityMatcher } from '@/services/textCensor.js';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {
   const navigate = useNavigate();

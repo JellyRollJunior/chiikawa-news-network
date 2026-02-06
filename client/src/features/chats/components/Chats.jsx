@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { ChatsContext } from '../contexts/ChatsProvider.jsx';
-import { usePublicChats } from '../hooks/usePublicChats.js';
-import { ChatsSectionTitle } from './ChatsSectionTitle.jsx';
-import { ChatsList } from './ChatsList.jsx';
-import { ChatsNewConversationModal } from './ChatsNewConversationModal.jsx';
 import SimpleBar from 'simplebar-react';
-import kaniReading from '../assets/images/kani-reading.png';
-import editSquare from '../assets/svgs/edit-square.svg';
+import { useContext, useEffect, useState } from 'react';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { usePublicChats } from '@/features/chats/hooks/usePublicChats.js';
+import { ChatsSectionTitle } from '@/features/chats/components/ChatsSectionTitle.jsx';
+import { ChatsList } from '@/features/chats/components/ChatsList.jsx';
+import { ChatsNewConversationModal } from '@/features/chats/components/ChatsNewConversationModal.jsx';
+
+import kaniReading from '@/assets/images/kani-reading.png';
+import editSquare from '@/assets/svgs/edit-square.svg';
 
 const Chats = () => {
   const { username } = useContext(CurrentContext);

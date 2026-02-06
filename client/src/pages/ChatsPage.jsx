@@ -1,7 +1,8 @@
-import { Chats } from '../components/Chats.jsx';
+import { Chats } from '@/features/chats/components/Chats.jsx';
 import { Notice } from '@/shared/components/Notice.jsx';
-import masks from '../assets/images/trio-masks.png';
-import chiiLaying from '../assets/images/chiikawa-laying.png';
+
+import masks from '@/assets/images/trio-masks.png';
+import chiiLaying from '@/assets/images/chiikawa-laying.png';
 
 const ChatsPage = () => {
   return (

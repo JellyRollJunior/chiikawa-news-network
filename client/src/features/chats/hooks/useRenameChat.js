@@ -1,5 +1,5 @@
-import { patchChat } from '../services/chatApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { patchChat } from '@/features/chats/api/chats.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useRenameChat = (chatId) => {
     const { handleApiCall, isLoading } = useApiHandler();

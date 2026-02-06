@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fetchPublicChats } from '../services/chatApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { fetchPublicChats } from '@/features/chats/api/chats.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const usePublicChats = () => {
     const [publicChats, setPublicChats] = useState([]);

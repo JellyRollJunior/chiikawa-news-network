@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { useChat } from '../hooks/useChat.js';
-import { useJoinRoom } from '../hooks/useJoinRoom.js';
-import { ChatMessages } from './ChatMessages.jsx';
-import { ChatMessageInput } from './ChatMessageInput.jsx';
-import { ChatRenameModal } from './ChatRenameModal.jsx';
-import { ChatDeleteModal } from './ChatDeleteModal.jsx';
-import { ChatHeader } from './ChatHeader.jsx';
-import shisaBento from '../assets/images/shisa-bento.png';
-import { ChatInfoModal } from './ChatInfoModal.jsx';
+import { useChat } from '@/features/chats/hooks/useChat.js';
+import { useJoinRoom } from '@/hooks/useJoinRoom.js';
+import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
+import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
+import { ChatRenameModal } from '@/features/chats/components/ChatRenameModal.jsx';
+import { ChatDeleteModal } from '@/features/chats/components/ChatDeleteModal.jsx';
+import { ChatHeader } from '@/features/chats/components/ChatHeader.jsx';
+import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
+
+import shisaBento from '@/assets/images/shisa-bento.png';
 
 const Chat = () => {
   const navigate = useNavigate();

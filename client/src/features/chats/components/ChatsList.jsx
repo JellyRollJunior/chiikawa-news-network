@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
-import { ChatsListItem } from './ChatsListItem.jsx';
-import logo from '../assets/nav/chiikawa-glasses.png';
+import { ChatsListItem } from '@/features/chats/components/ChatsListItem.jsx';
+
+import logo from '@/assets/nav/chiikawa-glasses.png';
 
 const ChatsList = ({
   chats,

@@ -1,4 +1,4 @@
-import { request } from './request.js';
+import { request } from '@/services/request.js';
 
 const fetchChats = async (signal) => {
     const data = await request('/chats', {

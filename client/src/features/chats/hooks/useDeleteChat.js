@@ -1,5 +1,5 @@
-import { deleteChat as requestDeleteChat } from '../services/chatApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { deleteChat as requestDeleteChat } from '@/features/chats/api/chats.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useDeleteChat = () => {
     const { handleApiCall, isLoading } = useApiHandler();

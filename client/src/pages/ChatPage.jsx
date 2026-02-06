@@ -1,5 +1,5 @@
-import { Chats } from '../components/Chats.jsx';
-import { Chat } from '../components/Chat.jsx';
+import { Chats } from '@/features/chats/components/Chats.jsx';
+import { Chat } from '@/features/chats/components/Chat.jsx';
 
 const ChatPage = () => {
   return (

@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { Link, useNavigate } from 'react-router';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { DotsMenu } from '@/shared/components/DotsMenu.jsx';
 import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';
-import arrowBack from '../assets/svgs/arrow-back.svg';
+
+import arrowBack from '@/assets/svgs/arrow-back.svg';
 
 const getUsersString = (userId, users) => {
   if (!users) return null;

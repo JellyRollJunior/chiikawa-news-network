@@ -1,8 +1,9 @@
-import { format } from 'date-fns';
 import { Link, useParams } from 'react-router';
+import { format } from 'date-fns';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
-import selected from '../assets/svgs/arrow-forward.svg';
+
+import selected from '@/assets/svgs/arrow-forward.svg';
 
 const ChatsListItem = ({
   className = 'hover:bg-duckegg-dark',

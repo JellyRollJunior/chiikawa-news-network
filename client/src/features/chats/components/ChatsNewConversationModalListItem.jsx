@@ -1,6 +1,7 @@
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
-import usagiIcon from '../assets/icons/usagi-icon.png';
+
+import usagiIcon from '@/assets/icons/usagi-icon.png';
 
 const ChatsNewConversationModalListItem = ({
   userId,

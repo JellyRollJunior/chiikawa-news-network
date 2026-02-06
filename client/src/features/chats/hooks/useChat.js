@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { fetchChat } from '../services/chatApi.js';
-import { textCensor, profanityMatcher } from '../services/textCensor.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { SocketContext } from '../contexts/SocketProvider.jsx';
-import { ChatsContext } from '../contexts/ChatsProvider.jsx';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useApiHandler } from './useApiHandler.js';
+import { fetchChat } from '@/features/chats/api/chats.api.js';
+import { textCensor, profanityMatcher } from '@/services/textCensor.js';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { SocketContext } from '@/contexts/SocketProvider.jsx';
+import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const createMessage = (content, id, username, avatar) => {
     const now = new Date().toISOString();

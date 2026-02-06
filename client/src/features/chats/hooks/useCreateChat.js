@@ -1,5 +1,5 @@
-import { postChats } from '../services/chatApi.js';
-import { useApiHandler } from './useApiHandler.js';
+import { postChats } from '@/features/chats/api/chats.api.js';
+import { useApiHandler } from '@/hooks/useApiHandler.js';
 
 const useCreateChat = () => {
     const { handleApiCall, isLoading } = useApiHandler();
