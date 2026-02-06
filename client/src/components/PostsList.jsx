@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { PostsListItem } from './PostsListItem.jsx';
-import { LoadingDots } from './LoadingDots.jsx';
+import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import { HomeDeletePostModal } from './HomeDeletePostModal.jsx';
 import { BLOCKS } from '../styles/blocks.js';
 import kuriPeace from '../assets/images/kuri-beer.png';

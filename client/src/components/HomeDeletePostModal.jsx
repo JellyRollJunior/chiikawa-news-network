@@ -1,6 +1,6 @@
 import { useDeletePost } from '../hooks/useDeletePost.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
-import { DeleteForm } from './DeleteForm.jsx';
+import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 
 const HomeDeletePostModal = ({ postId, closeFunction, onSubmit }) => {
   const { deletePost, isLoading } = useDeletePost();

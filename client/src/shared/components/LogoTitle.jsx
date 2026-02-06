@@ -1,4 +1,4 @@
-import logo from '../assets/nav/chiikawa-glasses.png';
+import logo from '@/assets/nav/chiikawa-glasses.png';
 
 const LogoTitle = ({ className, text = 'Chiikawa News Network' }) => {
   return (

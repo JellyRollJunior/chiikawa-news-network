@@ -1,5 +1,5 @@
 import { useLogout } from '../hooks/useLogout.js';
-import { LogoTitle } from './LogoTitle.jsx';
+import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 import { SettingsEditAvatar } from './SettingsEditAvatar.jsx';
 import { SettingsEditBio } from './SettingsEditBio.jsx';
 import trioScouting from '../assets/images/trio-scouting.png';

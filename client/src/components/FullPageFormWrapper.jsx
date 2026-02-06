@@ -1,6 +1,6 @@
 import trioDrawing from '../assets/images/trio-drawing.png';
 import kaniReading from '../assets/images/kani-reading.png';
-import { LogoTitle } from './LogoTitle.jsx';
+import { LogoTitle } from '../shared/components/LogoTitle.jsx';
 
 const FullPageFormWrapper = ({ children }) => {
   return (

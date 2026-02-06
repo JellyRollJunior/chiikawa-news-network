@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'motion/react';
 

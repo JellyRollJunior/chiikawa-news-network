@@ -6,8 +6,8 @@ import {
   cloneElement,
   useRef,
 } from 'react';
-import threeDots from '../assets/svgs/three-dots.svg';
-import threeDotsHori from '../assets/svgs/three-dots-hori.svg';
+import threeDots from '@/assets/svgs/three-dots.svg';
+import threeDotsHori from '@/assets/svgs/three-dots-hori.svg';
 
 const DotsMenu = ({ children, isVertical = true }) => {
   const [isOpen, setIsOpen] = useState(false);

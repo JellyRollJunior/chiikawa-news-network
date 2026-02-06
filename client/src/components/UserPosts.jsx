@@ -1,4 +1,4 @@
-import { LogoTitle } from './LogoTitle.jsx';
+import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
 import { PostList } from './PostsList.jsx';
 

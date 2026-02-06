@@ -1,6 +1,6 @@
 import { useDeleteComment } from '../hooks/useDeleteComment.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
-import { DeleteForm } from './DeleteForm.jsx';
+import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 
 const CommentDeleteModal = ({ commentId, closeFunction, onSubmit }) => {
   const { deleteComment, isLoading } = useDeleteComment();

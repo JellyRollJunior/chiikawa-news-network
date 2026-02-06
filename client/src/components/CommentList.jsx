@@ -4,7 +4,7 @@ import { useComments } from '../hooks/useComments.js';
 import { useCreateComment } from '../hooks/useCreateComment.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { CommentListItem } from './CommentListItem.jsx';
-import { LoadingDots } from './LoadingDots.jsx';
+import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import { CommentDeleteModal } from './CommentDeleteModal.jsx';
 import send from '../assets/svgs/send.svg';
 

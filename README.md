@@ -213,6 +213,7 @@ VITE_GIPHY_API_KEY
 
 - make loading not gray (its ugly)
 - reconfigure modal to close w/o close function
+- document client routes!
 
 ## NOTES
 

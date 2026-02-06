@@ -4,7 +4,7 @@ import { PostList } from './PostsList.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { HomePostControlButtons } from './HomePostControlButtons.jsx';
 import { HomeNewPostModal } from './HomeNewPostModal.jsx';
-import { LogoTitle } from './LogoTitle.jsx';
+import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
 const Home = () => {
   const {

@@ -1,4 +1,4 @@
-import { Toaster } from '../components/Toaster.jsx';
+import { Toaster } from '@/shared/components/Toaster.jsx';
 import { ToastProvider } from '../contexts/ToastProvider.jsx';
 import { Notice } from '@/shared/components/Notice.jsx';
 import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';

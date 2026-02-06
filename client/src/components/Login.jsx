@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useLogin } from '../hooks/useLogin.js';
-import { LoadingDots } from './LoadingDots.jsx';
+import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 
 const Login = () => {
   const navigate = useNavigate();

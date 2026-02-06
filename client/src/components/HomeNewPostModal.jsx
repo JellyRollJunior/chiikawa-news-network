@@ -5,7 +5,7 @@ import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import SimpleBar from 'simplebar-react';
 import trash from '../assets/svgs/trash.svg';
 import { useGiphy } from '../hooks/useGiphy.js';
-import { LoadingDots } from '../components/LoadingDots.jsx';
+import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 
 const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
   return (

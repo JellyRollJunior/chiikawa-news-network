@@ -1,4 +1,4 @@
-import warning from '../assets/svgs/warning.svg';
+import warning from '@/assets/svgs/warning.svg';
 
 const DeleteForm = ({ label, onSubmit, isLoading, closeFunction }) => {
   return (
