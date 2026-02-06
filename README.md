@@ -212,6 +212,7 @@ VITE_GIPHY_API_KEY
 ## Potential Improvements
 
 - make loading not gray (its ugly)
+- reconfigure modal to close w/o close function
 
 ## NOTES
 

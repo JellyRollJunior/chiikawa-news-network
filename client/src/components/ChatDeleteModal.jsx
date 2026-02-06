@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { ChatsContext } from '../contexts/ChatsProvider.jsx';
 import { useDeleteChat } from '../hooks/useDeleteChat.js';
-import { ModalDialog } from './ModalDialog.jsx';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { DeleteForm } from './DeleteForm.jsx';
 
 const ChatDeleteModal = ({ closeFunction, chatId }) => {

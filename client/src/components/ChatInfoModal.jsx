@@ -1,5 +1,5 @@
-import { Avatar } from './Avatar.jsx';
-import { ModalDialog } from './ModalDialog.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 
 const ChatInfoModal = ({ closeFunction, chat }) => {
   if (!chat || !chat.users || !chat.name) return;

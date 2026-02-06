@@ -1,4 +1,4 @@
-import { RefreshButton } from './RefreshButton.jsx';
+import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
 
 const ChatsSectionTitle = ({
   title,

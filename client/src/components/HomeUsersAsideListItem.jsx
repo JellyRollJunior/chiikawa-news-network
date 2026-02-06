@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import { Avatar } from './Avatar.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
 const HomeUsersAsideListItem = ({ blockStyle, user, isLoading = false }) => {
   return !isLoading ? (

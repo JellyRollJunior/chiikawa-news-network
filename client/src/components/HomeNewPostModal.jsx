@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ModalDialog } from './ModalDialog.jsx';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { useCreatePost } from '../hooks/useCreatePost.js';
 import { profanityMatcher, textCensor } from '../services/textCensor.js';
 import SimpleBar from 'simplebar-react';

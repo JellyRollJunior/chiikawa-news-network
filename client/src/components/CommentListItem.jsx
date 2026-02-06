@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { Avatar } from './Avatar.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
 import { DotsMenuItem } from './DotsMenuItem.jsx';
 import { DotsMenu } from './DotsMenu.jsx';

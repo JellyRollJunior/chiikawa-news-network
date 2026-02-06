@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import SimpleBar from 'simplebar-react';
+import { useEffect, useRef } from 'react';
 
 const Scrollable = ({ className = '', onScrollToBottom, children }) => {
   const containerRef = useRef(null);

@@ -1,9 +1,11 @@
 import { Toaster } from '../components/Toaster.jsx';
 import { ToastProvider } from '../contexts/ToastProvider.jsx';
-import { Notice } from '../components/Notice.jsx';
+import { Notice } from '@/shared/components/Notice.jsx';
 import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
 import { Login } from '../components/Login.jsx';
 import { ImageCarousel } from '../components/ImageCarousel.jsx';
+
+// images
 import instagram from '../assets/icons/instagram-60.png';
 import github from '../assets/icons/github-60.png';
 import linkedin from '../assets/icons/linkedin-60.png';

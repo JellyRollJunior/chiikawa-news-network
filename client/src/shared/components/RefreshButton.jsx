@@ -1,4 +1,4 @@
-import refreshIcon from '../assets/svgs/refresh.svg';
+import refreshIcon from '@/assets/svgs/refresh.svg';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 

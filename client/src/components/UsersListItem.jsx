@@ -1,6 +1,6 @@
-import { Avatar } from './Avatar.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { FollowButton } from './UsersFollowButton.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
 const UsersListItem = ({
   user,

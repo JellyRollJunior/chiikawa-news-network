@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { format } from 'date-fns';
-import { Avatar } from './Avatar.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { CommentList } from './CommentList.jsx';
 import { IncrementButton } from './IncrementButton.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { DotsMenu } from './DotsMenu.jsx';
 import { DotsMenuItem } from './DotsMenuItem.jsx';
 import errorImg from '../assets/images/chii-hachi-scared.png';

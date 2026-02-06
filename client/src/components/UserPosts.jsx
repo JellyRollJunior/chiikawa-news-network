@@ -1,5 +1,5 @@
 import { LogoTitle } from './LogoTitle.jsx';
-import { RefreshButton } from './RefreshButton.jsx';
+import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
 import { PostList } from './PostsList.jsx';
 
 const UserPosts = ({

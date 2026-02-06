@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import SimpleBar from 'simplebar-react';
+import { useEffect, useRef } from 'react';
 
 const ModalDialog = ({ closeFunction, children, title }) => {
   const modalRef = useRef(null);

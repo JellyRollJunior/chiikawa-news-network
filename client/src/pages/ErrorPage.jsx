@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router';
-import { Notice } from '../components/Notice.jsx';
+import { Notice } from '@/shared/components/Notice.jsx';
 import scared from '../assets/images/chii-hachi-scared.png';
 import chiiLaying from '../assets/images/chiikawa-laying.png';
 

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
 import { useEditBio } from '../hooks/useEditBio.js';
-import { LoadingElement } from './LoadingElement.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 
 const SettingsEditBio = () => {

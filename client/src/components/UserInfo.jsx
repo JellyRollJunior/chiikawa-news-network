@@ -1,8 +1,8 @@
 import { useUser } from '../hooks/useUser.js';
 import { useFollow } from '../hooks/useFollow.js';
-import { Avatar } from './Avatar.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { FollowButton } from './UsersFollowButton.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { Link } from 'react-router';
 
 const UserStatBlock = ({ className, count, label, isLoading = false }) => {

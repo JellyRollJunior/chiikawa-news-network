@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Fragment, useContext } from 'react';
 import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { Avatar } from './Avatar.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingDots } from './LoadingDots.jsx';
 
 const SystemMessage = ({ children }) => {

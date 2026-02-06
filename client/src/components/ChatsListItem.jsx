@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Link, useParams } from 'react-router';
-import { Avatar } from './Avatar.jsx';
-import { LoadingElement } from './LoadingElement.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import selected from '../assets/svgs/arrow-forward.svg';
 
 const ChatsListItem = ({
