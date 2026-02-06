@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { Link } from 'react-router';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { formatDistanceToNow } from 'date-fns';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
-import { IncrementButton } from './IncrementButton.jsx';
+import { IncrementButton } from '@/features/posts/components/IncrementButton.jsx';
 import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';
 import { DotsMenu } from '@/shared/components/DotsMenu.jsx';
-import { formatDistanceToNow } from 'date-fns';
-import heart from '../assets/svgs/heart.svg';
-import heartFilled from '../assets/svgs/heart-filled.svg';
+
+import heart from '@/assets/svgs/heart.svg';
+import heartFilled from '@/assets/svgs/heart-filled.svg';
 
 const CommentListItem = ({
   comment,

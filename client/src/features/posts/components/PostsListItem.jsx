@@ -1,17 +1,18 @@
 import { useContext, useState } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
+import { Link } from 'react-router';
 import { format } from 'date-fns';
+import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CommentList } from '@/features/posts/components/CommentList.jsx';
+import { IncrementButton } from '@/features/posts/components/IncrementButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
-import { CommentList } from './CommentList.jsx';
-import { IncrementButton } from './IncrementButton.jsx';
-import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { DotsMenu } from '@/shared/components/DotsMenu.jsx';
 import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';
-import errorImg from '../assets/images/chii-hachi-scared.png';
-import heart from '../assets/svgs/heart.svg';
-import heartFilled from '../assets/svgs/heart-filled.svg';
-import comment from '../assets/svgs/comment.svg';
-import { Link } from 'react-router';
+import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
+
+import errorImg from '@/assets/images/chii-hachi-scared.png';
+import heart from '@/assets/svgs/heart.svg';
+import heartFilled from '@/assets/svgs/heart-filled.svg';
+import comment from '@/assets/svgs/comment.svg';
 
 const MediaFrame = ({ src }) => {
   const [error, setError] = useState(false);

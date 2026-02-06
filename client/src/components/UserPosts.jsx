@@ -1,6 +1,6 @@
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
-import { PostList } from './PostsList.jsx';
+import { PostList } from '@/features/posts/components/PostsList.jsx';
 
 const UserPosts = ({
   posts,

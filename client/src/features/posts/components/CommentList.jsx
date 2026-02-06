@@ -1,12 +1,13 @@
 import { useContext, useState, Fragment } from 'react';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import { useComments } from '../hooks/useComments.js';
-import { useCreateComment } from '../hooks/useCreateComment.js';
+import { CurrentContext } from '../../../contexts/CurrentProvider.jsx';
+import { useComments } from '../../../hooks/useComments.js';
+import { useCreateComment } from '../../../hooks/useCreateComment.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
-import { CommentListItem } from './CommentListItem.jsx';
+import { CommentListItem } from '@/features/posts/components/CommentListItem.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
-import { CommentDeleteModal } from './CommentDeleteModal.jsx';
-import send from '../assets/svgs/send.svg';
+import { CommentDeleteModal } from '@/features/posts/components/CommentDeleteModal.jsx';
+
+import send from '@/assets/svgs/send.svg';
 
 const CommentList = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');

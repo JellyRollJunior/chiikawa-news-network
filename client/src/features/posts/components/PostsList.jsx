@@ -1,10 +1,11 @@
 import { Fragment, useState } from 'react';
-import { PostsListItem } from './PostsListItem.jsx';
+import { PostsListItem } from '@/features/posts/components/PostsListItem.jsx';
+import { HomeDeletePostModal } from '@/features/posts/components/HomeDeletePostModal.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
-import { HomeDeletePostModal } from './HomeDeletePostModal.jsx';
-import { BLOCKS } from '../styles/blocks.js';
-import kuriPeace from '../assets/images/kuri-beer.png';
-import logo from '../assets/nav/chiikawa-glasses.png';
+import { BLOCKS } from '@/styles/blocks.js';
+
+import kuriPeace from '@/assets/images/kuri-beer.png';
+import logo from '@/assets/nav/chiikawa-glasses.png';
 
 const PostListNotification = ({ src, children }) => {
   return (

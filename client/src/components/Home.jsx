@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { usePosts } from '../hooks/usePosts.js';
-import { PostList } from './PostsList.jsx';
+import { PostList } from '@/features/posts/components/PostsList.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
-import { HomePostControlButtons } from './HomePostControlButtons.jsx';
-import { HomeNewPostModal } from './HomeNewPostModal.jsx';
+import { HomePostControlButtons } from '@/features/posts/components/HomePostControlButtons.jsx';
+import { HomeNewPostModal } from '@/features/posts/components/HomeNewPostModal.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
 const Home = () => {
