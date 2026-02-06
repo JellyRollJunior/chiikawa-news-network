@@ -1,7 +1,9 @@
 import { useContext, useState } from 'react';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { login as requestLogin } from '../services/authApi.js';
-import { guestLogin as requestGuestLogin } from '../services/authApi.js';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import {
+    login as requestLogin,
+    guestLogin as requestGuestLogin,
+} from '@/features/auth/api/auth.api.js';
 
 const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false);

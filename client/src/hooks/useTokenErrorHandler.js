@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react';
-import { TokenError } from '../errors/TokenError.js';
+import { TokenError } from '@/shared/errors/TokenError.js';
 import { useLogout } from './useLogout.js';
 import { ToastContext } from '../contexts/ToastProvider.jsx';
 

@@ -1,16 +1,16 @@
 import { Toaster } from '@/shared/components/Toaster.jsx';
 import { ToastProvider } from '../contexts/ToastProvider.jsx';
-import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
-import { Signup } from '../components/Signup.jsx';
+import { AuthFormWrapper } from '@/features/auth/components/AuthFormWrapper.jsx';
+import { Signup } from '@/features/auth/components/Signup.jsx';
 
 const SignupPage = () => {
   return (
     <ToastProvider>
       <Toaster />
       <div className="flex h-screen w-screen items-center justify-center">
-        <FullPageFormWrapper>
+        <AuthFormWrapper>
           <Signup />
-        </FullPageFormWrapper>
+        </AuthFormWrapper>
       </div>
     </ToastProvider>
   );

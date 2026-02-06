@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { useLogin } from '../hooks/useLogin.js';
+import { useLogin } from '@/features/auth/hooks/useLogin.js';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 
 const Login = () => {

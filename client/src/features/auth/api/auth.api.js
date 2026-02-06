@@ -1,4 +1,4 @@
-import { request } from './request.js';
+import { request } from '@/services/request.js';
 
 const login = async (username, password) => {
     const data = await request(

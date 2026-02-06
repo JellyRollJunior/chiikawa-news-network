@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { signup } from '../services/authApi.js';
-import { ToastContext } from '../contexts/ToastProvider.jsx';
-import { profanityMatcher } from '../services/textCensor.js';
+import { signup } from '@/features/auth/api/auth.api.js';
+import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { profanityMatcher } from '@/services/textCensor.js';
 
 const Signup = () => {
   const navigate = useNavigate();

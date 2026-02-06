@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
-const ImageCarousel = ({ className, imageArray }) => {
+const LoginImageCarousel = ({ className, imageArray }) => {
   // Setting image index
   const [imageIndex, setImageIndex] = useState(0);
   const showNextImage = useCallback((length = 1) => {
@@ -73,4 +73,4 @@ const ImageCarousel = ({ className, imageArray }) => {
   );
 };
 
-export { ImageCarousel };
+export { LoginImageCarousel };

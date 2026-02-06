@@ -1,11 +1,11 @@
 import { Toaster } from '@/shared/components/Toaster.jsx';
 import { ToastProvider } from '../contexts/ToastProvider.jsx';
 import { Notice } from '@/shared/components/Notice.jsx';
-import { FullPageFormWrapper } from '../components/FullPageFormWrapper.jsx';
-import { Login } from '../components/Login.jsx';
-import { ImageCarousel } from '../components/ImageCarousel.jsx';
+import { AuthFormWrapper } from '@/features/auth/components/AuthFormWrapper.jsx';
+import { Login } from '@/features/auth/components/Login.jsx';
+import { LoginImageCarousel } from '@/features/auth/components/LoginImageCarousel.jsx';
 
-// images
+// assets
 import instagram from '../assets/icons/instagram-60.png';
 import github from '../assets/icons/github-60.png';
 import linkedin from '../assets/icons/linkedin-60.png';
@@ -26,9 +26,9 @@ const LoginPage = () => {
       <Toaster />
       <div className="flex h-screen">
         <div className="flex flex-4 justify-center self-center">
-          <FullPageFormWrapper>
+          <AuthFormWrapper>
             <Login />
-          </FullPageFormWrapper>
+          </AuthFormWrapper>
         </div>
         <aside className="mr-4 hidden flex-5 items-center justify-start lg:flex">
           <Notice
@@ -50,7 +50,7 @@ const LoginPage = () => {
             }
           >
             <div className="pink-block px-5 pt-6 pb-5">
-              <ImageCarousel
+              <LoginImageCarousel
                 className="w-full md:h-60 lg:h-90"
                 imageArray={slideshowImages}
               />

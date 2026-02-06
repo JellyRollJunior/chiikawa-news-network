@@ -1,4 +1,4 @@
-import { TokenError } from '../errors/TokenError.js';
+import { TokenError } from '@/shared/errors/TokenError.js';
 const SERVER_BASE_URL = import.meta.env.VITE_SERVER_URI;
 
 const request = async (endpoint, options, requiresToken = true) => {

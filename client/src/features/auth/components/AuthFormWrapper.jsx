@@ -1,8 +1,10 @@
-import trioDrawing from '../assets/images/trio-drawing.png';
-import kaniReading from '../assets/images/kani-reading.png';
-import { LogoTitle } from '../shared/components/LogoTitle.jsx';
+import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
-const FullPageFormWrapper = ({ children }) => {
+// assets
+import trioDrawing from '@/assets/images/trio-drawing.png';
+import kaniReading from '@/assets/images/kani-reading.png';
+
+const AuthFormWrapper = ({ children }) => {
   return (
     <div className="main-container relatie relative mx-4 flex h-fit max-w-md flex-1 flex-col items-center gap-2 px-3 pt-3 pb-2.5 md:pt-3.5 md:max-w-md">
       <header className="yellow-block font-chiikawa w-full pt-4 pb-2">
@@ -21,4 +23,4 @@ const FullPageFormWrapper = ({ children }) => {
   );
 };
 
-export { FullPageFormWrapper };
+export { AuthFormWrapper };
