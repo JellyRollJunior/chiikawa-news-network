@@ -1,4 +1,4 @@
-import App from '@/app/App.jsx';
+import { MainLayout } from '@/app/layouts/MainLayout.jsx';
 import { HomePage } from '@/app/pages/HomePage.jsx';
 import { ChatsPage } from '@/app/pages/ChatsPage.jsx';
 import { ChatPage } from '@/app/pages/ChatPage.jsx';
@@ -12,7 +12,7 @@ import { UsersPage } from '@/app/pages/UsersPage.jsx';
 const routes = [
   {
     path: '/',
-    element: <App />,
+    element: <MainLayout />,
     children: [
       { index: '/', element: <HomePage /> },
       { path: '/chats', element: <ChatsPage /> },

@@ -1,13 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider} from 'react-router'
-import { routes } from '@/app/routes.jsx';
-import 'simplebar-react/dist/simplebar.min.css';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-const router = createBrowserRouter(routes);
+import 'simplebar-react/dist/simplebar.min.css';
+import App from '@/app/App.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode> 
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

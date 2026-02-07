@@ -202,6 +202,7 @@ VITE_GIPHY_API_KEY
 
 - client
     - path aliasing
+- refactored project to feature folder architechture
 
 ## Known Issues
 
@@ -214,11 +215,3 @@ VITE_GIPHY_API_KEY
 - make loading not gray (its ugly)
 - reconfigure modal to close w/o close function
 - document client routes!
-
-## NOTES
-
-- feature folder architecture
-    - app -> for composition
-    - features -> logic
-    - shared -> primitives
-    - features can depend on other features

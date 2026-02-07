@@ -60,7 +60,7 @@ const RenderNavButtons = ({ buttonArray = [] }) => {
   ));
 };
 
-const NavigationPageWrapper = ({ children }) => {
+const NavWrapper = ({ children }) => {
   const { id } = useContext(CurrentContext);
   const location = useLocation();
   const path = location.pathname;
@@ -107,4 +107,4 @@ const NavigationPageWrapper = ({ children }) => {
   );
 };
 
-export { NavigationPageWrapper };
+export { NavWrapper };

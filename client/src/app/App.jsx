@@ -1,26 +1,10 @@
-import { Outlet } from 'react-router';
-import { SocketProvider } from '@/features/chats/providers/SocketProvider.jsx';
-import { CurrentProvider } from '@/features/auth/providers/CurrentProvider.jsx';
-import { ChatsProvider } from '@/features/chats/providers/ChatsProvider.jsx';
-import { ToastProvider } from '@/shared/providers/ToastProvider.jsx';
-import { Toaster } from '@/shared/components/Toaster.jsx';
-import { NavigationPageWrapper } from '@/shared/components/NavigationPageWrapper.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { routes } from '@/app/routes.jsx';
+
+const router = createBrowserRouter(routes);
 
 function App() {
-  return (
-    <SocketProvider>
-      <CurrentProvider>
-        <ChatsProvider>
-          <ToastProvider>
-            <Toaster />
-            <NavigationPageWrapper>
-              <Outlet />
-            </NavigationPageWrapper>
-          </ToastProvider>
-        </ChatsProvider>
-      </CurrentProvider>
-    </SocketProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
