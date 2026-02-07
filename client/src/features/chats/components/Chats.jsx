@@ -1,7 +1,7 @@
 import SimpleBar from 'simplebar-react';
 import { useContext, useEffect, useState } from 'react';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
-import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { usePublicChats } from '@/features/chats/hooks/usePublicChats.js';
 import { ChatsSectionTitle } from '@/features/chats/components/ChatsSectionTitle.jsx';
 import { ChatsList } from '@/features/chats/components/ChatsList.jsx';

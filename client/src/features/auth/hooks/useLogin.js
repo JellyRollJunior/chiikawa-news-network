@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
 import {
     login as requestLogin,
     guestLogin as requestGuestLogin,

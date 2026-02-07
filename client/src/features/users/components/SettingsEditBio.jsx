@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
-import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
+import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
 import { useEditBio } from '@/features/users/hooks/useEditBio.js';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 

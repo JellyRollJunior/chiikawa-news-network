@@ -1,5 +1,5 @@
 import { useCallback, useContext, useState } from 'react';
-import { ToastContext } from '../../contexts/ToastProvider.jsx';
+import { ToastContext } from '../providers/ToastProvider.jsx';
 import { useTokenErrorHandler } from './useTokenErrorHandler.js';
 
 const useApiHandler = () => {

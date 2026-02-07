@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { DotsMenu } from '@/shared/components/DotsMenu.jsx';
 import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';

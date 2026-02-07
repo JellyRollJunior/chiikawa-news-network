@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router';
 import { formatDistanceToNow } from 'date-fns';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { IncrementButton } from '@/features/posts/components/IncrementButton.jsx';
 import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';

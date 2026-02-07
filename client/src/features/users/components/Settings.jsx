@@ -1,5 +1,5 @@
 import SimpleBar from 'simplebar-react';
-import { useLogout } from '@/shared/hooks/useLogout.js';
+import { useLogout } from '@/features/auth/hooks/useLogout.js';
 import { SettingsEditAvatar } from '@/features/users/components/SettingsEditAvatar.jsx';
 import { SettingsEditBio } from '@/features/users/components/SettingsEditBio.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';

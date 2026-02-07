@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar-react';
 import { useContext, useState } from 'react';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useUsers } from '@/features/users/hooks/useUsers.js';
 import { UsersList } from '@/features/users/components/UsersList.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';

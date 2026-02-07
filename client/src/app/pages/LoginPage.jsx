@@ -1,5 +1,5 @@
 import { Toaster } from '@/shared/components/Toaster.jsx';
-import { ToastProvider } from '@/contexts/ToastProvider.jsx';
+import { ToastProvider } from '@/shared/providers/ToastProvider.jsx';
 import { Notice } from '@/shared/components/Notice.jsx';
 import { AuthFormWrapper } from '@/features/auth/components/AuthFormWrapper.jsx';
 import { Login } from '@/features/auth/components/Login.jsx';

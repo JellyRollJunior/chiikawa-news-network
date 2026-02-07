@@ -1,13 +1,13 @@
-import App from './App.jsx';
-import { HomePage } from './pages/HomePage.jsx';
-import { ChatsPage } from './pages/ChatsPage.jsx';
-import { ChatPage } from './pages/ChatPage.jsx';
-import { UserPage } from './pages/UserPage.jsx';
-import { SettingsPage } from './pages/SettingsPage.jsx';
-import { ErrorPage } from './pages/ErrorPage.jsx';
-import { LoginPage } from './pages/LoginPage.jsx';
-import { SignupPage } from './pages/SignupPage.jsx';
-import { UsersPage } from './pages/UsersPage.jsx';
+import App from '@/app/App.jsx';
+import { HomePage } from '@/app/pages/HomePage.jsx';
+import { ChatsPage } from '@/app/pages/ChatsPage.jsx';
+import { ChatPage } from '@/app/pages/ChatPage.jsx';
+import { UserPage } from '@/app/pages/UserPage.jsx';
+import { SettingsPage } from '@/app/pages/SettingsPage.jsx';
+import { ErrorPage } from '@/app/pages/ErrorPage.jsx';
+import { LoginPage } from '@/app/pages/LoginPage.jsx';
+import { SignupPage } from '@/app/pages/SignupPage.jsx';
+import { UsersPage } from '@/app/pages/UsersPage.jsx';
 
 const routes = [
   {

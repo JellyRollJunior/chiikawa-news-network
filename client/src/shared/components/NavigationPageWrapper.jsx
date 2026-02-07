@@ -1,12 +1,13 @@
 import { Fragment, useContext } from 'react';
 import { Link, useLocation } from 'react-router';
-import { CurrentContext } from '../contexts/CurrentProvider.jsx';
-import logo from '../assets/nav/chiikawa-glasses.png';
-import home from '../assets/nav/chiikawa-book.png';
-import messages from '../assets/nav/chii-hachi-hearts.png';
-import profile from '../assets/nav/chii-usagi-silly.png';
-import users from '../assets/nav/chii-kuri-drinks.png';
-import settings from '../assets/nav/usagi-business.png';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
+
+import logo from '@/assets/nav/chiikawa-glasses.png';
+import home from '@/assets/nav/chiikawa-book.png';
+import messages from '@/assets/nav/chii-hachi-hearts.png';
+import profile from '@/assets/nav/chii-usagi-silly.png';
+import users from '@/assets/nav/chii-kuri-drinks.png';
+import settings from '@/assets/nav/usagi-business.png';
 
 const NavButton = ({
   className = '',

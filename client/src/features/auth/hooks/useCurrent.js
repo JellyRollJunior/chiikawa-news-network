@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchCurrent } from '../../features/users/api/user.api.js';
-import { useApiHandler } from './useApiHandler.js';
+import { fetchCurrent } from '@/features/users/api/user.api.js';
+import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useCurrent = () => {
     const [id, setId] = useState(null);

@@ -1,4 +1,4 @@
-import { Home } from '@/components/Home.jsx';
+import { Home } from '@/features/posts/components/Home.jsx';
 import { HomeUsersAside } from '@/features/users/components/HomeUsersAside.jsx';
 
 const HomePage = () => {

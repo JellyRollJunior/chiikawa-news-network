@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import { TokenError } from '@/shared/errors/TokenError.js';
-import { useLogout } from './useLogout.js';
-import { ToastContext } from '../../contexts/ToastProvider.jsx';
+import { useLogout } from '../../features/auth/hooks/useLogout.js';
+import { ToastContext } from '../providers/ToastProvider.jsx';
 
 const useTokenErrorHandler = () => {
     const { logout } = useLogout();

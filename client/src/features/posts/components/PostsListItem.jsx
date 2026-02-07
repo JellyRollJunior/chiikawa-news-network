@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import { format } from 'date-fns';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { CommentList } from '@/features/posts/components/CommentList.jsx';
 import { IncrementButton } from '@/features/posts/components/IncrementButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';

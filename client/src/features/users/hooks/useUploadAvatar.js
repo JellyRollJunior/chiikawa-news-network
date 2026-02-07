@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { patchUserAvatar } from '@/features/users/api/user.api.js';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useUploadAvatar = () => {

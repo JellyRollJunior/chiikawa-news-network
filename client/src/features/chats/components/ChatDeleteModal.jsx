@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router';
-import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { useDeleteChat } from '@/features/chats/hooks/useDeleteChat.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { DeleteForm } from '@/shared/components/DeleteForm.jsx';

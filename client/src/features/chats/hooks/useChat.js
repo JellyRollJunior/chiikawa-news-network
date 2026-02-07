@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { ToastContext } from '@/contexts/ToastProvider.jsx';
-import { SocketContext } from '@/contexts/SocketProvider.jsx';
-import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
+import { SocketContext } from '@/features/chats/providers/SocketProvider.jsx';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 import { fetchChat } from '@/features/chats/api/chats.api.js';
 import { textCensor, profanityMatcher } from '@/shared/services/textCensor.js';

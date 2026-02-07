@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useCurrent } from '@/shared/hooks/useCurrent.js';
+import { useCurrent } from '@/features/auth/hooks/useCurrent.js';
 
 const CurrentContext = createContext({
   id: null,

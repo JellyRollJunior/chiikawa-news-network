@@ -4,7 +4,7 @@ import { useUsers } from '@/features/users/hooks/useUsers.js';
 import { useCreateChat } from '@/features/chats/hooks/useCreateChat.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
-import { ChatsContext } from '@/contexts/ChatsProvider.jsx';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { profanityMatcher } from '@/shared/services/textCensor.js';
 
 const ChatsNewConversationModal = ({ closeFunction }) => {

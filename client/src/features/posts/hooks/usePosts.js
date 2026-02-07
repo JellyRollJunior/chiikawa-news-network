@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useTokenErrorHandler } from '@/shared/hooks/useTokenErrorHandler.js';
-import { ToastContext } from '@/contexts/ToastProvider.jsx';
+import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
 import {
     fetchPostFeed,
     fetchPosts,

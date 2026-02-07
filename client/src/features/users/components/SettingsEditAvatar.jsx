@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from 'react';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useUploadAvatar } from '@/features/users/hooks/useUploadAvatar.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';

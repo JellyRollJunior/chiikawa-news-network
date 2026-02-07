@@ -1,5 +1,5 @@
 import { useContext, useState, Fragment } from 'react';
-import { CurrentContext } from '@/contexts/CurrentProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useComments } from '@/features/posts/hooks/useComments.js';
 import { useCreateComment } from '@/features/posts/hooks/useCreateComment.js';
 import { Avatar } from '@/shared/components/Avatar.jsx';
