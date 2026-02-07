@@ -202,7 +202,8 @@ VITE_GIPHY_API_KEY
 
 - client
     - path aliasing
-- refactored project to feature folder architechture
+    - refactored to feature folder architechture
+    - moved providers from App to layout component
 
 ## Known Issues
 
