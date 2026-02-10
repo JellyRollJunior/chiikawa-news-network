@@ -1,56 +1,10 @@
 import SimpleBar from 'simplebar-react';
-import { useEffect, useRef, useState } from 'react';
-import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
+import { useRef, useState } from 'react';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import { profanityMatcher, textCensor } from '@/shared/services/textCensor.js';
 
 import trash from '@/assets/svgs/trash.svg';
-
-const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
-  return (
-    <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
-      <div className="flex justify-between">
-        <label className="text-shadow-wrap ml-1" htmlFor="title">
-          Title
-        </label>
-        <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
-      </div>
-      <input
-        className="block-shadow mt-1 h-10 rounded-lg bg-white pr-2 pl-3"
-        id="title"
-        name="title"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-        minLength={1}
-        maxLength={75}
-        required
-      />
-      <div className="block-shadow mt-2 h-8 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
-        {textCensor.applyTo(title, profanityMatcher.getAllMatches(title))}
-      </div>
-      <div className="mt-3 flex justify-between">
-        <label className="text-shadow-wrap ml-1" htmlFor="content">
-          Content
-        </label>
-        <div className="text-shadow-wrap mr-2">{content.length} / 350</div>
-      </div>
-      <textarea
-        className="block-shadow mt-1 h-24 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
-        id="content"
-        name="content"
-        value={content}
-        onChange={(event) => setContent(event.target.value)}
-        minLength={1}
-        maxLength={350}
-        required
-      />
-      <div className="block-shadow mt-2 h-16 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
-        {textCensor.applyTo(content, profanityMatcher.getAllMatches(content))}
-      </div>
-    </div>
-  );
-};
 
 const MEDIA_INPUT_MODE = Object.freeze({
   UPLOAD: 'UPLOAD',
@@ -67,16 +21,14 @@ const NewPostFormMediaSection = ({
   acceptedExtensions,
   urlError,
   isLoading,
+  gifs,
+  isLoadingGifs,
+  searchGifs,
+  gifError,
 }) => {
-  const { gifs, isLoading: isLoadingGifs, error, fetchGifs } = useGiphy();
   const [uploadError, setUploadError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const fileInputRef = useRef(null);
-
-  // initialize gifs
-  useEffect(() => {
-    fetchGifs();
-  }, [fetchGifs]);
 
   const handleClickUpload = () => {
     if (fileInputRef) {
@@ -107,7 +59,7 @@ const NewPostFormMediaSection = ({
       );
     }
 
-    if (error) {
+    if (gifError) {
       return (
         <div className="flex h-full items-center justify-center text-center">
           Unable to fetch gifs. <br /> Try again later :(
@@ -251,7 +203,7 @@ const NewPostFormMediaSection = ({
             <button
               className="yellow-button px-2"
               disabled={isLoadingGifs}
-              onClick={() => fetchGifs(searchTerm)}
+              onClick={() => searchGifs(searchTerm)}
             >
               Search
             </button>
@@ -265,10 +217,20 @@ const NewPostFormMediaSection = ({
   );
 };
 
-const CreatePostModalView = ({ open = false, closeFunction, onSubmitPost, isLoading }) => {
+const CreatePostModalView = ({
+  open = false,
+  closeFunction,
+  onSubmitPost,
+  isLoadingSubmit,
+  gifs,
+  isLoadingGifs,
+  searchGifs,
+  gifError,
+}) => {
   // Text section
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
   // Media section
   const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.GIPHY);
   const [media, setMedia] = useState(null);
@@ -304,12 +266,52 @@ const CreatePostModalView = ({ open = false, closeFunction, onSubmitPost, isLoad
   return (
     <ModalDialog open={open} title="New Post" closeFunction={closeFunction}>
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
-        <NewPostFormTextSection
-          title={title}
-          setTitle={setTitle}
-          content={content}
-          setContent={setContent}
-        />
+        {/* Text Section */}
+        <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
+          <div className="flex justify-between">
+            <label className="text-shadow-wrap ml-1" htmlFor="title">
+              Title
+            </label>
+            <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
+          </div>
+          <input
+            className="block-shadow mt-1 h-10 rounded-lg bg-white pr-2 pl-3"
+            id="title"
+            name="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            minLength={1}
+            maxLength={75}
+            required
+          />
+          <div className="block-shadow mt-2 h-8 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+            {textCensor.applyTo(title, profanityMatcher.getAllMatches(title))}
+          </div>
+          <div className="mt-3 flex justify-between">
+            <label className="text-shadow-wrap ml-1" htmlFor="content">
+              Content
+            </label>
+            <div className="text-shadow-wrap mr-2">{content.length} / 350</div>
+          </div>
+          <textarea
+            className="block-shadow mt-1 h-24 w-full resize-none rounded-lg bg-white py-1 pr-1 pl-2 disabled:bg-gray-200"
+            id="content"
+            name="content"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+            minLength={1}
+            maxLength={350}
+            required
+          />
+          <div className="block-shadow mt-2 h-16 w-full resize-none rounded-lg bg-pink-50 py-1 pr-1 pl-2 break-words">
+            {textCensor.applyTo(
+              content,
+              profanityMatcher.getAllMatches(content)
+            )}
+          </div>
+        </div>
+
+        {/* Media Section */}
         <NewPostFormMediaSection
           mediaInputMode={mediaInputMode}
           setMediaInputMode={setMediaInputMode}
@@ -318,20 +320,26 @@ const CreatePostModalView = ({ open = false, closeFunction, onSubmitPost, isLoad
           acceptedMimeTypes={MIMETYPES}
           acceptedExtensions={EXTENSIONS}
           urlError={urlError}
-          isLoading={isLoading}
+          isLoading={isLoadingSubmit}
+          gifs={gifs}
+          isLoadingGifs={isLoadingGifs}
+          searchGifs={searchGifs}
+          gifError={gifError}
         />
+
+        {/* Form Buttons */}
         <footer className="flex gap-2">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
             onClick={closeFunction}
-            disabled={isLoading}
+            disabled={isLoadingSubmit}
           >
             Cancel
           </button>
           <button
             className="blue-button flex-1 px-6 py-1.5 text-lg font-bold"
-            disabled={isLoading}
+            disabled={isLoadingSubmit}
           >
             Post
           </button>

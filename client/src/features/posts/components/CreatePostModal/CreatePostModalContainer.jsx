@@ -1,12 +1,20 @@
 import { CreatePostModalView } from '@/features/posts/components/CreatePostModal/CreatePostModalView.jsx';
 import { useCreatePost } from '@/features/posts/hooks/useCreatePost.js';
+import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
+import { useEffect } from 'react';
 
 const CreatePostModalContainer = ({
   open = false,
   closeModal,
   onSubmitModal,
 }) => {
-  const { createPost, isLoading } = useCreatePost();
+  const { createPost, isLoading: isLoadingCreatePost } = useCreatePost();
+  const { gifs, isLoading: isLoadingGifs, error, fetchGifs } = useGiphy();
+
+  // initialize gifs
+  useEffect(() => {
+    fetchGifs();
+  }, [fetchGifs]);
 
   const onSubmitPost = async (title, content, media) => {
     if (media) {
@@ -18,12 +26,21 @@ const CreatePostModalContainer = ({
     onSubmitModal();
   };
 
+  const searchGifs = (query) => {
+    fetchGifs(query);
+  };
+
   return (
     <CreatePostModalView
       open={open}
       closeFunction={closeModal}
       onSubmitPost={onSubmitPost}
-      isLoading={isLoading}
+      isLoadingSubmit={isLoadingCreatePost}
+
+      gifs={gifs}
+      isLoadingGifs={isLoadingGifs}
+      searchGifs={searchGifs}
+      gifError={error}
     />
   );
 };
