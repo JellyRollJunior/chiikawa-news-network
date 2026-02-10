@@ -1,7 +1,7 @@
-import { CreatePostModalView } from '@/features/posts/components/CreatePostModal/CreatePostModalView.jsx';
+import { useEffect } from 'react';
 import { useCreatePost } from '@/features/posts/hooks/useCreatePost.js';
 import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
-import { useEffect } from 'react';
+import { CreatePostModalView } from '@/features/posts/components/CreatePostModal/CreatePostModalView.jsx';
 
 const CreatePostModalContainer = ({
   open = false,
@@ -33,10 +33,9 @@ const CreatePostModalContainer = ({
   return (
     <CreatePostModalView
       open={open}
-      closeFunction={closeModal}
+      closeModal={closeModal}
       onSubmitPost={onSubmitPost}
-      isLoadingSubmit={isLoadingCreatePost}
-
+      isSubmittingPost={isLoadingCreatePost}
       gifs={gifs}
       isLoadingGifs={isLoadingGifs}
       searchGifs={searchGifs}

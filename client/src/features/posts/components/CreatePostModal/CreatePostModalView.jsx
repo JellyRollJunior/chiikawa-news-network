@@ -6,36 +6,54 @@ import { profanityMatcher, textCensor } from '@/shared/services/textCensor.js';
 
 import trash from '@/assets/svgs/trash.svg';
 
-const MEDIA_INPUT_MODE = Object.freeze({
-  UPLOAD: 'UPLOAD',
-  URL: 'URL',
-  GIPHY: 'GIPHY',
-});
-
-const NewPostFormMediaSection = ({
-  mediaInputMode,
-  setMediaInputMode,
-  media,
-  setMedia,
-  acceptedMimeTypes,
-  acceptedExtensions,
-  urlError,
-  isLoading,
+const CreatePostModalView = ({
+  open = false,
+  closeModal,
+  onSubmitPost,
+  isSubmittingPost,
   gifs,
-  isLoadingGifs,
   searchGifs,
+  isLoadingGifs,
   gifError,
 }) => {
-  const [uploadError, setUploadError] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const fileInputRef = useRef(null);
+  // Text section
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
+  // Media - Select Mode
+  const MEDIA_INPUT_MODE = Object.freeze({
+    UPLOAD: 'UPLOAD',
+    URL: 'URL',
+    GIPHY: 'GIPHY',
+  });
+  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.GIPHY);
+  const selectedMediaModeStyling = 'border-pink-400 bg-pink-100 font-bold';
+  const [media, setMedia] = useState(null);
+
+  // Media - Giphy
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Media - URL
+  const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+  const [urlError, setUrlError] = useState(false);
+  const isMediaUrlValid = (value) => {
+    if (typeof value == 'string' || value instanceof String) {
+      return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
+        return hasAllowedExtension || value.endsWith(extension);
+      }, false);
+    }
+    return false;
+  };
+
+  // Media - Upload
+  const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
+  const fileInputRef = useRef(null);
+  const [uploadError, setUploadError] = useState('');
   const handleClickUpload = () => {
     if (fileInputRef) {
       fileInputRef.current.click();
     }
   };
-
   const handleUploadMedia = (event) => {
     const file = event.target.files[0];
     const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
@@ -49,204 +67,7 @@ const NewPostFormMediaSection = ({
     }
   };
 
-  const renderGifs = () => {
-    if (isLoadingGifs) {
-      return (
-        <div className="text-center">
-          Loading gifs{' '}
-          <LoadingDots dotTravelDistance={8} color="bg-amber-900" />
-        </div>
-      );
-    }
-
-    if (gifError) {
-      return (
-        <div className="flex h-full items-center justify-center text-center">
-          Unable to fetch gifs. <br /> Try again later :(
-        </div>
-      );
-    }
-
-    return (
-      <SimpleBar className="h-full w-full">
-        <ul className="grid grid-cols-2 gap-1">
-          {gifs.map((gif) => (
-            <li
-              key={gif.url}
-              className={`h-26 overflow-clip rounded-lg border-2 border-pink-200 ${
-                media === gif.url ? 'border-pink-400' : ''
-              }`}
-            >
-              <button
-                className="h-full w-full"
-                type="button"
-                onClick={() => setMedia(gif.url)}
-              >
-                <img
-                  className="h-full w-full object-cover"
-                  src={gif.url}
-                  alt={gif.altText}
-                />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </SimpleBar>
-    );
-  };
-
-  const selectedMediaModeStyling = 'border-pink-400 bg-pink-100 font-bold';
-  return (
-    <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
-      <div className="flex items-center gap-3">
-        <div className="flex">
-          <button
-            className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.GIPHY && selectedMediaModeStyling}`}
-            type="button"
-            onClick={() => {
-              setMedia(null);
-              setMediaInputMode(MEDIA_INPUT_MODE.GIPHY);
-            }}
-          >
-            Gif
-          </button>
-          <button
-            className={`border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && selectedMediaModeStyling}`}
-            type="button"
-            onClick={() => {
-              setMedia(null);
-              setMediaInputMode(MEDIA_INPUT_MODE.UPLOAD);
-            }}
-          >
-            Upload
-          </button>
-          <button
-            className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && selectedMediaModeStyling}`}
-            type="button"
-            onClick={() => {
-              setMedia('');
-              setMediaInputMode(MEDIA_INPUT_MODE.URL);
-            }}
-          >
-            URL
-          </button>
-        </div>
-      </div>
-      {(mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ||
-        mediaInputMode == MEDIA_INPUT_MODE.URL) && (
-        <div
-          className={`text-shadow-wrap text-xs ${urlError && 'text-red-400'}`}
-        >
-          Accepted formats: {acceptedExtensions.join(', ')}
-        </div>
-      )}
-      {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
-        <div
-          className={`text-shadow-wrap text-xs ${uploadError && 'text-red-400'}`}
-        >
-          (max 250Kb)
-        </div>
-      )}
-      {/* UPLOAD MODE */}
-      {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
-        <div className="flex items-center">
-          <button
-            className="blue-button w-fit flex-none px-3 py-1"
-            type="button"
-            onClick={handleClickUpload}
-            disabled={isLoading}
-          >
-            Upload Media
-          </button>
-          {media && (
-            <>
-              <div className="ml-3 max-h-9 flex-1 overflow-hidden text-xs overflow-ellipsis">
-                {media.name}
-              </div>
-              <button onClick={() => setMedia(null)}>
-                <img src={trash} alt="Delete media button" />
-              </button>
-            </>
-          )}
-          <input
-            className="hidden"
-            type="file"
-            ref={fileInputRef}
-            accept={acceptedMimeTypes}
-            onChange={handleUploadMedia}
-          />
-        </div>
-      )}
-      {/* URL MODE */}
-      {mediaInputMode == MEDIA_INPUT_MODE.URL && (
-        <input
-          className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
-          id="mediaUrl"
-          name="mediaUrl"
-          type="url"
-          value={media}
-          onChange={(event) => setMedia(event.target.value)}
-          placeholder="https://www.media.com/url.png"
-        />
-      )}
-      {/* GIPHY MODE */}
-      {mediaInputMode == MEDIA_INPUT_MODE.GIPHY && (
-        <>
-          <div className="flex gap-1.5">
-            <input
-              className="block-shadow h-10 min-w-0 rounded-lg bg-white pr-2 pl-3"
-              type="text"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search Giphy..."
-            />
-            <button
-              className="yellow-button px-2"
-              disabled={isLoadingGifs}
-              onClick={() => searchGifs(searchTerm)}
-            >
-              Search
-            </button>
-          </div>
-          <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 p-2">
-            {renderGifs()}
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-const CreatePostModalView = ({
-  open = false,
-  closeFunction,
-  onSubmitPost,
-  isLoadingSubmit,
-  gifs,
-  isLoadingGifs,
-  searchGifs,
-  gifError,
-}) => {
-  // Text section
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
-  // Media section
-  const [mediaInputMode, setMediaInputMode] = useState(MEDIA_INPUT_MODE.GIPHY);
-  const [media, setMedia] = useState(null);
-  const [urlError, setUrlError] = useState(false);
-  const MIMETYPES = 'image/jpg, image/jpeg, image/png, image/gif, image/webp';
-  const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
-
-  const isMediaUrlValid = (value) => {
-    if (typeof value == 'string' || value instanceof String) {
-      return EXTENSIONS.reduce((hasAllowedExtension, extension) => {
-        return hasAllowedExtension || value.endsWith(extension);
-      }, false);
-    }
-    return false;
-  };
-
+  // Post - Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
     // URL mode && user entered URL -> validate URL
@@ -264,7 +85,7 @@ const CreatePostModalView = ({
   };
 
   return (
-    <ModalDialog open={open} title="New Post" closeFunction={closeFunction}>
+    <ModalDialog open={open} onClose={closeModal} title="New Post">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         {/* Text Section */}
         <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
@@ -312,34 +133,177 @@ const CreatePostModalView = ({
         </div>
 
         {/* Media Section */}
-        <NewPostFormMediaSection
-          mediaInputMode={mediaInputMode}
-          setMediaInputMode={setMediaInputMode}
-          media={media}
-          setMedia={setMedia}
-          acceptedMimeTypes={MIMETYPES}
-          acceptedExtensions={EXTENSIONS}
-          urlError={urlError}
-          isLoading={isLoadingSubmit}
-          gifs={gifs}
-          isLoadingGifs={isLoadingGifs}
-          searchGifs={searchGifs}
-          gifError={gifError}
-        />
+        <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2">
+          {/* Select media type buttons */}
+          <div className="flex items-center gap-3">
+            <div className="flex">
+              <button
+                className={`rounded-tl-lg rounded-bl-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.GIPHY && selectedMediaModeStyling}`}
+                type="button"
+                onClick={() => {
+                  setMedia(null);
+                  setMediaInputMode(MEDIA_INPUT_MODE.GIPHY);
+                }}
+              >
+                Gif
+              </button>
+              <button
+                className={`border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && selectedMediaModeStyling}`}
+                type="button"
+                onClick={() => {
+                  setMedia(null);
+                  setMediaInputMode(MEDIA_INPUT_MODE.UPLOAD);
+                }}
+              >
+                Upload
+              </button>
+              <button
+                className={`rounded-tr-lg rounded-br-lg border-1 border-pink-200 bg-pink-50 px-2 py-1 ${mediaInputMode == MEDIA_INPUT_MODE.URL && selectedMediaModeStyling}`}
+                type="button"
+                onClick={() => {
+                  setMedia('');
+                  setMediaInputMode(MEDIA_INPUT_MODE.URL);
+                }}
+              >
+                URL
+              </button>
+            </div>
+          </div>
+
+          {/* Media info / warnings */}
+          {(mediaInputMode == MEDIA_INPUT_MODE.UPLOAD ||
+            mediaInputMode == MEDIA_INPUT_MODE.URL) && (
+            <div
+              className={`text-shadow-wrap text-xs ${urlError && 'text-red-400'}`}
+            >
+              Accepted formats: {EXTENSIONS.join(', ')}
+            </div>
+          )}
+          {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
+            <div
+              className={`text-shadow-wrap text-xs ${uploadError && 'text-red-400'}`}
+            >
+              (max 250Kb)
+            </div>
+          )}
+
+          {/* UPLOAD MODE */}
+          {mediaInputMode == MEDIA_INPUT_MODE.UPLOAD && (
+            <div className="flex items-center">
+              <button
+                className="blue-button w-fit flex-none px-3 py-1"
+                type="button"
+                onClick={handleClickUpload}
+                disabled={isSubmittingPost}
+              >
+                Upload Media
+              </button>
+              {media && (
+                <>
+                  <div className="ml-3 max-h-9 flex-1 overflow-hidden text-xs overflow-ellipsis">
+                    {media.name}
+                  </div>
+                  <button onClick={() => setMedia(null)}>
+                    <img src={trash} alt="Delete media button" />
+                  </button>
+                </>
+              )}
+              <input
+                className="hidden"
+                type="file"
+                ref={fileInputRef}
+                accept={MIMETYPES}
+                onChange={handleUploadMedia}
+              />
+            </div>
+          )}
+
+          {/* URL MODE */}
+          {mediaInputMode == MEDIA_INPUT_MODE.URL && (
+            <input
+              className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
+              id="mediaUrl"
+              name="mediaUrl"
+              type="url"
+              value={media}
+              onChange={(event) => setMedia(event.target.value)}
+              placeholder="https://www.media.com/url.png"
+            />
+          )}
+
+          {/* GIPHY MODE */}
+          {mediaInputMode == MEDIA_INPUT_MODE.GIPHY && (
+            <>
+              <div className="flex gap-1.5">
+                <input
+                  className="block-shadow h-10 min-w-0 rounded-lg bg-white pr-2 pl-3"
+                  type="text"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  placeholder="Search Giphy..."
+                />
+                <button
+                  className="yellow-button px-2"
+                  disabled={isLoadingGifs}
+                  onClick={() => searchGifs(searchTerm)}
+                >
+                  Search
+                </button>
+              </div>
+              <div className="block-shadow h-48 resize-none rounded-lg bg-pink-50 p-2">
+                {isLoadingGifs ? (
+                  <div className="text-center">
+                    Loading gifs{' '}
+                    <LoadingDots dotTravelDistance={8} color="bg-amber-900" />
+                  </div>
+                ) : gifError ? (
+                  <div className="flex h-full items-center justify-center text-center">
+                    Unable to fetch gifs. <br /> Try again later :(
+                  </div>
+                ) : (
+                  <SimpleBar className="h-full w-full">
+                    <ul className="grid grid-cols-2 gap-1">
+                      {gifs.map((gif) => (
+                        <li
+                          key={gif.url}
+                          className={`h-26 overflow-clip rounded-lg border-2 border-pink-200 ${
+                            media === gif.url ? 'border-pink-400' : ''
+                          }`}
+                        >
+                          <button
+                            className="h-full w-full"
+                            type="button"
+                            onClick={() => setMedia(gif.url)}
+                          >
+                            <img
+                              className="h-full w-full object-cover"
+                              src={gif.url}
+                              alt={gif.altText}
+                            />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </SimpleBar>
+                )}
+              </div>
+            </>
+          )}
+        </div>
 
         {/* Form Buttons */}
         <footer className="flex gap-2">
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
-            onClick={closeFunction}
-            disabled={isLoadingSubmit}
+            onClick={closeModal}
+            disabled={isSubmittingPost}
           >
             Cancel
           </button>
           <button
             className="blue-button flex-1 px-6 py-1.5 text-lg font-bold"
-            disabled={isLoadingSubmit}
+            disabled={isSubmittingPost}
           >
             Post
           </button>

@@ -1,7 +1,7 @@
 import SimpleBar from 'simplebar-react';
 import { useRef } from 'react';
 
-const ModalDialog = ({ open = false, onClose, children, title }) => {
+const ModalDialog = ({ open = false, onClose, title, children }) => {
   const ref = useRef(null);
 
   const openModal = () => ref && ref.current && ref.current.showModal();
@@ -10,7 +10,10 @@ const ModalDialog = ({ open = false, onClose, children, title }) => {
   open ? openModal() : closeModal();
 
   return (
-    <dialog className="xs:w-sm secondary-container m-auto h-150 w-9/10" ref={ref}>
+    <dialog
+      className="xs:w-sm secondary-container m-auto h-150 w-9/10"
+      ref={ref}
+    >
       <SimpleBar className="h-full px-3 pt-3 pb-2.5 text-amber-900">
         <div className="flex flex-col">
           <header className="pink-block relative pt-3.5 pb-1.5">
