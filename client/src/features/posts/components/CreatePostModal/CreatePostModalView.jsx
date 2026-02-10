@@ -1,6 +1,5 @@
 import SimpleBar from 'simplebar-react';
 import { useEffect, useRef, useState } from 'react';
-import { useCreatePost } from '@/features/posts/hooks/useCreatePost.js';
 import { useGiphy } from '@/features/posts/hooks/useGiphy.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
@@ -18,7 +17,7 @@ const NewPostFormTextSection = ({ title, setTitle, content, setContent }) => {
         <div className="text-shadow-wrap mr-2">{title.length} / 75</div>
       </div>
       <input
-        className="block-shadow mt-1 h-10 rounded-lg bg-white pl-3 pr-2"
+        className="block-shadow mt-1 h-10 rounded-lg bg-white pr-2 pl-3"
         id="title"
         name="title"
         value={title}
@@ -229,7 +228,7 @@ const NewPostFormMediaSection = ({
       {/* URL MODE */}
       {mediaInputMode == MEDIA_INPUT_MODE.URL && (
         <input
-          className="block-shadow h-10 rounded-lg bg-white pl-3 pr-2"
+          className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
           id="mediaUrl"
           name="mediaUrl"
           type="url"
@@ -243,7 +242,7 @@ const NewPostFormMediaSection = ({
         <>
           <div className="flex gap-1.5">
             <input
-              className="block-shadow h-10 min-w-0 rounded-lg bg-white pl-3 pr-2"
+              className="block-shadow h-10 min-w-0 rounded-lg bg-white pr-2 pl-3"
               type="text"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
@@ -266,8 +265,7 @@ const NewPostFormMediaSection = ({
   );
 };
 
-const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
-  const { createPost, isLoading } = useCreatePost();
+const CreatePostModalView = ({ open = false, closeFunction, onSubmitPost, isLoading }) => {
   // Text section
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -297,18 +295,14 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
     ) {
       return setUrlError(true);
     }
-    // create post
-    if (media) {
-      await createPost(title, content, media);
-    } else {
-      await createPost(title, content, null);
-    }
-    closeFunction();
-    onSubmit();
+
+    media
+      ? onSubmitPost(title, content, media)
+      : onSubmitPost(title, content, null);
   };
 
   return (
-    <ModalDialog title="New Post" closeFunction={closeFunction}>
+    <ModalDialog open={open} title="New Post" closeFunction={closeFunction}>
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         <NewPostFormTextSection
           title={title}
@@ -347,4 +341,4 @@ const HomeNewPostModal = ({ closeFunction, onSubmit }) => {
   );
 };
 
-export { HomeNewPostModal };
+export { CreatePostModalView };

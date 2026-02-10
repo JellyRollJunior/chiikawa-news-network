@@ -3,7 +3,7 @@ import { usePosts } from '@/features/posts/hooks/usePosts.js';
 import { PostList } from '@/features/posts/components/PostsList.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { HomePostControlButtons } from '@/features/posts/components/HomePostControlButtons.jsx';
-import { HomeNewPostModal } from '@/features/posts/components/HomeNewPostModal.jsx';
+import { CreatePostModal } from '@/features/posts/components/CreatePostModal';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
     isLoadingLike,
   } = usePosts(5);
 
-  // New Post Modal
+  // Create Post Modal
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const openCreatePostModal = () => setIsCreateModalOpen(true);
   const closeCreatePostModal = () => setIsCreateModalOpen(false);
@@ -66,12 +66,11 @@ const Home = () => {
           </section>
         </Scrollable>
       </div>
-      {isCreateModalOpen && (
-        <HomeNewPostModal
-          closeFunction={closeCreatePostModal}
-          onSubmit={refreshPosts}
-        />
-      )}
+      <CreatePostModal
+        open={isCreateModalOpen}
+        closeModal={closeCreatePostModal}
+        onSubmit={refreshPosts}
+      />
     </>
   );
 };

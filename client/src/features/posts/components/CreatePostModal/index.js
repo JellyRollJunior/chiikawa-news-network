@@ -1,0 +1,1 @@
+export { CreatePostModalContainer as CreatePostModal } from './CreatePostModalContainer.jsx';
