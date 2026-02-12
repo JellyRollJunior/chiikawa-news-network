@@ -2,10 +2,10 @@ import { useContext, useState, Fragment } from 'react';
 import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useComments } from '@/features/posts/hooks/useComments.js';
 import { useCreateComment } from '@/features/posts/hooks/useCreateComment.js';
-import { Avatar } from '@/shared/components/Avatar.jsx';
 import { CommentListItem } from '@/features/posts/components/CommentListItem.jsx';
+import { DeleteCommentModal } from '@/features/posts/components/DeleteCommentModal.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
-import { CommentDeleteModal } from '@/features/posts/components/CommentDeleteModal.jsx';
 
 import send from '@/assets/svgs/send.svg';
 
@@ -62,7 +62,7 @@ const CommentList = ({ postId }) => {
           avatar={avatar}
         />
         <textarea
-          className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pl-2 pr-1.5 disabled:bg-gray-200"
+          className="ml-2 flex-1 resize-none rounded-lg border-1 border-pink-200 bg-white py-1 pr-1.5 pl-2 disabled:bg-gray-200"
           type="text"
           name="comment"
           id="comment"
@@ -78,13 +78,12 @@ const CommentList = ({ postId }) => {
           <img className="w-5 md:w-6" src={send} />
         </button>
       </form>
-      {commentToDeleteId && (
-        <CommentDeleteModal
-          commentId={commentToDeleteId}
-          closeFunction={closeDeleteModal}
-          onSubmit={refetchComments}
-        />
-      )}
+      <DeleteCommentModal
+        open={commentToDeleteId != null}
+        closeModal={closeDeleteModal}
+        onDeleteComment={refetchComments}
+        commentId={commentToDeleteId}
+      />
     </>
   );
 };

@@ -85,7 +85,7 @@ const CreatePostModalView = ({
   };
 
   return (
-    <ModalDialog open={open} onClose={closeModal} title="New Post">
+    <ModalDialog open={open} closeModal={closeModal} title="New Post">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         {/* Text Section */}
         <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">

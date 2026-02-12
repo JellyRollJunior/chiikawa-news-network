@@ -1,13 +1,13 @@
 import SimpleBar from 'simplebar-react';
 import { useRef } from 'react';
 
-const ModalDialog = ({ open = false, onClose, title, children }) => {
+const ModalDialog = ({ open = false, closeModal, title, children }) => {
   const ref = useRef(null);
 
   const openModal = () => ref && ref.current && ref.current.showModal();
-  const closeModal = () => ref && ref.current && ref.current.close();
+  const hideModal = () => ref && ref.current && ref.current.close();
 
-  open ? openModal() : closeModal();
+  open ? openModal() : hideModal();
 
   return (
     <dialog
@@ -19,7 +19,7 @@ const ModalDialog = ({ open = false, onClose, title, children }) => {
           <header className="pink-block relative pt-3.5 pb-1.5">
             <button
               className="text-shadow-wrap absolute -top-1.5 right-1.5 h-fit text-2xl"
-              onClick={onClose}
+              onClick={closeModal}
             >
               ×
             </button>

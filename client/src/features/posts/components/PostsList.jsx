@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { PostsListItem } from '@/features/posts/components/PostsListItem.jsx';
-import { HomeDeletePostModal } from '@/features/posts/components/HomeDeletePostModal.jsx';
+import { DeletePostModal } from '@/features/posts/components/DeletePostModal.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import { BLOCKS } from '@/styles/blocks.js';
 
@@ -36,6 +36,7 @@ const PostList = ({
   return (
     <>
       <ul className="flex flex-col gap-2">
+        {/* Posts */}
         {!isLoadingInit
           ? posts.map((post, index) => (
               <Fragment key={post.id}>
@@ -76,13 +77,12 @@ const PostList = ({
           </PostListNotification>
         )}
       </ul>
-      {postToBeDeletedId && (
-        <HomeDeletePostModal
-          postId={postToBeDeletedId}
-          closeFunction={closeDeleteModal}
-          onSubmit={refreshPosts}
-        />
-      )}
+      <DeletePostModal
+        open={postToBeDeletedId != null}
+        postId={postToBeDeletedId}
+        closeModal={closeDeleteModal}
+        onDeletePost={refreshPosts}
+      />
     </>
   );
 };

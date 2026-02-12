@@ -2,27 +2,32 @@ import { useDeleteComment } from '@/features/posts/hooks/useDeleteComment.js';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 
-const CommentDeleteModal = ({ commentId, closeFunction, onSubmit }) => {
+const DeleteCommentModal = ({
+  open = false,
+  closeModal,
+  commentId,
+  onDeleteComment,
+}) => {
   const { deleteComment, isLoading } = useDeleteComment();
 
   const handleDeleteComment = async (event) => {
     event.preventDefault();
     if (!commentId) return;
     await deleteComment(commentId);
-    closeFunction();
-    onSubmit();
+    closeModal();
+    onDeleteComment();
   };
 
   return (
-    <ModalDialog title="Delete Post" closeFunction={closeFunction}>
+    <ModalDialog open={open} closeModal={closeModal} title="Delete Post">
       <DeleteForm
         label="The comment"
         onSubmit={handleDeleteComment}
         isLoading={isLoading}
-        closeFunction={closeFunction}
+        closeFunction={closeModal}
       />
     </ModalDialog>
   );
 };
 
-export { CommentDeleteModal };
+export { DeleteCommentModal };

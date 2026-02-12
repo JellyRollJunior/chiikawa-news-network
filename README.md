@@ -214,6 +214,14 @@ VITE_GIPHY_API_KEY
 ## Potential Improvements
 
 - make loading not gray (its ugly)
-- reconfigure modal to close w/o close function
 - document client routes!
 - start commands
+
+- reconfigure modal to close w/o close function
+    - create chat modal
+    - chat rename
+    - chat info modal
+    - chat delte
+- rename modals
+- separate commentlist to view/container
+- honestly delete the x button from the modal title
