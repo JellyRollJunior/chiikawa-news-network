@@ -5,7 +5,7 @@ import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { usePublicChats } from '@/features/chats/hooks/usePublicChats.js';
 import { ChatsSectionTitle } from '@/features/chats/components/ChatsSectionTitle.jsx';
 import { ChatsList } from '@/features/chats/components/ChatsList.jsx';
-import { ChatsNewConversationModal } from '@/features/chats/components/ChatsNewConversationModal.jsx';
+import { CreateChatModal } from '@/features/chats/components/CreateChatModal/';
 
 import kaniReading from '@/assets/images/kani-reading.png';
 import editSquare from '@/assets/svgs/edit-square.svg';
@@ -26,14 +26,15 @@ const Chats = () => {
     ? chats.filter((chat) => chat.name.toLowerCase().includes(normalizedFilter))
     : [];
 
-  // new convo modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openNewConversationModal = () => setIsModalOpen(true);
-  const closeNewConversationModal = () => setIsModalOpen(false);
-
+  // refetch chats on load
   useEffect(() => {
     refetchChats();
-  }, [refetchChats])
+  }, [refetchChats]);
+
+  // create chat modal
+  const [isCreateChatModalOpen, setIsCreateChatModalOpen] = useState(false);
+  const openCreateChatModal = () => setIsCreateChatModalOpen(true);
+  const closeCreateChatModal = () => setIsCreateChatModalOpen(false);
 
   return (
     <>
@@ -49,7 +50,7 @@ const Chats = () => {
               <div className="pink-block flex">
                 <button
                   className="h-full self-end rounded-sm pt-1.5 pr-1 pb-1 pl-1.5 hover:bg-pink-200"
-                  onClick={openNewConversationModal}
+                  onClick={openCreateChatModal}
                 >
                   <img src={editSquare} alt="" />
                 </button>
@@ -80,24 +81,32 @@ const Chats = () => {
               <ChatsSectionTitle
                 title="Conversations"
                 refreshBtn={refetchChats}
-                hoverColor='duckegg-dark'
+                hoverColor="duckegg-dark"
               />
               <main className="mt-2 flex-1">
                 <ChatsList
                   chats={filteredChats}
                   isLoading={isLoading}
                   isNoChatsPromptShown={true}
-                  hoverColor='duckegg-dark'
+                  hoverColor="duckegg-dark"
                 />
               </main>
             </section>
           </div>
         </SimpleBar>
-        <img className="drop-shadow-pink-outline absolute -right-[16px] -bottom-[8px] w-[80px]" src={kaniReading} />
+        <img
+          className="drop-shadow-pink-outline absolute -right-[16px] -bottom-[8px] w-[80px]"
+          src={kaniReading}
+        />
       </div>
-      {isModalOpen && (
-        <ChatsNewConversationModal closeFunction={closeNewConversationModal} />
-      )}
+      <CreateChatModal
+        open={isCreateChatModalOpen}
+        closeModal={closeCreateChatModal}
+        onSubmit={() => {
+          closeCreateChatModal();
+          refetchChats();
+        }}
+      />
     </>
   );
 };

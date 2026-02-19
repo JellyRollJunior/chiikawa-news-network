@@ -218,7 +218,6 @@ VITE_GIPHY_API_KEY
 - start commands
 
 - reconfigure modal to close w/o close function
-    - create chat modal
     - chat rename
     - chat info modal
     - chat delte

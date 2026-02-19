@@ -1,17 +1,18 @@
-import { Fragment, useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useUsers } from '@/features/users/hooks/useUsers.js';
-import { useCreateChat } from '@/features/chats/hooks/useCreateChat.js';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Fragment, useState } from 'react';
 import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
-import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { profanityMatcher } from '@/shared/services/textCensor.js';
 
-const ChatsNewConversationModal = ({ closeFunction }) => {
-  const navigate = useNavigate();
-  const { refetchChats } = useContext(ChatsContext);
-  const { users, isLoading } = useUsers();
-  const { createChat, isLoading: isCreatingChat } = useCreateChat();
+const CreateChatModalView = ({
+  open,
+  closeModal,
+  users,
+  isLoadingUsers,
+  createChat,
+  isCreatingChat,
+  onSubmit,
+  navigate,
+}) => {
   const [filter, setFilter] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [name, setName] = useState('');
@@ -27,28 +28,31 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
 
   const handleCreateChat = async (event) => {
     event.preventDefault();
-    // form error handling
-    let invalidForm = false;
+
+    let isFormInvalid = false;
+    // ensure >= 1 users are selected
     if (!selectedUsers || selectedUsers == '') {
       setUserError(true);
-      invalidForm = true;
+      isFormInvalid = true;
     } else {
       setUserError(false);
     }
+    // filter profanity
     if (profanityMatcher.hasMatch(name)) {
       setProfanityError(true);
-      invalidForm = true;
+      isFormInvalid = true;
     } else {
       setProfanityError(false);
     }
-    if (invalidForm) return;
-    // no errors -> create chat
+    if (isFormInvalid) return;
+
     const data = await createChat(name, selectedUsers);
+
     // reset form
     setSelectedUsers('');
     setName('');
-    closeFunction();
-    refetchChats();
+    closeModal();
+    onSubmit();
     if (data && data.id) navigate(`/chats/${data.id}`);
   };
 
@@ -62,7 +66,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
   };
 
   return (
-    <ModalDialog closeFunction={closeFunction} title="New Conversation">
+    <ModalDialog open={open} closeModal={closeModal} title="New Conversation">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleCreateChat}>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
           <label className="text-shadow-wrap ml-1 flex items-center gap-1 font-medium">
@@ -74,7 +78,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             </span>
           </label>
           <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">
-            {!isLoading
+            {!isLoadingUsers
               ? filteredUsers.map((user) => (
                   <Fragment key={user.id}>
                     <ChatsNewConversationModalListItem
@@ -91,12 +95,15 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
                 [...Array(4)].map((item, index) => (
                   <Fragment key={index}>
                     <ChatsNewConversationModalListItem isLoading={true} />
-                    <ChatsNewConversationModalListItem isLoading={true} loadingDelay={0.8} />
+                    <ChatsNewConversationModalListItem
+                      isLoading={true}
+                      loadingDelay={0.8}
+                    />
                   </Fragment>
                 ))}
           </ul>
           <input
-            className="block-shadow h-10 rounded-lg bg-white pl-3 pr-2"
+            className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
             type="text"
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
@@ -118,7 +125,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
             )}
           </div>
           <input
-            className="block-shadow h-10 w-full rounded-xl bg-white pl-3 pr-2"
+            className="block-shadow h-10 w-full rounded-xl bg-white pr-2 pl-3"
             type="text"
             name="chatName"
             id="Chat name (optional)"
@@ -133,7 +140,7 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
-            onClick={closeFunction}
+            onClick={closeModal}
           >
             Cancel
           </button>
@@ -149,4 +156,4 @@ const ChatsNewConversationModal = ({ closeFunction }) => {
   );
 };
 
-export { ChatsNewConversationModal };
+export { CreateChatModalView };
