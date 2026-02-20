@@ -5,7 +5,7 @@ import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
 import { ChatRenameModal } from '@/features/chats/components/ChatRenameModal.jsx';
-import { ChatDeleteModal } from '@/features/chats/components/ChatDeleteModal.jsx';
+import { DeleteChatModal } from '@/features/chats/components/DeleteChatModal.jsx';
 import { ChatHeader } from '@/features/chats/components/ChatHeader.jsx';
 import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
 
@@ -54,6 +54,10 @@ const Chat = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const openDeleteModal = () => setIsDeleteModalOpen(true);
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
+  const onSubmitDeleteChat = () => {
+    closeDeleteModal();
+    navigate('/chats');
+  };
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
@@ -76,10 +80,13 @@ const Chat = () => {
         />
       </main>
       <div className="duckegg-block h-4 shrink-0"></div>
+      
+      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
+
+      {/* Modals */}
       {isInfoModalOpen && (
         <ChatInfoModal closeFunction={closeInfoModal} chat={chat} />
       )}
-      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
       {isRenameModalOpen && (
         <ChatRenameModal
           closeFunction={closeRenameModal}
@@ -87,10 +94,18 @@ const Chat = () => {
           onSubmit={onSubmitRenameChat}
         />
       )}
-      {isDeleteModalOpen && (
-        <ChatDeleteModal closeFunction={closeDeleteModal} chatId={chatId} />
-      )}
-      <img className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]" src={shisaBento} />
+      <DeleteChatModal
+        open={isDeleteModalOpen}
+        closeModal={closeDeleteModal}
+        chatId={chatId}
+        onSubmit={onSubmitDeleteChat}
+      />
+
+      {/* Decorations */}
+      <img
+        className="drop-shadow-pink-outline absolute -top-[20px] -right-[20px] w-[74px]"
+        src={shisaBento}
+      />
     </div>
   );
 };
