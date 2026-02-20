@@ -217,8 +217,6 @@ VITE_GIPHY_API_KEY
 - document client routes!
 - start commands
 
-- reconfigure modal to close w/o close function
-    - chat info modal
 - rename modals
 - separate commentlist to view/container
 - honestly delete the x button from the modal title

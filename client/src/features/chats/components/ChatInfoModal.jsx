@@ -1,10 +1,11 @@
-import { Avatar } from '@/shared/components/Avatar.jsx';
 import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Avatar } from '@/shared/components/Avatar.jsx';
 
-const ChatInfoModal = ({ closeFunction, chat }) => {
+const ChatInfoModal = ({ open, closeModal, chat }) => {
   if (!chat || !chat.users || !chat.name) return;
+
   return (
-    <ModalDialog title="Conversation Info" closeFunction={closeFunction}>
+    <ModalDialog open={open} closeModal={closeModal} title="Conversation Info">
       <div className="mt-2 flex flex-col gap-2">
         <div className="duckegg-block h-4 shrink-0" />
         <div className="pink-dotted-block px-3 pt-2 pb-2.5">
@@ -34,7 +35,7 @@ const ChatInfoModal = ({ closeFunction, chat }) => {
           <button
             type="button"
             className="pink-button flex-1 px-6 py-1 text-lg font-bold"
-            onClick={closeFunction}
+            onClick={closeModal}
           >
             Close
           </button>

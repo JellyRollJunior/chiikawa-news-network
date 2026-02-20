@@ -90,9 +90,11 @@ const Chat = () => {
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
 
       {/* Modals */}
-      {isInfoModalOpen && (
-        <ChatInfoModal closeFunction={closeInfoModal} chat={chat} />
-      )}
+      <ChatInfoModal
+        open={isInfoModalOpen}
+        closeModal={closeInfoModal}
+        chat={chat}
+      />
       <RenameChatModal
         open={isRenameModalOpen}
         closeModal={closeRenameModal}
