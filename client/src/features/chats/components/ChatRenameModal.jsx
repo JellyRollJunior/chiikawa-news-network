@@ -1,29 +1,29 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 import { useRenameChat } from '@/features/chats/hooks/useRenameChat.js';
+import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
 
-const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
+const RenameChatModal = ({ open = false, closeModal, chatName, onSubmit }) => {
   const { chatId } = useParams();
-  const { refetchChats } = useContext(ChatsContext);
   const { renameChat, isLoading } = useRenameChat(chatId);
   const [name, setName] = useState('');
 
   useEffect(() => {
     setName(chatName);
-  }, [chatName]);
+  }, [chatName, open]);
 
   const handleRenameChat = async (event) => {
     event.preventDefault();
     const chat = await renameChat(name);
     onSubmit(chat.name);
-    refetchChats();
-    closeFunction();
   };
 
   return (
-    <ModalDialog closeFunction={closeFunction} title="Rename Conversation">
+    <ModalDialog
+      open={open}
+      closeModal={closeModal}
+      title="Rename Conversation"
+    >
       <form className="flex flex-col" onSubmit={handleRenameChat}>
         <main className="pink-dotted-block mt-2 px-3 pt-2 pb-2.5">
           <label
@@ -47,7 +47,7 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
           <button
             type="button"
             className="pink-button px-6 py-1 text-lg font-bold"
-            onClick={closeFunction}
+            onClick={closeModal}
           >
             Cancel
           </button>
@@ -63,4 +63,4 @@ const ChatRenameModal = ({ closeFunction, chatName, onSubmit }) => {
   );
 };
 
-export { ChatRenameModal };
+export { RenameChatModal };

@@ -218,9 +218,7 @@ VITE_GIPHY_API_KEY
 - start commands
 
 - reconfigure modal to close w/o close function
-    - chat rename
     - chat info modal
-    - chat delte
 - rename modals
 - separate commentlist to view/container
 - honestly delete the x button from the modal title

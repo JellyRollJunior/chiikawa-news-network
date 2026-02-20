@@ -1,18 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useChat } from '@/features/chats/hooks/useChat.js';
 import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
-import { ChatRenameModal } from '@/features/chats/components/ChatRenameModal.jsx';
+import { RenameChatModal } from '@/features/chats/components/ChatRenameModal.jsx';
 import { DeleteChatModal } from '@/features/chats/components/DeleteChatModal.jsx';
 import { ChatHeader } from '@/features/chats/components/ChatHeader.jsx';
 import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
 
 import shisaBento from '@/assets/images/shisa-bento.png';
+import { ChatsContext } from '../providers/ChatsProvider.jsx';
 
 const Chat = () => {
   const navigate = useNavigate();
+  const { refetchChats } = useContext(ChatsContext);
   const { chatId } = useParams();
   const {
     chat,
@@ -48,7 +50,11 @@ const Chat = () => {
   const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
   const openRenameModal = () => setIsRenameModalOpen(true);
   const closeRenameModal = () => setIsRenameModalOpen(false);
-  const onSubmitRenameChat = (name) => updateChatName(name);
+  const onSubmitRenameChat = (name) => {
+    updateChatName(name);
+    refetchChats();
+    closeRenameModal();
+  };
 
   // delete chat modal
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -80,20 +86,19 @@ const Chat = () => {
         />
       </main>
       <div className="duckegg-block h-4 shrink-0"></div>
-      
+
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
 
       {/* Modals */}
       {isInfoModalOpen && (
         <ChatInfoModal closeFunction={closeInfoModal} chat={chat} />
       )}
-      {isRenameModalOpen && (
-        <ChatRenameModal
-          closeFunction={closeRenameModal}
-          chatName={chat && chat.name ? chat.name : ''}
-          onSubmit={onSubmitRenameChat}
-        />
-      )}
+      <RenameChatModal
+        open={isRenameModalOpen}
+        closeModal={closeRenameModal}
+        chatName={chat && chat.name ? chat.name : ''}
+        onSubmit={onSubmitRenameChat}
+      />
       <DeleteChatModal
         open={isDeleteModalOpen}
         closeModal={closeDeleteModal}
