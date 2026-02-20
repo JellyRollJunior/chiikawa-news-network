@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import { format } from 'date-fns';
 import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
-import { CommentList } from '@/features/posts/components/CommentList.jsx';
+import { CommentSection } from '@/features/posts/components/CommentSection.jsx';
 import { IncrementButton } from '@/features/posts/components/IncrementButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { DotsMenu } from '@/shared/components/DotsMenu.jsx';
@@ -106,7 +106,7 @@ const PostsListItem = ({
           {format(new Date(post.createdAt), 'MM/dd/yyy h:maaa')}
         </div>
       </footer>
-      {isShowingComments && <CommentList postId={post.id} />}
+      {isShowingComments && <CommentSection postId={post.id} />}
     </li>
   ) : (
     /* Loading display */

@@ -1,25 +1,17 @@
-import { useContext, useState, Fragment } from 'react';
+import { useContext, useState } from 'react';
 import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useComments } from '@/features/posts/hooks/useComments.js';
 import { useCreateComment } from '@/features/posts/hooks/useCreateComment.js';
-import { CommentListItem } from '@/features/posts/components/CommentListItem.jsx';
-import { DeleteCommentModal } from '@/features/posts/components/DeleteCommentModal.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
-import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
+import { Comments } from '@/features/posts/components/Comments';
 
 import send from '@/assets/svgs/send.svg';
 
-const CommentList = ({ postId }) => {
+const CommentSection = ({ postId }) => {
   const [commentInput, setCommentInput] = useState('');
   const { avatar } = useContext(CurrentContext);
   const { postComment, isLoading: isPostingComment } = useCreateComment();
-  const {
-    comments,
-    isLoading: isLoadingComments,
-    toggleLike,
-    isLoadingLike,
-    refetch: refetchComments,
-  } = useComments(postId);
+  const { refetch: refetchComments } = useComments(postId);
 
   const handlePostComment = async (event) => {
     event.preventDefault();
@@ -29,33 +21,11 @@ const CommentList = ({ postId }) => {
     await refetchComments();
   };
 
-  // Delete Comment Modal
-  const [commentToDeleteId, setCommentToDeleteId] = useState(null);
-  const openDeleteModal = (commentId) => setCommentToDeleteId(commentId);
-  const closeDeleteModal = () => setCommentToDeleteId(null);
-
   return (
     <>
-      {!isLoadingComments ? (
-        comments.length > 0 && (
-          <ul className="mt-3 flex flex-col gap-2">
-            {comments.map((comment) => (
-              <Fragment key={comment.id}>
-                <CommentListItem
-                  comment={comment}
-                  toggleLike={toggleLike}
-                  isLoadingLike={isLoadingLike}
-                  openDeleteModal={openDeleteModal}
-                />
-              </Fragment>
-            ))}
-          </ul>
-        )
-      ) : (
-        <div className="mt-3 text-center">
-          Loading <LoadingDots dotTravelDistance={8} />
-        </div>
-      )}
+      <Comments postId={postId} />
+      
+      {/* Comment Input */}
       <form className="mt-3 flex" onSubmit={handlePostComment}>
         <Avatar
           className="size-[32px] border-1 border-yellow-500 md:size-[42px]"
@@ -78,14 +48,8 @@ const CommentList = ({ postId }) => {
           <img className="w-5 md:w-6" src={send} />
         </button>
       </form>
-      <DeleteCommentModal
-        open={commentToDeleteId != null}
-        closeModal={closeDeleteModal}
-        onDeleteComment={refetchComments}
-        commentId={commentToDeleteId}
-      />
     </>
   );
 };
 
-export { CommentList };
+export { CommentSection };
