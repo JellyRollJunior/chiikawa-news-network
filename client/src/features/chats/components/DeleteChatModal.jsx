@@ -1,5 +1,5 @@
 import { useDeleteChat } from '@/features/chats/hooks/useDeleteChat.js';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Modal } from '@/shared/components/Modal.jsx';
 import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 
 const DeleteChatModal = ({ open, closeModal, onSubmit, chatId }) => {
@@ -12,7 +12,7 @@ const DeleteChatModal = ({ open, closeModal, onSubmit, chatId }) => {
   };
 
   return (
-    <ModalDialog
+    <Modal
       open={open}
       closeModal={closeModal}
       title="Delete Conversation"
@@ -23,7 +23,7 @@ const DeleteChatModal = ({ open, closeModal, onSubmit, chatId }) => {
         isLoading={isLoading}
         closeFunction={closeModal}
       />
-    </ModalDialog>
+    </Modal>
   );
 };
 

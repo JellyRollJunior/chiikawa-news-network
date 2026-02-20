@@ -1,7 +1,7 @@
 import SimpleBar from 'simplebar-react';
 import { useRef } from 'react';
 
-const ModalDialog = ({ open = false, closeModal, title, children }) => {
+const Modal = ({ open = false, closeModal, title, children }) => {
   const ref = useRef(null);
 
   const openModal = () => ref && ref.current && ref.current.showModal();
@@ -34,4 +34,4 @@ const ModalDialog = ({ open = false, closeModal, title, children }) => {
   );
 };
 
-export { ModalDialog };
+export { Modal };

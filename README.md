@@ -204,6 +204,8 @@ VITE_GIPHY_API_KEY
     - path aliasing
     - refactored to feature folder architechture
     - moved providers from App to layout component
+    - refactored modal component
+    - split large modals into container / view components
 
 ## Known Issues
 
@@ -217,6 +219,4 @@ VITE_GIPHY_API_KEY
 - document client routes!
 - start commands
 
-- rename modals
 - separate commentlist to view/container
-- honestly delete the x button from the modal title

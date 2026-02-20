@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Modal } from '@/shared/components/Modal.jsx';
 import { profanityMatcher } from '@/shared/services/textCensor.js';
 
 const CreateChatModalView = ({
@@ -66,7 +66,7 @@ const CreateChatModalView = ({
   };
 
   return (
-    <ModalDialog open={open} closeModal={closeModal} title="New Conversation">
+    <Modal open={open} closeModal={closeModal} title="New Conversation">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleCreateChat}>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
           <label className="text-shadow-wrap ml-1 flex items-center gap-1 font-medium">
@@ -152,7 +152,7 @@ const CreateChatModalView = ({
           </button>
         </footer>
       </form>
-    </ModalDialog>
+    </Modal>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useDeleteComment } from '@/features/posts/hooks/useDeleteComment.js';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Modal } from '@/shared/components/Modal.jsx';
 import { DeleteForm } from '@/shared/components/DeleteForm.jsx';
 
 const DeleteCommentModal = ({
@@ -19,14 +19,14 @@ const DeleteCommentModal = ({
   };
 
   return (
-    <ModalDialog open={open} closeModal={closeModal} title="Delete Post">
+    <Modal open={open} closeModal={closeModal} title="Delete Post">
       <DeleteForm
         label="The comment"
         onSubmit={handleDeleteComment}
         isLoading={isLoading}
         closeFunction={closeModal}
       />
-    </ModalDialog>
+    </Modal>
   );
 };
 

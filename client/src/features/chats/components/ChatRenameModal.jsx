@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useRenameChat } from '@/features/chats/hooks/useRenameChat.js';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Modal } from '@/shared/components/Modal.jsx';
 
 const RenameChatModal = ({ open = false, closeModal, chatName, onSubmit }) => {
   const { chatId } = useParams();
@@ -19,7 +19,7 @@ const RenameChatModal = ({ open = false, closeModal, chatName, onSubmit }) => {
   };
 
   return (
-    <ModalDialog
+    <Modal
       open={open}
       closeModal={closeModal}
       title="Rename Conversation"
@@ -59,7 +59,7 @@ const RenameChatModal = ({ open = false, closeModal, chatName, onSubmit }) => {
           </button>
         </footer>
       </form>
-    </ModalDialog>
+    </Modal>
   );
 };
 

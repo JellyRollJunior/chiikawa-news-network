@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar-react';
 import { useRef, useState } from 'react';
-import { ModalDialog } from '@/shared/components/ModalDialog.jsx';
+import { Modal } from '@/shared/components/Modal.jsx';
 import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import { profanityMatcher, textCensor } from '@/shared/services/textCensor.js';
 
@@ -85,7 +85,7 @@ const CreatePostModalView = ({
   };
 
   return (
-    <ModalDialog open={open} closeModal={closeModal} title="New Post">
+    <Modal open={open} closeModal={closeModal} title="New Post">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         {/* Text Section */}
         <div className="pink-dotted-block flex flex-col px-3 pt-2 pb-2">
@@ -309,7 +309,7 @@ const CreatePostModalView = ({
           </button>
         </footer>
       </form>
-    </ModalDialog>
+    </Modal>
   );
 };
 
