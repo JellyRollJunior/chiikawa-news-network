@@ -219,12 +219,8 @@ VITE_GIPHY_API_KEY
 - document client routes!
 - start commands
 
-- separate commentlist to view/container
-    - comment section
-        - commentList
-        - commentInput
-
 - postslistitem -> post
 
 - comment loading broken
+    - comment refetching animation loading messes up the flow
 - initial post fetching loading broken

@@ -9,7 +9,7 @@ import { LoadingDots } from '@/shared/components/LoadingDots.jsx';
 import heart from '@/assets/svgs/heart.svg';
 import heartFilled from '@/assets/svgs/heart-filled.svg';
 
-const CommentsView = ({
+const Comments = ({
   currentUserId,
   comments,
   isLoadingComments,
@@ -88,4 +88,4 @@ const CommentsView = ({
   );
 };
 
-export { CommentsView };
+export { Comments };
