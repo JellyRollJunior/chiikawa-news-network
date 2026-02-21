@@ -1,6 +1,6 @@
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
-import { PostList } from '@/features/posts/components/PostsList.jsx';
+import { Posts } from '@/features/posts/components/Posts.jsx';
 
 const UserPosts = ({
   posts,
@@ -22,7 +22,7 @@ const UserPosts = ({
         </div>
       </div>
       <div className="mt-2 flex-1">
-        <PostList
+        <Posts
           posts={posts}
           hasNextPage={hasNextPage}
           isLoadingInit={isLoadingInit}

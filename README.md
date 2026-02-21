@@ -223,4 +223,3 @@ VITE_GIPHY_API_KEY
 
 - comment loading broken
     - comment refetching animation loading messes up the flow
-- initial post fetching loading broken

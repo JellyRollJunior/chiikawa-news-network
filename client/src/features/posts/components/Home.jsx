@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { usePosts } from '@/features/posts/hooks/usePosts.js';
-import { PostList } from '@/features/posts/components/PostsList.jsx';
+import { Posts } from '@/features/posts/components/Posts.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { HomePostControlButtons } from '@/features/posts/components/HomePostControlButtons.jsx';
 import { CreatePostModal } from '@/features/posts/components/CreatePostModal';
@@ -53,7 +53,7 @@ const Home = () => {
             </button>
           </section>
           <section className="mt-2">
-            <PostList
+            <Posts
               posts={posts}
               hasNextPage={hasNextPage}
               isLoadingInit={isLoadingInit}
