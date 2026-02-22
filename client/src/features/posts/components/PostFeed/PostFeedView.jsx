@@ -5,7 +5,7 @@ import { RefreshButton } from '@/shared/components/RefreshButton.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
-const PostFeed = ({
+const PostFeedView = ({
   posts,
   hasNextPage,
   isLoadingInit,
@@ -95,4 +95,4 @@ const PostFeed = ({
   );
 };
 
-export { PostFeed };
+export { PostFeedView };
