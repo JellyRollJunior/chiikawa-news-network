@@ -1,10 +1,5 @@
-import { useState } from 'react';
 import { usePosts } from '@/features/posts/hooks/usePosts.js';
-import { Posts } from '@/features/posts/components/Posts.jsx';
-import { Scrollable } from '@/shared/components/Scrollable.jsx';
-import { HomePostControlButtons } from '@/features/posts/components/HomePostControlButtons.jsx';
-import { CreatePostModal } from '@/features/posts/components/CreatePostModal';
-import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
+import { PostFeed } from '@/features/posts/components/PostFeed.jsx';
 
 const Home = () => {
   const {
@@ -21,57 +16,22 @@ const Home = () => {
     isLoadingLike,
   } = usePosts(5);
 
-  // Create Post Modal
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const openCreatePostModal = () => setIsCreateModalOpen(true);
-  const closeCreatePostModal = () => setIsCreateModalOpen(false);
-
   return (
-    <>
-      <div className="main-container mx-4 mt-3 mb-2 flex max-w-xl flex-1 flex-col">
-        <Scrollable
-          className="px-3 pt-3 pb-2.5 md:pt-3.5"
-          onScrollToBottom={fetchNextPage}
-        >
-          <div className="yellow-block pt-2 pb-1">
-            <LogoTitle className="justify-center text-[14px] md:text-lg" />
-          </div>
-          <HomePostControlButtons
-            className="mt-2"
-            isFeed={isFeed}
-            setPostsToFeed={setPostsToFeed}
-            setPostsToAll={setPostsToAll}
-            isLoadingInit={isLoadingInit}
-            refreshPosts={refreshPosts}
-          />
-          <section className="mt-2 mb-2.5 flex items-center gap-2">
-            <button
-              className="block-shadow h-10 flex-1 rounded-lg bg-white"
-              onClick={openCreatePostModal}
-            >
-              What's on your mind?
-            </button>
-          </section>
-          <section className="mt-2">
-            <Posts
-              posts={posts}
-              hasNextPage={hasNextPage}
-              isLoadingInit={isLoadingInit}
-              isLoadingNext={isLoadingNext}
-              toggleLike={toggleLike}
-              isLoadingLike={isLoadingLike}
-              refreshPosts={refreshPosts}
-              noPostsMessage="Follow users to view their posts here or create your own posts!"
-            />
-          </section>
-        </Scrollable>
-      </div>
-      <CreatePostModal
-        open={isCreateModalOpen}
-        closeModal={closeCreatePostModal}
-        onSubmit={refreshPosts}
+    <div className="main-container mx-4 mt-3 mb-2 flex max-w-xl flex-1 flex-col">
+      <PostFeed
+        posts={posts}
+        hasNextPage={hasNextPage}
+        isLoadingInit={isLoadingInit}
+        fetchNextPage={fetchNextPage}
+        isLoadingNext={isLoadingNext}
+        isFeed={isFeed}
+        setPostsToAll={setPostsToAll}
+        setPostsToFeed={setPostsToFeed}
+        refreshPosts={refreshPosts}
+        toggleLike={toggleLike}
+        isLoadingLike={isLoadingLike}
       />
-    </>
+    </div>
   );
 };
 
