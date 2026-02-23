@@ -219,7 +219,10 @@ VITE_GIPHY_API_KEY
 - document client routes!
 - start commands
 
-- postslistitem -> post
-
 - comment loading broken
     - comment refetching animation loading messes up the flow
+
+- User Profile / posts
+    - move ID out of user page UserPage
+    - make UserProfile container for fetching user data + user ID + userPosts
+    - make posts + userInfo view components, no data fetching

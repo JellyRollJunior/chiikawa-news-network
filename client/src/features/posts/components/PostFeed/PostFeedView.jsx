@@ -29,9 +29,9 @@ const PostFeedView = ({
       onScrollToBottom={fetchNextPage}
     >
       {/* Title */}
-      <div className="yellow-block pt-2 pb-1">
+      <header className="yellow-block pt-2 pb-1">
         <LogoTitle className="justify-center text-[14px] md:text-lg" />
-      </div>
+      </header>
 
       {/* Feed control buttons */}
       {/* Switch feed, Refresh posts, Create post */}
