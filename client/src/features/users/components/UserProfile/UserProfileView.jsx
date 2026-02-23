@@ -3,7 +3,13 @@ import { UserPosts } from '@/features/users/components/UserPosts.jsx';
 import { Scrollable } from '@/shared/components/Scrollable.jsx';
 
 const UserProfileView = ({
-  userId,
+  // User Info
+  user,
+  isLoadingUser,
+  handleFollowUser,
+  handleUnfollowUser,
+  isLoadingFollow,
+  // User Posts
   posts,
   hasNextPage,
   isLoadingInit,
@@ -18,7 +24,13 @@ const UserProfileView = ({
       className="px-3 pt-3 pb-2.5 md:pt-3.5"
       onScrollToBottom={fetchNextPage}
     >
-      <UserInfo userId={userId} />
+      <UserInfo
+        user={user}
+        isLoadingUser={isLoadingUser}
+        followUser={handleFollowUser}
+        unfollowUser={handleUnfollowUser}
+        isLoadingFollow={isLoadingFollow}
+      />
       <div className="duckegg-block my-3.5 h-4" />
       <UserPosts
         posts={posts}

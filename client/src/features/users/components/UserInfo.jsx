@@ -1,6 +1,4 @@
 import { Link } from 'react-router';
-import { useUser } from '@/features/users/hooks/useUser.js';
-import { useFollow } from '@/features/users/hooks/useFollow.js';
 import { FollowButton } from '@/features/users/components/UsersFollowButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
@@ -13,28 +11,21 @@ const UserStatBlock = ({ className, count, label, isLoading = false }) => {
       {!isLoading ? (
         <span className="font-chiikawa text-xl">{count}</span>
       ) : (
-        <LoadingElement className="h-6 w-1/2 rounded-md self-center" />
+        <LoadingElement className="h-6 w-1/2 self-center rounded-md" />
       )}
       {label}
     </div>
   );
 };
 
-const UserInfo = ({ userId }) => {
-  const { user, isLoading, refetch } = useUser(userId);
-  const { followUser, unfollowUser, isLoading: isLoadingFollow } = useFollow();
-
-  const handleFollowUser = async (userId) => {
-    await followUser(userId);
-    refetch();
-  };
-
-  const handleUnfollowUser = async (userId) => {
-    await unfollowUser(userId);
-    refetch();
-  };
-
-  return !isLoading && user ? (
+const UserInfo = ({
+  user,
+  isLoadingUser,
+  handleFollowUser,
+  handleUnfollowUser,
+  isLoadingFollow,
+}) => {
+  return !isLoadingUser && user ? (
     <header className="flex flex-col">
       <div className="yellow-block flex-1 pt-1 pb-0.5 md:pt-2">
         <h2 className="text-shadow-wrap font-chiikawa text-center text-lg">
