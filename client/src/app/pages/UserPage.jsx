@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { UserProfile } from '@/features/users/components/UserProfile.jsx';
+import { UserProfile } from '@/features/users/components/UserProfile/';
 
 const UserPage = () => {
   const { userId } = useParams();

@@ -223,6 +223,5 @@ VITE_GIPHY_API_KEY
     - comment refetching animation loading messes up the flow
 
 - User Profile / posts
-    - move ID out of user page UserPage
-    - make UserProfile container for fetching user data + user ID + userPosts
-    - make posts + userInfo view components, no data fetching
+    - MOVE DATA FETCHING OUT OF USERINFO COMPONENT
+    - MAKE USERPROFILE THINGY DISPLAY COMPATABLE WITH NEW USER PROFILE
