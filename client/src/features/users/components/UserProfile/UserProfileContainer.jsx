@@ -1,7 +1,7 @@
+import { useUser } from '@/features/users/hooks/useUser.js';
+import { useFollow } from '@/features/users/hooks/useFollow.js';
 import { usePosts } from '@/features/posts/hooks/usePosts.js';
-import { UserProfileView } from './UserProfileView.jsx';
-import { useUser } from '../../hooks/useUser.js';
-import { useFollow } from '../../hooks/useFollow.js';
+import { UserProfileView } from '@/features/users/components/UserProfile/UserProfileView.jsx';
 
 const UserProfileContainer = ({ userId }) => {
   const {

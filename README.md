@@ -223,5 +223,7 @@ VITE_GIPHY_API_KEY
     - comment refetching animation loading messes up the flow
 
 - User Profile / posts
-    - MOVE DATA FETCHING OUT OF USERINFO COMPONENT
-    - MAKE USERPROFILE THINGY DISPLAY COMPATABLE WITH NEW USER PROFILE
+    - fix return to users button
+    - make everything look good main container bs in usersPage (return button no paddinb but userprofile has padding)
+        - remove padding from user profile
+        - padding set by parent! not by component itself 
