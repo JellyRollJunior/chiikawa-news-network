@@ -223,5 +223,7 @@ VITE_GIPHY_API_KEY
     - comment refetching animation loading messes up the flow
 
 - HomeUserAside
-    - containerize
+    - remove main container
+
+- merge userlist & userlistitem tbh
 
