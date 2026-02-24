@@ -219,13 +219,9 @@ VITE_GIPHY_API_KEY
 - document client routes!
 - start commands
 
-- 
-
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
-- UsersDisplay
-    - containerize
 - HomeUserAside
     - containerize
 

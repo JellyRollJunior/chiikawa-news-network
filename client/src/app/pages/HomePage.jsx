@@ -1,5 +1,5 @@
 import { PostFeed } from '@/features/posts/components/PostFeed/';
-import { HomeUsersAside } from '@/features/users/components/HomeUsersAside.jsx';
+import { UsersAside } from '@/features/users/components/UsersAside/';
 
 const HomePage = () => {
   return (
@@ -9,7 +9,7 @@ const HomePage = () => {
           <PostFeed />
         </div>
       </div>
-      <HomeUsersAside />
+      <UsersAside />
     </div>
   );
 };
