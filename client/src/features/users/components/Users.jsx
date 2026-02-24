@@ -9,22 +9,26 @@ const Users = () => {
   const openViewProfile = (userId) => setProfileUserId(userId);
   const closeViewProfile = () => setProfileUserId(null);
 
-  return profileUserId ? (
-    <>
-      <div className="pink-block mb-2 pt-1.5 pb-0.5 hover:border-pink-200 hover:bg-pink-200 hover:bg-none hover:inset-shadow-none">
-        <button
-          className="font-chiikawa flex self-start px-5 py-0.5"
-          onClick={closeViewProfile}
-        >
-          <img className="w-[20px]" src={arrowBack} />
-          Return to Users
-        </button>
+  if (profileUserId) {
+    return (
+      <div className="grid h-full grid-rows-[65px_1fr]">
+        {/* Return to Users button */}
+        <div className="mx-3 mt-3 mb-2">
+          <button
+            className="font-chiikawa pink-block flex h-full w-full justify-start px-3 pt-2 pb-1 hover:border-pink-200 hover:bg-pink-200 hover:bg-none hover:inset-shadow-none"
+            onClick={closeViewProfile}
+          >
+            <img className="w-[20px]" src={arrowBack} />
+            Return to Users
+          </button>
+        </div>
+
+        <UserProfile userId={profileUserId} />
       </div>
-      <UserProfile userId={profileUserId} />
-    </>
-  ) : (
-    <UsersDisplay openViewProfile={openViewProfile} />
-  );
+    );
+  }
+
+  return <UsersDisplay openViewProfile={openViewProfile} />;
 };
 
 export { Users };

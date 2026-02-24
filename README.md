@@ -222,8 +222,5 @@ VITE_GIPHY_API_KEY
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
-- User Profile / posts
-    - fix return to users button
-    - make everything look good main container bs in usersPage (return button no paddinb but userprofile has padding)
-        - remove padding from user profile
-        - padding set by parent! not by component itself 
+- UsersDisplay
+    - containerize

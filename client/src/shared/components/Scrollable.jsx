@@ -29,7 +29,7 @@ const Scrollable = ({ className = '', onScrollToBottom, children }) => {
   }, [onScrollToBottom]);
 
   return (
-    <SimpleBar className={`h-full ${className}`}>
+    <SimpleBar className={`h-full min-h-0 ${className}`}>
       <div className='h-full' ref={containerRef}>
         {children}
         <div className="h-1" ref={sentinelRef}></div>
