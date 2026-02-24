@@ -1,4 +1,4 @@
-import { Users } from '@/features/users/components/Users.jsx';
+import { Users } from '@/features/users/components/Users/';
 
 const UsersPage = () => {
   return (
