@@ -222,8 +222,5 @@ VITE_GIPHY_API_KEY
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
-- HomeUserAside
-    - remove main container
-
 - merge userlist & userlistitem tbh
 
