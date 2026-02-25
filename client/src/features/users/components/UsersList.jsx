@@ -2,7 +2,7 @@ import { useFollow } from '@/features/users/hooks/useFollow.js';
 import { FollowButton } from '@/features/users/components/UsersFollowButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
-import { BLOCKS } from '@/styles/blocks.js';
+import { getBlockStyleByIndex } from '@/styles/blocks.js';
 
 const UsersList = ({
   users,
@@ -22,10 +22,6 @@ const UsersList = ({
     refetchUsers();
   };
 
-  const getBlockStyle = (index) => {
-    return BLOCKS[index % BLOCKS.length];
-  };
-
   if (isLoadingUsers) {
     return (
       <ul className="flex flex-col gap-2">
@@ -33,13 +29,13 @@ const UsersList = ({
           <li key={index}>
             <div className="flex gap-1">
               <div
-                className={`flex flex-col ${getBlockStyle(index)} items-center px-2 py-2`}
+                className={`flex flex-col items-center px-2 py-2 ${getBlockStyleByIndex(index)}`}
               >
                 <LoadingElement className="size-[70px] shrink-0 rounded-full" />
                 <LoadingElement className="mt-2 h-5 w-16 self-center rounded-lg" />
               </div>
               <div
-                className={`flex flex-1 flex-col justify-between ${getBlockStyle(index)} px-2 py-2`}
+                className={`flex flex-1 flex-col justify-between px-2 py-2 ${getBlockStyleByIndex(index)}`}
               >
                 <LoadingElement className="mt-2 h-6 w-32 self-center rounded-lg" />
                 <div className="flex justify-around">
@@ -54,7 +50,9 @@ const UsersList = ({
                 <LoadingElement className="mt-2 h-5 w-32 self-center rounded-lg" />
               </div>
             </div>
-            <div className={`${getBlockStyle(index)} mt-1 px-3 pt-2.5 pb-1.5`}>
+            <div
+              className={`mt-1 px-3 pt-2.5 pb-1.5 ${getBlockStyleByIndex(index)}`}
+            >
               <LoadingElement className="ml-1 h-12 rounded-lg" />
             </div>
           </li>
@@ -70,7 +68,7 @@ const UsersList = ({
           <div className="flex gap-1">
             {/* Username & Follow button */}
             <div
-              className={`flex flex-col ${getBlockStyle(index)} items-center px-1 py-2`}
+              className={`flex flex-col items-center px-1 py-2 ${getBlockStyleByIndex(index)}`}
             >
               <Avatar
                 className="mx-2 size-[74px] border-1 border-yellow-500 md:size-[86px]"
@@ -90,7 +88,7 @@ const UsersList = ({
 
             {/* User Info section & View profile button */}
             <div
-              className={`flex flex-1 flex-col justify-between truncate px-3 ${getBlockStyle(index)}`}
+              className={`flex flex-1 flex-col justify-between truncate px-3 ${getBlockStyleByIndex(index)}`}
             >
               <div className="mt-4">
                 <h3
@@ -117,7 +115,9 @@ const UsersList = ({
           </div>
 
           {/* Bio */}
-          <div className={`${getBlockStyle(index)} mt-1 px-3 pt-2.5 pb-1.5`}>
+          <div
+            className={`mt-1 px-3 pt-2.5 pb-1.5 ${getBlockStyleByIndex(index)}`}
+          >
             <p className="ml-1">{user.bio}</p>
           </div>
         </li>
