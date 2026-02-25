@@ -222,3 +222,5 @@ VITE_GIPHY_API_KEY
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
+- containerize settings
+- 
