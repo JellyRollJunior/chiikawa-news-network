@@ -71,7 +71,7 @@ const UsersView = ({ users, isLoadingUsers, refetchUsers }) => {
           <UsersList
             users={filteredUsers}
             openViewProfile={openViewProfile}
-            isLoading={isLoadingUsers}
+            isLoadingUsers={isLoadingUsers}
             refetchUsers={refetchUsers}
           />
         </section>
