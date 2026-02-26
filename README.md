@@ -227,3 +227,4 @@ VITE_GIPHY_API_KEY
     - chats
     - chat modals
     - merge components for chat headers
+    -  Move chatId param checking from ChatsList to page level  const { chatId: browserChatId } = useParams();

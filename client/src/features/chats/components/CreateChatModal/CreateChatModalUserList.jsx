@@ -68,6 +68,8 @@ const CreateChatModalUserList = ({
                   {user.username}
                 </h4>
               </div>
+
+              {/* User selected icon */}
               {selectedUsers.includes(user.id) && (
                 <div className="mr-2 ml-auto flex shrink-0 items-center text-2xl">
                   <img className="w-8" src={usagiIcon} alt="Selected" />
@@ -76,6 +78,7 @@ const CreateChatModalUserList = ({
             </button>
           </li>
 
+          {/* separator */}
           <hr className="border-1 border-pink-200" />
         </Fragment>
       ))}

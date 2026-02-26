@@ -64,6 +64,7 @@ const ChatsList = ({
 
   return (
     <ul>
+      {/* Chats */}
       {chats.map((chat) => (
         <li key={chat.id} className={`hover:bg-${hoverColor} px-2 py-2`}>
           <Link className="flex" to={`/chats/${chat.id}`}>
@@ -83,6 +84,8 @@ const ChatsList = ({
           </Link>
         </li>
       ))}
+
+      {/* No chats available message */}
       {chats && chats.length == 0 && isNoChatsPromptShown && (
         <li className="mx-3 mb-2 flex gap-2 py-2">
           <img className="w-[70px] shrink-0 self-center" src={logo} alt="" />
