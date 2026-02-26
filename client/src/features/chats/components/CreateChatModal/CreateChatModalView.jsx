@@ -8,10 +8,8 @@ const CreateChatModalView = ({
   closeModal,
   users,
   isLoadingUsers,
-  createChat,
+  onCreateChat,
   isCreatingChat,
-  onSubmit,
-  navigate,
 }) => {
   const [filter, setFilter] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -31,7 +29,7 @@ const CreateChatModalView = ({
 
     let isFormInvalid = false;
     // ensure >= 1 users are selected
-    if (!selectedUsers || selectedUsers == '') {
+    if (selectedUsers.length === 0) {
       setUserError(true);
       isFormInvalid = true;
     } else {
@@ -46,19 +44,17 @@ const CreateChatModalView = ({
     }
     if (isFormInvalid) return;
 
-    const data = await createChat(name, selectedUsers);
+    await onCreateChat(name, selectedUsers);
 
     // reset form
-    setSelectedUsers('');
+    setSelectedUsers([]);
     setName('');
-    closeModal();
-    onSubmit();
-    if (data && data.id) navigate(`/chats/${data.id}`);
   };
 
   const handleChatListItemClick = (userId) => {
     if (selectedUsers.length >= 4 && !selectedUsers.includes(userId))
       return setUserError(true);
+    
     // if not in list, add user else remove user
     !selectedUsers.includes(userId)
       ? setSelectedUsers((prev) => [...prev, userId])
@@ -69,6 +65,7 @@ const CreateChatModalView = ({
     <Modal open={open} closeModal={closeModal} title="New Conversation">
       <form className="mt-2 flex flex-col gap-2" onSubmit={handleCreateChat}>
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
+          {/* User list title & Error display */}
           <label className="text-shadow-wrap ml-1 flex items-center gap-1 font-medium">
             Users{' '}
             <span className={`${userError && 'text-red-400'}`}>
@@ -77,12 +74,18 @@ const CreateChatModalView = ({
                 : ' — select between 1 and 4 user(s)'}
             </span>
           </label>
-          <CreateChatModalUserList
-            users={filteredUsers}
-            selectedUsers={selectedUsers}
-            isLoadingUsers={isLoadingUsers}
-            handleClick={handleChatListItemClick}
-          />
+
+          {/* User list & User select */}
+          <section>
+            <CreateChatModalUserList
+              users={filteredUsers}
+              selectedUsers={selectedUsers}
+              isLoadingUsers={isLoadingUsers}
+              handleClick={handleChatListItemClick}
+            />
+          </section>
+
+          {/* User list search bar */}
           <input
             className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
             type="text"
@@ -91,6 +94,8 @@ const CreateChatModalView = ({
             placeholder="Search"
           />
         </div>
+
+        {/* Chat naming */}
         <div className="pink-dotted-block flex flex-col gap-2 px-3 pt-2 pb-2.5">
           <div className="flex gap-2">
             <label
@@ -117,6 +122,8 @@ const CreateChatModalView = ({
             placeholder="My amazing chat"
           />
         </div>
+
+        {/* Form buttons */}
         <footer className="flex gap-2">
           <button
             type="button"

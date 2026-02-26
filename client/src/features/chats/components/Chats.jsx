@@ -102,10 +102,6 @@ const Chats = () => {
       <CreateChatModal
         open={isCreateChatModalOpen}
         closeModal={closeCreateChatModal}
-        onSubmit={() => {
-          closeCreateChatModal();
-          refetchChats();
-        }}
       />
     </>
   );
