@@ -223,4 +223,9 @@ VITE_GIPHY_API_KEY
     - comment refetching animation loading messes up the flow
 
 - containerize settings
-- 
+- containerize
+    - chats
+    - chat modals
+    - merge components for chat headers
+    - merge chatslistitem into chatslist
+    - chats new convo modal list item rework

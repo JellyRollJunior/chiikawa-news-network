@@ -1,5 +1,5 @@
 import { useFollow } from '@/features/users/hooks/useFollow.js';
-import { FollowButton } from '@/features/users/components/UsersFollowButton.jsx';
+import { FollowButton } from '@/features/users/components/FollowButton.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import { getBlockStyleByIndex } from '@/styles/blocks.js';
