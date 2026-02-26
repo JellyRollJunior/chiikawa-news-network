@@ -1,5 +1,5 @@
-import { Fragment, useState } from 'react';
-import { ChatsNewConversationModalListItem } from '@/features/chats/components/ChatsNewConversationModalListItem.jsx';
+import { useState } from 'react';
+import { CreateChatModalUserList } from '@/features/chats/components/CreateChatModal/CreateChatModalUserList.jsx';
 import { Modal } from '@/shared/components/Modal.jsx';
 import { profanityMatcher } from '@/shared/services/textCensor.js';
 
@@ -74,34 +74,15 @@ const CreateChatModalView = ({
             <span className={`${userError && 'text-red-400'}`}>
               {!userError
                 ? ' — (max 5 users per chat)'
-                : ' — select between 1 and 5 user(s)'}
+                : ' — select between 1 and 4 user(s)'}
             </span>
           </label>
-          <ul className="pink-gradient scrollbar-thin h-50 overflow-y-scroll rounded-lg border-2 border-pink-200 md:h-70">
-            {!isLoadingUsers
-              ? filteredUsers.map((user) => (
-                  <Fragment key={user.id}>
-                    <ChatsNewConversationModalListItem
-                      userId={user.id}
-                      avatar={user.avatar}
-                      username={user.username}
-                      onClick={() => handleChatListItemClick(user.id)}
-                      selected={selectedUsers.includes(user.id)}
-                    />
-                    <hr className="border-1 border-pink-200" />
-                  </Fragment>
-                ))
-              : /* Loading Display */
-                [...Array(4)].map((item, index) => (
-                  <Fragment key={index}>
-                    <ChatsNewConversationModalListItem isLoading={true} />
-                    <ChatsNewConversationModalListItem
-                      isLoading={true}
-                      loadingDelay={0.8}
-                    />
-                  </Fragment>
-                ))}
-          </ul>
+          <CreateChatModalUserList
+            users={filteredUsers}
+            selectedUsers={selectedUsers}
+            isLoadingUsers={isLoadingUsers}
+            handleClick={handleChatListItemClick}
+          />
           <input
             className="block-shadow h-10 rounded-lg bg-white pr-2 pl-3"
             type="text"
