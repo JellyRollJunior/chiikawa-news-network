@@ -12,7 +12,7 @@ import editSquare from '@/assets/svgs/edit-square.svg';
 
 const Chats = () => {
   const { username } = useContext(CurrentContext);
-  const { chats, isLoading, refetchChats } = useContext(ChatsContext);
+  const { chats, isLoading: isLoadingChats, refetchChats } = useContext(ChatsContext);
   const {
     publicChats,
     isLoading: isPublicLoading,
@@ -86,7 +86,7 @@ const Chats = () => {
               <main className="mt-2 flex-1">
                 <ChatsList
                   chats={filteredChats}
-                  isLoading={isLoading}
+                  isLoadingChats={isLoadingChats}
                   isNoChatsPromptShown={true}
                   hoverColor="duckegg-dark"
                 />
