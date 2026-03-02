@@ -40,13 +40,14 @@ const ChatsList = ({
 
   // format latestMessage & date
   for (const chat of chats) {
+    chat.formattedDate =
+      chat.latestMessage && chat.latestMessage.sendTime
+        ? format(new Date(chat.latestMessage.sendTime), 'MMM do • h:mmaaa')
+        : '';
+
     if (!chat.latestMessage) {
       chat.latestMessage = { content: 'start the conversation' };
     }
-
-    chat.formattedDate = chat.latestMessage
-      ? format(new Date(chat.latestMessage.sendTime), 'MMM do • h:mmaaa')
-      : '';
   }
 
   if (isLoadingChats) {
