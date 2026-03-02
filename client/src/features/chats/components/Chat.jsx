@@ -5,7 +5,7 @@ import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
 import { RenameChatModal } from '@/features/chats/components/ChatRenameModal.jsx';
-import { DeleteChatModal } from '@/features/chats/components/DeleteChatModal.jsx';
+import { DeleteChatModal } from '@/features/chats/components/DeleteChatModal/';
 import { ChatHeader } from '@/features/chats/components/ChatHeader.jsx';
 import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
 
@@ -60,10 +60,6 @@ const Chat = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const openDeleteModal = () => setIsDeleteModalOpen(true);
   const closeDeleteModal = () => setIsDeleteModalOpen(false);
-  const onSubmitDeleteChat = () => {
-    closeDeleteModal();
-    navigate('/chats');
-  };
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
@@ -105,7 +101,7 @@ const Chat = () => {
         open={isDeleteModalOpen}
         closeModal={closeDeleteModal}
         chatId={chatId}
-        onSubmit={onSubmitDeleteChat}
+        onSubmit={() => navigate('/chats')}
       />
 
       {/* Decorations */}
