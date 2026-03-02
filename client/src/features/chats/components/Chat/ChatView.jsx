@@ -1,9 +1,5 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router';
-import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
-import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
-import { useChat } from '@/features/chats/hooks/useChat.js';
-import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
 import { RenameChatModal } from '@/features/chats/components/ChatRenameModal.jsx';
@@ -23,26 +19,26 @@ const getChatParticipantsString = (userId, users) => {
   return chatParticipants.map((user) => user.username).join(', ');
 };
 
-const Chat = () => {
-  const navigate = useNavigate();
-  const { id: currentUserId } = useContext(CurrentContext);
-  const { refetchChats } = useContext(ChatsContext);
-  const { chatId } = useParams();
-  const {
-    chat,
-    messages,
-    isLoading: isLoadingChat,
-    errorStatus,
-    sendMessage,
-    updateChatName,
-  } = useChat(chatId);
-  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) {
-    navigate('/chats');
-  }
-  const isPublicChat = chat && chat.type == 'PUBLIC';
-
-  // join room on mount
-  useJoinRoom(chatId);
+const ChatView = ({
+  currentUserId,
+  chat,
+  messages,
+  isLoadingChat,
+  sendMessage,
+  onSubmitRenameChat,
+  navigateToChats,
+  navigateToOtherUserProfile,
+}) => {
+  // Modals
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const openInfoModal = () => setIsInfoModalOpen(true);
+  const closeInfoModal = () => setIsInfoModalOpen(false);
+  const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
+  const openRenameModal = () => setIsRenameModalOpen(true);
+  const closeRenameModal = () => setIsRenameModalOpen(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const openDeleteModal = () => setIsDeleteModalOpen(true);
+  const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   // scroll to bottom of messages on message change
   const scrollContainerRef = useRef(null);
@@ -53,39 +49,16 @@ const Chat = () => {
     }
   }, [messages]);
 
-  // chat info modal
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const openInfoModal = () => setIsInfoModalOpen(true);
-  const closeInfoModal = () => setIsInfoModalOpen(false);
-
-  // rename chat modal
-  const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
-  const openRenameModal = () => setIsRenameModalOpen(true);
-  const closeRenameModal = () => setIsRenameModalOpen(false);
-  const onSubmitRenameChat = (name) => {
-    updateChatName(name);
-    refetchChats();
+  const handleRenameChat = (name) => {
+    onSubmitRenameChat(name);
     closeRenameModal();
   };
-
-  // delete chat modal
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const openDeleteModal = () => setIsDeleteModalOpen(true);
-  const closeDeleteModal = () => setIsDeleteModalOpen(false);
 
   const chatParticipants = chat
     ? getChatParticipantsString(currentUserId, chat.users)
     : '';
+  const isPublicChat = chat && chat.type == 'PUBLIC';
   const isDirectMessage = chat && chat.users && chat.users.length == 2;
-
-  const navigateToOtherUserProfile = () => {
-    const users = chat && chat.users;
-    if (users) {
-      navigate(`/users/${users.find((user) => user.id != currentUserId).id}`);
-    } else {
-      navigate(`/users/${currentUserId}`);
-    }
-  };
 
   return (
     <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
@@ -119,7 +92,7 @@ const Chat = () => {
         </div>
 
         {/* Header menu */}
-        {!isPublicChat && (
+        {!isPublicChat && chat && (
           <div className="pink-block flex shrink-0 items-center pt-3 pr-0.5 pl-1 md:pt-2 md:pr-1.5 md:pl-2">
             <DotsMenu>
               {isDirectMessage && (
@@ -168,13 +141,13 @@ const Chat = () => {
         open={isRenameModalOpen}
         closeModal={closeRenameModal}
         chatName={chat && chat.name ? chat.name : ''}
-        onSubmit={onSubmitRenameChat}
+        onSubmit={handleRenameChat}
       />
       <DeleteChatModal
         open={isDeleteModalOpen}
         closeModal={closeDeleteModal}
-        chatId={chatId}
-        onSubmit={() => navigate('/chats')}
+        chatId={chat && chat.id}
+        onSubmit={navigateToChats}
       />
 
       {/* Decorations */}
@@ -186,4 +159,4 @@ const Chat = () => {
   );
 };
 
-export { Chat };
+export { ChatView };
