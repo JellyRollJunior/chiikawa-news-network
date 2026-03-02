@@ -1,5 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useChat } from '@/features/chats/hooks/useChat.js';
 import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
@@ -10,16 +12,16 @@ import { ChatHeader } from '@/features/chats/components/ChatHeader.jsx';
 import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
 
 import shisaBento from '@/assets/images/shisa-bento.png';
-import { ChatsContext } from '../providers/ChatsProvider.jsx';
 
 const Chat = () => {
   const navigate = useNavigate();
+  const { id: currentUserId } = useContext(CurrentContext);
   const { refetchChats } = useContext(ChatsContext);
   const { chatId } = useParams();
   const {
     chat,
     messages,
-    isLoading,
+    isLoading: isLoadingChat,
     errorStatus,
     sendMessage,
     updateChatName,
@@ -76,14 +78,15 @@ const Chat = () => {
         className="scrollbar-thin pink-block flex-1 overflow-y-scroll px-3 pt-2 pb-1"
       >
         <ChatMessages
+          currentUserId={currentUserId}
           messages={messages}
           isPrivateChat={chat && chat.type == 'PRIVATE'}
-          isLoading={isLoading}
+          isLoadingMessages={isLoadingChat}
         />
       </main>
       <div className="duckegg-block h-4 shrink-0"></div>
 
-      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoading} />
+      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoadingChat} />
 
       {/* Modals */}
       <ChatInfoModal
