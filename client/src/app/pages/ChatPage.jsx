@@ -1,4 +1,4 @@
-import { Chats } from '@/features/chats/components/Chats.jsx';
+import { Chats } from '@/features/chats/components/Chats/';
 import { Chat } from '@/features/chats/components/Chat/';
 
 const ChatPage = () => {

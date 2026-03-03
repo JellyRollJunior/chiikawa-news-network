@@ -20,8 +20,12 @@ const ChatContainer = () => {
     updateChatNameClientSide,
   } = useChat(chatId);
 
-  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) {
+  const navigateToChats = () => {
     navigate('/chats');
+  };
+
+  if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) {
+    navigateToChats();
   }
 
   // join room on mount
@@ -39,10 +43,6 @@ const ChatContainer = () => {
     } else {
       navigate(`/users/${currentUserId}`);
     }
-  };
-
-  const navigateToChats = () => {
-    navigate('/chats');
   };
 
   return (
