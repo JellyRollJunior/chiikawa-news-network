@@ -17,7 +17,7 @@ const ChatContainer = () => {
     isLoading: isLoadingChat,
     errorStatus,
     sendMessage,
-    updateChatName,
+    updateChatNameClientSide,
   } = useChat(chatId);
 
   if (errorStatus == 400 || errorStatus == 404 || errorStatus == 403) {
@@ -28,7 +28,7 @@ const ChatContainer = () => {
   useJoinRoom(chatId);
 
   const onSubmitRenameChat = (name) => {
-    updateChatName(name);
+    updateChatNameClientSide(name);
     refetchChats();
   };
 

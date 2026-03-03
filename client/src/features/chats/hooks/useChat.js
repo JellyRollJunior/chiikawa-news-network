@@ -97,7 +97,7 @@ const useChat = (chatId) => {
         setMessages((prev) => [...prev, message]);
     };
 
-    const updateChatName = (name) => {
+    const updateChatNameClientSide = (name) => {
         setChat((prev) => {
             prev.name = name;
             return prev;
@@ -108,7 +108,7 @@ const useChat = (chatId) => {
         chat,
         messages,
         sendMessage,
-        updateChatName,
+        updateChatNameClientSide,
         isLoading,
         errorStatus,
     };

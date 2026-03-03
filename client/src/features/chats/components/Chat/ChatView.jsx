@@ -12,13 +12,6 @@ import { DotsMenuItem } from '@/shared/components/DotsMenuItem.jsx';
 import shisaBento from '@/assets/images/shisa-bento.png';
 import arrowBack from '@/assets/svgs/arrow-back.svg';
 
-const getChatParticipantsString = (userId, users) => {
-  if (!users) return null;
-  const chatParticipants =
-    users.length == 1 ? [users[0]] : users.filter((user) => user.id != userId);
-  return chatParticipants.map((user) => user.username).join(', ');
-};
-
 const ChatView = ({
   currentUserId,
   chat,
@@ -52,6 +45,15 @@ const ChatView = ({
   const handleRenameChat = (name) => {
     onSubmitRenameChat(name);
     closeRenameModal();
+  };
+
+  const getChatParticipantsString = (userId, users) => {
+    if (!users) return null;
+    const chatParticipants =
+      users.length == 1
+        ? [users[0]]
+        : users.filter((user) => user.id != userId);
+    return chatParticipants.map((user) => user.username).join(', ');
   };
 
   const chatParticipants = chat
@@ -92,7 +94,7 @@ const ChatView = ({
         </div>
 
         {/* Header menu */}
-        {!isPublicChat && chat && (
+        {!isPublicChat && (
           <div className="pink-block flex shrink-0 items-center pt-3 pr-0.5 pl-1 md:pt-2 md:pr-1.5 md:pl-2">
             <DotsMenu>
               {isDirectMessage && (
