@@ -30,7 +30,7 @@ const ChatsView = ({
   const closeCreateChatModal = () => setIsCreateChatModalOpen(false);
 
   return (
-    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <SimpleBar className="h-full">
         <div className="flex flex-col px-3 pt-3 pb-2.5 md:pt-3.5">
           {/* User info, Create chats modal button, Search bar */}

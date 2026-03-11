@@ -224,5 +224,3 @@ VITE_GIPHY_API_KEY
 
 - containerize settings
 
-- maincontainer -> remove container flex & other specific styling 
-    - move to the actualy component
