@@ -4,7 +4,7 @@ import { ChatsView } from '@/features/chats/components/Chats/ChatsView.jsx';
 import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { usePublicChats } from '@/features/chats/hooks/usePublicChats.js';
 
-const ChatsContainer = () => {
+const ChatsContainer = ({ routeChatId = null }) => {
   const { username } = useContext(CurrentContext);
 
   const {
@@ -27,6 +27,7 @@ const ChatsContainer = () => {
   return (
     <ChatsView
       username={username}
+      routeChatId={routeChatId}
       chats={chats}
       isLoadingChats={isLoadingChats}
       refetchChats={refetchChats}

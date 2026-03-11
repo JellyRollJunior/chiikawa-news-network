@@ -9,6 +9,7 @@ import kaniReading from '@/assets/images/kani-reading.png';
 
 const ChatsView = ({
   username,
+  routeChatId,
   chats,
   isLoadingChats,
   refetchChats,
@@ -93,6 +94,7 @@ const ChatsView = ({
             </div>
             <main className="mt-2 flex-1">
               <ChatsList
+                routeChatId={routeChatId}
                 chats={filteredChats}
                 isLoadingChats={isLoadingChats}
                 isNoChatsPromptShown={true}

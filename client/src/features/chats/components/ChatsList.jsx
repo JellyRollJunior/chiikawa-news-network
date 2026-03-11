@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link } from 'react-router';
 import { format } from 'date-fns';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
@@ -29,14 +29,13 @@ const ChatsListItemLoadingElement = ({ animationDelay = 0 }) => {
 };
 
 const ChatsList = ({
+  routeChatId = null,
   chats,
   isLoadingChats,
   hoverColor = 'duckegg-dark',
   isNoChatsPromptShown = false,
 }) => {
   if (!chats) chats = [];
-
-  const { chatId: browserChatId } = useParams();
 
   // format latestMessage & date
   for (const chat of chats) {
@@ -69,7 +68,7 @@ const ChatsList = ({
       {chats.map((chat) => (
         <li key={chat.id} className={`hover:bg-${hoverColor} px-2 py-2`}>
           <Link className="flex" to={`/chats/${chat.id}`}>
-            {chat.id == browserChatId && <img src={selected} />}
+            {chat.id == routeChatId && <img src={selected} />}
             <Avatar
               className="size-[70px] border-3 border-dashed border-white p-0.5"
               avatar={chat.avatar}

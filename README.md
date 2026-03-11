@@ -223,11 +223,6 @@ VITE_GIPHY_API_KEY
     - comment refetching animation loading messes up the flow
 
 - containerize settings
-- containerize
-    - chats
-    - chat modals
-    - merge components for chat headers
-    -  Move chatId param checking from ChatsList to page level  const { chatId: browserChatId } = useParams();
 
 - maincontainer -> remove container flex & other specific styling 
     - move to the actualy component

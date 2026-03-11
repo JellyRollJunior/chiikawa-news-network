@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { ChatMessages } from '@/features/chats/components/ChatMessages.jsx';
 import { ChatMessageInput } from '@/features/chats/components/ChatMessageInput.jsx';
-import { RenameChatModal } from '@/features/chats/components/ChatRenameModal.jsx';
+import { RenameChatModal } from '@/features/chats/components/RenameChatModal.jsx';
 import { DeleteChatModal } from '@/features/chats/components/DeleteChatModal/';
 import { ChatInfoModal } from '@/features/chats/components/ChatInfoModal.jsx';
 import { Avatar } from '@/shared/components/Avatar.jsx';
