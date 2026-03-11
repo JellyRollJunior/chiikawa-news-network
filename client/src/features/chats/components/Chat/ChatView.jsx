@@ -63,7 +63,7 @@ const ChatView = ({
   const isDirectMessage = chat && chat.users && chat.users.length == 2;
 
   return (
-    <div className="main-container relative mx-4 mt-3 mb-2 flex w-full flex-1 flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
+    <div className="h-full w-full relative flex flex-col gap-1.5 px-3 pt-3.5 pb-2.5 lg:ml-0">
       {/* Chat Header */}
       <header className="flex gap-1.5">
         {/* Mobile: Back button */}
@@ -119,7 +119,7 @@ const ChatView = ({
       <div className="duckegg-block h-4 shrink-0" />
 
       {/* Chat messages */}
-      <main
+      <div
         ref={scrollContainerRef}
         className="scrollbar-thin pink-block flex-1 overflow-y-scroll px-3 pt-2 pb-1"
       >
@@ -129,7 +129,7 @@ const ChatView = ({
           isPrivateChat={chat && chat.type == 'PRIVATE'}
           isLoadingMessages={isLoadingChat}
         />
-      </main>
+      </div>
       <div className="duckegg-block h-4 shrink-0"></div>
       <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoadingChat} />
 
