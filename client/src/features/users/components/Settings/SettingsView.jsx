@@ -5,7 +5,15 @@ import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
 import trioScouting from '@/assets/images/trio-scouting.png';
 
-const SettingsView = ({ logout }) => {
+const SettingsView = ({
+  /* Edit Avatar Section */
+  avatar,
+  isLoadingUser,
+  uploadAvatar,
+  isUploadingAvatar,
+  
+  logout,
+}) => {
   return (
     <SimpleBar className="h-full">
       <div className="relative px-3 pt-3 pb-2.5 md:pt-3.5">
@@ -13,7 +21,12 @@ const SettingsView = ({ logout }) => {
           <LogoTitle className="text-lg md:text-2xl" text="Edit Settings" />
         </header>
         <section className="mt-2">
-          <SettingsEditAvatar />
+          <SettingsEditAvatar
+            avatar={avatar}
+            isLoadingUser={isLoadingUser}
+            uploadAvatar={uploadAvatar}
+            isUploadingAvatar={isUploadingAvatar}
+          />
         </section>
         <section className="mt-2">
           <SettingsEditBio />

@@ -1,16 +1,17 @@
-import { useContext, useRef, useState } from 'react';
-import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
-import { useUploadAvatar } from '@/features/users/hooks/useUploadAvatar.js';
+import { useRef, useState } from 'react';
 import { Avatar } from '@/shared/components/Avatar.jsx';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
 import chiiPeace from '@/assets/images/chii-peace.png';
 import hachiCamera from '@/assets/images/hachi-camera-back.png';
 
-const SettingsEditAvatar = () => {
+const SettingsEditAvatar = ({
+  avatar,
+  isLoadingUser,
+  uploadAvatar,
+  isUploadingAvatar,
+}) => {
   const fileInputRef = useRef(null);
-  const { avatar, isLoading } = useContext(CurrentContext);
-  const { uploadAvatar, isLoading: isUploadingAvatar } = useUploadAvatar();
   const [mediaError, setMediaError] = useState('');
 
   const handleClickChangePhoto = () => {
@@ -31,7 +32,7 @@ const SettingsEditAvatar = () => {
     }
   };
 
-  if (isLoading) {
+  if (isLoadingUser) {
     return (
       <div className="flex gap-2">
         <div className="duckegg-block relative px-4 py-5">
