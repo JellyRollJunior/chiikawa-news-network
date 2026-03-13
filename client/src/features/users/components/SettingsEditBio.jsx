@@ -23,12 +23,29 @@ const SettingsEditBio = () => {
     }
   };
 
-  return !isLoading ? (
+  if (isLoading) {
+    return (
+      <div className="duckegg-block px-3 py-3">
+        <div className="flex flex-col">
+          <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
+          <LoadingElement className="mx-1 mt-2 h-26 rounded-sm" />
+          <button
+            className="blue-button mt-2 ml-auto px-3 py-1"
+            disabled={true}
+          >
+            Confirm Edit
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
     <div className="duckegg-block px-3 py-3">
       <form className="flex flex-col" onSubmit={handleEditBio}>
         <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
         <textarea
-          className="mx-1 mt-2 min-h-26 resize-none rounded-lg border-2 border-pink-200 bg-white py-1 px-2 disabled:bg-gray-200"
+          className="mx-1 mt-2 min-h-26 resize-none rounded-lg border-2 border-pink-200 bg-white px-2 py-1 disabled:bg-gray-200"
           autoFocus
           name="bio"
           id="bio"
@@ -46,22 +63,6 @@ const SettingsEditBio = () => {
         </button>
       </form>
     </div>
-  ) : (
-    /* Loading Display */
-    <>
-      <div className="duckegg-block px-3 py-3">
-        <div className="flex flex-col">
-          <h3 className="text-shadow-wrap text-lg font-bold">Edit Bio</h3>
-          <LoadingElement className="mx-1 mt-2 h-26 rounded-sm" />
-          <button
-            className="blue-button mt-2 ml-auto px-3 py-1"
-            disabled={true}
-          >
-            Confirm Edit
-          </button>
-        </div>
-      </div>
-    </>
   );
 };
 

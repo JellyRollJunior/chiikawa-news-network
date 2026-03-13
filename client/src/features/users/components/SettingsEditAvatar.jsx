@@ -31,7 +31,32 @@ const SettingsEditAvatar = () => {
     }
   };
 
-  return !isLoading ? (
+  if (isLoading) {
+    return (
+      <div className="flex gap-2">
+        <div className="duckegg-block relative px-4 py-5">
+          <LoadingElement className="size-[100px] rounded-full md:size-[120px]" />
+          <img
+            className="drop-shadow-pink-outline absolute -top-[5px] -right-[10px] w-[52px]"
+            src={chiiPeace}
+          />
+          <img
+            className="drop-shadow-pink-outline absolute -bottom-[5px] -left-[12px] w-[52px]"
+            src={hachiCamera}
+          />
+        </div>
+        <div className="pink-block flex flex-1 flex-col items-center justify-center gap-1 pt-4">
+          <h3 className="text-shadow-wrap text-lg font-bold">Edit Picture</h3>
+          <p className="text-xs md:text-sm">(Max 250Kb)</p>
+          <button className="blue-button mt-1 px-5 py-0.5" disabled={true}>
+            Upload
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
     <div className="flex gap-2">
       <div className="duckegg-block relative px-4 py-5">
         <Avatar
@@ -75,27 +100,6 @@ const SettingsEditAvatar = () => {
           onChange={handleUploadAvatar}
           accept="image/jpg, image/jpeg, image/png, image/gif, image/webp"
         />
-      </div>
-    </div>
-  ) : (
-    <div className="flex gap-2">
-      <div className="duckegg-block relative px-4 py-5">
-        <LoadingElement className="size-[100px] rounded-full md:size-[120px]" />
-        <img
-          className="drop-shadow-pink-outline absolute -top-[5px] -right-[10px] w-[52px]"
-          src={chiiPeace}
-        />
-        <img
-          className="drop-shadow-pink-outline absolute -bottom-[5px] -left-[12px] w-[52px]"
-          src={hachiCamera}
-        />
-      </div>
-      <div className="pink-block flex flex-1 flex-col items-center justify-center gap-1 pt-4">
-        <h3 className="text-shadow-wrap text-lg font-bold">Edit Picture</h3>
-        <p className="text-xs md:text-sm">(Max 250Kb)</p>
-        <button className="blue-button mt-1 px-5 py-0.5" disabled={true}>
-          Upload
-        </button>
       </div>
     </div>
   );
