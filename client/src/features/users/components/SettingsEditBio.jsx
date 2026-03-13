@@ -1,13 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
-import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
-import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
-import { useEditBio } from '@/features/users/hooks/useEditBio.js';
+import { useEffect, useState } from 'react';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
-const SettingsEditBio = () => {
-  const { toastTemp } = useContext(ToastContext);
-  const { bio, setBio, isLoading } = useContext(CurrentContext);
-  const { editBio, isLoading: isEditingBio } = useEditBio();
+const SettingsEditBio = ({ bio, isLoadingUser, editBio, isEditingBio }) => {
   const [bioTextarea, setBioTextarea] = useState('');
 
   useEffect(() => {
@@ -16,14 +10,10 @@ const SettingsEditBio = () => {
 
   const handleEditBio = async (event) => {
     event.preventDefault();
-    const data = await editBio(bioTextarea);
-    if (data && data.bio) {
-      setBio(data.bio);
-      toastTemp('Bio edited successfully');
-    }
+    await editBio(bioTextarea);
   };
 
-  if (isLoading) {
+  if (isLoadingUser) {
     return (
       <div className="duckegg-block px-3 py-3">
         <div className="flex flex-col">

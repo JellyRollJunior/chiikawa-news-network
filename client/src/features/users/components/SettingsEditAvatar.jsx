@@ -24,9 +24,7 @@ const SettingsEditAvatar = ({
     const file = event.target.files[0];
     const FILE_SIZE_LIMIT = 1024 * 250; // 250kb
     if (file && file.size <= FILE_SIZE_LIMIT) {
-      const formData = new FormData();
-      formData.append('avatar', file);
-      uploadAvatar(formData);
+      uploadAvatar(file);
     } else {
       setMediaError('File too large');
     }

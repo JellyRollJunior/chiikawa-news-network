@@ -11,7 +11,12 @@ const SettingsView = ({
   isLoadingUser,
   uploadAvatar,
   isUploadingAvatar,
-  
+
+  /* Edit Bio Section */
+  bio,
+  editBio,
+  isEditingBio,
+
   logout,
 }) => {
   return (
@@ -29,7 +34,12 @@ const SettingsView = ({
           />
         </section>
         <section className="mt-2">
-          <SettingsEditBio />
+          <SettingsEditBio
+            bio={bio}
+            isLoadingUser={isLoadingUser}
+            editBio={editBio}
+            isEditingBio={isEditingBio}
+          />
         </section>
         <div className="yellow-block mt-2 ml-auto w-fit px-3 py-3.5">
           <button className="pink-button px-7 py-1" onClick={logout}>
