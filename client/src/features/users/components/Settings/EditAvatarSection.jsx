@@ -5,7 +5,7 @@ import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 import chiiPeace from '@/assets/images/chii-peace.png';
 import hachiCamera from '@/assets/images/hachi-camera-back.png';
 
-const SettingsEditAvatar = ({
+const EditAvatarSection = ({
   avatar,
   isLoadingUser,
   uploadAvatar,
@@ -104,4 +104,4 @@ const SettingsEditAvatar = ({
   );
 };
 
-export { SettingsEditAvatar };
+export { EditAvatarSection };

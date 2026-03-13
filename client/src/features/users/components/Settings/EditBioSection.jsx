@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LoadingElement } from '@/shared/components/LoadingElement.jsx';
 
-const SettingsEditBio = ({ bio, isLoadingUser, editBio, isEditingBio }) => {
+const EditBioSection = ({ bio, isLoadingUser, editBio, isEditingBio }) => {
   const [bioTextarea, setBioTextarea] = useState('');
 
   useEffect(() => {
@@ -56,4 +56,4 @@ const SettingsEditBio = ({ bio, isLoadingUser, editBio, isEditingBio }) => {
   );
 };
 
-export { SettingsEditBio };
+export { EditBioSection };

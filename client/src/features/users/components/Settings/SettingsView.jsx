@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar-react';
-import { SettingsEditAvatar } from '@/features/users/components/SettingsEditAvatar.jsx';
-import { SettingsEditBio } from '@/features/users/components/SettingsEditBio.jsx';
+import { EditAvatarSection } from '@/features/users/components/Settings/EditAvatarSection.jsx';
+import { EditBioSection } from '@/features/users/components/Settings/EditBioSection.jsx';
 import { LogoTitle } from '@/shared/components/LogoTitle.jsx';
 
 import trioScouting from '@/assets/images/trio-scouting.png';
@@ -26,7 +26,7 @@ const SettingsView = ({
           <LogoTitle className="text-lg md:text-2xl" text="Edit Settings" />
         </header>
         <section className="mt-2">
-          <SettingsEditAvatar
+          <EditAvatarSection
             avatar={avatar}
             isLoadingUser={isLoadingUser}
             uploadAvatar={uploadAvatar}
@@ -34,7 +34,7 @@ const SettingsView = ({
           />
         </section>
         <section className="mt-2">
-          <SettingsEditBio
+          <EditBioSection
             bio={bio}
             isLoadingUser={isLoadingUser}
             editBio={editBio}
