@@ -138,7 +138,7 @@ This project solidifies my decision to become a web developer. This site design 
 # Start backend server
 cd server
 npm install
-node --watch server.js
+npm run dev # node --watch server.js
 ```
 
 ```bash
@@ -217,10 +217,10 @@ VITE_GIPHY_API_KEY
 
 - make loading not gray (its ugly)
 - document client routes!
-- start commands
 
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
-- containerize settings
-
+- infinite post fetch error
+    - issue with scollable + observer?
+    - scroll height bounces up and down (probably rendering loading post item and deleting it over and over)
