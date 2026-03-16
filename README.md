@@ -221,6 +221,26 @@ VITE_GIPHY_API_KEY
 - comment loading broken
     - comment refetching animation loading messes up the flow
 
-- infinite post fetch error
-    - issue with scollable + observer?
-    - scroll height bounces up and down (probably rendering loading post item and deleting it over and over)
+- reintersects on closing notification
+
+- posts hook also needs refactoring (fix later)
+- fix: server env var injection
+
+
+## Big Bug Documentation
+
+1. Requesting new posts continuously on PostFeed
+    - Root Cause:
+        - Scrollable mounts with intersection observer and an empty list
+        - Sentinel is immediately visible in viewport due to empty list which triggers fetchNextPosts
+        - fetchNextPosts updates states in usePosts
+        - PostFeed and Scrollable is rerendered due to state change in usePosts
+        - Rerender recreates instance of fetchNextPosts passed to Scrollable as onScrollToBottom
+        - Scrollable's useEffect has [onScrollToBottom] dependency. Recreating fetchNextPosts triggers intersection observer cleanup and recreation
+        - Recreated intersection observer fires immediately again due to empty list
+        - Repeat
+    - Solution:
+        - Make onReachBottom function stable
+        - Stop observer from recreating by removing dependency from useEffect
+        - Disable API call in fetchNextPosts when loading posts
+            - useRef for synchronous loading value

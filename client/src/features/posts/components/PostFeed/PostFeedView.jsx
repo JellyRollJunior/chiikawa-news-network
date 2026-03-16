@@ -26,7 +26,7 @@ const PostFeedView = ({
   return (
     <Scrollable
       className="px-3 pt-3 pb-2.5 md:pt-3.5"
-      onScrollToBottom={fetchNextPage}
+      onReachBottom={fetchNextPage}
     >
       {/* Title */}
       <header className="yellow-block pt-2 pb-1">

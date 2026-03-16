@@ -1,39 +1,41 @@
 import SimpleBar from 'simplebar-react';
 import { useEffect, useRef } from 'react';
 
-const Scrollable = ({ className = '', onScrollToBottom, children }) => {
-  const containerRef = useRef(null);
+const Scrollable = ({ className = '', onReachBottom, children }) => {
   const sentinelRef = useRef(null);
+  const callbackRef = useRef(onReachBottom);
+
+  // Ensures onReachBottom is latest value without rerendering component
+  useEffect(() => {
+    callbackRef.current = onReachBottom;
+  }, [onReachBottom]);
 
   useEffect(() => {
-    const container = containerRef.current;
     const sentinel = sentinelRef.current;
 
     const observerOptions = {
-      root: container,
       rootMargin: '0px',
-      threshhold: 1.0,
+      threshold: 1.0,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          onScrollToBottom();
+          console.log('intersecting');
+          callbackRef.current?.();
         }
       });
     }, observerOptions);
 
-    observer.observe(sentinel);
+    if (sentinel) observer.observe(sentinel);
 
     return () => observer.disconnect();
-  }, [onScrollToBottom]);
+  }, []);
 
   return (
     <SimpleBar className={`h-full min-h-0 ${className}`}>
-      <div className='h-full' ref={containerRef}>
-        {children}
-        <div className="h-1" ref={sentinelRef}></div>
-      </div>
+      {children}
+      <div className="h-1" ref={sentinelRef} />
     </SimpleBar>
   );
 };
