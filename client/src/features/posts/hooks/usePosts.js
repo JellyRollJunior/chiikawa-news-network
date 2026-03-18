@@ -9,16 +9,18 @@ import {
 } from '@/features/posts/api/posts.api.js';
 
 const usePosts = (limit = 20, userId = null) => {
-    const loadingRef = useRef(false);
     const [isFeed, setIsFeed] = useState(true);
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
     const [hasNextPage, setHasNextPage] = useState(false);
+    const { handleTokenErrors } = useTokenErrorHandler();
+    const { toast } = useContext(ToastContext);
+
+    // Loading
+    const loadingRef = useRef(false);
     const [isLoadingInit, setIsLoadingInit] = useState(false);
     const [isLoadingNext, setIsLoadingNext] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
 
     const fetchData = useCallback(
         async (signal, cursor, limit, userId = null) => {
@@ -32,9 +34,10 @@ const usePosts = (limit = 20, userId = null) => {
 
     const initPosts = useCallback(
         async (signal, cursor) => {
+            loadingRef.current = true;
+            setIsLoadingInit(true);
+
             try {
-                setIsLoadingInit(true);
-                setPosts([]);
                 const data = await fetchData(signal, cursor, limit, userId);
                 setPosts(data.posts);
                 setHasNextPage(data.meta.hasNextPage);
@@ -43,6 +46,7 @@ const usePosts = (limit = 20, userId = null) => {
                 handleTokenErrors(error);
                 toast('Unable to fetch feed');
             } finally {
+                loadingRef.current = false;
                 setIsLoadingInit(false);
             }
         },
