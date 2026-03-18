@@ -9,12 +9,14 @@ import {
 } from '@/features/posts/api/posts.api.js';
 
 const usePosts = (limit = 20, userId = null) => {
-    const [isFeed, setIsFeed] = useState(true);
+    const { handleTokenErrors } = useTokenErrorHandler();
+    const { toast } = useContext(ToastContext);
+
+    // Feed state
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
     const [hasNextPage, setHasNextPage] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
+    const [isFeed, setIsFeed] = useState(true);
 
     // Loading
     const loadingRef = useRef(false);
@@ -22,6 +24,7 @@ const usePosts = (limit = 20, userId = null) => {
     const [isLoadingNext, setIsLoadingNext] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
 
+    // Post data fetching
     const fetchData = useCallback(
         async (signal, cursor, limit, userId = null) => {
             if (userId) return await fetchPosts(signal, cursor, limit, userId);
@@ -32,7 +35,7 @@ const usePosts = (limit = 20, userId = null) => {
         [isFeed]
     );
 
-    const initPosts = useCallback(
+    const fetchInitialPosts = useCallback(
         async (signal, cursor) => {
             loadingRef.current = true;
             setIsLoadingInit(true);
@@ -52,14 +55,6 @@ const usePosts = (limit = 20, userId = null) => {
         },
         [fetchData, handleTokenErrors, toast, limit, userId]
     );
-
-    useEffect(() => {
-        const abortController = new AbortController();
-
-        initPosts(abortController.signal, null);
-
-        return () => abortController.abort();
-    }, [initPosts]);
 
     const fetchNextPage = useCallback(async () => {
         if (!hasNextPage || isLoadingNext || loadingRef.current) return;
@@ -97,14 +92,6 @@ const usePosts = (limit = 20, userId = null) => {
         userId,
     ]);
 
-    const setPostsToFeed = () => {
-        setIsFeed(true);
-    };
-
-    const setPostsToAll = () => {
-        setIsFeed(false);
-    };
-
     let refreshAbortController = useRef(null);
     const refreshPosts = async () => {
         if (refreshAbortController.current) {
@@ -112,9 +99,10 @@ const usePosts = (limit = 20, userId = null) => {
         }
         refreshAbortController.current = new AbortController();
 
-        initPosts(refreshAbortController.current.signal, null);
+        fetchInitialPosts(refreshAbortController.current.signal, null);
     };
 
+    // Liking Posts
     let likeAbortController = useRef(null);
     const toggleLike = async (postId, hasLiked = false) => {
         if (likeAbortController.current) {
@@ -147,6 +135,23 @@ const usePosts = (limit = 20, userId = null) => {
             setIsLoadingLike(false);
         }
     };
+
+    // Feed controls
+    const setPostsToFeed = () => {
+        setIsFeed(true);
+    };
+
+    const setPostsToAll = () => {
+        setIsFeed(false);
+    };
+
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        fetchInitialPosts(abortController.signal, null);
+
+        return () => abortController.abort();
+    }, [fetchInitialPosts]);
 
     return {
         posts,
