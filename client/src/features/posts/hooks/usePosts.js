@@ -61,7 +61,7 @@ const usePosts = (limit = 20, userId = null) => {
         return () => abortController.abort();
     }, [initPosts]);
 
-    const fetchNextPage = async () => {
+    const fetchNextPage = useCallback(async () => {
         if (!hasNextPage || isLoadingNext || loadingRef.current) return;
 
         loadingRef.current = true;
@@ -86,7 +86,16 @@ const usePosts = (limit = 20, userId = null) => {
             loadingRef.current = false;
             setIsLoadingNext(false);
         }
-    };
+    }, [
+        hasNextPage,
+        isLoadingNext,
+        fetchData,
+        endCursor,
+        handleTokenErrors,
+        toast,
+        limit,
+        userId,
+    ]);
 
     const setPostsToFeed = () => {
         setIsFeed(true);
@@ -96,22 +105,29 @@ const usePosts = (limit = 20, userId = null) => {
         setIsFeed(false);
     };
 
-    let refreshAbortController = new AbortController();
+    let refreshAbortController = useRef(null);
     const refreshPosts = async () => {
-        if (refreshAbortController) refreshAbortController.abort();
-        refreshAbortController = new AbortController();
-        initPosts(refreshAbortController.signal, null);
+        if (refreshAbortController.current) {
+            refreshAbortController.current.abort();
+        }
+        refreshAbortController.current = new AbortController();
+
+        initPosts(refreshAbortController.current.signal, null);
     };
 
-    let likeAbortController = new AbortController();
+    let likeAbortController = useRef(null);
     const toggleLike = async (postId, hasLiked = false) => {
+        if (likeAbortController.current) {
+            likeAbortController.current.abort();
+        }
+        likeAbortController.current = new AbortController();
+        setIsLoadingLike(true);
+
         try {
-            setIsLoadingLike(true);
-            if (likeAbortController) likeAbortController.abort();
-            likeAbortController = new AbortController();
             const updatedPost = !hasLiked
                 ? await createPostLike(likeAbortController.signal, postId)
                 : await deletePostLike(likeAbortController.signal, postId);
+
             // update posts array with new data
             setPosts((prevPosts) => {
                 const index = prevPosts.findIndex(
