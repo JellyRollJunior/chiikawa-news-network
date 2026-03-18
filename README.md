@@ -244,3 +244,5 @@ VITE_GIPHY_API_KEY
         - Stop observer from recreating by removing dependency from useEffect
         - Disable API call in fetchNextPosts when loading posts
             - useRef for synchronous loading value
+
+TODO: LOADING REF

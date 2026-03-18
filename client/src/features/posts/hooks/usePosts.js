@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useTokenErrorHandler } from '@/shared/hooks/useTokenErrorHandler.js';
 import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
 import {
@@ -9,6 +9,7 @@ import {
 } from '@/features/posts/api/posts.api.js';
 
 const usePosts = (limit = 20, userId = null) => {
+    const loadingRef = useRef(false);
     const [isFeed, setIsFeed] = useState(true);
     const [posts, setPosts] = useState([]);
     const [endCursor, setEndCursor] = useState(null);
@@ -57,9 +58,12 @@ const usePosts = (limit = 20, userId = null) => {
     }, [initPosts]);
 
     const fetchNextPage = async () => {
+        if (!hasNextPage || isLoadingNext || loadingRef.current) return;
+
+        loadingRef.current = true;
+        setIsLoadingNext(true);
+
         try {
-            if (!hasNextPage || isLoadingNext) return;
-            setIsLoadingNext(true);
             const data = await fetchData(null, endCursor, limit, userId);
             setPosts((prev) => {
                 // remove duplicates
@@ -75,6 +79,7 @@ const usePosts = (limit = 20, userId = null) => {
             handleTokenErrors(error);
             toast('Unable to fetch feed');
         } finally {
+            loadingRef.current = false;
             setIsLoadingNext(false);
         }
     };
