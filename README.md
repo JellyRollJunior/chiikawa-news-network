@@ -209,9 +209,7 @@ VITE_GIPHY_API_KEY
 
 ## Known Issues
 
-- Post retrieval sometimes returns posts in incorrect order (I suspect an issue with the pagination implementation)
-- Fetching posts infinitely on prod... Something wrong with implementation of fetching posts
-    - possibly refetching while loading
+
 
 ## Potential Improvements
 
@@ -223,7 +221,6 @@ VITE_GIPHY_API_KEY
 
 - reintersects on closing notification
 
-- posts hook also needs refactoring (fix later)
 - fix: server env var injection
 
 
@@ -244,5 +241,3 @@ VITE_GIPHY_API_KEY
         - Stop observer from recreating by removing dependency from useEffect
         - Disable API call in fetchNextPosts when loading posts
             - useRef for synchronous loading value
-
-TODO: LOADING REF

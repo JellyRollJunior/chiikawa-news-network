@@ -35,6 +35,13 @@ const usePosts = (limit = 20, userId = null) => {
         [isFeed]
     );
 
+    const removeDuplicatePosts = (posts) => {
+        const uniquePosts = Array.from(
+            new Map(posts.map((p) => [p.id, p])).values()
+        );
+        return uniquePosts;
+    };
+
     const fetchInitialPosts = useCallback(
         async (signal, cursor) => {
             loadingRef.current = true;
@@ -64,14 +71,7 @@ const usePosts = (limit = 20, userId = null) => {
 
         try {
             const data = await fetchData(null, endCursor, limit, userId);
-            setPosts((prev) => {
-                // remove duplicates
-                const updatedPosts = [...prev, ...data.posts];
-                const uniquePosts = Array.from(
-                    new Map(updatedPosts.map((p) => [p.id, p])).values()
-                );
-                return uniquePosts;
-            });
+            setPosts((prev) => removeDuplicatePosts([...prev, ...data.posts]));
             setHasNextPage(data.meta.hasNextPage);
             setEndCursor(data.meta.endCursor);
         } catch (error) {
