@@ -20,7 +20,7 @@ const ChatInfoModal = ({ open, closeModal, chat }) => {
           </div>
           <ul className="mt-2 flex flex-col gap-2 px-3">
             {chat.users.map((user) => (
-              <li className="flex gap-2">
+              <li key={user.id} className="flex gap-2">
                 <Avatar
                   className="size-[56px] border-1 border-yellow-500"
                   avatar={user.avatar}
