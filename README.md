@@ -209,8 +209,6 @@ VITE_GIPHY_API_KEY
 
 ## Known Issues
 
-
-
 ## Potential Improvements
 
 - make loading not gray (its ugly)
@@ -222,6 +220,12 @@ VITE_GIPHY_API_KEY
 - reintersects on closing notification
 
 - fix: server env var injection
+
+
+- split useChat hook (too many responsibilities)
+    - may need to implement route to only fetch chat messages
+    - useChatData
+    - useChatMessage
 
 
 ## Big Bug Documentation

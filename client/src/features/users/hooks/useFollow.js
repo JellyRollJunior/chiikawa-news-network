@@ -1,30 +1,40 @@
-import { deleteFollowing, postFollowing } from '@/features/users/api/user.api.js';
+import {
+    deleteFollowing,
+    postFollowing,
+} from '@/features/users/api/user.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
+import { useRef } from 'react';
 
 const useFollow = () => {
     const { handleApiCall, isLoading } = useApiHandler();
 
-    let followAbortController = new AbortController();
+    let followAbortControllerRef = useRef(null);
     const followUser = async (userId) => {
-        if (followAbortController) followAbortController.abort();
-        followAbortController = new AbortController();
+        if (followAbortControllerRef.current) {
+            followAbortControllerRef.current.abort();
+        }
+        followAbortControllerRef.current = new AbortController();
+
         const data = await handleApiCall(
             'Unable to follow user',
             postFollowing,
-            followAbortController.signal,
+            followAbortControllerRef.current.signal,
             userId
         );
         return data;
     };
 
-    let unfollowAbortController = new AbortController();
+    let unfollowAbortControllerRef = useRef(null);
     const unfollowUser = async (userId) => {
-        if (unfollowAbortController) unfollowAbortController.abort();
-        unfollowAbortController = new AbortController();
+        if (unfollowAbortControllerRef.current) {
+            unfollowAbortControllerRef.current.abort();
+        }
+        unfollowAbortControllerRef.current = new AbortController();
+
         const data = await handleApiCall(
             'Unable to unfollow user',
             deleteFollowing,
-            followAbortController.signal,
+            unfollowAbortControllerRef.current.signal,
             userId
         );
         return data;

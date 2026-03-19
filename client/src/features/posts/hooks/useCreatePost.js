@@ -1,17 +1,21 @@
+import { useRef } from 'react';
 import { createPost as requestCreatePost } from '@/features/posts/api/posts.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useCreatePost = () => {
     const { handleApiCall, isLoading } = useApiHandler();
 
-    let abortController = new AbortController();
+    let abortControllerRef = useRef(null);
     const createPost = async (title, content, media = null) => {
-        if (abortController) abortController.abort();
-        abortController = new AbortController();
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        abortControllerRef.current = new AbortController();
+
         const data = handleApiCall(
             'Unable to create post',
             requestCreatePost,
-            abortController.signal,
+            abortControllerRef.current.signal,
             title,
             content,
             media

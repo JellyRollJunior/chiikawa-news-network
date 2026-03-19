@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useTokenErrorHandler } from '@/shared/hooks/useTokenErrorHandler.js';
 import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
 import {
@@ -8,11 +8,12 @@ import {
 } from '@/features/posts/api/posts.api.js';
 
 const useComments = (postId) => {
+    const { toast } = useContext(ToastContext);
+    const { handleTokenErrors } = useTokenErrorHandler();
+
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
-    const { handleTokenErrors } = useTokenErrorHandler();
-    const { toast } = useContext(ToastContext);
 
     const getComments = useCallback(
         async (signal, postId) => {
@@ -40,19 +41,26 @@ const useComments = (postId) => {
         return () => abortController.abort();
     }, [postId, getComments]);
 
-    let likeAbortController = new AbortController();
+    let likeAbortControllerRef = useRef(null);
     const toggleLike = async (commentId, hasLiked = false) => {
+        if (likeAbortControllerRef.current) {
+            likeAbortControllerRef.current.abort();
+        }
+        likeAbortControllerRef.current = new AbortController();
+
+        setIsLoadingLike(true);
         try {
-            setIsLoadingLike(true);
-            if (likeAbortController) likeAbortController.abort();
-            likeAbortController = new AbortController();
             const { comment: updatedComment } = !hasLiked
-                ? await createCommentLike(likeAbortController.signal, commentId)
+                ? await createCommentLike(
+                      likeAbortControllerRef.current.signal,
+                      commentId
+                  )
                 : await deleteCommentLike(
-                      likeAbortController.signal,
+                      likeAbortControllerRef.current.signal,
                       commentId
                   );
-            // update comment arry with new data
+
+            // update comment array with new data
             setComments((prevComments) => {
                 const index = prevComments.findIndex(
                     (comment) => comment.id == updatedComment.id
@@ -72,11 +80,14 @@ const useComments = (postId) => {
         }
     };
 
-    let refetchAbortController = new AbortController();
+    let refetchAbortControllerRef = useRef(null);
     const refetch = async () => {
-        if (refetchAbortController) refetchAbortController.abort();
-        refetchAbortController = new AbortController();
-        getComments(refetchAbortController.signal, postId);
+        if (refetchAbortControllerRef.current) {
+            refetchAbortControllerRef.current.abort();
+        }
+        refetchAbortControllerRef.current = new AbortController();
+
+        getComments(refetchAbortControllerRef.current.signal, postId);
     };
 
     return { comments, isLoading, toggleLike, isLoadingLike, refetch };

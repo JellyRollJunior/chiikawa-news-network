@@ -4,10 +4,7 @@ import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 const useCreateChat = () => {
     const { handleApiCall, isLoading } = useApiHandler();
 
-    let abortController = new AbortController();
     const createChat = async (name, chatters) => {
-        if (abortController) abortController.abort();
-        abortController = new AbortController();
         const data = handleApiCall(
             'Unable to create chat',
             postChats,

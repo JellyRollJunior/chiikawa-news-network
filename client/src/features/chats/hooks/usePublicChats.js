@@ -1,31 +1,34 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { fetchPublicChats } from '@/features/chats/api/chats.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const usePublicChats = () => {
-    const [publicChats, setPublicChats] = useState([]);
     const { handleApiCall, isLoading } = useApiHandler();
 
-    const getPublicChats = useCallback(
-        async (signal) => {
-            const chats = await handleApiCall(
-                'Unable to fetch public chats',
-                fetchPublicChats,
-                signal
-            );
-            setPublicChats(chats);
-        },
-        [handleApiCall]
-    );
+    const [publicChats, setPublicChats] = useState([]);
+    
+    const abortControllerRef = useRef(null);
+    const getPublicChats = useCallback(async () => {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        abortControllerRef.current = new AbortController();
 
-    const refetch = () => getPublicChats(null);
+        const chats = await handleApiCall(
+            'Unable to fetch public chats',
+            fetchPublicChats,
+            abortControllerRef.current.signal
+        );
+        setPublicChats(chats);
+    }, [handleApiCall]);
 
+    const refetch = getPublicChats;
+
+    // Fetch public chats on load hook
     useEffect(() => {
-        const abortController = new AbortController();
+        getPublicChats();
 
-        getPublicChats(abortController.signal);
-
-        return () => abortController.abort();
+        return () => abortControllerRef.current?.abort();
     }, [getPublicChats]);
 
     return { publicChats, isLoading, refetch };

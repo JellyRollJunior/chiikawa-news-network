@@ -1,17 +1,21 @@
 import { createComment } from '@/features/posts/api/posts.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
+import { useRef } from 'react';
 
 const useCreateComment = () => {
     const { handleApiCall, isLoading } = useApiHandler();
 
-    let abortController = new AbortController();
+    let abortControllerRef = useRef(null);
     const postComment = async (postId, content) => {
-        if (abortController) abortController.abort();
-        abortController = new AbortController();
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        abortControllerRef.current = new AbortController();
+        
         const data = handleApiCall(
             'Unable to post comment',
             createComment,
-            abortController.signal,
+            abortControllerRef.current.signal,
             postId,
             content
         );

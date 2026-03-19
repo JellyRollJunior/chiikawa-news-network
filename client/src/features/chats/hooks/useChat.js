@@ -24,18 +24,30 @@ const createMessage = (content, id, username, avatar) => {
 
 const useChat = (chatId) => {
     const navigate = useNavigate();
-    const socket = useContext(SocketContext);
     const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
+
+    // Chat data
+    const socket = useContext(SocketContext);
     const { refetchChats } = useContext(ChatsContext);
     const { id, username, avatar } = useContext(CurrentContext);
     const [chat, setChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [errorStatus, setErrorStatus] = useState(null);
-    const { handleApiCall, isLoading } = useApiHandler();
+
+    const sendMessageErrors = {
+        403: 'Chat is unavailable',
+        404: 'Chat is unavailable and may have been deleted',
+    };
+
+    const updateChatNameClientSide = (name) => {
+        setChat((prev) => ({ ...prev, name: name }));
+    };
 
     // retrieve initial chat
     useEffect(() => {
         const abortController = new AbortController();
+
         const getChat = async () => {
             if (!chatId) return;
             try {
@@ -62,6 +74,7 @@ const useChat = (chatId) => {
     // configure socket on receive_message
     useEffect(() => {
         if (!socket) return;
+
         socket.on('receive_message', (message) => {
             setMessages((prev) => [...prev, message]);
         });
@@ -69,22 +82,17 @@ const useChat = (chatId) => {
         return () => socket.off('receive_message');
     }, [socket, chatId]);
 
-    const sendMessageErrors = {
-        403: 'Chat is unavailable',
-        404: 'Chat is unavailable and may have been deleted',
-    };
     const sendMessage = (text) => {
         if (!socket) return;
+
         // emit message to server
         socket.emit('send_message', chatId, text, (error) => {
             if (sendMessageErrors[error.status]) {
                 toast(sendMessageErrors[error.status]);
                 refetchChats();
-                navigate('/');
+                navigate('/chats');
             } else {
-                toast(
-                    'Unable to send message. Please refresh and try again later'
-                );
+                toast('Unable to send message. Please refresh and try again');
             }
         });
 
@@ -95,13 +103,6 @@ const useChat = (chatId) => {
         );
         const message = createMessage(censoredText, id, username, avatar);
         setMessages((prev) => [...prev, message]);
-    };
-
-    const updateChatNameClientSide = (name) => {
-        setChat((prev) => {
-            prev.name = name;
-            return prev;
-        });
     };
 
     return {

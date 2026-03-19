@@ -1,33 +1,36 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { fetchUser } from '@/features/users/api/user.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useUser = (userId) => {
-    const [user, setUser] = useState(null);
     const { handleApiCall, isLoading } = useApiHandler();
 
-    const getUser = useCallback(
-        async (signal) => {
-            const data = await handleApiCall(
-                'Unable to fetch user',
-                fetchUser,
-                signal,
-                userId
-            );
-            setUser(data);
-        },
-        [handleApiCall, userId]
-    );
+    const [user, setUser] = useState(null);
 
-    const refetch = async () => getUser(null);
+    const abortControllerRef = useRef(null);
+    const getUser = useCallback(async () => {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        abortControllerRef.current = new AbortController();
+
+        const data = await handleApiCall(
+            'Unable to fetch user',
+            fetchUser,
+            abortControllerRef.current.signal,
+            userId
+        );
+        setUser(data);
+    }, [handleApiCall, userId]);
+
+    const refetch = async () => getUser();
 
     useEffect(() => {
         if (!userId) return;
-        const abortController = new AbortController();
 
-        getUser(abortController.signal);
+        getUser();
 
-        return () => abortController.abort();
+        return () => abortControllerRef.current?.abort();
     }, [userId, getUser]);
 
     return { user, isLoading, refetch };

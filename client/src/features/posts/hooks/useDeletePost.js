@@ -1,17 +1,21 @@
+import { useRef } from 'react';
 import { deletePost as requestDeletePost } from '@/features/posts/api/posts.api.js';
 import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
 
 const useDeletePost = () => {
     const { handleApiCall, isLoading } = useApiHandler();
 
-    let abortController = new AbortController();
+    let abortControllerRef = useRef(null);
     const deletePost = async (postId) => {
-        if (abortController) abortController.abort();
-        abortController = new AbortController();
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        abortControllerRef.current = new AbortController();
+
         const data = await handleApiCall(
             'Unable to delete post',
             requestDeletePost,
-            abortController.signal,
+            abortControllerRef.current.signal,
             postId
         );
         return data;

@@ -6,8 +6,9 @@ import {
 } from '@/features/auth/api/auth.api.js';
 
 const useLogin = () => {
-    const [isLoading, setIsLoading] = useState(false);
     const { toast } = useContext(ToastContext);
+    
+    const [isLoading, setIsLoading] = useState(false);
 
     const login = async (username, password) => {
         setIsLoading(true);
