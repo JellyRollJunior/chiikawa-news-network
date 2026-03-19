@@ -4,7 +4,7 @@ import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
 import { useUploadAvatar } from '@/features/users/hooks/useUploadAvatar.js';
 import { useEditBio } from '@/features/users/hooks/useEditBio.js';
 import { useLogout } from '@/features/auth/hooks/useLogout.js';
-import { SettingsView } from '@/features/users/components/settings/SettingsView.jsx';
+import { SettingsView } from '@/features/users/components/Settings/SettingsView.jsx';
 
 const SettingsContainer = () => {
   const { toastTemp } = useContext(ToastContext);
