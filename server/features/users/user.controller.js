@@ -1,9 +1,9 @@
-import { validateInput } from '../middleware/validations.js';
-import { AuthenticationError } from '../errors/AuthenticationError.js';
-import { uploadAvatar } from '../adapters/supabase.client.js';
-import { formatUser } from '../services/user.services.js';
-import { textCensor, profanityMatcher } from '../services/textCensor.js';
-import * as userQueries from '../db/user.queries.js';
+import { validateInput } from '../../shared/middleware/validations.js';
+import { AuthenticationError } from '../../shared/errors/AuthenticationError.js';
+import { uploadAvatar } from '../../shared/adapters/supabase.client.js';
+import { formatUser } from './user.services.js';
+import { textCensor, profanityMatcher } from '../../shared/services/textCensor.js';
+import * as userQueries from './user.queries.js';
 
 const getCurrentUser = async (req, res, next) => {
     try {

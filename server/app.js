@@ -1,14 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import { origin } from './middleware/corsOriginList.js';
-import { authRouter } from './routes/authRouter.js';
-import { currentRouter } from './routes/currentRouter.js';
-import { userRouter } from './routes/userRouter.js';
-import { chatRouter } from './routes/chatRouter.js';
-import { publicChatRouter } from './routes/publicChatRouter.js';
-import { postRouter } from './routes/postRouter.js';
-import { commentRouter } from './routes/commentRouter.js';
-import { error404Handler, errorHandler } from './middleware/errorHandler.js';
+import { origin } from './config/corsOriginList.js';
+import { authRouter } from './features/auth/auth.router.js';
+import { currentRouter } from './features/users/current.router.js';
+import { userRouter } from './features/users/user.router.js';
+import { chatRouter } from './features/chat/chat.router.js';
+import { publicChatRouter } from './features/chat/publicChat.router.js';
+import { postRouter } from './features/posts/post.router.js';
+import { commentRouter } from './features/posts/comment.router.js';
+import { error404Handler, errorHandler } from './shared/middleware/errorHandler.js';
 import dotenv from 'dotenv';
 dotenv.config();
 

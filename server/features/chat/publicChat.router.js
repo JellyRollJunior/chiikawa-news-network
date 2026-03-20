@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { authenticateToken } from '../middleware/handleVerifyToken.js';
-import * as publicChatController from '../controllers/publicChatController.js';
+import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
+import * as publicChatController from './publicChat.controller.js';
 
 const publicChatRouter = new Router();
 

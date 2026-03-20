@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { userSelect } from './selects/user.select.js';
-import { DatabaseError } from '../errors/DatabaseError.js';
+import { userSelect } from './user.select.js';
+import { DatabaseError } from '../../shared/errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 

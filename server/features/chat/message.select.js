@@ -1,4 +1,4 @@
-import { USER_SELECT_BASIC } from "./user.select.js";
+import { USER_SELECT_BASIC } from "../users/user.select.js";
 
 const MESSAGE_SELECT = {
     id: true,

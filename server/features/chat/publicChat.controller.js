@@ -1,4 +1,4 @@
-import * as publicChatQueries from '../db/publicChat.queries.js';
+import * as publicChatQueries from './publicChat.queries.js';
 
 const getPublicChats = async (req, res, next) => {
     try {

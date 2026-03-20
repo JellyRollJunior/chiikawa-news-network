@@ -1,14 +1,14 @@
 import {
     deletePostMedia,
     uploadPostMedia,
-} from '../adapters/supabase.client.js';
-import { formatPostData } from '../services/post.services.js';
-import { validateInput } from '../middleware/validations.js';
-import { AuthorizationError } from '../errors/AuthorizationError.js';
-import { DatabaseError } from '../errors/DatabaseError.js';
-import * as postQueries from '../db/post.queries.js';
-import * as userQueries from '../db/user.queries.js';
-import { profanityMatcher, textCensor } from '../services/textCensor.js';
+} from '../../shared/adapters/supabase.client.js';
+import { formatPostData } from './post.services.js';
+import { validateInput } from '../../shared/middleware/validations.js';
+import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
+import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+import * as postQueries from './post.queries.js';
+import * as userQueries from '../users/user.queries.js';
+import { profanityMatcher, textCensor } from '../../shared/services/textCensor.js';
 
 const getPosts = async (req, res, next) => {
     try {

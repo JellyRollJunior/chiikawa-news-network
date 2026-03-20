@@ -1,6 +1,5 @@
-import { commentsSelect } from './comments.select.js';
 import { likesSelect } from './likes.select.js';
-import { USER_SELECT_BASIC } from './user.select.js';
+import { USER_SELECT_BASIC } from '../users/user.select.js';
 
 const postSelect = (requesterId) => {
     return {

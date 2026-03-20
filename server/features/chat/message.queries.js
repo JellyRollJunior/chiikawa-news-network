@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client';
 import {
     CHAT_MESSAGES_SELECT,
     MESSAGE_SELECT,
-} from './selects/message.select.js';
-import { DatabaseError } from '../errors/DatabaseError.js';
+} from './message.select.js';
+import { DatabaseError } from '../../shared/errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 

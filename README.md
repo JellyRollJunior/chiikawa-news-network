@@ -205,7 +205,11 @@ VITE_GIPHY_API_KEY
     - refactored to feature folder architechture
     - moved providers from App to layout component
     - refactored modal component
-    - split large modals into container / view components
+    - split large components with UI and data fetching concerns into container / view components
+    - Fix: Infinite rerender causing Infinite refetching post feed
+
+- server
+    - refactored to feature folder architechture
 
 ## Known Issues
 
