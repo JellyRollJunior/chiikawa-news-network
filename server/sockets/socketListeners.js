@@ -3,7 +3,7 @@ import { textCensor, profanityMatcher} from '../shared/services/textCensor.js';
 import { createSocketError } from '../shared/errors/SocketError.js';
 import { AuthorizationError } from '../shared/errors/AuthorizationError.js';
 import { DatabaseError } from '../shared/errors/DatabaseError.js';
-import * as messageQueries from '../features/chat/message.queries.js';
+import * as chatQueries from '../features/chat/chat.queries.js';
 
 const handleJoinRoom = (socket, room, callback) => {
     if (!room)
@@ -30,14 +30,14 @@ const handleSendMessage = async (socket, chatId, content, callback) => {
             throw Error('Payload error');
         }
         // Verify user is authorized to post message in chat
-        const chat = await messageQueries.getChatMessages(chatId);
+        const chat = await chatQueries.getChatMetaData(chatId);
         if (!chat) throw new DatabaseError('Unable to create message', 404);
         if (!isUserAuthorizedForChat(chat, socket.data.user.id)) {
             throw new AuthorizationError('Unable to create message');
         }
         // create message and emit
         const censoredContent = textCensor.applyTo(content.trim(), profanityMatcher.getAllMatches(content.trim()));
-        const message = await messageQueries.createMessage(
+        const message = await chatQueries.createChatMessage(
             chatId,
             socket.data.user.id,
             censoredContent

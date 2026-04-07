@@ -34,7 +34,23 @@ const MESSAGE_SELECT = {
     },
 };
 
+// const CHAT_MESSAGES_SELECT = {
+//     messages: {
+//         select: MESSAGE_SELECT,
+//         orderBy: {
+//             sendTime: 'asc',
+//         },
+//     },
+//     users: {
+//         select: USER_SELECT_BASIC,
+//     },
+// };
+
 const CHAT_MESSAGES_SELECT = {
+    id: true,
+    name: true,
+    type: true,
+    avatar: true,
     messages: {
         select: MESSAGE_SELECT,
         orderBy: {

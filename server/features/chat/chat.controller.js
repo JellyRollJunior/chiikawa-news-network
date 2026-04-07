@@ -3,7 +3,6 @@ import { formatChat, sortChatsByLatest } from './chat.services.js';
 import { isUserAuthorizedForChat } from './chat.services.js';
 import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
 import * as chatQueries from './chat.queries.js';
-import * as messageQueries from './message.queries.js';
 
 const getChats = async (req, res, next) => {
     try {
@@ -25,7 +24,7 @@ const getChat = async (req, res, next) => {
         validateInput(req);
         const { chatId } = req.params;
         const userId = req.user.id;
-        const chat = await messageQueries.getChatMessages(chatId);
+        const chat = await chatQueries.getChatMessages(chatId);
         if (!chat) throw new DatabaseError('Unable to retrieve chat', 404);
         if (!isUserAuthorizedForChat(chat, userId)) {
             throw new AuthorizationError('Unable to retrieve chat');
@@ -42,7 +41,7 @@ const getChatMessages = async (req, res, next) => {
         validateInput(req);
         const { chatId } = req.params;
         const userId = req.user.id;
-        const chat = await messageQueries.getChatMessages(chatId);
+        const chat = await chatQueries.getChatMessages(chatId);
         if (!chat) {
             throw new DatabaseError('Unable to retrieve chat', 404);
         }
@@ -91,7 +90,7 @@ const deleteChat = async (req, res, next) => {
     try {
         validateInput(req);
         const { chatId } = req.params;
-        const chat = await messageQueries.getChatMessages(chatId);
+        const chat = await chatQueries.getChatMessages(chatId);
         if (!chat) {
             throw new DatabaseError('Unable to delete chat', 404);
         }
