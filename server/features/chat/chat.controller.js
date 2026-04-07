@@ -1,5 +1,5 @@
 import { validateInput } from '../../shared/middleware/validations.js';
-import { formatChat, sortChatsByLatest } from './chat.services.js';
+import { formatChatMetadata, sortChatsByLatest } from './chat.services.js';
 import { isUserAuthorizedForChat } from './chat.services.js';
 import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
 import * as chatQueries from './chat.queries.js';
@@ -24,12 +24,12 @@ const getChat = async (req, res, next) => {
         validateInput(req);
         const { chatId } = req.params;
         const userId = req.user.id;
-        const chat = await chatQueries.getChatMessages(chatId);
+        const chat = await chatQueries.getChatMetadata(chatId);
         if (!chat) throw new DatabaseError('Unable to retrieve chat', 404);
         if (!isUserAuthorizedForChat(chat, userId)) {
             throw new AuthorizationError('Unable to retrieve chat');
         }
-        const formattedChat = formatChat(chat, userId);
+        const formattedChat = formatChatMetadata(chat, userId);
         res.json(formattedChat);
     } catch (error) {
         next(error);
@@ -43,13 +43,12 @@ const getChatMessages = async (req, res, next) => {
         const userId = req.user.id;
         const chat = await chatQueries.getChatMessages(chatId);
         if (!chat) {
-            throw new DatabaseError('Unable to retrieve chat', 404);
+            throw new DatabaseError('Unable to retrieve chat messages', 404);
         }
         if (!isUserAuthorizedForChat(chat, userId)) {
-            throw new AuthorizationError('Unable to retrieve chat');
+            throw new AuthorizationError('Unable to retrieve chat messages');
         }
-        const formattedChat = formatChat(chat, userId);
-        res.json(formattedChat);
+        res.json(chat);
     } catch (error) {
         next(error);
     }

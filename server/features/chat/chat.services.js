@@ -6,7 +6,7 @@ const isUserAuthorizedForChat = (chat, userId) => {
     return isUserInChat;
 };
 
-/* Formating Chat object */
+/* Formating Chat Meta data object */
 const setAvatar = (userId, chat) => {
     if (chat.users.length == 1) {
         chat.avatar = chat.users[0].avatar;
@@ -31,7 +31,7 @@ const setChatName = (userId, chat) => {
     return chat;
 };
 
-const formatChat = (chat, userId) => {
+const formatChatMetadata = (chat, userId) => {
     const namedChat = setChatName(userId, chat);
     const avatarChat = setAvatar(userId, namedChat);
     return avatarChat;
@@ -48,4 +48,4 @@ const sortChatsByLatest = (chats) => {
     return orderedData;
 };
 
-export { isUserAuthorizedForChat, formatChat, sortChatsByLatest };
+export { isUserAuthorizedForChat, formatChatMetadata, sortChatsByLatest };

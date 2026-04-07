@@ -81,7 +81,7 @@ const getChatBySignature = async (userIdArray) => {
     }
 };
 
-const getChatMetaData = async (chatId) => {
+const getChatMetadata = async (chatId) => {
     try {
         const data = await prisma.chat.findFirst({
             where: {
@@ -170,7 +170,7 @@ export {
     getChats,
     getChatBySignature,
     createChat,
-    getChatMetaData,
+    getChatMetadata,
     updateChatName,
     deleteChat,
     createChatMessage,

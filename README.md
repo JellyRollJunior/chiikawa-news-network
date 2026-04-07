@@ -50,9 +50,10 @@
 | GET    | /chats-public              | Retrieve public chats       | Y     |                                     |                                     |
 | GET    | /chats                     | Retrieve chats              | Y     |                                     |                                     |
 | POST   | /chats                     | Create chat                 | Y     | { name, userIds: ['id_1', 'id_2'] } |                                     |
-| GET    | /chats/:chatId             | Retrieve chat               | Y     |                                     |                                     |
+| GET    | /chats/:chatId             | Retrieve chat metadata      | Y     |                                     |                                     |
 | PATCH  | /chats/:chatId             | Update chat name            | Y     | { name }                            | name optional                       |
 | DELETE | /chats/:chatId             | Delete chat                 | Y     |                                     |                                     |
+| GET    | /chats/:chatId/messages    | Retrieve chat messages      | Y     |                                     |                                     |
 | GET    | /posts                     | Retrieve all posts          | Y     |                                     | query: userId, limit, cursor        |
 | GET    | /posts/feed                | Retrieve posts by following | Y     |                                     | query: limit, cursor                |
 | POST   | /posts                     | Create post                 | Y     | { title, content, media }           | max 250kb upload, accepts media URL |
@@ -225,21 +226,12 @@ VITE_GIPHY_API_KEY
 
 - fix: server env var injection
 
-
 - split useChat hook (too many responsibilities)
     - may need to implement route to only fetch chat messages
     - useChatData
     - useChatMessage
 - server side
-    - /chats/:chatId - return chat metadata
-    - /chats/:chatId/messages - return chat messages
-
-    - consolidate chat and message queries into one file (its fucking confusing)
-        - merge
-        - make everyone use merged
-        - delete message section
     - prisma update
-
 
 ## Big Bug Documentation
 
