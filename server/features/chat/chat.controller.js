@@ -37,6 +37,25 @@ const getChat = async (req, res, next) => {
     }
 };
 
+const getChatMessages = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const { chatId } = req.params;
+        const userId = req.user.id;
+        const chat = await messageQueries.getChatMessages(chatId);
+        if (!chat) {
+            throw new DatabaseError('Unable to retrieve chat', 404);
+        }
+        if (!isUserAuthorizedForChat(chat, userId)) {
+            throw new AuthorizationError('Unable to retrieve chat');
+        }
+        const formattedChat = formatChat(chat, userId);
+        res.json(formattedChat);
+    } catch (error) {
+        next(error);
+    }
+};
+
 const createChat = async (req, res, next) => {
     try {
         validateInput(req);
@@ -73,7 +92,9 @@ const deleteChat = async (req, res, next) => {
         validateInput(req);
         const { chatId } = req.params;
         const chat = await messageQueries.getChatMessages(chatId);
-        if (!chat) throw new DatabaseError('Unable to delete chat', 404);
+        if (!chat) {
+            throw new DatabaseError('Unable to delete chat', 404);
+        }
         if (!isUserAuthorizedForChat(chat, req.user.id)) {
             throw new AuthorizationError('Unable to delete chat');
         }
@@ -84,4 +105,11 @@ const deleteChat = async (req, res, next) => {
     }
 };
 
-export { getChats, getChat, createChat, updateChatName, deleteChat };
+export {
+    getChats,
+    getChat,
+    createChat,
+    updateChatName,
+    deleteChat,
+    getChatMessages,
+};

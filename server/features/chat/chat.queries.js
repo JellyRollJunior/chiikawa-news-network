@@ -1,11 +1,17 @@
 import dotenv from 'dotenv';
 import { PrismaClient, CHAT_TYPE } from '@prisma/client';
-import { CHATS_SELECT } from './chats.select.js';
+import {
+    CHATS_SELECT,
+    CHAT_META_DATA_SELECT,
+    CHAT_MESSAGES_SELECT,
+    MESSAGE_SELECT,
+} from './chats.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
 dotenv.config();
 
 const prisma = new PrismaClient();
 
+/* Chats */
 const getChats = async (userId) => {
     try {
         const data = await prisma.chat.findMany({
@@ -29,21 +35,7 @@ const getChats = async (userId) => {
     }
 };
 
-const getChatBySignature = async (userIdArray) => {
-    try {
-        if (!userIdArray || !Array.isArray(userIdArray)) return null;
-        const signature = userIdArray.sort().join(':');
-        const chat = await prisma.chat.findFirst({
-            where: {
-                signature,
-            },
-        });
-        return chat;
-    } catch (error) {
-        throw new DatabaseError('Unable to create chat');
-    }
-};
-
+/* Chat */
 const createChat = async (name, userIdArray) => {
     try {
         const sortedIds = userIdArray.sort();
@@ -71,6 +63,35 @@ const createChat = async (name, userIdArray) => {
         return chat;
     } catch (error) {
         throw new DatabaseError('Unable to create chat');
+    }
+};
+
+const getChatBySignature = async (userIdArray) => {
+    try {
+        if (!userIdArray || !Array.isArray(userIdArray)) return null;
+        const signature = userIdArray.sort().join(':');
+        const chat = await prisma.chat.findFirst({
+            where: {
+                signature,
+            },
+        });
+        return chat;
+    } catch (error) {
+        throw new DatabaseError('Unable to create chat');
+    }
+};
+
+const getChatMetaData = async (chatId) => {
+    try {
+        const data = await prisma.chat.findFirst({
+            where: {
+                id: chatId,
+            },
+            select: CHAT_META_DATA_SELECT,
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve chat meta data');
     }
 };
 
@@ -109,4 +130,49 @@ const deleteChat = async (chatId) => {
     }
 };
 
-export { getChats, getChatBySignature, createChat, updateChatName, deleteChat };
+/* Chat Messages */
+const createChatMessage = async (chatId, senderId, content) => {
+    try {
+        const message = await prisma.message.create({
+            data: {
+                chatId,
+                senderId,
+                content,
+                latestMessage: {
+                    connect: {
+                        id: chatId,
+                    },
+                },
+            },
+            select: MESSAGE_SELECT,
+        });
+        return message;
+    } catch (error) {
+        throw new DatabaseError('Unable to create message');
+    }
+};
+
+const getChatMessages = async (chatId) => {
+    try {
+        const data = await prisma.chat.findFirst({
+            where: {
+                id: chatId,
+            },
+            select: CHAT_MESSAGES_SELECT,
+        });
+        return data;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve chat messages');
+    }
+};
+
+export {
+    getChats,
+    getChatBySignature,
+    createChat,
+    getChatMetaData,
+    updateChatName,
+    deleteChat,
+    createChatMessage,
+    getChatMessages,
+};

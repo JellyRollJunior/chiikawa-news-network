@@ -230,6 +230,15 @@ VITE_GIPHY_API_KEY
     - may need to implement route to only fetch chat messages
     - useChatData
     - useChatMessage
+- server side
+    - /chats/:chatId - return chat metadata
+    - /chats/:chatId/messages - return chat messages
+
+    - consolidate chat and message queries into one file (its fucking confusing)
+        - merge
+        - make everyone use merged
+        - delete message section
+    - prisma update
 
 
 ## Big Bug Documentation

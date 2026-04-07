@@ -9,6 +9,7 @@ import * as chatController from './chat.controller.js';
 
 const chatRouter = Router();
 
+/* /chats */
 chatRouter.get('/', authenticateToken, chatController.getChats);
 chatRouter.post(
     '/',
@@ -17,6 +18,8 @@ chatRouter.post(
     chatNameValidations,
     chatController.createChat
 );
+
+/* /chats/:chatId */
 chatRouter.get(
     '/:chatId',
     authenticateToken,
@@ -36,5 +39,13 @@ chatRouter.delete(
     chatIdValidations,
     chatController.deleteChat
 );
+
+/* /chats/:chatId/messages */
+chatRouter.get(
+    '/:chatId/messages',
+    authenticateToken,
+    chatIdValidations,
+    chatController.getChatMessages
+)
 
 export { chatRouter };
