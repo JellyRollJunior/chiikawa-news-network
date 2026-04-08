@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import { useNavigate, useParams, Link } from 'react-router';
 import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
 import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
-import { useChat } from '@/features/chats/hooks/useChat.js';
 import { useJoinRoom } from '@/features/chats/hooks/useJoinRoom.js';
 import { ChatView } from '@/features/chats/components/Chat/ChatView.jsx';
+import { useChatMessages } from '@/features/chats/hooks/useChatMessages.js';
+import { useChatMetadata } from '@/features/chats/hooks/useChatMetadata.js';
 
 const ChatContainer = () => {
   const navigate = useNavigate();
@@ -13,12 +14,14 @@ const ChatContainer = () => {
   const { refetchChats } = useContext(ChatsContext);
   const {
     chat,
+    updateChatNameClientSide,
+  } = useChatMetadata(chatId);
+  const {
     messages,
-    isLoading: isLoadingChat,
+    isLoading: isLoadingMessages,
     errorStatus,
     sendMessage,
-    updateChatNameClientSide,
-  } = useChat(chatId);
+  } = useChatMessages(chatId);
 
   const navigateToChats = () => {
     navigate('/chats');
@@ -50,7 +53,7 @@ const ChatContainer = () => {
       currentUserId={currentUserId}
       chat={chat}
       messages={messages}
-      isLoadingChat={isLoadingChat}
+      isLoadingMessages={isLoadingMessages}
       sendMessage={sendMessage}
       onSubmitRenameChat={onSubmitRenameChat}
       navigateToChats={navigateToChats}

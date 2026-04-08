@@ -16,7 +16,7 @@ const ChatView = ({
   currentUserId,
   chat,
   messages,
-  isLoadingChat,
+  isLoadingMessages,
   sendMessage,
   onSubmitRenameChat,
   navigateToChats,
@@ -127,11 +127,11 @@ const ChatView = ({
           currentUserId={currentUserId}
           messages={messages}
           isPrivateChat={chat && chat.type == 'PRIVATE'}
-          isLoadingMessages={isLoadingChat}
+          isLoadingMessages={isLoadingMessages}
         />
       </div>
       <div className="duckegg-block h-4 shrink-0"></div>
-      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoadingChat} />
+      <ChatMessageInput sendMessage={sendMessage} isDisabled={isLoadingMessages} />
 
       {/* Modals */}
       <ChatInfoModal
