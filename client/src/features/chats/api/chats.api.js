@@ -42,6 +42,15 @@ const fetchChat = async (chatId, signal) => {
     return data;
 };
 
+const fetchChatMetadata = async (chatId, signal) => {
+    const data = await request(`/chats/${chatId}`, {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
+    return data;
+};
+
 const patchChat = async (chatId, name) => {
     const data = await request(`/chats/${chatId}`, {
         mode: 'cors',
@@ -64,11 +73,22 @@ const deleteChat = async (chatId) => {
     return data;
 };
 
+const fetchChatMessages = async (chatId, signal) => {
+    const data = await request(`/chats/${chatId}/messages`, {
+        mode: 'cors',
+        method: 'GET',
+        signal,
+    });
+    return data;
+};
+
 export {
     fetchChats,
     fetchPublicChats,
     postChats,
     fetchChat,
+    fetchChatMetadata,
     patchChat,
     deleteChat,
+    fetchChatMessages,
 };

@@ -1,0 +1,110 @@
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { ToastContext } from '@/shared/providers/ToastProvider.jsx';
+import { SocketContext } from '@/features/chats/providers/SocketProvider.jsx';
+import { ChatsContext } from '@/features/chats/providers/ChatsProvider.jsx';
+import { CurrentContext } from '@/features/auth/providers/CurrentProvider.jsx';
+import { useApiHandler } from '@/shared/hooks/useApiHandler.js';
+import { fetchChatMessages } from '@/features/chats/api/chats.api.js';
+import { textCensor, profanityMatcher } from '@/shared/services/textCensor.js';
+
+const createMessage = (content, id, username, avatar) => {
+    const now = new Date().toISOString();
+    return {
+        id: now,
+        content,
+        sendTime: now,
+        sender: {
+            id,
+            avatar: avatar,
+            username: username,
+        },
+    };
+};
+
+const useChatMessages = (chatId) => {
+    const navigate = useNavigate();
+    const { toast } = useContext(ToastContext);
+    const { handleApiCall, isLoading } = useApiHandler();
+
+    // Chat data
+    const socket = useContext(SocketContext);
+    const { refetchChats } = useContext(ChatsContext);
+    const { id, username, avatar } = useContext(CurrentContext);
+    const [messages, setMessages] = useState([]);
+    const [errorStatus, setErrorStatus] = useState(null);
+
+    const sendMessageErrors = {
+        403: 'Chat is unavailable',
+        404: 'Chat is unavailable and may have been deleted',
+    };
+
+    // retrieve initial messages
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        const getChat = async () => {
+            if (!chatId) return;
+            try {
+                const data = await handleApiCall(
+                    'Unable to fetch chat',
+                    fetchChatMessages,
+                    chatId,
+                    abortController.signal
+                );
+                const { messages, ..._userData } = data;
+                setMessages(messages);
+                setErrorStatus(null);
+            } catch (error) {
+                setErrorStatus(error.status);
+            }
+        };
+
+        getChat();
+
+        return () => abortController.abort();
+    }, [handleApiCall, chatId]);
+
+    // configure socket on receive_message
+    useEffect(() => {
+        if (!socket) return;
+
+        socket.on('receive_message', (message) => {
+            setMessages((prev) => [...prev, message]);
+        });
+
+        return () => socket.off('receive_message');
+    }, [socket, chatId]);
+
+    const sendMessage = (text) => {
+        if (!socket) return;
+
+        // emit message to server
+        socket.emit('send_message', chatId, text, (error) => {
+            if (sendMessageErrors[error.status]) {
+                toast(sendMessageErrors[error.status]);
+                refetchChats();
+                navigate('/chats');
+            } else {
+                toast('Unable to send message. Please refresh and try again');
+            }
+        });
+
+        // display message on client
+        const censoredText = textCensor.applyTo(
+            text,
+            profanityMatcher.getAllMatches(text)
+        );
+        const message = createMessage(censoredText, id, username, avatar);
+        setMessages((prev) => [...prev, message]);
+    };
+
+    return {
+        messages,
+        sendMessage,
+        isLoading,
+        errorStatus,
+    };
+};
+
+export { useChatMessages };
