@@ -24,7 +24,7 @@ chatRouter.get(
     '/:chatId',
     authenticateToken,
     chatIdValidations,
-    chatController.getChat
+    chatController.getChatMetadata
 );
 chatRouter.patch(
     '/:chatId',

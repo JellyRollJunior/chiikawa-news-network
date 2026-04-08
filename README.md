@@ -226,13 +226,6 @@ VITE_GIPHY_API_KEY
 
 - fix: server env var injection
 
-- split useChat hook (too many responsibilities)
-    - may need to implement route to only fetch chat messages
-    - useChatData
-    - useChatMessage
-- server side
-    - prisma update
-
 ## Big Bug Documentation
 
 1. Requesting new posts continuously on PostFeed

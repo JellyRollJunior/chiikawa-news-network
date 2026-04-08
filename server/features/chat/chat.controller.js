@@ -11,7 +11,7 @@ const getChats = async (req, res, next) => {
         if (!chats) throw new DatabaseError('Unable to retrieve chats', 404);
         const orderedChats = sortChatsByLatest(chats);
         const formattedChats = orderedChats.map((chat) =>
-            formatChat(chat, userId)
+            formatChatMetadata(chat, userId)
         );
         res.json({ chats: formattedChats });
     } catch (error) {
@@ -19,7 +19,7 @@ const getChats = async (req, res, next) => {
     }
 };
 
-const getChat = async (req, res, next) => {
+const getChatMetadata = async (req, res, next) => {
     try {
         validateInput(req);
         const { chatId } = req.params;
@@ -105,7 +105,7 @@ const deleteChat = async (req, res, next) => {
 
 export {
     getChats,
-    getChat,
+    getChatMetadata,
     createChat,
     updateChatName,
     deleteChat,

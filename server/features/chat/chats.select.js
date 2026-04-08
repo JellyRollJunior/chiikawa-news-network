@@ -35,6 +35,7 @@ const MESSAGE_SELECT = {
 };
 
 const CHAT_MESSAGES_SELECT = {
+    type: true,
     messages: {
         select: MESSAGE_SELECT,
         orderBy: {
@@ -45,22 +46,6 @@ const CHAT_MESSAGES_SELECT = {
         select: USER_SELECT_BASIC,
     },
 };
-
-// const CHAT_MESSAGES_SELECT = {
-//     id: true,
-//     name: true,
-//     type: true,
-//     avatar: true,
-//     messages: {
-//         select: MESSAGE_SELECT,
-//         orderBy: {
-//             sendTime: 'asc',
-//         },
-//     },
-//     users: {
-//         select: USER_SELECT_BASIC,
-//     },
-// };
 
 export {
     CHATS_SELECT,
