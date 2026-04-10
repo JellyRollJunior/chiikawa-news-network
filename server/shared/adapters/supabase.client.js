@@ -1,5 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { SupabaseError } from '../errors/SupabaseError.js';
+import dotenv from 'dotenv'
+dotenv.config();
 
 const AVATAR_BUCKET = 'avatar';
 const POSTS_BUCKET = 'posts';

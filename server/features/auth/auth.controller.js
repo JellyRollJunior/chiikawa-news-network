@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 import { AuthenticationError } from '../../shared/errors/AuthenticationError.js';
 import { validateInput } from '../../shared/middleware/validations.js';
 import * as userQueries from '../users/user.queries.js';
+import dotenv from 'dotenv'
+dotenv.config();
+
 
 const signup = async (req, res, next) => {
     try {

@@ -30,7 +30,7 @@ const handleSendMessage = async (socket, chatId, content, callback) => {
             throw Error('Payload error');
         }
         // Verify user is authorized to post message in chat
-        const chat = await chatQueries.getChatMetaData(chatId);
+        const chat = await chatQueries.getChatMetadata(chatId);
         if (!chat) throw new DatabaseError('Unable to create message', 404);
         if (!isUserAuthorizedForChat(chat, socket.data.user.id)) {
             throw new AuthorizationError('Unable to create message');

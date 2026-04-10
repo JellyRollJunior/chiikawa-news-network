@@ -1,5 +1,4 @@
-import pkg from '@prisma/client';
-const { CHAT_TYPE } = pkg;
+import { CHAT_TYPE } from '@prisma/client';
 
 const isUserAuthorizedForChat = (chat, userId) => {
     if (chat.type == CHAT_TYPE.PUBLIC) return true;
