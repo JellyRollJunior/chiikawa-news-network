@@ -139,7 +139,8 @@ This project solidifies my decision to become a web developer. This site design 
 # Start backend server
 cd server
 npm install
-npm run dev # node --watch server.js
+npx prisma generate --schema db/prisma/schema.prisma
+npm run start # node --watch server.js
 ```
 
 ```bash
