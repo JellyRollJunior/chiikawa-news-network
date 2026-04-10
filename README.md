@@ -216,15 +216,7 @@ VITE_GIPHY_API_KEY
 
 ## Potential Improvements
 
-- make loading not gray (its ugly)
 - document client routes!
-
-- comment loading broken
-    - comment refetching animation loading messes up the flow
-
-- reintersects on closing notification
-
-- fix: server env var injection
 
 ## Big Bug Documentation
 

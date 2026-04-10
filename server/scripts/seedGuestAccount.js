@@ -1,6 +1,4 @@
-import dotenv from 'dotenv';
 import * as userQueries from '../features/users/user.queries.js';
-dotenv.config();
 
 const seedGuestAccount = async () => {
     try {

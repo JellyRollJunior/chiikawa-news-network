@@ -1,8 +1,6 @@
-import dotenv from 'dotenv';
 import { PrismaClient, CHAT_TYPE } from '@prisma/client';
 import { CHATS_SELECT } from './chats.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
-dotenv.config();
 
 const prisma = new PrismaClient();
 

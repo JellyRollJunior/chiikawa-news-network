@@ -1,10 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import { AuthenticationError } from '../../shared/errors/AuthenticationError.js';
 import { validateInput } from '../../shared/middleware/validations.js';
 import * as userQueries from '../users/user.queries.js';
-dotenv.config();
 
 const signup = async (req, res, next) => {
     try {

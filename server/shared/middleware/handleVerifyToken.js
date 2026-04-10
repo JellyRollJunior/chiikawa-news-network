@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import { AuthenticationError } from '../errors/AuthenticationError.js';
-dotenv.config();
 
 const handleVerifyToken = (socket, next) => {
     const token = socket.handshake.auth.token;

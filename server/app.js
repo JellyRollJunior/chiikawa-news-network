@@ -9,8 +9,6 @@ import { publicChatRouter } from './features/chat/publicChat.router.js';
 import { postRouter } from './features/posts/post.router.js';
 import { commentRouter } from './features/posts/comment.router.js';
 import { error404Handler, errorHandler } from './shared/middleware/errorHandler.js';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const app = express();
 app.use(
