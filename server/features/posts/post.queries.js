@@ -1,8 +1,6 @@
-import { PrismaClient } from '../../db/prisma/prisma.client.js';
+import { prisma } from '../../db/prisma/prisma.client.js';
 import { postSelect } from './post.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
-
-const prisma = new PrismaClient();
 
 const getPostById = async (requesterId, postId) => {
     try {

@@ -1,8 +1,6 @@
-import { PrismaClient } from '../../db/prisma/prisma.client.js';
+import { prisma } from '../../db/prisma/prisma.client.js';
 import { userSelect } from './user.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
-
-const prisma = new PrismaClient();
 
 const getUserByUsername = async (username) => {
     try {

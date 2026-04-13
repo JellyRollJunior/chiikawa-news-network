@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "prisma generate --schema db/prisma/schema.prisma",
     "start": "node ./server.js"
   },
   "keywords": [],
