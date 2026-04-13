@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
-import { commentIdValidations } from '../../shared/middleware/validations.js';
-import * as commentController from './comment.controller.js';
+import { authenticateToken } from '#shared/middleware/handleVerifyToken.js';
+import { commentIdValidations } from '#shared/middleware/validations.js';
+import * as commentController from '#features/posts/comment.controller.js';
 
 const commentRouter = Router();
 

@@ -1,6 +1,6 @@
-import { prisma } from '../../db/prisma/prisma.client.js';
-import { userSelect } from './user.select.js';
-import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+import { prisma } from '#db/prisma/prisma.client.js';
+import { userSelect } from '#features/users/user.select.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
 
 const getUserByUsername = async (username) => {
     try {

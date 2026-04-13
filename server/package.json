@@ -33,5 +33,13 @@
   },
   "engines": {
     "node": "24.x"
+  },
+  "imports": {
+    "#config/*": "./config/*",
+    "#db/*": "./db/*",
+    "#features/*": "./features/*",
+    "#scripts/*": "./scripts/*",
+    "#shared/*": "./shared/*",
+    "#sockets/*": "./sockets/*"
   }
 }

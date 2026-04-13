@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
-import { postQueryValidationsOptional, userIdValidations } from '../../shared/middleware/validations.js';
-import * as userController from './user.controller.js';
-import * as postController from '../posts/post.controller.js';
+import { authenticateToken } from '#shared/middleware/handleVerifyToken.js';
+import { postQueryValidationsOptional, userIdValidations } from '#shared/middleware/validations.js';
+import * as userController from '#features/users/user.controller.js';
+import * as postController from '#features/posts/post.controller.js';
 
 const userRouter = Router();
 

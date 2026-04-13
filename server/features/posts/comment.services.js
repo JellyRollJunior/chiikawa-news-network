@@ -1,4 +1,4 @@
-import { setLikes } from './like.services.js';
+import { setLikes } from '#features/posts/like.services.js';
 
 const formatCommentData = (post) => {
     const commentsWithLikes = setLikes(post);

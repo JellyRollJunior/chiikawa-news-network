@@ -1,8 +1,8 @@
 import { check } from "express-validator";
 import { validationResult } from 'express-validator';
-import { ValidationError } from '../errors/ValidationError.js';
-import { allowedMimeTypes } from "./multer.js";
-import { profanityMatcher } from "../services/textCensor.js";
+import { ValidationError } from '#shared/errors/ValidationError.js';
+import { allowedMimeTypes } from "#shared/middleware/multer.js";
+import { profanityMatcher } from "#shared/services/textCensor.js";
 
 /* Error messages */
 const EMPTY_ERROR = 'must not be empty.';

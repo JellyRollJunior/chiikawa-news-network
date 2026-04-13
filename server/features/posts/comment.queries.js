@@ -1,6 +1,6 @@
-import { prisma } from '../../db/prisma/prisma.client.js';
-import { commentsSelect } from './comments.select.js';
-import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+import { prisma } from '#db/prisma/prisma.client.js';
+import { commentsSelect } from '#features/posts/comments.select.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
 
 const getCommentById = async (commentId) => {
     try {

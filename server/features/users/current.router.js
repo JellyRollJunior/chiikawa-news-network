@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
-import { bioValidations } from '../../shared/middleware/validations.js';
-import { retrieveAvatar } from '../../shared/middleware/multer.js';
-import { formatAvatar } from '../../shared/middleware/Sharp.js';
-import * as userController from './user.controller.js';
+import { authenticateToken } from '#shared/middleware/handleVerifyToken.js';
+import { bioValidations } from '#shared/middleware/validations.js';
+import { retrieveAvatar } from '#shared/middleware/multer.js';
+import { formatAvatar } from '#shared/middleware/Sharp.js';
+import * as userController from '#features/users/user.controller.js';
 
 const currentRouter = Router();
 

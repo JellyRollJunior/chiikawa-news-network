@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
+import { authenticateToken } from '#shared/middleware/handleVerifyToken.js';
 import {
     commentValidations,
     postIdValidations,
     postQueryValidationsOptional,
     postValidations,
     userIdValidationsOptional,
-} from '../../shared/middleware/validations.js';
-import { retrieveMedia } from '../../shared/middleware/multer.js';
-import * as postController from './post.controller.js';
-import * as commentController from './comment.controller.js';
+} from '#shared/middleware/validations.js';
+import { retrieveMedia } from '#shared/middleware/multer.js';
+import * as postController from '#features/posts/post.controller.js';
+import * as commentController from '#features/posts/comment.controller.js';
 
 const postRouter = Router();
 

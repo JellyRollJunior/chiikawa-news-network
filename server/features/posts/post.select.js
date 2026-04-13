@@ -1,5 +1,5 @@
-import { likesSelect } from './likes.select.js';
-import { USER_SELECT_BASIC } from '../users/user.select.js';
+import { likesSelect } from '#features/posts/likes.select.js';
+import { USER_SELECT_BASIC } from '#features/users/user.select.js';
 
 const postSelect = (requesterId) => {
     return {

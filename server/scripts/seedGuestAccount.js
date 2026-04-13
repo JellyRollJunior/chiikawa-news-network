@@ -1,4 +1,4 @@
-import * as userQueries from '../features/users/user.queries.js';
+import * as userQueries from '#features/users/user.queries.js';
 
 const seedGuestAccount = async () => {
     try {

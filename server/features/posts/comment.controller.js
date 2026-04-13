@@ -1,8 +1,8 @@
-import * as commentQueries from './comment.queries.js';
-import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
-import { DatabaseError } from '../../shared/errors/DatabaseError.js';
-import { validateInput } from '../../shared/middleware/validations.js';
-import { formatCommentData } from './comment.services.js';
+import { formatCommentData } from '#features/posts/comment.services.js';
+import { AuthorizationError } from '#shared/errors/AuthorizationError.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
+import { validateInput } from '#shared/middleware/validations.js';
+import * as commentQueries from '#features/posts/comment.queries.js';
 
 const getComments = async (req, res, next) => {
     try {

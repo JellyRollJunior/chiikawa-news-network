@@ -1,4 +1,4 @@
-import { USER_SELECT_BASIC } from '../users/user.select.js';
+import { USER_SELECT_BASIC } from '#features/users/user.select.js';
 
 const CHATS_SELECT = {
     id: true,

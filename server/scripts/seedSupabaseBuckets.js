@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { buckets } from '../shared/adapters/supabase.client.js';
+import { buckets } from '#shared/adapters/supabase.client.js';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;

@@ -1,9 +1,9 @@
-import { isUserAuthorizedForChat } from '../features/chat/chat.services.js';
-import { textCensor, profanityMatcher} from '../shared/services/textCensor.js';
-import { createSocketError } from '../shared/errors/SocketError.js';
-import { AuthorizationError } from '../shared/errors/AuthorizationError.js';
-import { DatabaseError } from '../shared/errors/DatabaseError.js';
-import * as chatQueries from '../features/chat/chat.queries.js';
+import { isUserAuthorizedForChat } from '#features/chat/chat.services.js';
+import { textCensor, profanityMatcher} from '#shared/services/textCensor.js';
+import { createSocketError } from '#shared/errors/SocketError.js';
+import { AuthorizationError } from '#shared/errors/AuthorizationError.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
+import * as chatQueries from '#features/chat/chat.queries.js';
 
 const handleJoinRoom = (socket, room, callback) => {
     if (!room)

@@ -1,12 +1,12 @@
-import { prisma } from '../../db/prisma/prisma.client.js';
-import { CHAT_TYPE } from '../../db/prisma/prisma.enums.js';
+import { prisma } from '#db/prisma/prisma.client.js';
+import { CHAT_TYPE } from '#db/prisma/prisma.enums.js';
 import {
     CHATS_SELECT,
     CHAT_META_DATA_SELECT,
     CHAT_MESSAGES_SELECT,
     MESSAGE_SELECT,
-} from './chats.select.js';
-import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+} from '#features/chat/chats.select.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
 
 /* Chats */
 const getChats = async (userId) => {

@@ -1,7 +1,7 @@
-import { prisma } from '../../db/prisma/prisma.client.js';
-import { CHAT_TYPE } from '../../db/prisma/prisma.enums.js';
-import { CHATS_SELECT } from './chats.select.js';
-import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+import { prisma } from '#db/prisma/prisma.client.js';
+import { CHAT_TYPE } from '#db/prisma/prisma.enums.js';
+import { CHATS_SELECT } from '#features/chat/chats.select.js';
+import { DatabaseError } from '#shared/errors/DatabaseError.js';
 
 const getPublicChats = async () => {
     try {

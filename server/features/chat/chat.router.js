@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { authenticateToken } from '../../shared/middleware/handleVerifyToken.js';
+import { authenticateToken } from '#shared/middleware/handleVerifyToken.js';
 import {
     chatValidations,
     chatIdValidations,
     chatNameValidations,
-} from '../../shared/middleware/validations.js';
-import * as chatController from './chat.controller.js';
+} from '#shared/middleware/validations.js';
+import * as chatController from '#features/chat/chat.controller.js';
 
 const chatRouter = Router();
 

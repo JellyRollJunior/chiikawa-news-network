@@ -1,8 +1,8 @@
-import { validateInput } from '../../shared/middleware/validations.js';
-import { formatChatMetadata, sortChatsByLatest } from './chat.services.js';
-import { isUserAuthorizedForChat } from './chat.services.js';
-import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
-import * as chatQueries from './chat.queries.js';
+import { validateInput } from '#shared/middleware/validations.js';
+import { formatChatMetadata, sortChatsByLatest } from '#features/chat/chat.services.js';
+import { isUserAuthorizedForChat } from '#features/chat/chat.services.js';
+import { AuthorizationError } from '#shared/errors/AuthorizationError.js';
+import * as chatQueries from '#features/chat/chat.queries.js';
 
 const getChats = async (req, res, next) => {
     try {

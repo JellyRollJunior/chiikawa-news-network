@@ -1,4 +1,4 @@
-import * as publicChatQueries from '../features/chat/publicChat.queries.js';
+import * as publicChatQueries from '#features/chat/publicChat.queries.js';
 
 const seedPublicChats = async () => {
     try {

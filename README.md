@@ -212,6 +212,11 @@ VITE_GIPHY_API_KEY
 
 - server
     - refactored to feature folder architechture
+    - split /chat/:chatId
+        - /chat/:chatId -> return chat metadata
+        - /chat/:chatId/messages -> returns chat messages
+    - Fix: Inject env variables only once at entry point
+    - path aliasing
 
 ## Known Issues
 

@@ -1,5 +1,5 @@
-import { handleVerifyToken } from "../shared/middleware/handleVerifyToken.js";
-import { handleJoinRoom, handleSendMessage, handleDisconnecting, handleDisconnect } from "./socketListeners.js";
+import { handleVerifyToken } from "#shared/middleware/handleVerifyToken.js";
+import { handleJoinRoom, handleSendMessage, handleDisconnecting, handleDisconnect } from "#sockets/socketListeners.js";
 
 const attachSocketListeners = (io) => {
     io.use(handleVerifyToken);

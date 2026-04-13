@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { SupabaseError } from '../errors/SupabaseError.js';
+import { SupabaseError } from '#shared/errors/SupabaseError.js';
 
 const AVATAR_BUCKET = 'avatar';
 const POSTS_BUCKET = 'posts';

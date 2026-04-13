@@ -1,4 +1,4 @@
-import { CHAT_TYPE } from "../../db/prisma/prisma.enums.js";
+import { CHAT_TYPE } from "#db/prisma/prisma.enums.js";
 
 const isUserAuthorizedForChat = (chat, userId) => {
     if (chat.type == CHAT_TYPE.PUBLIC) return true;
