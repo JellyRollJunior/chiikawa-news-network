@@ -6,9 +6,9 @@ import { formatPostData } from './post.services.js';
 import { validateInput } from '../../shared/middleware/validations.js';
 import { AuthorizationError } from '../../shared/errors/AuthorizationError.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
+import { profanityMatcher, textCensor } from '../../shared/services/textCensor.js';
 import * as postQueries from './post.queries.js';
 import * as userQueries from '../users/user.queries.js';
-import { profanityMatcher, textCensor } from '../../shared/services/textCensor.js';
 
 const getPosts = async (req, res, next) => {
     try {

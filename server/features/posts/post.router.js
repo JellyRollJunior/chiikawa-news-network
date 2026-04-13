@@ -7,9 +7,9 @@ import {
     postValidations,
     userIdValidationsOptional,
 } from '../../shared/middleware/validations.js';
+import { retrieveMedia } from '../../shared/middleware/multer.js';
 import * as postController from './post.controller.js';
 import * as commentController from './comment.controller.js';
-import { retrieveMedia } from '../../shared/middleware/multer.js';
 
 const postRouter = Router();
 

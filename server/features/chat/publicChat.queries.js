@@ -1,4 +1,5 @@
-import { PrismaClient, CHAT_TYPE } from '@prisma/client';
+import { PrismaClient } from '../../db/prisma/prisma.client.js';
+import { CHAT_TYPE } from '../../db/prisma/prisma.enums.js';
 import { CHATS_SELECT } from './chats.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
 

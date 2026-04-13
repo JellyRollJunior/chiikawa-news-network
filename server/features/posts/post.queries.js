@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../../db/prisma/prisma.client.js';
 import { postSelect } from './post.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
 

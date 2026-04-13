@@ -236,3 +236,5 @@ VITE_GIPHY_API_KEY
         - Stop observer from recreating by removing dependency from useEffect
         - Disable API call in fetchNextPosts when loading posts
             - useRef for synchronous loading value
+2. Node 20+ no longer supports named imports from CommonJS modules causing previously working builds to fail
+    - Took a very long time to figure out WHY previous working builds were suddenly failing... Yikes

@@ -1,3 +1,5 @@
+import { PrismaClient } from '../../db/prisma/prisma.client.js';
+import { CHAT_TYPE } from '../../db/prisma/prisma.enums.js';
 import {
     CHATS_SELECT,
     CHAT_META_DATA_SELECT,
@@ -5,10 +7,6 @@ import {
     MESSAGE_SELECT,
 } from './chats.select.js';
 import { DatabaseError } from '../../shared/errors/DatabaseError.js';
-
-import prismaPkg from '@prisma/client';
-const CHAT_TYPE = prismaPkg.CHAT_TYPE;
-const PrismaClient = prismaPkg.PrismaClient;
 
 const prisma = new PrismaClient();
 
